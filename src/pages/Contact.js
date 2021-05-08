@@ -13,12 +13,22 @@ const Wrapper = styled(motion.div)`
    background-color:yellow;
    border:5px solid black;
    position: absolute;
+   & .contentContainer {
+      height:100%;
+      flex-grow:1;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:50px;
+   }
    & .linkContainer {
-      width:10%;
       height:100%;
       margin-right:auto;
       display:flex;
-
+      min-width:60px;
+      width:4%;
+      max-width:100px;
       & .link {
          width:50%;
          height:100%;
@@ -52,7 +62,7 @@ const Contact = ({setEnterDirection}) => {
          animate={{x: 0}}
          exit={{x: `+100vw` }}
          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 }
+            x: { type: "linear", stiffness: 300, damping: 30 }
          }}
       >
          <div className="linkContainer">
@@ -61,7 +71,10 @@ const Contact = ({setEnterDirection}) => {
             <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
          </div>
 
-         <h1>Contacts</h1>
+         <div className="contentContainer">
+            <h1>Contacts</h1>
+         </div>
+        
 
       </Wrapper>
    )

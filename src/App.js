@@ -11,7 +11,6 @@ import {
 } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import { Main, Projects, Contact } from './pages/index';
-import { Navbar } from './components/index';
 
 const Wrapper = styled.div`
   min-width:100%;
@@ -42,6 +41,10 @@ const App = () => {
 
             <Route path="/contact">
                 <Contact setEnterDirection={setEnterDirection}/>
+            </Route>
+
+            <Route exact path="/">
+              <Main setEnterDirection={setEnterDirection}/>
             </Route>
           </Switch>
         </AnimatePresence>

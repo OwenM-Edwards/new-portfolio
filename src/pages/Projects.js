@@ -1,8 +1,8 @@
 import React, { useState, useEffect }  from 'react';
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import {useHistory} from 'react-router-dom';
+import { Project, ProjectsNav } from '../components/index';
 
 const Wrapper = styled(motion.div)`
   width:100%;
@@ -10,29 +10,24 @@ const Wrapper = styled(motion.div)`
   display:flex;
   flex-direction:row;
   justify-content:center;
-  background-color:yellow;
+  background-color:#0e1c2c;
   border:5px solid black;
   position: absolute;
    & .contentContainer {
       height:100%;
-      width:90%;
+      width:100%;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
-      padding:50px;
-      & .projectContainer {
-         width:100%;
-         height:100%;
-         background-color:red;
+
+      & .projectsContainer {
+         width:98%;
+         height:80%;
+         position: relative;
          display:flex;
-         flex-wrap:wrap;
-         & .project {
-            width:50%;
-            height:50%;
-            background-color:blue;
-            border: 1px solid red;
-         }
+         flex-direction:row;
+         justify-content:space-between;
       }
    }
    & .link {
@@ -43,7 +38,9 @@ const Wrapper = styled(motion.div)`
       letter-spacing:30px;
       text-decoration:none;
       border:2px solid white;
-      width:5%;
+      min-width:30px;
+      width:2%;
+      max-width:50px;
       height:100%;
       background-color:black;
 
@@ -57,18 +54,21 @@ const Wrapper = styled(motion.div)`
    & .link-a {
       margin-right:auto;
       writing-mode: sideways-lr;
-      padding-left:5px;
+
+
    }
    & .link-b {
       writing-mode: vertical-rl;
-      padding-right:5px;
+
    }
 `
+
 
 
 const Projects = ({enterDirection}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
+   const [[projectsDirection, displayProject], setDisplayProject] = useState([true,0])
 
    useEffect(()=>{
 
@@ -95,28 +95,34 @@ const Projects = ({enterDirection}) => {
       }
    }
 
+
    return(
       <Wrapper
          initial={enterDirection ? { x: `+100vw` } : { x: `-100vw`  }}
          animate={{x: 0}}
          exit={direction ? { x: `+100vw` } : { x: `-100vw`  }}
          transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 }
+            x: { type: "linear", stiffness: 300, damping: 30 }
          }}
       >
 
          <div onClick={()=>handleExitStyle('left')} className="link link-a" ><p>Main</p></div>
+
          <div className="contentContainer">
-            
             <h1>PROJECTS</h1>
-            <div className="projectContainer">
-               <div className="project"></div>
-               <div className="project"></div>
-               <div className="project"></div>
-               <div className="project"></div>
+            <div className="projectsContainer">
+               <Project 
+                  displayProject={displayProject} 
+                  projectsDirection={projectsDirection}
+               />
+               <ProjectsNav 
+                  displayProject={displayProject} 
+                  setDisplayProject={setDisplayProject}
+               />
             </div>
-            
+
          </div>
+
          <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>
       
       </Wrapper>
