@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion"
 import {useHistory} from 'react-router-dom';
+import {ContactForm} from '../components/index';
 
 const Wrapper = styled(motion.div)`
    width:100%;
@@ -73,6 +74,7 @@ const Contact = ({setEnterDirection}) => {
 
          <div className="contentContainer">
             <h1>Contacts</h1>
+            <ContactForm/>
          </div>
         
 
