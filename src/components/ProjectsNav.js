@@ -26,16 +26,8 @@ const Wrapper = styled.div`
 `
 
 
-const ProjectsNav = ({setDisplayProject, displayProject}) => {
+const ProjectsNav = ({setDisplayProject, displayProject, handleProjectsSwitch}) => {
 
-   const handleProjectsSwitch = (val) => {
-      if(val < displayProject){
-         setDisplayProject([true, val])
-      }
-      else if (val > displayProject) {
-         setDisplayProject([false, val])
-      }
-   }
 
    return (
       <Wrapper>

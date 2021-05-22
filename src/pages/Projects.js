@@ -83,6 +83,15 @@ const Projects = ({enterDirection}) => {
       }
    }
 
+   const handleProjectsSwitch = (val) => {
+      if(val < displayProject){
+         setDisplayProject([true, val])
+      }
+      else if (val > displayProject) {
+         setDisplayProject([false, val])
+      }
+   }
+
    const handleExitStyle = (exitDirection) => {
       console.log(`testing ${exitDirection}`)
       if(exitDirection === 'left'){
@@ -104,6 +113,7 @@ const Projects = ({enterDirection}) => {
          transition={{
             x: { type: "linear", stiffness: 300, damping: 30 }
          }}
+         onScroll={()=>console.log('hello')}
       >
 
          <div onClick={()=>handleExitStyle('left')} className="link link-a" ><p>Main</p></div>
@@ -116,6 +126,7 @@ const Projects = ({enterDirection}) => {
                   projectsDirection={projectsDirection}
                />
                <ProjectsNav 
+               handleProjectsSwitch={handleProjectsSwitch}
                   displayProject={displayProject} 
                   setDisplayProject={setDisplayProject}
                />

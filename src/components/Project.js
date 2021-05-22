@@ -1,7 +1,7 @@
 import React  from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-
+import stockWebsite from "../img/stockWebsite.png"
 const Wrapper = styled(motion.div)`
    width:90%;
    height:100%;
@@ -18,23 +18,50 @@ const Wrapper = styled(motion.div)`
       color:white;
       display:flex;
       flex-direction:column;
+      padding:30px;
       
 
       & h2 {
          width:100%;
+         margin-bottom:20px;
       }
       & .projectImage {
          background-color:orange;
          height:50%;
          width:100%;
+         object-fit: cover;
+         object-position: contain;
+         margin-bottom:20px;
+      }
+      & p {
+         margin-bottom:20px;
+      }
+      & .buttonContainer {
+         display:flex;
+         flex-direction:row;
+
+         padding:0 30px;
+         justify-content:space-between;
+         width:50%;
+         background-color:red;
+         margin:auto auto 0 auto;
+         & button {
+            width:40%;
+            height:100px;
+            border-radius:5px;
+         }
       }
    }
 `
 const projects = [
    <div className="project">
-      <h2>1</h2>
-      <div className="projectImage">
-      </div>  
+      <h2>Test Website</h2>
+      <img className="projectImage" src={stockWebsite}/> 
+      <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+      <div className="buttonContainer">
+         <button>github</button>
+         <button>demo</button>
+      </div>
    </div>,
 
    <div className="project">
@@ -59,6 +86,7 @@ const projects = [
 const Project = ({displayProject, projectsDirection}) => {
    console.log(projectsDirection)
 
+   
    return(
       
       <AnimatePresence initial={false}>

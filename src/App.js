@@ -11,6 +11,8 @@ import {
 } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import { Main, Projects, Contact } from './pages/index';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Wrapper = styled.div`
   min-width:100%;
@@ -29,6 +31,7 @@ const App = () => {
 
   return (
     <Wrapper>
+        <ToastContainer />
         <AnimatePresence  initial={false}>
           <Switch location={location} key={location.pathname}>
             <Route path="/main">

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import {useHistory} from 'react-router-dom';
 import {ContactForm} from '../components/index';
 
+
 const Wrapper = styled(motion.div)`
    width:100%;
    height:100%;
