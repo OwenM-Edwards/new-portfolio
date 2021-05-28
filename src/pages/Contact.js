@@ -30,7 +30,6 @@ const Wrapper = styled(motion.div)`
    justify-content:flex-start;
    position: absolute;
 
-
    & .contentContainer {
       height:100%;
       width:100%;
@@ -67,6 +66,9 @@ const Wrapper = styled(motion.div)`
             @media (max-width: 700px) {
                font-size:1.3rem;
                padding:10px;
+            }
+            @media (max-height: 850px) {
+               font-size:2.3rem;
             }
          }
       }
