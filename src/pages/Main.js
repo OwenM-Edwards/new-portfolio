@@ -246,7 +246,7 @@ const Main = ({setEnterDirection}) => {
       <HeadShake delay={1200}>
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
-            <img className="arrow" src={arrow}/>
+            <img alt="arrow" className="arrow" src={arrow}/>
           </div>
         </HeadShake> 
 
@@ -255,14 +255,14 @@ const Main = ({setEnterDirection}) => {
         <Fade bottom>
           <h2>Some of the technologies I use...</h2>
           <div className="techContainer">
-            <img data-tip="HTML5" src={htmlIcon}/>
-            <img data-tip="CSS3" src={cssIcon}/>
-            <img data-tip="WIX" src={wixIcon}/>
-            <img data-tip="Javascript" src={jsIcon}/>
-            <img data-tip="ReactJS" src={reactIcon}/>
-            <img data-tip="NodeJS" src={nodeIcon}/>
-            <img data-tip="SASS" src={sassIcon}/>
-            <img data-tip="PostgreSQL" src={postgresIcon}/>
+            <img alt="HTML5" data-tip="HTML5" src={htmlIcon}/>
+            <img alt="CSS3" data-tip="CSS3" src={cssIcon}/>
+            <img alt="WIX" data-tip="WIX" src={wixIcon}/>
+            <img alt="Javascript" data-tip="Javascript" src={jsIcon}/>
+            <img alt="ReactJS" data-tip="ReactJS" src={reactIcon}/>
+            <img alt="NodeJS" data-tip="NodeJS" src={nodeIcon}/>
+            <img alt="SASS" data-tip="SASS" src={sassIcon}/>
+            <img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
           </div>
         </Fade>
 
