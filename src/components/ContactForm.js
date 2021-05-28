@@ -19,6 +19,8 @@ const Wrapper = styled.div`
     justify-content:space-around;
     align-items:center;
     padding-bottom:20px;
+
+
     
     @media (max-width: 700px) {
         padding:5px;
@@ -54,6 +56,9 @@ const Wrapper = styled.div`
             margin-bottom:2px;
             padding:5px;
             @media (max-width: 700px) {
+                display:none;
+            }
+            @media (max-height: 850px) {
                 display:none;
             }
         }
