@@ -1,3 +1,6 @@
+@import url('https://unpkg.com/swiper/css/swiper.css');
+@import url('https://unpkg.com/swiper/css/swiper.min.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -23,7 +26,7 @@ body {
   overflow: hidden;
   /* background-color: #2b2b2b; */
   text-rendering: optimizeLegibility;
-  background-color:#307a6f;
+  background-color:#950d0f;
 }
 
 code {

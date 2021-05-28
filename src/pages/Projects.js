@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom';
 import { Project, ProjectsNav } from '../components/index';
 import noiseBG from '../img/noise.png';
 import Fade from 'react-reveal/Fade';
-import resumeIcon from '../img/resume.png';
+import {LinksContainer} from '../components/index';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -40,6 +40,9 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
+      @media (max-width: 700px) {
+         padding:4px;
+      }
 
       & .resumeIcon {
          position:absolute;
@@ -49,20 +52,30 @@ const Wrapper = styled(motion.div)`
          z-index:3;
       }
 
-      & h1 {
-         color:white;
-         font-size:3.9rem;
-         padding:40px;
-         border-radius:0px 20px 20px 0;
-         margin:0 auto;
-         text-align:center;
-         z-index:2;
+      & .headerContainer {
          width:98%;
          background-color:#1d1d1d;
-         border-radius:10px 10px 0 0;
+         border-radius:20px 20px 0px 0;
+
+         z-index:3;
          border-bottom:2px solid #950d0f;
-         
+         @media (max-width: 700px) {
+            width:100%;
+         }
+         & h1 {
+            color:white;
+            font-size:3.9rem;
+            padding:40px;
+            margin:0 auto;
+            text-align:center;
+            padding-left:10%;
+            @media (max-width: 700px) {
+               font-size:2rem;
+               padding:30 10px;
+            }
+         }
       }
+
 
       & .projectsContainer {
          width:98%;
@@ -71,7 +84,9 @@ const Wrapper = styled(motion.div)`
          display:flex;
          flex-direction:row;
          justify-content:space-between;
-
+         @media (max-width: 700px) {
+            width:100%;
+         }
       }
       &:after {
          content: "";
@@ -112,6 +127,11 @@ const Wrapper = styled(motion.div)`
       padding-right:10px;
       transition:background-color 0.2s ease-in-out;
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      @media (max-width: 700px) {
+         width:10%;
+         font-size:0.8rem;
+         max-width:80px;
+      }
       &:hover {
         background-color:#fc5a51;
       }
@@ -119,9 +139,15 @@ const Wrapper = styled(motion.div)`
    & .link-a {
       margin-right:auto;
       writing-mode: sideways-lr;
+      @media (max-width: 700px) {
+         padding:0px 5px 0 0;
+      }
    }
    & .link-b {
       writing-mode: vertical-rl;
+      @media (max-width: 700px) {
+         padding:0px 0px 0 5px;
+      }
    }
 `
 
@@ -157,11 +183,9 @@ const Projects = ({enterDirection}) => {
    const handleExitStyle = (exitDirection) => {
       console.log(`testing ${exitDirection}`)
       if(exitDirection === 'left'){
-         console.log(`exiting ${exiting}`)
          setPage([true, true])
       }
       else {
-         console.log(`exiting ${exiting}`)
          setPage([false, true])
       }
    }
@@ -176,27 +200,30 @@ const Projects = ({enterDirection}) => {
             x: { type: "linear", stiffness: 300, damping: 30 }
          }}
       >
-
+         
          <div onClick={()=>handleExitStyle('left')} className="link link-a" ><p>Home</p></div>
+         
+            <div className="contentContainer">
+               <div className="headerContainer">
+                  <LinksContainer/>
+                  <Fade top><h1>Some of my projects</h1></Fade>
+               </div>
 
-         <div className="contentContainer">
-               <img data-tip="Take a look at my CV!" className="resumeIcon" src={resumeIcon}/>
-               <h1>Some of my projects</h1>
+                  <div className="projectsContainer">
+                     <Project 
+                        displayProject={displayProject} 
+                        projectsDirection={projectsDirection}
+                     />
+                     <ProjectsNav 
+                     handleProjectsSwitch={handleProjectsSwitch}
+                        displayProject={displayProject} 
+                        setDisplayProject={setDisplayProject}
+                     />
+                  </div>
 
-            <div className="projectsContainer">
-               <Project 
-                  displayProject={displayProject} 
-                  projectsDirection={projectsDirection}
-               />
-               <ProjectsNav 
-               handleProjectsSwitch={handleProjectsSwitch}
-                  displayProject={displayProject} 
-                  setDisplayProject={setDisplayProject}
-               />
             </div>
-
-
-         </div>
+        
+         
 
          <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>
       

@@ -11,10 +11,11 @@ const Wrapper = styled.div`
    flex-direction:column;
    z-index:2;
    justify-content:space-around;
-   padding:10px 2px 10px 5px;
+   padding:7px 2px 7px 7px;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
+
    & div {
       height:24%;
       width:100%;

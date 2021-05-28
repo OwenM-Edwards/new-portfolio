@@ -1,10 +1,11 @@
-import React  from 'react';
+import React, {useState, useCallback }  from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-import stockWebsite from "../img/stockWebsite.png"
-
-import Carousel from '@brainhubeu/react-carousel';
-import '@brainhubeu/react-carousel/lib/style.css';
+import websiteA_BG from  "../img/website-a.jpg";
+import websiteB_BG from  "../img/website-b.jpg";
+import websiteC_BG from  "../img/website-c.jpg";
+import websiteD_BG from  "../img/website-d.jpg";
+import Fade from 'react-reveal/Fade';
 
 const Wrapper = styled(motion.div)`
    width:90%;
@@ -19,17 +20,6 @@ const Wrapper = styled(motion.div)`
    border-radius:0 0 10px ;
    padding:10px 2px 10px 5px;
    
-   & .slider{
-      max-height:80%;
-      border-radius:10px;
-      width:100%;
-      margin-top:70px;
-      & img {
-         width:100%;
-         object-fit: contain;
-
-      }
-   }
 
    & .project {
       width:100%;
@@ -39,27 +29,48 @@ const Wrapper = styled(motion.div)`
       flex-direction:column;
       padding:0px 30px 10px 30px;
       
-
+         & .imageContainer {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
+            height:60%;
+            width:80%;
+            display:flex;
+            margin: 0 auto 20px auto;
+            justify-content:center;
+            border-radius:10px;
+            padding:5px;
+            
+            & img {
+               height:100%;
+               object-fit:contain;
+               border-radius:10px;
+            }
+         }
+      
       & h2 {
-         width:100%;
-         margin-bottom:0px;
+         margin:0 auto;
          font-size:2rem;
+         height:10%;
       }
 
       & p {
          margin-bottom:20px;
          font-size:1.2rem;
+         height:30%;
+         max-width:900px;
+         margin:0 auto;
       }
+
       & .buttonContainer {
          display:flex;
          flex-direction:row;
          justify-content:space-between;
          width:70%;
-         height:70px;
+         max-width:600px;
+         height:10%;
          margin:auto auto 0 auto;
          /* background-color:red; */
          gap:10px;
-         & button {
+         & .button {
             border:0;
             height:100%;
             width:50%;
@@ -71,7 +82,8 @@ const Wrapper = styled(motion.div)`
             display:flex;
             justify-content:center;
             align-items:center;
-            font-size:1rem;
+            font-size:1.1rem;
+            text-decoration:none;
             &:hover {
                background-color:#fc5a51;
             }
@@ -79,68 +91,90 @@ const Wrapper = styled(motion.div)`
       }
    }
 `
-const projects = [
-   <div className="project">
-      <h2>Student Psychiatry</h2>
 
-      <Carousel className="slider" plugins={['arrows']}>
-         <div><img src={stockWebsite}/></div>
-         <div><img src={stockWebsite}/></div>
-         <div><img src={stockWebsite}/></div>
-      </Carousel>
-      
-      
-      <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
-      <div className="buttonContainer">
-         <button>github</button>
-         <button>demo</button>
-      </div>
-   </div>,
 
-   <div className="project">
-      <h2>Community NPC Generator</h2>
-      <img className="projectImage" src={stockWebsite}/> 
-      <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
-      <div className="buttonContainer">
-         <button>github</button>
-         <button>demo</button>
-      </div>
-   </div>,
 
-   <div className="project">
-      <h2>Oakfield Photography</h2>
-      <img className="projectImage" src={stockWebsite}/> 
-      <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
-      <div className="buttonContainer">
-         <button>github</button>
-         <button>demo</button>
-      </div>
-   </div>,
 
-   <div className="project">
-      <h2>Myth-Des</h2>
-      <img className="projectImage" src={stockWebsite}/> 
-      <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
-      <div className="buttonContainer">
-         <button>github</button>
-         <button>demo</button>
-      </div> 
-   </div>,
-]
 
 const Project = ({displayProject, projectsDirection}) => {
 
+
+   const projects = [
+      <div className="project">
+         <Fade delay={300}>
+            <h2>Student Psychiatry</h2>
+
+            <div className="imageContainer">
+               <img src={websiteA_BG}/>
+            </div>
+            
+            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+            
+            <div className="buttonContainer">
+               <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">github</a>
+               <a className="button" target="blank" href="https://www.studentpsychiatry.co.uk/calendar/5/2021">demo</a>
+            </div>
+         </Fade>
+      </div>,
+   
+      <div className="project">
+         <Fade delay={300}>
+            <h2>Community NPC Generator</h2>
+
+            <div className="imageContainer">
+               <img src={websiteB_BG}/>
+            </div>
+
+            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+
+            <div className="buttonContainer">
+            <a className="button" target="blank" href="https://github.com/OwenM-Edwards/The-Community-NPC-Generator-Front-End">github</a>
+               <a className="button" target="blank" href="https://the-community-npc-generator-front-end.vercel.app/">demo</a>
+            </div>
+         </Fade>
+      </div>,
+   
+      <div className="project">
+         <Fade delay={300}>
+            <h2>Oakfield Photography</h2>
+
+            <div className="imageContainer">
+               <img src={websiteC_BG}/>
+            </div>
+
+            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+
+            <div className="buttonContainer">
+               <a className="button" target="blank" href="https://github.com/OwenM-Edwards/Oakfield-Photography">github</a>
+               <a className="button" target="blank" href="https://www.oakfield-photography.com/">demo</a>
+            </div>
+         </Fade>
+      </div>,
+   
+      <div className="project">
+         <Fade delay={300}>
+            <h2>Myth-Des</h2>
+
+            <div className="imageContainer">
+               <img src={websiteD_BG}/>
+            </div>
+
+
+            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+
+            <div className="buttonContainer">
+            <a className="button" target="blank" href="https://github.com/OwenM-Edwards/fic_design_comp">github</a>
+               <a className="button" target="blank" href="http://www.owenedwards.me/fic_design_comp/">demo</a>
+            </div> 
+         </Fade>
+      </div>,
+   ]
+
    return(
-      // initial={ projectsDirection ? { y: `+100vh` } : { y: `-100vh` } }
       <AnimatePresence initial={false}>
          <Wrapper
             key={displayProject}
-            initial={ {y: `+100vh` }}
-            animate={{y: 0}}
-            exit={{opacity: 0}}
-            transition={{
-               y: { type: "spring", stiffness: 800, damping: 90 }
-            }}
+
          >
             {projects[displayProject]}
          </Wrapper>    

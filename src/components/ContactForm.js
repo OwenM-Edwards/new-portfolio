@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { init, sendForm } from 'emailjs-com';
 import { toast } from 'react-toastify';
 import ClipLoader from "react-spinners/ClipLoader";
+import Fade from 'react-reveal/Fade';
 
 init("user_nHGPz9w6KzGj4lW3nq4MZ");
 
@@ -17,37 +18,48 @@ const Wrapper = styled.div`
     flex-direction:column;
     justify-content:space-around;
     align-items:center;
+    padding-bottom:20px;
+
     & h2 {
-        color:white;
-        font-size:2rem;
-    }
-    & h3 {
         color:white;
         font-size:2rem;
         & span {
             color:#ff4338;
         }
     }
+
     & form {
         width:80%;
+        max-width:700px;
         height:auto;
         display:flex;
         flex-direction:column;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        padding:30px;
+        padding:20px;
+        & label {
+            color:white;
+            font-size:1.2rem;
+            margin-bottom:2px;
+            padding:5px;
+        }
         & p {
             color:white;
             margin-bottom:50px;
+            padding:5px;
         }
         & .input {
             padding:20px;
             border-radius:5px;
             margin-bottom:5px;
+            font-size:1.2rem;
+            border:0;
         }
         & textarea {
             padding:20px;
             border-radius:5px;
             margin-bottom:5px; 
+            font-size:1.2rem;
+            border:0;
         }
         & .submitButton {
             border:0;
@@ -105,43 +117,49 @@ const ContactForm = () => {
     else {
         return (
             <Wrapper>
-                <h2>You can send me a message...</h2>
-                <form id='contactForm' onSubmit={handleSubmit(onSubmit)}>
-                    <input 
-                        className="input"
-                        placeholder='Subject' 
-                        type='text' 
-                        {...register("subject", {required:true} )}
-                        maxLength='30'
-                        aria-invalid={errors.subject ? "true" : "false"}
-                    /> 
-                    {errors.subject?.type === 'required' && "Subject is required." }
-    
-                    <input 
-                        className="input"
-                        {...register("email", {required:true})} 
-                        placeholder='Your email' 
-                        type='email'
-                        aria-invalid={errors.email ? "true" : "false"}
-                    />
-                    {errors.email?.type === 'required' && "Email is required." }
-    
-                    <textarea 
-                        {...register("message", {required:true})} 
-                        placeholder='Your message...' 
-                        aria-invalid={errors.email ? "true" : "false"}
-                        maxLength='1500'
-                    />
-                    <p className="remainingMessageChars">{remainingMessageChars} characters remaining.</p>
-                    {errors.message?.type === 'required' && "A message is required." }
-    
-                    <input className="submitButton" type='submit' value='send'/>
-                </form>
+                <Fade delay={300}>
+                    <h2>You can send me a message...</h2>
+                    <form id='contactForm' onSubmit={handleSubmit(onSubmit)}>
+                        <label htmlFor="subject">Subject</label>
+                        <input 
+                            id="subject"
+                            className="input"
+                            placeholder='Subject' 
+                            type='text' 
+                            {...register("subject", {required:true} )}
+                            maxLength='30'
+                            aria-invalid={errors.subject ? "true" : "false"}
+                        /> 
+                        {errors.subject?.type === 'required' && "Subject is required." }
+                        <label htmlFor="email">Your email</label>
+                        <input 
+                            id="email"
+                            className="input"
+                            {...register("email", {required:true})} 
+                            placeholder='Your email' 
+                            type='email'
+                            aria-invalid={errors.email ? "true" : "false"}
+                        />
+                        {errors.email?.type === 'required' && "Email is required." }
+
+                        <label htmlFor="message">Your message</label>
+                        <textarea 
+                            id="message"
+                            {...register("message", {required:true})} 
+                            placeholder='Your message...' 
+                            aria-invalid={errors.email ? "true" : "false"}
+                            maxLength='1500'
+                        />
+                        <p className="remainingMessageChars">{remainingMessageChars} characters remaining.</p>
+                        {errors.message?.type === 'required' && "A message is required." }
+        
+                        <input className="submitButton" type='submit' value='send'/>
+                    </form>
 
 
-                <h2>...or give me a call.</h2>
-                <h3><span>@</span>0784562134</h3>
-                
+                    <h2>...or give me a call. <span>@</span>+44 7392540684</h2>
+                    <h2>...or email me. <span>@</span>owenhedwards@gmail.com</h2>
+                </Fade>
             </Wrapper>
                 
         )

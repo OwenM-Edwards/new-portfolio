@@ -16,10 +16,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import backgroundImage from "./img/bg.jpg"
 
 const Wrapper = styled.div`
-
+  max-width:100vw;
   height:100vh;
   margin:0 auto;
-  
+  overflow:hidden;
   position: relative;
   display:flex;
   flex-wrap:nowrap;

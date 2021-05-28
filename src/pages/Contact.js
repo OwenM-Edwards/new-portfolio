@@ -1,11 +1,11 @@
 import React  from 'react';
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import {useHistory} from 'react-router-dom';
 import {ContactForm} from '../components/index';
 import noiseBG from '../img/noise.png';
-import resumeIcon from '../img/resume.png';
+import {LinksContainer} from '../components/index';
+import Fade from 'react-reveal/Fade';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -39,19 +39,20 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
-      & h1 {
-         color:white;
-         font-size:3.9rem;
-         padding:40px;
-         width:auto;
-         border-radius:0px 20px 20px 0;
-         margin:0 auto;
-         text-align:center;
-         z-index:2;
+
+      & .headerContainer {
          width:98%;
          background-color:#1d1d1d;
-         border-radius:10px 10px 0 0;
+         border-radius:20px 20px 0px 0;
+         z-index:3;
          border-bottom:2px solid #950d0f;
+         & h1 {
+            color:white;
+            font-size:3.9rem;
+            padding:40px;
+            margin:0 auto;
+            text-align:center;  
+         }
       }
       &:after {
          content: "";
@@ -131,13 +132,18 @@ const Contact = ({setEnterDirection}) => {
             x: { type: "linear", stiffness: 300, damping: 30 }
          }}
       >
+
          <div className="linkContainer">
             <div className="link link-a" onClick={()=>handleMainClick()}>Home</div>
             <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
          </div>
 
          <div className="contentContainer">
-            <h1>Contact me</h1>
+            <div className="headerContainer">
+               <LinksContainer/>
+               <Fade top><h1>Contact me</h1></Fade>
+            </div>
+
             <ContactForm/>
          </div>
         

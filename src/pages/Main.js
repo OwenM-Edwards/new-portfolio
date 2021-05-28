@@ -10,13 +10,12 @@ import reactIcon from '../img/react.svg';
 import sassIcon from '../img/sass.svg';
 import wixIcon from '../img/wix.svg';
 import postgresIcon from '../img/postgres.svg';
-import Shake from 'react-reveal/Shake';
 import noiseBG from '../img/noise.png';
 import arrow from '../img/arrow.png';
 import ReactTooltip from 'react-tooltip';
 import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
-import resumeIcon from '../img/resume.png';
+import {LinksContainer} from '../components/index';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -52,6 +51,11 @@ const Wrapper = styled(motion.div)`
     padding-bottom:90px;
     justify-content:center;
     align-items:center;
+
+    @media (max-width: 700px) {
+      padding-top:30px;
+      padding-bottom:50px;
+    }
     
     &:after {
       content: "";
@@ -70,7 +74,7 @@ const Wrapper = styled(motion.div)`
     & .resumeIcon {
       position:absolute;
       top:5px;
-      right:10%;
+      left:0;
       cursor: pointer;
       z-index:2;
     }
@@ -84,6 +88,10 @@ const Wrapper = styled(motion.div)`
       margin:0 auto;
       text-align:center;
       z-index:2;
+      @media (max-width: 700px) {
+        font-size:2rem;
+        padding:10px;
+      }
       
     }
     & span {
@@ -92,13 +100,16 @@ const Wrapper = styled(motion.div)`
     }
     & h2 {
       color:white;
-      width:80%;
+      width:100%;
       text-align:center;
       margin-top:auto;
       padding:10px;
       font-size:2.5rem;
       border-radius:0 20px 0px 0px;
       z-index:2;
+      @media (max-width: 700px) {
+        font-size:1.6rem;
+      }
     }
 
 
@@ -111,15 +122,26 @@ const Wrapper = styled(motion.div)`
       align-items:flex-end;
       margin-left:auto;
       position: relative;
-      top:10%;
+      top:0%;
+      @media (max-width: 700px) {
+        top:0%;
+      }
       & .arrowText {
         font-size:1.3rem;
+        @media (max-width: 700px) {
+          font-size:0.9rem;
+          width:50%;
+        }
       }
       & .arrow {
         width:120px;
         height:50px;
         position: relative;
         right:20px;
+        @media (max-width: 700px) {
+          width:60px;
+          height:20px;
+        }
       }
     }
 
@@ -128,10 +150,14 @@ const Wrapper = styled(motion.div)`
       width:80%;
       display:flex;
       flex-wrap:wrap;
-      height:30%;
+      height:20%;
       z-index:2;
       border-radius:0 0 20px 0px;
       padding:30px;
+      @media (max-width: 700px) {
+        width:100%;
+        padding:10px;
+      }
 
       & img {
         width:25%;
@@ -149,6 +175,9 @@ const Wrapper = styled(motion.div)`
     justify-content:flex-end;
     max-width:120px;
     z-index:3;
+    @media (max-width: 700px) {
+      width:20%;
+    }
     & .link {
       width:50%;
       height:100%;
@@ -174,6 +203,11 @@ const Wrapper = styled(motion.div)`
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
       &:hover {
         background-color:#fc5a51;
+      }
+      @media (max-width: 700px) {
+        font-size:0.8rem;
+        padding:0px 5px 0 0;
+
       }
     }
     & .link-a {
@@ -206,17 +240,17 @@ const Main = ({setEnterDirection}) => {
       }}
     >
       <ReactTooltip />
-
+      <LinksContainer/>
+      
       <div className="contentContainer">
-        <img data-tip="Take a look at my CV!" className="resumeIcon" src={resumeIcon}/>
-        <Fade top><h1>Hello, my name is <span>Owen Edwards</span>. I'm a web developer.</h1></Fade> 
-        
-        <HeadShake delay={700}>
+      <HeadShake delay={1200}>
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
             <img className="arrow" src={arrow}/>
-        </div>
+          </div>
         </HeadShake> 
+
+        <Fade top><h1>Hello, my name is <span>Owen Edwards</span>. I'm a web developer.</h1></Fade> 
         
         <Fade bottom>
           <h2>Some of the technologies I use...</h2>
