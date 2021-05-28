@@ -41,7 +41,7 @@ const Wrapper = styled(motion.div)`
       justify-content:center;
       align-items:center;
       @media (max-width: 700px) {
-         padding:4px;
+         padding:8px 8px 5px 8px;
       }
 
       & .resumeIcon {
@@ -56,7 +56,6 @@ const Wrapper = styled(motion.div)`
          width:98%;
          background-color:#1d1d1d;
          border-radius:20px 20px 0px 0;
-
          z-index:3;
          border-bottom:2px solid #950d0f;
          @media (max-width: 700px) {
@@ -71,7 +70,7 @@ const Wrapper = styled(motion.div)`
             padding-left:10%;
             @media (max-width: 700px) {
                font-size:2rem;
-               padding:30 10px;
+               padding:10px;
             }
          }
       }

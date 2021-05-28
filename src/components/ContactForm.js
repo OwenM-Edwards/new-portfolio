@@ -19,12 +19,15 @@ const Wrapper = styled.div`
     justify-content:space-around;
     align-items:center;
     padding-bottom:20px;
-
+    
     & h2 {
         color:white;
         font-size:2rem;
         & span {
             color:#ff4338;
+        }
+        @media (max-width: 700px) {
+            font-size:1rem;
         }
     }
 
@@ -157,8 +160,8 @@ const ContactForm = () => {
                     </form>
 
 
-                    <h2>...or give me a call. <span>@</span>+44 7392540684</h2>
-                    <h2>...or email me. <span>@</span>owenhedwards@gmail.com</h2>
+                    <h2>...or give me a call. <span>@ </span>+44 7392540684</h2>
+                    <h2>...or email me. <span>@ </span>owenhedwards@gmail.com</h2>
                 </Fade>
             </Wrapper>
                 

@@ -19,7 +19,12 @@ const Wrapper = styled(motion.div)`
    background-color:#1d1d1d;
    border-radius:0 0 10px ;
    padding:10px 2px 10px 5px;
-   
+
+   @media (max-width: 700px) {
+      width:100%;
+      padding:0px;
+      margin-left:0%;
+   }
 
    & .project {
       width:100%;
@@ -29,27 +34,45 @@ const Wrapper = styled(motion.div)`
       flex-direction:column;
       padding:0px 30px 10px 30px;
       
-         & .imageContainer {
-            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
-            height:60%;
-            width:80%;
-            display:flex;
-            margin: 0 auto 20px auto;
-            justify-content:center;
+      @media (max-width: 700px) {
+         padding:50px 0px 10px 0px;
+      }
+
+      & .imageContainer {
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
+         height:60%;
+         width:80%;
+         display:flex;
+         margin: 0 auto 20px auto;
+         justify-content:center;
+         border-radius:10px;
+         padding:5px;
+
+         @media (max-width: 700px) {
+            width:100%;
+            height:30%;
+         }
+
+         & img {
+            height:100%;
+            object-fit:contain;
             border-radius:10px;
-            padding:5px;
-            
-            & img {
-               height:100%;
-               object-fit:contain;
-               border-radius:10px;
+            @media (max-width: 700px) {
+               height:auto;
+               width:100%;
             }
          }
+      }
       
       & h2 {
          margin:0 auto;
          font-size:2rem;
          height:10%;
+
+         @media (max-width: 700px) {
+            font-size:1rem;
+         }
+
       }
 
       & p {
@@ -58,6 +81,13 @@ const Wrapper = styled(motion.div)`
          height:30%;
          max-width:900px;
          margin:0 auto;
+
+         @media (max-width: 700px) {
+            font-size:1rem;
+            padding:15px;
+            overflow-y:scroll;
+            height:30%;
+         }
       }
 
       & .buttonContainer {
@@ -70,6 +100,9 @@ const Wrapper = styled(motion.div)`
          margin:auto auto 0 auto;
          /* background-color:red; */
          gap:10px;
+         @media (max-width: 700px) {
+            height:5%;
+         }
          & .button {
             border:0;
             height:100%;

@@ -11,6 +11,10 @@ const Wrapper = styled.div`
    position: absolute;
    margin:10px 0 0 10px;
    z-index:5;
+   
+   @media (max-width: 700px) {
+      display:none;
+   }
 
    & img {
       cursor: pointer;

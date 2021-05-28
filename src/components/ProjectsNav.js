@@ -15,6 +15,15 @@ const Wrapper = styled.div`
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
 
+   @media (max-width: 700px) {
+      flex-direction:row;
+      width:100%;
+      height:17%;
+      flex-wrap:wrap;
+      padding:2px;
+      text-align:center;
+   }
+
    & div {
       height:24%;
       width:100%;
@@ -29,7 +38,12 @@ const Wrapper = styled.div`
       justify-content:center;
       align-items:center;
       padding-right:10px;
-
+      @media (max-width: 700px) {
+         writing-mode: horizontal-tb;
+         height:45%;
+         width:45%;
+         padding-right:0px;
+      }
       &:hover {
         background-color:#fc5a51;
       }

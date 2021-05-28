@@ -29,6 +29,7 @@ const Wrapper = styled(motion.div)`
    justify-content:center;
    position: absolute;
 
+
    & .contentContainer {
       height:100%;
       width:100%;
@@ -36,9 +37,13 @@ const Wrapper = styled(motion.div)`
       display:flex;
       flex-direction:column;
       background-color:#950d0f;
-      padding:20px;
       justify-content:center;
       align-items:center;
+      padding:20px;
+
+      @media (max-width: 700px) {
+         padding:15px 8px 15px 8px;
+      }
 
       & .headerContainer {
          width:98%;
@@ -52,6 +57,10 @@ const Wrapper = styled(motion.div)`
             padding:40px;
             margin:0 auto;
             text-align:center;  
+            @media (max-width: 700px) {
+               font-size:2rem;
+               padding:30 10px;
+            }
          }
       }
       &:after {
@@ -76,6 +85,9 @@ const Wrapper = styled(motion.div)`
       justify-content:flex-end;
       max-width:120px;
       z-index:3;
+      @media (max-width: 700px) {
+         width:20%;
+      }
       & .link {
          width:50%;
          height:100%;
@@ -101,6 +113,10 @@ const Wrapper = styled(motion.div)`
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
          &:hover {
             background-color:#fc5a51;
+         }
+         @media (max-width: 700px) {
+            font-size:0.8rem;
+            padding:0px 0px 0 5px;
          }
       }
       & .link-a {
