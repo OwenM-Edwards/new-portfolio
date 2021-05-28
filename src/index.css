@@ -23,6 +23,7 @@ body {
   overflow: hidden;
   /* background-color: #2b2b2b; */
   text-rendering: optimizeLegibility;
+  background-color:#307a6f;
 }
 
 code {
