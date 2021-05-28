@@ -13,15 +13,18 @@ import styled, { ThemeProvider } from "styled-components";
 import { Main, Projects, Contact } from './pages/index';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import backgroundImage from "./img/bg.jpg"
 
 const Wrapper = styled.div`
-  min-width:100%;
-  max-width:100%;
+
   height:100vh;
-  background-color: black;
+  margin:0 auto;
+  
   position: relative;
   display:flex;
   flex-wrap:nowrap;
+  justify-content:center;
+
 `
 
 const App = () => {
@@ -31,6 +34,7 @@ const App = () => {
 
   return (
     <Wrapper>
+        <div className="backgroundImage"></div>
         <ToastContainer />
         <AnimatePresence  initial={false}>
           <Switch location={location} key={location.pathname}>
