@@ -53,6 +53,9 @@ const Wrapper = styled.div`
             font-size:1.2rem;
             margin-bottom:2px;
             padding:5px;
+            @media (max-width: 700px) {
+                display:none;
+            }
         }
         & p {
             color:white;
@@ -70,6 +73,7 @@ const Wrapper = styled.div`
             border:0;
             @media (max-width: 700px) {
                 padding:10px;
+                font-size:0.8rem;
             }
         }
         & textarea {
@@ -80,6 +84,7 @@ const Wrapper = styled.div`
             border:0;
             @media (max-width: 700px) {
                 padding:10px;
+                font-size:0.8rem;
             }
         }
         & .submitButton {
