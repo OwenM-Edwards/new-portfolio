@@ -33,11 +33,12 @@ const Wrapper = styled.div`
       cursor: pointer;
       opacity:0.6;
       color:white;
-      writing-mode: sideways-lr;
+      writing-mode: vertical-lr;
+      transform:rotate(-180deg); 
       display:flex;
       justify-content:center;
       align-items:center;
-      padding-right:10px;
+      text-align:center;
       @media (max-width: 700px) {
          writing-mode: horizontal-tb;
          height:45%;

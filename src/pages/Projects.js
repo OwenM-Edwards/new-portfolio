@@ -137,7 +137,7 @@ const Wrapper = styled(motion.div)`
    }
    & .link-a {
       margin-right:auto;
-      writing-mode: sideways-lr;
+      writing-mode: vertical-rl;
       @media (max-width: 700px) {
          padding:0px 5px 0 0;
       }

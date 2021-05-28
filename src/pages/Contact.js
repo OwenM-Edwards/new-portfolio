@@ -92,7 +92,7 @@ const Wrapper = styled(motion.div)`
          width:50%;
          height:100%;
          background-color:#ff4338;
-         writing-mode: sideways-lr;
+         writing-mode: vertical-rl;
          text-orientation: mixed;
          color:white;
          text-align:center;
