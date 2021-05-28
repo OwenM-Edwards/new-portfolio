@@ -82,11 +82,13 @@ const Wrapper = styled(motion.div)`
          max-width:900px;
          margin:0 auto;
 
+
          @media (max-width: 700px) {
             font-size:1rem;
             padding:15px;
             overflow-y:scroll;
             height:30%;
+            flex-grow:1;
          }
       }
 

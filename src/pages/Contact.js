@@ -26,7 +26,7 @@ const Wrapper = styled(motion.div)`
    height:100%;
    display:flex;
    flex-direction:row;
-   justify-content:center;
+   justify-content:flex-start;
    position: absolute;
 
 
@@ -42,7 +42,9 @@ const Wrapper = styled(motion.div)`
       padding:20px;
 
       @media (max-width: 700px) {
-         padding:15px 8px 15px 8px;
+         padding:10px;
+         width:0;
+         flex-grow:1;
       }
 
       & .headerContainer {
@@ -51,6 +53,12 @@ const Wrapper = styled(motion.div)`
          border-radius:20px 20px 0px 0;
          z-index:3;
          border-bottom:2px solid #950d0f;
+
+         @media (max-width: 700px) {
+            font-size:2rem;
+            padding:30 10px;
+         }
+
          & h1 {
             color:white;
             font-size:3.9rem;
@@ -86,13 +94,13 @@ const Wrapper = styled(motion.div)`
       max-width:120px;
       z-index:3;
       @media (max-width: 700px) {
-         width:20%;
+         min-width:15%;
       }
       & .link {
          width:50%;
          height:100%;
          background-color:#ff4338;
-         writing-mode: vertical-rl;
+         writing-mode: vertical-lr;
          text-orientation: mixed;
          color:white;
          text-align:center;

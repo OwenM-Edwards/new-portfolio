@@ -20,6 +20,11 @@ const Wrapper = styled.div`
     align-items:center;
     padding-bottom:20px;
     
+    @media (max-width: 700px) {
+        padding:5px;
+        text-align:center;
+    }
+
     & h2 {
         color:white;
         font-size:2rem;
@@ -39,6 +44,10 @@ const Wrapper = styled.div`
         flex-direction:column;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         padding:20px;
+        @media (max-width: 700px) {
+            width:98%;
+            padding:0px;
+        }
         & label {
             color:white;
             font-size:1.2rem;
@@ -49,6 +58,9 @@ const Wrapper = styled.div`
             color:white;
             margin-bottom:50px;
             padding:5px;
+            @media (max-width: 700px) {
+                margin-bottom:10px;
+            }
         }
         & .input {
             padding:20px;
@@ -56,6 +68,9 @@ const Wrapper = styled.div`
             margin-bottom:5px;
             font-size:1.2rem;
             border:0;
+            @media (max-width: 700px) {
+                padding:10px;
+            }
         }
         & textarea {
             padding:20px;
@@ -63,6 +78,9 @@ const Wrapper = styled.div`
             margin-bottom:5px; 
             font-size:1.2rem;
             border:0;
+            @media (max-width: 700px) {
+                padding:10px;
+            }
         }
         & .submitButton {
             border:0;
@@ -78,6 +96,9 @@ const Wrapper = styled.div`
             justify-content:center;
             align-items:center;
             font-size:1.3rem;
+            @media (max-width: 700px) {
+                width:100%;
+            }
             
             &:hover {
                background-color:#fc5a51;
