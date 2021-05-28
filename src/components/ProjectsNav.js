@@ -1,6 +1,5 @@
-import React, { useEffect, useState }  from 'react';
-import styled, { keyframes } from "styled-components";
-import { useLocation } from 'react-router-dom'
+import React from 'react';
+import styled from "styled-components";
 
 
 const Wrapper = styled.div`
@@ -41,7 +40,7 @@ const Wrapper = styled.div`
 `
 
 
-const ProjectsNav = ({setDisplayProject, displayProject, handleProjectsSwitch}) => {
+const ProjectsNav = ({displayProject, handleProjectsSwitch}) => {
 
 
    return (

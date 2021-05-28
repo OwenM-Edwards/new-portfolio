@@ -1,4 +1,4 @@
-import React, {useState, useCallback }  from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import websiteA_BG from  "../img/website-a.jpg";
@@ -105,7 +105,7 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Student Psychiatry</h2>
 
             <div className="imageContainer">
-               <img src={websiteA_BG}/>
+               <img alt="Student Psychiatry Link" src={websiteA_BG}/>
             </div>
             
             <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
@@ -122,7 +122,7 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Community NPC Generator</h2>
 
             <div className="imageContainer">
-               <img src={websiteB_BG}/>
+               <img alt="RPG Generator Link"src={websiteB_BG}/>
             </div>
 
             <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
@@ -139,7 +139,7 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Oakfield Photography</h2>
 
             <div className="imageContainer">
-               <img src={websiteC_BG}/>
+               <img alt="Oakfield Photography" src={websiteC_BG}/>
             </div>
 
             <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
@@ -156,7 +156,7 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Myth-Des</h2>
 
             <div className="imageContainer">
-               <img src={websiteD_BG}/>
+               <img alt="Myth-des link" src={websiteD_BG}/>
             </div>
 
 

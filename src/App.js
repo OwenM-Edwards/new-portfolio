@@ -1,19 +1,14 @@
 import React, {useState} from 'react';
-import ReactDOM from "react-dom";
-import { motion, AnimatePresence } from "framer-motion"
+import { AnimatePresence } from "framer-motion"
 import {
-  BrowserRouter as Router, 
   Route,
-  Redirect,
   Switch,
-  Link,
   useLocation,
 } from "react-router-dom";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { Main, Projects, Contact } from './pages/index';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import backgroundImage from "./img/bg.jpg"
 
 const Wrapper = styled.div`
   max-width:100vw;

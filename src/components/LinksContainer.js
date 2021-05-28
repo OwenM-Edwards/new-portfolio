@@ -1,4 +1,4 @@
-import React, {useState, useCallback }  from 'react';
+import React  from 'react';
 import styled from "styled-components";
 import linkedinIcon from  "../img/linkedin.png";
 import githubIcon from  "../img/github.png";
@@ -26,9 +26,9 @@ const LinksContainer = () => {
 
    return (
       <Wrapper>
-         <img data-tip="Take a look at my CV!"  src={resumeIcon}/>
-         <img src={githubIcon}/>
-         <img src={linkedinIcon}/>
+         <img alt="Resume link" data-tip="Take a look at my CV!"  src={resumeIcon}/>
+         <img alt="Github link"src={githubIcon}/>
+         <img alt="Linkedin link"src={linkedinIcon}/>
       </Wrapper>
    )
 }
