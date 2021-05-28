@@ -14,7 +14,8 @@ const Wrapper = styled.div`
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
-
+   gap:5px;
+   
    @media (max-width: 700px) {
       flex-direction:row;
       width:100%;
