@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 const App = () => {
   const location = useLocation();
   const [enterDirection, setEnterDirection] = useState(false);
-  const { height, width } = useWindowDimensions();
+  const { height } = useWindowDimensions();
 
   const theme = {
     height: `${height}px`
