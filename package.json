@@ -43,5 +43,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@brainhubeu/react-carousel": "^2.0.4",
+    "pure-react-carousel": "^1.27.6",
+    "react-responsive-carousel": "^3.2.18",
+    "react-reveal": "^1.2.2",
+    "react-tooltip": "^4.2.19"
   }
 }
