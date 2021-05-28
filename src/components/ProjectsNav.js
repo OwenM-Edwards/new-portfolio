@@ -44,7 +44,7 @@ const Wrapper = styled.div`
       @media (max-width: 700px) {
          writing-mode: horizontal-tb;
          height:45%;
-         width:45%;
+         width:35%;
          padding-right:0px;
          transform:rotate(0deg); 
          font-size:0.7rem;
