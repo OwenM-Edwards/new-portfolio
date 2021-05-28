@@ -41,7 +41,7 @@ const Wrapper = styled(motion.div)`
       & .imageContainer {
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
          height:60%;
-         width:80%;
+         width:100%;
          display:flex;
          margin: 0 auto 20px auto;
          justify-content:center;
@@ -78,16 +78,16 @@ const Wrapper = styled(motion.div)`
       }
 
       & p {
-         margin-bottom:20px;
          font-size:1.2rem;
          height:30%;
          max-width:900px;
          margin:0 auto;
-
+         padding:10px;
+         overflow-y:scroll;
          @media (max-width: 700px) {
             font-size:1rem;
             padding:15px;
-            overflow-y:scroll;
+
             height:30%;
             flex-grow:1;
          }
@@ -100,7 +100,7 @@ const Wrapper = styled(motion.div)`
          width:70%;
          max-width:600px;
          height:10%;
-         margin:auto auto 0 auto;
+         margin:15px auto 0 auto;
          /* background-color:red; */
          gap:10px;
          @media (max-width: 700px) {
@@ -123,6 +123,10 @@ const Wrapper = styled(motion.div)`
             &:hover {
                background-color:#fc5a51;
             }
+            @media (max-width: 700px) {
+               font-size:0.9rem;
+               padding:10px;
+            }
          }
       }
    }
@@ -144,7 +148,7 @@ const Project = ({displayProject, projectsDirection}) => {
                <img alt="Student Psychiatry Link" src={websiteA_BG}/>
             </div>
             
-            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh test</p>
             
             <div className="buttonContainer">
                <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">github</a>
