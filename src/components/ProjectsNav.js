@@ -45,6 +45,7 @@ const Wrapper = styled.div`
          width:45%;
          padding-right:0px;
          transform:rotate(0deg); 
+         font-size:0.7rem;
       }
       &:hover {
         background-color:#fc5a51;

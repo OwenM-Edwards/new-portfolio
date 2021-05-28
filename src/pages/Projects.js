@@ -69,7 +69,7 @@ const Wrapper = styled(motion.div)`
             text-align:center;
             padding-left:10%;
             @media (max-width: 700px) {
-               font-size:2rem;
+               font-size:1.3rem;
                padding:10px;
             }
          }
