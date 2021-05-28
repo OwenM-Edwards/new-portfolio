@@ -118,16 +118,20 @@ const Wrapper = styled(motion.div)`
          padding-right:10px;
          transition:background-color 0.2s ease-in-out;
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+         transform:rotate(-180deg); 
+         display:flex;
+         justify-content:center;
+         align-items:center;
+         padding:0px 0px 0 5px;
          &:hover {
             background-color:#fc5a51;
          }
          @media (max-width: 700px) {
             font-size:0.8rem;
-            padding:0px 0px 0 5px;
          }
       }
       & .link-a {
-         border-right:3px solid #950d0f;
+         border-left:3px solid #950d0f;
       }
    }
 

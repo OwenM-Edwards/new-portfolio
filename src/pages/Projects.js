@@ -41,7 +41,7 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
-      
+
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
       }
@@ -128,6 +128,10 @@ const Wrapper = styled(motion.div)`
       padding-right:10px;
       transition:background-color 0.2s ease-in-out;
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:0px 5px 0 0px;
       @media (max-width: 700px) {
          width:10%;
          font-size:0.8rem;
@@ -140,15 +144,13 @@ const Wrapper = styled(motion.div)`
    & .link-a {
       margin-right:auto;
       writing-mode: vertical-rl;
-      @media (max-width: 700px) {
-         padding:0px 5px 0 0;
-      }
+      transform:rotate(-180deg); 
+      text-align:center;
+      padding:0px 0px 0 5px;
    }
    & .link-b {
       writing-mode: vertical-rl;
-      @media (max-width: 700px) {
-         padding:0px 0px 0 5px;
-      }
+      padding:0px 0px 0 5px;
    }
 `
 

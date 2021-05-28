@@ -50,13 +50,15 @@ const Wrapper = styled(motion.div)`
 
          @media (max-width: 700px) {
             width:100%;
-            height:30%;
+            height:40%;
+            margin-bottom:-0px;
          }
 
          & img {
             height:100%;
             object-fit:contain;
             border-radius:10px;
+            max-width:100%;
             @media (max-width: 700px) {
                height:auto;
                width:100%;
@@ -81,7 +83,6 @@ const Wrapper = styled(motion.div)`
          height:30%;
          max-width:900px;
          margin:0 auto;
-
 
          @media (max-width: 700px) {
             font-size:1rem;

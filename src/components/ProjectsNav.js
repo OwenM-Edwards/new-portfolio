@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-
+import Tada from 'react-reveal/Tada';
 
 const Wrapper = styled.div`
    height:100%;
@@ -39,6 +39,7 @@ const Wrapper = styled.div`
       justify-content:center;
       align-items:center;
       text-align:center;
+
       @media (max-width: 700px) {
          writing-mode: horizontal-tb;
          height:45%;
@@ -62,10 +63,10 @@ const ProjectsNav = ({displayProject, handleProjectsSwitch}) => {
 
    return (
       <Wrapper>
-         <div onClick={()=>handleProjectsSwitch(0)} className={(displayProject === 0) ? 'selected' : 'notSelected'}><p>Student Psychiatry</p></div>
-         <div onClick={()=>handleProjectsSwitch(1)} className={(displayProject === 1) ? 'selected' : 'notSelected'}>NPC Generator</div>
-         <div onClick={()=>handleProjectsSwitch(2)} className={(displayProject === 2) ? 'selected' : 'notSelected'}>Oakfield Photography</div>
-         <div onClick={()=>handleProjectsSwitch(3)} className={(displayProject === 3) ? 'selected' : 'notSelected'}>Myth-Des</div>
+         <div onClick={()=>handleProjectsSwitch(0)} className={(displayProject === 0) ? 'selected' : 'notSelected'}><Tada delay="100"><p>Student Psychiatry</p></Tada></div>
+         <div onClick={()=>handleProjectsSwitch(1)} className={(displayProject === 1) ? 'selected' : 'notSelected'}><Tada delay="300"><p>NPC Generator</p></Tada></div>
+         <div onClick={()=>handleProjectsSwitch(2)} className={(displayProject === 2) ? 'selected' : 'notSelected'}><Tada delay="500"><p>Oakfield Photography</p></Tada></div>
+         <div onClick={()=>handleProjectsSwitch(3)} className={(displayProject === 3) ? 'selected' : 'notSelected'}><Tada delay="700"><p>Myth-Des</p></Tada></div>
       </Wrapper>
    )
 }
