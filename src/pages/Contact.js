@@ -6,6 +6,7 @@ import {ContactForm} from '../components/index';
 import noiseBG from '../img/noise.png';
 import {LinksContainer} from '../components/index';
 import Fade from 'react-reveal/Fade';
+import { useSwipeable } from 'react-swipeable';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -42,9 +43,7 @@ const Wrapper = styled(motion.div)`
       padding:20px;
 
       @media (max-width: 700px) {
-         padding:10px;
-         width:0;
-         flex-grow:1;
+         padding:8px 8px 5px 8px;
       }
 
       & .headerContainer {
@@ -138,6 +137,14 @@ const Wrapper = styled(motion.div)`
 const Contact = ({setEnterDirection}) => {
    const history = useHistory();
 
+   const handlers = useSwipeable({
+      onSwipedRight: () => {
+        history.push('/projects')
+      },
+      preventDefaultTouchmoveEvent: true,
+      trackMouse: true
+   });
+
    const handleProjectsLink = () => {
       setEnterDirection(false);
       history.push('/projects')
@@ -149,6 +156,7 @@ const Contact = ({setEnterDirection}) => {
 
    return(
       <Wrapper
+         {...handlers}
          initial={{x: `100vw`}}
          animate={{x: 0}}
          exit={{x: `+100vw` }}

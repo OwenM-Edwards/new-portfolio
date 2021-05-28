@@ -6,6 +6,7 @@ import { Project, ProjectsNav } from '../components/index';
 import noiseBG from '../img/noise.png';
 import Fade from 'react-reveal/Fade';
 import {LinksContainer} from '../components/index';
+import { useSwipeable } from 'react-swipeable';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -40,6 +41,7 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
+      
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
       }
@@ -157,6 +159,17 @@ const Projects = ({enterDirection}) => {
    const history = useHistory();
    const [[projectsDirection, displayProject], setDisplayProject] = useState([true,0])
 
+   const handlers = useSwipeable({
+      onSwipedLeft: () => {
+        history.push('/contact')
+      },
+      onSwipedRight: () => {
+         history.push('/main')
+       },
+      preventDefaultTouchmoveEvent: true,
+      trackMouse: true
+   });
+
    useEffect(()=>{
 
    },[])
@@ -192,6 +205,7 @@ const Projects = ({enterDirection}) => {
 
    return(
       <Wrapper
+         {...handlers}
          initial={enterDirection ? { x: `+100vw` } : { x: `-100vw`  }}
          animate={{x: 0}}
          exit={direction ? { x: `+100vw` } : { x: `-100vw`  }}

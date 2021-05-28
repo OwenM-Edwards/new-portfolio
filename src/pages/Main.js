@@ -16,6 +16,7 @@ import ReactTooltip from 'react-tooltip';
 import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
 import {LinksContainer} from '../components/index';
+import { useSwipeable } from 'react-swipeable';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -220,6 +221,14 @@ const Wrapper = styled(motion.div)`
 const Main = ({setEnterDirection}) => {
   const history = useHistory();
 
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      history.push('/projects')
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
   const handleProjectsLink = () => {
     setEnterDirection(true);
     history.push('/projects')
@@ -231,6 +240,7 @@ const Main = ({setEnterDirection}) => {
   return(
     
     <Wrapper
+      {...handlers}
       initial={{x: `-100vw`}}
       animate={{x: 0}}
       exit={{x: `-100vw` }}

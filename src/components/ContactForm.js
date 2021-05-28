@@ -9,8 +9,8 @@ import Fade from 'react-reveal/Fade';
 init("user_nHGPz9w6KzGj4lW3nq4MZ");
 
 const Wrapper = styled.div`
-    height:100%;
     width:98%;
+    flex-grow:1;
     background-color:#1d1d1d;
     z-index:2;
     border-radius:0 0 10px 10px;
