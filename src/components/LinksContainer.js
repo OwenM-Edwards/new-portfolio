@@ -1,6 +1,6 @@
 import React  from 'react';
 import styled from "styled-components";
-import linkedinIcon from  "../img/linkedin.png";
+// import linkedinIcon from  "../img/linkedin.png";
 import githubIcon from  "../img/github.png";
 import resumeIcon from  "../img/resume.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
