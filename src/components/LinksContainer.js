@@ -3,6 +3,7 @@ import styled from "styled-components";
 import linkedinIcon from  "../img/linkedin.png";
 import githubIcon from  "../img/github.png";
 import resumeIcon from  "../img/resume.png";
+import CV from "../img/Owen_Edwards_CV.pdf";
 
 const Wrapper = styled.div`
    width:100%;
@@ -16,7 +17,11 @@ const Wrapper = styled.div`
       display:none;
    }
 
+   & a {
+      height:100%;
+   }
    & img {
+      height:100%;
       cursor: pointer;
       margin-right:5px;
       transition:scale 0.2s ease-in-out;
@@ -30,9 +35,9 @@ const LinksContainer = () => {
 
    return (
       <Wrapper>
-         <img alt="Resume link" data-tip="Take a look at my CV!"  src={resumeIcon}/>
-         <img alt="Github link"src={githubIcon}/>
-         <img alt="Linkedin link"src={linkedinIcon}/>
+         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV!"  src={resumeIcon}/></a>
+         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link"src={githubIcon}/></a>
+         {/* <img alt="Linkedin link"src={linkedinIcon}/> */}
       </Wrapper>
    )
 }

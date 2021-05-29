@@ -10,7 +10,7 @@ import { Main, Projects, Contact } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useWindowDimensions} from './hooks/index';
-
+import ReactTooltip from 'react-tooltip';
 
 
 const Wrapper = styled.div`
@@ -37,6 +37,7 @@ const App = () => {
   
   return (
     <ThemeProvider theme={theme}>
+      <ReactTooltip />
       <Wrapper>
           <div className="backgroundImage"></div>
           <ToastContainer />

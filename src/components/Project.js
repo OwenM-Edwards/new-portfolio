@@ -80,6 +80,7 @@ const Wrapper = styled(motion.div)`
       & p {
          font-size:1.2rem;
          height:30%;
+         width:95%;
          max-width:900px;
          margin:0 auto;
          padding:10px;
@@ -87,7 +88,6 @@ const Wrapper = styled(motion.div)`
          @media (max-width: 700px) {
             font-size:1rem;
             padding:15px;
-
             height:30%;
             flex-grow:1;
          }
@@ -148,7 +148,7 @@ const Project = ({displayProject, projectsDirection}) => {
                <img alt="Student Psychiatry Link" src={websiteA_BG}/>
             </div>
             
-            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh test</p>
+            <p>Student psychiatry was initiall designed to help students securly organise online events during Covid lockdown. Made with React, it allows users to create and view online events. Nodejs server.</p>
             
             <div className="buttonContainer">
                <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">github</a>
@@ -165,7 +165,7 @@ const Project = ({displayProject, projectsDirection}) => {
                <img alt="RPG Generator Link"src={websiteB_BG}/>
             </div>
 
-            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+            <p>An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use.</p>
 
             <div className="buttonContainer">
             <a className="button" target="blank" href="https://github.com/OwenM-Edwards/The-Community-NPC-Generator-Front-End">github</a>
@@ -182,7 +182,7 @@ const Project = ({displayProject, projectsDirection}) => {
                <img alt="Oakfield Photography" src={websiteC_BG}/>
             </div>
 
-            <p>lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh </p>
+            <p>Created for a local photography company using simple Javascript and CSS. Gallery images are hosted on Cloudinary.</p>
 
             <div className="buttonContainer">
                <a className="button" target="blank" href="https://github.com/OwenM-Edwards/Oakfield-Photography">github</a>

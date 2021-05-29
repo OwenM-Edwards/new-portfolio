@@ -12,7 +12,6 @@ import wixIcon from '../img/wix.svg';
 import postgresIcon from '../img/postgres.svg';
 import noiseBG from '../img/noise.png';
 import arrow from '../img/arrow.png';
-import ReactTooltip from 'react-tooltip';
 import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
 import {LinksContainer} from '../components/index';
@@ -250,7 +249,6 @@ const Main = ({setEnterDirection}) => {
         opacity: { duration: 1 }
       }}
     >
-      <ReactTooltip />
       <LinksContainer/>
       
       <div className="contentContainer">
