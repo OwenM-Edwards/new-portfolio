@@ -41,6 +41,8 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
+      max-width:1500px;
+      margin:0 auto;
 
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
@@ -70,6 +72,10 @@ const Wrapper = styled(motion.div)`
             margin:0 auto;
             text-align:center;
             padding-left:10%;
+            -webkit-user-select: none; /* Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
             @media (max-width: 700px) {
                font-size:1.3rem;
                padding:10px;

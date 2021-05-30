@@ -47,8 +47,7 @@ const Wrapper = styled(motion.div)`
     display:flex;
     flex-direction:column;
     background-color:#950d0f;
-    padding-top:50px;
-    padding-bottom:90px;
+    padding-bottom:50px;
     justify-content:center;
     align-items:center;
 
@@ -71,18 +70,10 @@ const Wrapper = styled(motion.div)`
       opacity:0.5;
     }
 
-    & .resumeIcon {
-      position:absolute;
-      top:5px;
-      left:0;
-      cursor: pointer;
-      z-index:2;
-    }
-
     & h1 {
       color:white;
       font-size:3.9rem;
-      padding:40px;
+      padding:30px;
       width:auto;
       border-radius:0px 20px 20px 0;
       margin:0 auto;
@@ -147,13 +138,14 @@ const Wrapper = styled(motion.div)`
 
 
     & .techContainer {
-      width:80%;
+      width:90%;
       display:flex;
       flex-wrap:wrap;
-      height:20%;
+      height:25%;
       z-index:2;
       border-radius:0 0 20px 0px;
-      padding:30px;
+      padding:20px;
+      max-width:900px;
       @media (max-width: 700px) {
         width:100%;
         padding:10px;

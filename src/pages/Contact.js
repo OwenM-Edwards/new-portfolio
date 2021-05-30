@@ -63,6 +63,10 @@ const Wrapper = styled(motion.div)`
             padding:40px;
             margin:0 auto;
             text-align:center;  
+            -webkit-user-select: none; /* Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+/Edge */
+            user-select: none; /* Standard */
             @media (max-width: 700px) {
                font-size:1.3rem;
                padding:10px;

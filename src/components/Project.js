@@ -6,6 +6,7 @@ import websiteB_BG from  "../img/website-b.jpg";
 import websiteC_BG from  "../img/website-c.jpg";
 import websiteD_BG from  "../img/website-d.jpg";
 import Fade from 'react-reveal/Fade';
+import LazyLoad from 'react-lazyload';
 
 const Wrapper = styled(motion.div)`
    width:90%;
@@ -32,7 +33,7 @@ const Wrapper = styled(motion.div)`
       color:white;
       display:flex;
       flex-direction:column;
-      padding:0px 30px 10px 30px;
+      padding:0px 30px 0px 30px;
       
       @media (max-width: 700px) {
          padding:50px 0px 10px 0px;
@@ -47,6 +48,11 @@ const Wrapper = styled(motion.div)`
          justify-content:center;
          border-radius:10px;
          padding:5px;
+
+         & .lazyLoad {
+            display:flex;
+            justify-content:center;
+         }
 
          @media (max-width: 700px) {
             width:100%;
@@ -70,7 +76,10 @@ const Wrapper = styled(motion.div)`
          margin:0 auto;
          font-size:2rem;
          height:10%;
-
+         -webkit-user-select: none; /* Safari */        
+         -moz-user-select: none; /* Firefox */
+         -ms-user-select: none; /* IE10+/Edge */
+         user-select: none; /* Standard */
          @media (max-width: 700px) {
             font-size:1rem;
          }
@@ -145,10 +154,14 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Student Psychiatry</h2>
 
             <div className="imageContainer">
-               <img alt="Student Psychiatry Link" src={websiteA_BG}/>
+               <LazyLoad className="lazyLoad">
+                  <img alt="Student Psychiatry Link" src={websiteA_BG}/>
+               </LazyLoad>
             </div>
             
-            <p>Student psychiatry was initiall designed to help students securly organise online events during Covid lockdown. Made with React, it allows users to create and view online events. Nodejs server.</p>
+            <p>
+               Student psychiatry was initially designed to help students securly organise online events during Covid lockdown. Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.<br />The front end was built using React, and the back end with Nodejs.
+            </p>
             
             <div className="buttonContainer">
                <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">github</a>
@@ -162,7 +175,9 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Community NPC Generator</h2>
 
             <div className="imageContainer">
-               <img alt="RPG Generator Link"src={websiteB_BG}/>
+               <LazyLoad className="lazyLoad">
+                  <img alt="RPG Generator Link"src={websiteB_BG}/>
+               </LazyLoad>
             </div>
 
             <p>An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use.</p>
@@ -179,7 +194,9 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Oakfield Photography</h2>
 
             <div className="imageContainer">
-               <img alt="Oakfield Photography" src={websiteC_BG}/>
+               <LazyLoad className="lazyLoad">
+                  <img alt="Oakfield Photography" src={websiteC_BG}/>
+               </LazyLoad>
             </div>
 
             <p>Created for a local photography company using simple Javascript and CSS. Gallery images are hosted on Cloudinary.</p>
@@ -196,7 +213,9 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Myth-Des</h2>
 
             <div className="imageContainer">
-               <img alt="Myth-des link" src={websiteD_BG}/>
+               <LazyLoad className="lazyLoad">
+                  <img alt="Myth-des link" src={websiteD_BG}/>
+               </LazyLoad>
             </div>
 
 
