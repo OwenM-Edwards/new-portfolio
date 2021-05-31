@@ -7,6 +7,7 @@ import noiseBG from '../img/noise.png';
 import Fade from 'react-reveal/Fade';
 import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
+import ReactTooltip from 'react-tooltip';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -41,7 +42,6 @@ const Wrapper = styled(motion.div)`
       padding:20px;
       justify-content:center;
       align-items:center;
-      max-width:1500px;
       margin:0 auto;
 
       @media (max-width: 700px) {
@@ -62,6 +62,7 @@ const Wrapper = styled(motion.div)`
          border-radius:20px 20px 0px 0;
          z-index:3;
          border-bottom:2px solid #950d0f;
+         max-width:1400px;
          @media (max-width: 700px) {
             width:100%;
          }
@@ -76,10 +77,14 @@ const Wrapper = styled(motion.div)`
             -moz-user-select: none; /* Firefox */
             -ms-user-select: none; /* IE10+/Edge */
             user-select: none; /* Standard */
+            @media (max-width: 850px) {
+               font-size:2.6rem;
+            }
             @media (max-width: 700px) {
                font-size:1.3rem;
                padding:10px;
             }
+
          }
       }
 
@@ -91,6 +96,7 @@ const Wrapper = styled(motion.div)`
          display:flex;
          flex-direction:row;
          justify-content:space-between;
+         max-width:1400px;
          @media (max-width: 700px) {
             width:100%;
          }
@@ -201,7 +207,6 @@ const Projects = ({enterDirection}) => {
    }
 
    const handleExitStyle = (exitDirection) => {
-      console.log(`testing ${exitDirection}`)
       if(exitDirection === 'left'){
          setPage([true, true])
       }
@@ -218,10 +223,10 @@ const Projects = ({enterDirection}) => {
          animate={{x: 0}}
          exit={direction ? { x: `+100vw` } : { x: `-100vw`  }}
          transition={{
-            x: { type: "linear", stiffness: 300, damping: 30 }
+            x: { type: "easeInOut", stiffness: 300, damping: 30 }
          }}
       >
-         
+         <ReactTooltip />
          <div onClick={()=>handleExitStyle('left')} className="link link-a" ><p>Home</p></div>
          
             <div className="contentContainer">
@@ -230,17 +235,17 @@ const Projects = ({enterDirection}) => {
                   <Fade top><h1>Some of my projects</h1></Fade>
                </div>
 
-                  <div className="projectsContainer">
-                     <Project 
-                        displayProject={displayProject} 
-                        projectsDirection={projectsDirection}
-                     />
-                     <ProjectsNav 
+               <div className="projectsContainer">
+                  <Project 
+                     displayProject={displayProject} 
+                     projectsDirection={projectsDirection}
+                  />
+                  <ProjectsNav 
                      handleProjectsSwitch={handleProjectsSwitch}
-                        displayProject={displayProject} 
-                        setDisplayProject={setDisplayProject}
-                     />
-                  </div>
+                     displayProject={displayProject} 
+                     setDisplayProject={setDisplayProject}
+                  />
+               </div>
 
             </div>
         

@@ -7,6 +7,7 @@ import noiseBG from '../img/noise.png';
 import {LinksContainer} from '../components/index';
 import Fade from 'react-reveal/Fade';
 import { useSwipeable } from 'react-swipeable';
+import ReactTooltip from 'react-tooltip';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -40,6 +41,7 @@ const Wrapper = styled(motion.div)`
       justify-content:center;
       align-items:center;
       padding:20px;
+      
 
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
@@ -51,7 +53,7 @@ const Wrapper = styled(motion.div)`
          border-radius:20px 20px 0px 0;
          z-index:3;
          border-bottom:2px solid #950d0f;
-
+         max-width:1400px;
          @media (max-width: 700px) {
             font-size:2rem;
             padding:30 10px;
@@ -171,10 +173,10 @@ const Contact = ({setEnterDirection}) => {
          animate={{x: 0}}
          exit={{x: `+100vw` }}
          transition={{
-            x: { type: "linear", stiffness: 300, damping: 30 }
+            x: { type: "easeInOut", stiffness: 300, damping: 30 }
          }}
       >
-
+         <ReactTooltip />
          <div className="linkContainer">
             <div className="link link-a" onClick={()=>handleMainClick()}>Home</div>
             <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>

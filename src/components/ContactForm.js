@@ -19,8 +19,8 @@ const Wrapper = styled.div`
     justify-content:space-around;
     align-items:center;
     padding-bottom:20px;
-
-
+    text-align:center;
+    max-width:1400px;
     
     @media (max-width: 700px) {
         padding:5px;
@@ -115,6 +115,17 @@ const Wrapper = styled.div`
             }
         }
     }
+
+    .loadingContainer {
+        position:absolute;
+        width:100%;
+        height:100%;
+        background-color:red;
+        z-index:5;
+    }
+    .hidden {
+        display:none;
+    }
 `
 
 
@@ -127,11 +138,11 @@ const ContactForm = () => {
 
     const onSubmit = data => {
         setLoading(true)
-        sendForm('default_service', 'template_85oyrbv', '#contactForm')
+        sendForm('port_contact_form', 'template_85oyrbv', '#contactForm')
             .then((res) => {
                 form.reset();
                 setLoading(false)
-                toast.success('Message successfully sent.')
+                toast.success('Your message has been sent!')
                 
             })
             .catch((err) => {
@@ -143,62 +154,58 @@ const ContactForm = () => {
     const message = watch('message') || '';
     const remainingMessageChars = 1500 - message.length;
 
-    if(loading){
-        return(
-            <ClipLoader loading={loading} size={150} />
-        )
-    }
-    else {
-        return (
-            <Wrapper>
-                <Fade delay={300}>
-                    <h2>You can send me a message...</h2>
-                    <form id='contactForm' onSubmit={handleSubmit(onSubmit)}>
-                        <label htmlFor="subject">Subject</label>
-                        <input 
-                            id="subject"
-                            className="input"
-                            placeholder='Subject' 
-                            type='text' 
-                            {...register("subject", {required:true} )}
-                            maxLength='30'
-                            aria-invalid={errors.subject ? "true" : "false"}
-                        /> 
-                        {errors.subject?.type === 'required' && "Subject is required." }
-                        <label htmlFor="email">Your email</label>
-                        <input 
-                            id="email"
-                            className="input"
-                            {...register("email", {required:true})} 
-                            placeholder='Your email' 
-                            type='email'
-                            aria-invalid={errors.email ? "true" : "false"}
-                        />
-                        {errors.email?.type === 'required' && "Email is required." }
+    return (
+        <Wrapper>
+            {(loading) 
+                ? <ClipLoader loading={loading} size={150} />
+                : <React.Fragment/>
+            }
+            
+            <Fade className="test" delay={300}>
+                <h2>You can send me a message...</h2>
+                <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
+                    <label htmlFor="subject">Subject</label>
+                    <input 
+                        id="subject"
+                        className="input"
+                        placeholder='Subject' 
+                        type='text' 
+                        {...register("subject", {required:true} )}
+                        maxLength='30'
+                        aria-invalid={errors.subject ? "true" : "false"}
+                    /> 
+                    {errors.subject?.type === 'required' && "Subject is required." }
+                    <label htmlFor="email">Your email</label>
+                    <input 
+                        id="email"
+                        className="input"
+                        {...register("email", {required:true})} 
+                        placeholder='Your email' 
+                        type='email'
+                        aria-invalid={errors.email ? "true" : "false"}
+                    />
+                    {errors.email?.type === 'required' && "Email is required." }
 
-                        <label htmlFor="message">Your message</label>
-                        <textarea 
-                            id="message"
-                            {...register("message", {required:true})} 
-                            placeholder='Your message...' 
-                            aria-invalid={errors.email ? "true" : "false"}
-                            maxLength='1500'
-                        />
-                        <p className="remainingMessageChars">{remainingMessageChars} characters remaining.</p>
-                        {errors.message?.type === 'required' && "A message is required." }
-        
-                        <input className="submitButton" type='submit' value='send'/>
-                    </form>
-
-
-                    <h2>...or give me a call. <span>@ </span>+44 7392540684</h2>
-                    <h2>...or email me. <span>@ </span>owenhedwards@gmail.com</h2>
-                </Fade>
-            </Wrapper>
-                
-        )
-    }
+                    <label htmlFor="message">Your message</label>
+                    <textarea 
+                        id="message"
+                        {...register("message", {required:true})} 
+                        placeholder='Your message...' 
+                        aria-invalid={errors.email ? "true" : "false"}
+                        maxLength='1500'
+                    />
+                    <p className="remainingMessageChars">{remainingMessageChars} characters remaining.</p>
+                    {errors.message?.type === 'required' && "A message is required." }
     
+                    <input className="submitButton" type='submit' value='send'/>
+                </form>
+
+
+                <h2>...or give me a call. <span>@ </span>+44 7392540684</h2>
+                <h2>...or email me. <span>@ </span>owenhedwards@gmail.com</h2>
+            </Fade>
+        </Wrapper>     
+    ) 
 }
 
 

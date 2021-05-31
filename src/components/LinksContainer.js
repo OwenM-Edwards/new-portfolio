@@ -19,6 +19,11 @@ const Wrapper = styled.div`
 
    & a {
       height:100%;
+      &:nth-of-type(1){
+         height:113%;
+         position: relative;
+         bottom:2px;
+      }
    }
    & img {
       height:100%;
@@ -36,7 +41,7 @@ const LinksContainer = () => {
    return (
       <Wrapper>
          <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV!"  src={resumeIcon}/></a>
-         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link"src={githubIcon}/></a>
+         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={githubIcon}/></a>
          {/* <img alt="Linkedin link"src={linkedinIcon}/> */}
       </Wrapper>
    )

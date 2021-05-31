@@ -11,11 +11,12 @@ const Wrapper = styled.div`
    z-index:2;
    justify-content:space-around;
    padding:7px 2px 7px 5px;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
+  
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
    gap:5px;
-   
+   align-items:center;
+
    @media (max-width: 700px) {
       flex-direction:row;
       width:100%;
@@ -44,15 +45,18 @@ const Wrapper = styled.div`
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */
       user-select: none; /* Standard */
-
+      max-width:100px;
+      padding-left:5px;
 
       @media (max-width: 700px) {
          writing-mode: horizontal-tb;
          height:45%;
-         width:35%;
+         width:45%;
          padding-right:0px;
          transform:rotate(0deg); 
          font-size:0.7rem;
+         max-width:50%;
+         padding-left:0px;
       }
       &:hover {
         background-color:#fc5a51;

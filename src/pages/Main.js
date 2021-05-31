@@ -16,6 +16,7 @@ import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
 import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
+import ReactTooltip from 'react-tooltip';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -237,10 +238,11 @@ const Main = ({setEnterDirection}) => {
       animate={{x: 0}}
       exit={{x: `-100vw` }}
       transition={{
-        x: { type: "linear", stiffness: 300, damping: 30 },
+        x: { type: "easeInOut", stiffness: 300, damping: 30 },
         opacity: { duration: 1 }
       }}
     >
+      <ReactTooltip />
       <LinksContainer/>
       
       <div className="contentContainer">
@@ -259,32 +261,23 @@ const Main = ({setEnterDirection}) => {
             <img alt="HTML5" data-tip="HTML5" src={htmlIcon}/>
             <img alt="CSS3" data-tip="CSS3" src={cssIcon}/>
             <img alt="WIX" data-tip="WIX" src={wixIcon}/>
-            <img alt="Javascript" data-tip="Javascript" src={jsIcon}/>
-            <img alt="ReactJS" data-tip="ReactJS" src={reactIcon}/>
-            <img alt="NodeJS" data-tip="NodeJS" src={nodeIcon}/>
+            <img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/>
+            <img alt="React.js" data-tip="React.js" src={reactIcon}/>
+            <img alt="Node.js" data-tip="Node.js" src={nodeIcon}/>
             <img alt="SASS" data-tip="SASS" src={sassIcon}/>
             <img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
           </div>
         </Fade>
-
       </div>
       
-
-      
-
       <div className="linkContainer">
-
         <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
         <div className="link link-a" onClick={()=>handleContactsLink()}>Contact</div>
-        {/* <Link className="link" to="/contact">Contact</Link> */}
       </div>
       
     </Wrapper>
 
   )
-
-
-
 }
 
 
