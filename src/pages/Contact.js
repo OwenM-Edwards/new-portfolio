@@ -187,11 +187,8 @@ const Contact = ({setEnterDirection}) => {
                <LinksContainer/>
                <Fade top><h1>Contact me</h1></Fade>
             </div>
-
             <ContactForm/>
          </div>
-        
-
       </Wrapper>
    )
 }

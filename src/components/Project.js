@@ -49,12 +49,11 @@ const Wrapper = styled(motion.div)`
       padding:0px 30px 0px 30px;
       
       @media (max-width: 700px) {
-         padding:20px 0px 0px 0px;
+         padding:20px 0px 5px 0px;
       }
       
       & h2 {
          text-align:center;
-         margin-bottom:5px;
          font-size:2rem;
          height:auto;
          -webkit-user-select: none; /* Safari */        
@@ -80,6 +79,9 @@ const Wrapper = styled(motion.div)`
             width:100%;
          }
       }
+      & .test {
+         display:none;
+      }
       & .imageContainer {
          height:100%;
          width:100%;
@@ -100,35 +102,36 @@ const Wrapper = styled(motion.div)`
       
       & section {
          width:100%;
-         height:40%;
+         height:42%;
          display:flex;
          flex-direction:column;
-         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
          border-radius:10px;
-         padding:20px 0 10px 0;
+         padding:20px 0 20px 0;
+
          @media (max-width: 700px) {
             flex-grow:1;
             margin-bottom:-0px;
             justify-content:space-between;
-            padding:0px;
+            padding:0px 0 10px 0;
          }
 
          & .infoContainer {
             display:flex;
             flex-direction:row;
-            height:80%;
+            min-height:95%;
             width:100%;
             justify-content:center;
             padding-right:20px;
             @media (max-width: 700px) {
+               min-height:30%;
                flex-direction:column;
             }
             & p {
-               font-size:1.2rem;
-               height:90%;
+               font-size:1.1rem;
+               height:100%;
                width:80%;
                max-width:590px;
-               padding:10px;
+               padding:5px;
                overflow-y:scroll;
                border-left:1px solid #950d0f;
                border-right:1px solid #950d0f;
@@ -139,10 +142,10 @@ const Wrapper = styled(motion.div)`
                   border:10px;
                   margin:0 auto;
                   width:100%;
-                  height:80%;
+                  height:70%;
                }
                & br {
-                  margin-bottom:8px;
+                  margin-bottom:10px;
                }
             }
             & ul {
@@ -155,7 +158,7 @@ const Wrapper = styled(motion.div)`
                   display:flex;
                   flex-direction:row;
                   flex-wrap:wrap;
-                  left:15px;
+                  left:25px;
                   height:auto;
                   width:100%;
                }
@@ -169,7 +172,6 @@ const Wrapper = styled(motion.div)`
                      margin-right:10px;
                   }
                }
-               
             }
          }
 
@@ -178,11 +180,10 @@ const Wrapper = styled(motion.div)`
             flex-direction:row;
             justify-content:center;
             width:100%;
-            height:20%;
-            margin:20px auto 0 auto;
+            min-height:10%;
+            margin:10px auto 0 auto;
             gap:30px;
             padding:5px;
-
             @media (max-width: 700px) {
                height:20%;
                padding:0px;
@@ -226,7 +227,7 @@ const Wrapper = styled(motion.div)`
 
 
 
-const Project = ({displayProject, projectsDirection}) => {
+const Project = ({displayProject}) => {
 
    var settings = {
       dots: true,
@@ -239,7 +240,7 @@ const Project = ({displayProject, projectsDirection}) => {
 
    const projects = [
       <div className="project">
-         <Fade delay={300}>
+         <Fade delay={300}> 
             <h2>Student Psychiatry</h2>
 
             <div className="imageWrapper">
@@ -268,11 +269,13 @@ const Project = ({displayProject, projectsDirection}) => {
             <section>
                <div className="infoContainer">
                   <p>
-                     Student psychiatry was initially designed to help students securly organise online events during Covid lockdown. 
+                  Student psychiatry was initially designed to help students securely organise online events during Covid lockdown. 
                      <br/>
-                     <span></span>Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.
+                     
+                     Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.
                      <br/>
-                     <span></span>The Node.JS server handels user sessions with express session, this was the first time I used this technology and it taught me a lot. Mention seqialize too.
+ 
+                     The Node.JS server handles user sessions with express session, this was the first time I used this technology and it taught me a lot. Mention sequelize too.
                   </p>
 
                   <ul>
@@ -321,7 +324,13 @@ const Project = ({displayProject, projectsDirection}) => {
             <section>
                <div className="infoContainer">
                   <p>
+                     The Community NPC Gen is a random character creator for us in tabletop games.
+                     <br/ >                                                                           
                      An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use.
+                     <br/>
+ 
+                     This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+
                   </p>
 
                   <ul>
@@ -371,7 +380,10 @@ const Project = ({displayProject, projectsDirection}) => {
             <section>
                <div className="infoContainer">
                   <p>
-                     Full disclosure: this is my fathers company! They were in desperate need of a website redesign, and I was happy to oblige. This was my first live project to make use of SASS. The site features a mobile-first responsive design, a service map powered by Google Maps,
+                     Full disclosure; this is my fathers company!
+                     <br/>
+
+                     They were in serious need of a website redesign, and I was happy to oblige. This was the first live project I made that made use of SASS. The site features a mobile-first responsive design, a service map powered by Google Maps, and automatically pulls and sorts gallery images using the Cloudinary API.
                   </p>
 
                   <ul>
@@ -418,12 +430,15 @@ const Project = ({displayProject, projectsDirection}) => {
             <section>
                <div className="infoContainer">
                   <p>
-                     Myth-Des is a fictional design company that I created that showcases local art projects from around Nottingham, and the brands that they work with. I created it to help hone my vanilla CSS and SASS skills, as well as to play around with some CSS animations.
+                     Myth-Des is a fictional design company I created to help hone my CSS and SASS skills. I also used it to experiment with CSS animations, creating a sleek landing page and header animations.
+                     <br/>
+ 
+                     It showcases art projects from around Nottingham and some of the fictional brands that they work with.
                   </p>
 
                   <ul>
                      <li>JavaScript</li>
-                     <li>CSS</li>
+                     <li>CSS / SASS</li>
                      <li>HTML</li>
                   </ul>
                </div>

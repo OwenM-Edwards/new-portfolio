@@ -53,6 +53,7 @@ const Wrapper = styled.div`
         flex-direction:column;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         padding:20px;
+        text-align:start;
         @media (max-width: 700px) {
             width:98%;
             padding:0px;

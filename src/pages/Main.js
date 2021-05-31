@@ -41,7 +41,6 @@ const Wrapper = styled(motion.div)`
   justify-content:center;
   position: absolute;
 
-  
   & .contentContainer {
     height:100%;
     width:100%;
@@ -54,11 +53,7 @@ const Wrapper = styled(motion.div)`
     align-items:center;
 
     @media (max-width: 700px) {
-      padding-top:30px;
       padding-bottom:50px;
-    }
-    @media (max-width: 300px) {
-      padding-top:0px;
     }
     
     &:after {
@@ -282,7 +277,7 @@ const Main = ({setEnterDirection}) => {
       
       <div className="linkContainer">
         <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
-        <div className="link link-a" onClick={()=>handleContactsLink()}>Contact</div>
+        <div className="link link-a" onClick={()=>handleContactsLink()}>About/Contact</div>
       </div>
       
     </Wrapper>

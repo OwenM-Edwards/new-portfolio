@@ -88,7 +88,6 @@ const Wrapper = styled(motion.div)`
          }
       }
 
-
       & .projectsContainer {
          width:98%;
          height:100%;
@@ -246,7 +245,7 @@ const Projects = ({enterDirection}) => {
                   />
                </div>
             </div>
-         <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>
+         <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>About/Contact</p></div>
       </Wrapper>
    )
 }
