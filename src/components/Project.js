@@ -73,7 +73,6 @@ const Wrapper = styled(motion.div)`
             width:100%;
             height:40%;
             margin-bottom:-0px;
-            margin-top:50px;
             padding-top:30px;
          }
 
@@ -148,7 +147,7 @@ const Wrapper = styled(motion.div)`
                   flex-wrap:wrap;
                   left:15px;
                   overflow-y:scroll;
-                  height:10%;
+                  height:auto;
                   width:80%;
                }
 
