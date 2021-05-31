@@ -11,7 +11,6 @@ const Wrapper = styled.div`
    z-index:2;
    justify-content:space-around;
    padding:7px 2px 7px 5px;
-  
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
    gap:5px;
@@ -20,7 +19,7 @@ const Wrapper = styled.div`
    @media (max-width: 700px) {
       flex-direction:row;
       width:100%;
-      height:17%;
+      height:13%;
       flex-wrap:wrap;
       padding:7px 5px 2px 5px;
       text-align:center;
@@ -50,13 +49,12 @@ const Wrapper = styled.div`
 
       @media (max-width: 700px) {
          writing-mode: horizontal-tb;
-         height:45%;
+         height:50%;
          width:45%;
-         padding-right:0px;
+         padding:0px;
          transform:rotate(0deg); 
          font-size:0.7rem;
          max-width:50%;
-         padding-left:0px;
       }
       &:hover {
         background-color:#fc5a51;

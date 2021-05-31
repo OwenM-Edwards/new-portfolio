@@ -56,6 +56,9 @@ const Wrapper = styled(motion.div)`
       padding-top:30px;
       padding-bottom:50px;
     }
+    @media (max-width: 300px) {
+      padding-top:0px;
+    }
     
     &:after {
       content: "";
@@ -83,6 +86,9 @@ const Wrapper = styled(motion.div)`
       @media (max-width: 700px) {
         font-size:2rem;
         padding:10px;
+      }
+      @media (max-width: 300px) {
+        font-size:1.8rem;
       }
       
     }

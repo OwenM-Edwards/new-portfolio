@@ -2,11 +2,20 @@ import React from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import websiteA_BG from  "../img/website-a.jpg";
+import websiteA_BG_2 from  "../img/website-a-2.png";
+import websiteA_BG_3 from  "../img/website-a-3.png";
 import websiteB_BG from  "../img/website-b.jpg";
+import websiteB_BG_2 from  "../img/website-b-2.png";
+import websiteB_BG_3 from  "../img/website-b-3.png";
 import websiteC_BG from  "../img/website-c.jpg";
 import websiteD_BG from  "../img/website-d.jpg";
+import websiteD_BG_2 from  "../img/website-d-2.png";
+import websiteD_BG_3 from  "../img/website-d-3.png";
 import Fade from 'react-reveal/Fade';
 import LazyLoad from 'react-lazyload';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const Wrapper = styled(motion.div)`
    width:90%;
@@ -26,6 +35,7 @@ const Wrapper = styled(motion.div)`
       width:100%;
       padding:0px;
       margin-left:0%;
+      height:99%;
    }
 
    & .project {
@@ -50,38 +60,40 @@ const Wrapper = styled(motion.div)`
          -ms-user-select: none; /* IE10+/Edge */
          user-select: none; /* Standard */
          @media (max-width: 700px) {
-            font-size:1rem;
+            display:none;
          }
       }
 
       & .imageContainer {
          height:50%;
          width:100%;
-         display:flex;
          margin: 0 auto 20px auto;
-         justify-content:center;
          border-radius:10px;
-         padding:5px;
+         padding:5px 10px 5px 10px;
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);   
 
-         & .lazyLoad {
-            display:flex;
-            justify-content:center;
+
+         & div {
+            height:100%;
+            width:auto;
+
+            & img {
+               height:100%;
+               width:100%;
+               object-fit:contain;
+               border-radius:10px;
+               margin:0 auto;   
+            }
          }
 
          @media (max-width: 700px) {
-            width:100%;
+            width:90%;
             height:40%;
             margin-bottom:-0px;
-            padding-top:30px;
+            padding:20px 10px 5px 20px;
          }
 
          & img {
-            height:100%;
-            object-fit:contain;
-            border-radius:10px;
-            max-width:100%;
-            
             @media (max-width: 700px) {
                height:auto;
                width:100%;
@@ -129,7 +141,10 @@ const Wrapper = styled(motion.div)`
                   border:10px;
                   margin:0 auto;
                   width:100%;
-                  height:90%;
+                  height:100%;
+               }
+               & span {
+                  margin-left:5px;
                }
                & br {
                   margin-bottom:5px;
@@ -146,17 +161,20 @@ const Wrapper = styled(motion.div)`
                   flex-direction:row;
                   flex-wrap:wrap;
                   left:15px;
-                  overflow-y:scroll;
                   height:auto;
-                  width:80%;
+                  width:100%;
+                  font-size:0.8rem;
                }
 
                & li {
-                  margin-right:20px;
-                  border-left:1px solid #950d0f;
+                  margin-right:5px;
+                  @media (max-width: 700px) {
+                     font-size:0.7rem;
+                  }
                   &::before {
                      content:'-';
                      color:#950d0f;
+                     font-size:1.2rem;
                   }
                }
                
@@ -215,6 +233,14 @@ const Wrapper = styled(motion.div)`
 
 const Project = ({displayProject, projectsDirection}) => {
 
+   var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+   };
+
 
    const projects = [
       <div className="project">
@@ -222,15 +248,35 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Student Psychiatry</h2>
 
             <div className="imageContainer">
-               <LazyLoad className="lazyLoad">
-                  <img alt="Student Psychiatry Link" src={websiteA_BG}/>
-               </LazyLoad>
+               <Slider {...settings}>
+                  <div className="slide">
+                     <LazyLoad>
+                        <img alt="Student Psychiatry" src={websiteA_BG}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad>
+                        <img alt="Student Psychiatry" src={websiteA_BG_2}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad>
+                        <img alt="Student Psychiatry" src={websiteA_BG_3}/>
+                     </LazyLoad>
+
+                  </div>
+               </Slider>
+
             </div>
             
             <section>
                <div className="infoContainer">
                   <p>
-                     Student psychiatry was initially designed to help students securly organise online events during Covid lockdown. Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.<br/>The front end was built using React, and the back end with Nodejs.
+                     Student psychiatry was initially designed to help students securly organise online events during Covid lockdown. 
+                     <br/>
+                     <span></span>Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.
+                     <br/>
+                     <span></span>The Node.JS server handels user sessions with express session, this was the first time I used this technology and it taught me a lot. Mention seqialize too.
                   </p>
 
                   <ul>
@@ -256,9 +302,23 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Community NPC Generator</h2>
 
             <div className="imageContainer">
-               <LazyLoad className="lazyLoad">
-                  <img alt="RPG Generator Link"src={websiteB_BG}/>
-               </LazyLoad>
+               <Slider {...settings}>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="RPG Generator Link"src={websiteB_BG}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad>
+                        <img alt="Student Psychiatry" src={websiteB_BG_2}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad>
+                        <img alt="Student Psychiatry" src={websiteB_BG_3}/>
+                     </LazyLoad>
+                  </div>
+               </Slider>
             </div>
 
             <section>
@@ -290,15 +350,29 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Oakfield Photography</h2>
 
             <div className="imageContainer">
-               <LazyLoad className="lazyLoad">
-                  <img alt="Oakfield Photography" src={websiteC_BG}/>
-               </LazyLoad>
+               <Slider {...settings}>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Oakfield Photography" src={websiteC_BG}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Oakfield Photography" src={websiteC_BG}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Oakfield Photography" src={websiteC_BG}/>
+                     </LazyLoad>
+                  </div>
+               </Slider>
             </div>
 
             <section>
                <div className="infoContainer">
                   <p>
-                     Created for a local photography company using simple Javascript and CSS. Gallery images are hosted on Cloudinary.
+                     Full disclosure: this is my fathers company! They were in desperate need of a website redesign, and I was happy to oblige. This was my first live project to make use of SASS. The site features a mobile-first responsive design, a service map powered by Google Maps,
                   </p>
 
                   <ul>
@@ -321,15 +395,29 @@ const Project = ({displayProject, projectsDirection}) => {
             <h2>Myth-Des</h2>
 
             <div className="imageContainer">
-               <LazyLoad className="lazyLoad">
-                  <img alt="Myth-des link" src={websiteD_BG}/>
-               </LazyLoad>
+               <Slider {...settings}>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Myth-des link" src={websiteD_BG}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Myth-des link" src={websiteD_BG_2}/>
+                     </LazyLoad>
+                  </div>
+                  <div className="slide">
+                     <LazyLoad className="lazyLoad">
+                        <img alt="Myth-des link" src={websiteD_BG_3}/>
+                     </LazyLoad>
+                  </div>
+               </Slider>
             </div>
 
             <section>
                <div className="infoContainer">
                   <p>
-                     lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh  lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh lorem ipsure blah blach duh 
+                     Myth-Des is a fictional design company that I created that showcases local art projects from around Nottingham, and the brands that they work with. I created it to help hone my vanilla CSS and SASS skills, as well as to play around with some CSS animations.
                   </p>
 
                   <ul>
@@ -340,7 +428,7 @@ const Project = ({displayProject, projectsDirection}) => {
                </div>
                <div className="buttonContainer">
                   <a className="button" target="blank" href="https://github.com/OwenM-Edwards/fic_design_comp">Github</a>
-                  <a className="button" target="blank" href="http://www.owenedwards.me/fic_design_comp/">View site</a>
+                  <a className="button" target="blank" href="https://owenm-edwards.github.io/fic_design_comp/">View site</a>
                </div> 
             </section>
          </Fade>
