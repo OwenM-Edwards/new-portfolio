@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -8,7 +7,6 @@
 html {
   width:100%;
   height:100%;
-  /* background-color: #2b2b2b; */
   object-position: center;
 }
 
@@ -22,12 +20,6 @@ body {
   width:100%;
   height:100%;
   overflow: hidden;
-  /* background-color: #2b2b2b; */
   text-rendering: optimizeLegibility;
   background-color:#950d0f;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

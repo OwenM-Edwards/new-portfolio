@@ -19,8 +19,7 @@ const Wrapper = styled.div`
    @media (max-width: 700px) {
       flex-direction:row;
       width:100%;
-      height:13%;
-      flex-wrap:wrap;
+      height:8%;
       padding:7px 5px 2px 5px;
       text-align:center;
    }
@@ -55,6 +54,7 @@ const Wrapper = styled.div`
          transform:rotate(0deg); 
          font-size:0.7rem;
          max-width:50%;
+         max-height:50%;
       }
       &:hover {
         background-color:#fc5a51;

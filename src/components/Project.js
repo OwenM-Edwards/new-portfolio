@@ -37,7 +37,7 @@ const Wrapper = styled(motion.div)`
       width:100%;
       padding:0px;
       margin-left:0%;
-      height:99%;
+      min-height:92%;
    }
 
    & .project {
@@ -74,10 +74,10 @@ const Wrapper = styled(motion.div)`
          border-radius:10px;
          
          @media (max-width: 700px) {
-            height:40%;
-            margin-top:50px;
+            height:auto;
             margin-bottom:-0px;
             padding:25px;
+            width:100%;
          }
       }
       & .imageContainer {
@@ -96,16 +96,7 @@ const Wrapper = styled(motion.div)`
                margin:0 auto;   
             }
          }
-
-
-         & img {
-            @media (max-width: 700px) {
-               height:auto;
-               width:100%;
-            }
-         }
       }
-
       
       & section {
          width:100%;
@@ -116,9 +107,9 @@ const Wrapper = styled(motion.div)`
          border-radius:10px;
          padding:20px 0 10px 0;
          @media (max-width: 700px) {
-            height:50%;
             flex-grow:1;
             margin-bottom:-0px;
+            justify-content:space-between;
          }
 
          & .infoContainer {
@@ -142,18 +133,15 @@ const Wrapper = styled(motion.div)`
                border-right:1px solid #950d0f;
                
                @media (max-width: 700px) {
-                  font-size:1rem;
+                  font-size:1.1rem;
                   padding:15px 15px 25px 15px;
                   border:10px;
                   margin:0 auto;
                   width:100%;
                   height:100%;
                }
-               & span {
-                  margin-left:5px;
-               }
                & br {
-                  margin-bottom:5px;
+                  margin-bottom:8px;
                }
             }
             & ul {
@@ -162,7 +150,6 @@ const Wrapper = styled(motion.div)`
                top:15px;
                left:20px;
 
-
                @media (max-width: 700px) {
                   display:flex;
                   flex-direction:row;
@@ -170,7 +157,6 @@ const Wrapper = styled(motion.div)`
                   left:15px;
                   height:auto;
                   width:100%;
-                  font-size:0.8rem;
                }
 
                & li {
@@ -178,19 +164,13 @@ const Wrapper = styled(motion.div)`
                   padding:0 8px 2px 7px;
                   border-right:1px solid #950d0f;
                   @media (max-width: 700px) {
-                     font-size:0.7rem;
+                     font-size:0.8rem;
+                     margin-right:10px;
                   }
-                  /* &::before {
-                     content:'-';
-                     color:#950d0f;
-                     font-size:1.2rem;
-                  } */
                }
                
             }
          }
-
-         
 
          & .buttonContainer {
             display:flex;
@@ -279,7 +259,6 @@ const Project = ({displayProject, projectsDirection}) => {
                </div>
             </div>
 
-            
             <section>
                <div className="infoContainer">
                   <p>
@@ -299,7 +278,6 @@ const Project = ({displayProject, projectsDirection}) => {
                   </ul>
                </div>
 
-               
                <div className="buttonContainer">
                   <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">Github</a>
                   <a className="button" target="blank" href="https://www.studentpsychiatry.co.uk/calendar/5/2021">View site</a>
@@ -317,24 +295,22 @@ const Project = ({displayProject, projectsDirection}) => {
                   <Slider {...settings}>
                      <div className="slide">
                         <LazyLoad className="lazyLoad">
-                           <img alt="RPG Generator Link"src={websiteB_BG}/>
+                           <img alt="RPG Generator"src={websiteB_BG}/>
                         </LazyLoad>
                      </div>
                      <div className="slide">
                         <LazyLoad>
-                           <img alt="Student Psychiatry" src={websiteB_BG_2}/>
+                           <img alt="RPG Generator" src={websiteB_BG_2}/>
                         </LazyLoad>
                      </div>
                      <div className="slide">
                         <LazyLoad>
-                           <img alt="Student Psychiatry" src={websiteB_BG_3}/>
+                           <img alt="RPG Generator" src={websiteB_BG_3}/>
                         </LazyLoad>
                      </div>
                   </Slider>
                </div>
             </div>
-
-            
 
             <section>
                <div className="infoContainer">
@@ -386,7 +362,6 @@ const Project = ({displayProject, projectsDirection}) => {
                </div>
             </div>
 
-
             <section>
                <div className="infoContainer">
                   <p>
@@ -417,23 +392,22 @@ const Project = ({displayProject, projectsDirection}) => {
                   <Slider {...settings}>
                      <div className="slide">
                         <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des link" src={websiteD_BG}/>
+                           <img alt="Myth-des" src={websiteD_BG}/>
                         </LazyLoad>
                      </div>
                      <div className="slide">
                         <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des link" src={websiteD_BG_2}/>
+                           <img alt="Myth-des" src={websiteD_BG_2}/>
                         </LazyLoad>
                      </div>
                      <div className="slide">
                         <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des link" src={websiteD_BG_3}/>
+                           <img alt="Myth-des" src={websiteD_BG_3}/>
                         </LazyLoad>
                      </div>
                   </Slider>
                </div>
             </div>
-
 
             <section>
                <div className="infoContainer">

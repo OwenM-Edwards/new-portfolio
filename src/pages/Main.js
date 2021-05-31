@@ -17,6 +17,7 @@ import HeadShake from 'react-reveal/HeadShake';
 import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
+import LazyLoad from 'react-lazyload';
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -157,11 +158,14 @@ const Wrapper = styled(motion.div)`
         width:100%;
         padding:10px;
       }
-
-      & img {
+      & .lazyload {
         width:25%;
         height:50%;
         margin-bottom:40px;
+        & img {
+          width:100%;
+          height:100%;
+        }
       }
     }
   }
@@ -264,14 +268,14 @@ const Main = ({setEnterDirection}) => {
         <Fade bottom>
           <h2>Some of the technologies I use...</h2>
           <div className="techContainer">
-            <img alt="HTML5" data-tip="HTML5" src={htmlIcon}/>
-            <img alt="CSS3" data-tip="CSS3" src={cssIcon}/>
-            <img alt="WIX" data-tip="WIX" src={wixIcon}/>
-            <img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/>
-            <img alt="React.js" data-tip="React.js" src={reactIcon}/>
-            <img alt="Node.js" data-tip="Node.js" src={nodeIcon}/>
-            <img alt="SASS" data-tip="SASS" src={sassIcon}/>
-            <img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
+            <LazyLoad className="lazyload"><img alt="HTML5" data-tip="HTML5" src={htmlIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="CSS3" data-tip="CSS3" src={cssIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="WIX" data-tip="WIX" src={wixIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="React.js" data-tip="React.js" src={reactIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="Node.js" data-tip="Node.js" src={nodeIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="SASS" data-tip="SASS" src={sassIcon}/></LazyLoad>
+            <LazyLoad className="lazyload"><img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/></LazyLoad>
           </div>
         </Fade>
       </div>
@@ -282,7 +286,6 @@ const Main = ({setEnterDirection}) => {
       </div>
       
     </Wrapper>
-
   )
 }
 
