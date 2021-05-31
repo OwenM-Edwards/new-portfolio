@@ -49,7 +49,7 @@ const Wrapper = styled(motion.div)`
       padding:0px 30px 0px 30px;
       
       @media (max-width: 700px) {
-         padding:40px 0px 0px 0px;
+         padding:20px 0px 0px 0px;
       }
       
       & h2 {
@@ -76,7 +76,7 @@ const Wrapper = styled(motion.div)`
          @media (max-width: 700px) {
             height:auto;
             margin-bottom:-0px;
-            padding:25px;
+            padding:20px 25px 0 25px;
             width:100%;
          }
       }
@@ -110,6 +110,7 @@ const Wrapper = styled(motion.div)`
             flex-grow:1;
             margin-bottom:-0px;
             justify-content:space-between;
+            padding:0px;
          }
 
          & .infoContainer {
@@ -138,7 +139,7 @@ const Wrapper = styled(motion.div)`
                   border:10px;
                   margin:0 auto;
                   width:100%;
-                  height:100%;
+                  height:80%;
                }
                & br {
                   margin-bottom:8px;
@@ -183,7 +184,11 @@ const Wrapper = styled(motion.div)`
             padding:5px;
 
             @media (max-width: 700px) {
-               height:10%;
+               height:20%;
+               padding:0px;
+               width:90%;
+               margin:0 auto 0 auto;
+               align-items:flex-end;
             }
 
             & .button {
@@ -209,6 +214,7 @@ const Wrapper = styled(motion.div)`
                @media (max-width: 700px) {
                   font-size:0.9rem;
                   padding:10px;
+                  max-height:30px;
                }
             }
          }

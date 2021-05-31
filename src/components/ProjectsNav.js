@@ -20,7 +20,7 @@ const Wrapper = styled.div`
       flex-direction:row;
       width:100%;
       height:8%;
-      padding:7px 5px 2px 5px;
+      padding:2px 5px 0px 5px;
       text-align:center;
    }
 
@@ -55,6 +55,7 @@ const Wrapper = styled.div`
          font-size:0.7rem;
          max-width:50%;
          max-height:50%;
+         min-height:30px;
       }
       &:hover {
         background-color:#fc5a51;
