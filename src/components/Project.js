@@ -8,6 +8,8 @@ import websiteB_BG from  "../img/website-b.jpg";
 import websiteB_BG_2 from  "../img/website-b-2.png";
 import websiteB_BG_3 from  "../img/website-b-3.png";
 import websiteC_BG from  "../img/website-c.jpg";
+import websiteC_BG_2 from  "../img/website-c-2.png";
+import websiteC_BG_3 from  "../img/website-c-3.png";
 import websiteD_BG from  "../img/website-d.jpg";
 import websiteD_BG_2 from  "../img/website-d-2.png";
 import websiteD_BG_3 from  "../img/website-d-3.png";
@@ -64,14 +66,23 @@ const Wrapper = styled(motion.div)`
          }
       }
 
-      & .imageContainer {
+      & .imageWrapper {
          height:50%;
          width:100%;
-         margin: 0 auto 20px auto;
-         border-radius:10px;
-         padding:5px 10px 5px 10px;
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);   
-
+         padding:35px;
+         border-radius:10px;
+         
+         @media (max-width: 700px) {
+            height:40%;
+            margin-top:50px;
+            margin-bottom:-0px;
+            padding:25px;
+         }
+      }
+      & .imageContainer {
+         height:100%;
+         width:100%;
 
          & div {
             height:100%;
@@ -86,12 +97,6 @@ const Wrapper = styled(motion.div)`
             }
          }
 
-         @media (max-width: 700px) {
-            width:90%;
-            height:40%;
-            margin-bottom:-0px;
-            padding:20px 10px 5px 20px;
-         }
 
          & img {
             @media (max-width: 700px) {
@@ -122,6 +127,7 @@ const Wrapper = styled(motion.div)`
             height:80%;
             width:100%;
             justify-content:center;
+            padding-right:20px;
             @media (max-width: 700px) {
                flex-direction:column;
             }
@@ -151,10 +157,11 @@ const Wrapper = styled(motion.div)`
                }
             }
             & ul {
-               width:0%;
+               width:auto;
                position: relative;
                top:15px;
-               list-style:none;
+               left:20px;
+
 
                @media (max-width: 700px) {
                   display:flex;
@@ -168,14 +175,16 @@ const Wrapper = styled(motion.div)`
 
                & li {
                   margin-right:5px;
+                  padding:0 8px 2px 7px;
+                  border-right:1px solid #950d0f;
                   @media (max-width: 700px) {
                      font-size:0.7rem;
                   }
-                  &::before {
+                  /* &::before {
                      content:'-';
                      color:#950d0f;
                      font-size:1.2rem;
-                  }
+                  } */
                }
                
             }
@@ -247,27 +256,29 @@ const Project = ({displayProject, projectsDirection}) => {
          <Fade delay={300}>
             <h2>Student Psychiatry</h2>
 
-            <div className="imageContainer">
-               <Slider {...settings}>
-                  <div className="slide">
-                     <LazyLoad>
-                        <img alt="Student Psychiatry" src={websiteA_BG}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad>
-                        <img alt="Student Psychiatry" src={websiteA_BG_2}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad>
-                        <img alt="Student Psychiatry" src={websiteA_BG_3}/>
-                     </LazyLoad>
+            <div className="imageWrapper">
+               <div className="imageContainer">
+                  <Slider {...settings}>
+                     <div className="slide">
+                        <LazyLoad>
+                           <img alt="Student Psychiatry" src={websiteA_BG}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad>
+                           <img alt="Student Psychiatry" src={websiteA_BG_2}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad>
+                           <img alt="Student Psychiatry" src={websiteA_BG_3}/>
+                        </LazyLoad>
 
-                  </div>
-               </Slider>
-
+                     </div>
+                  </Slider>
+               </div>
             </div>
+
             
             <section>
                <div className="infoContainer">
@@ -301,25 +312,29 @@ const Project = ({displayProject, projectsDirection}) => {
          <Fade delay={300}>
             <h2>Community NPC Generator</h2>
 
-            <div className="imageContainer">
-               <Slider {...settings}>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="RPG Generator Link"src={websiteB_BG}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad>
-                        <img alt="Student Psychiatry" src={websiteB_BG_2}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad>
-                        <img alt="Student Psychiatry" src={websiteB_BG_3}/>
-                     </LazyLoad>
-                  </div>
-               </Slider>
+            <div className="imageWrapper">
+               <div className="imageContainer">
+                  <Slider {...settings}>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="RPG Generator Link"src={websiteB_BG}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad>
+                           <img alt="Student Psychiatry" src={websiteB_BG_2}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad>
+                           <img alt="Student Psychiatry" src={websiteB_BG_3}/>
+                        </LazyLoad>
+                     </div>
+                  </Slider>
+               </div>
             </div>
+
+            
 
             <section>
                <div className="infoContainer">
@@ -349,25 +364,28 @@ const Project = ({displayProject, projectsDirection}) => {
          <Fade delay={300}>
             <h2>Oakfield Photography</h2>
 
-            <div className="imageContainer">
-               <Slider {...settings}>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Oakfield Photography" src={websiteC_BG}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Oakfield Photography" src={websiteC_BG}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Oakfield Photography" src={websiteC_BG}/>
-                     </LazyLoad>
-                  </div>
-               </Slider>
+            <div className="imageWrapper">
+               <div className="imageContainer">
+                  <Slider {...settings}>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Oakfield Photography" src={websiteC_BG}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Oakfield Photography" src={websiteC_BG_2}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Oakfield Photography" src={websiteC_BG_3}/>
+                        </LazyLoad>
+                     </div>
+                  </Slider>
+               </div>
             </div>
+
 
             <section>
                <div className="infoContainer">
@@ -394,25 +412,28 @@ const Project = ({displayProject, projectsDirection}) => {
          <Fade delay={300}>
             <h2>Myth-Des</h2>
 
-            <div className="imageContainer">
-               <Slider {...settings}>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Myth-des link" src={websiteD_BG}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Myth-des link" src={websiteD_BG_2}/>
-                     </LazyLoad>
-                  </div>
-                  <div className="slide">
-                     <LazyLoad className="lazyLoad">
-                        <img alt="Myth-des link" src={websiteD_BG_3}/>
-                     </LazyLoad>
-                  </div>
-               </Slider>
+            <div className="imageWrapper">
+               <div className="imageContainer">
+                  <Slider {...settings}>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Myth-des link" src={websiteD_BG}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Myth-des link" src={websiteD_BG_2}/>
+                        </LazyLoad>
+                     </div>
+                     <div className="slide">
+                        <LazyLoad className="lazyLoad">
+                           <img alt="Myth-des link" src={websiteD_BG_3}/>
+                        </LazyLoad>
+                     </div>
+                  </Slider>
+               </div>
             </div>
+
 
             <section>
                <div className="infoContainer">

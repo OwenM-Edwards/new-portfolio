@@ -228,7 +228,6 @@ const Projects = ({enterDirection}) => {
       >
          <ReactTooltip />
          <div onClick={()=>handleExitStyle('left')} className="link link-a" ><p>Home</p></div>
-         
             <div className="contentContainer">
                <div className="headerContainer">
                   <LinksContainer/>
@@ -246,13 +245,8 @@ const Projects = ({enterDirection}) => {
                      setDisplayProject={setDisplayProject}
                   />
                </div>
-
             </div>
-        
-         
-
          <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>
-      
       </Wrapper>
    )
 }
