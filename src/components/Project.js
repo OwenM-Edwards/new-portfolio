@@ -383,12 +383,12 @@ const Project = ({displayProject}) => {
                      Full disclosure; this is my fathers company!
                      <br/>
 
-                     They were in serious need of a website redesign, and I was happy to oblige. This was the first live project I made that made use of SASS. The site features a mobile-first responsive design, a service map powered by Google Maps, and automatically pulls and sorts gallery images using the Cloudinary API.
+                     They were in serious need of a website redesign, and I was happy to oblige. This was the first live project I made that made use of SCSS. The site features a mobile-first responsive design, a service map powered by Google Maps, and automatically pulls and sorts gallery images using the Cloudinary API.
                   </p>
 
                   <ul>
                      <li>JavaScript</li>
-                     <li>CSS</li>
+                     <li>SCSS</li>
                      <li>Cloudinary API</li>
                      <li>Google Maps API</li>
                   </ul>
@@ -430,7 +430,7 @@ const Project = ({displayProject}) => {
             <section>
                <div className="infoContainer">
                   <p>
-                     Myth-Des is a fictional design company I created to help hone my CSS and SASS skills. I also used it to experiment with CSS animations, creating a sleek landing page and header animations.
+                     Myth-Des is a fictional design company I created to help hone my CSS and SCSS skills. I also used it to experiment with CSS animations, creating a sleek landing page and header animations.
                      <br/>
  
                      It showcases art projects from around Nottingham and some of the fictional brands that they work with.
@@ -438,7 +438,7 @@ const Project = ({displayProject}) => {
 
                   <ul>
                      <li>JavaScript</li>
-                     <li>CSS / SASS</li>
+                     <li>CSS / SCSS</li>
                      <li>HTML</li>
                   </ul>
                </div>
