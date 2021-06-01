@@ -277,7 +277,7 @@ const Main = ({setEnterDirection}) => {
       
       <div className="linkContainer">
         <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
-        <div className="link link-a" onClick={()=>handleContactsLink()}>About/Contact</div>
+        <div className="link link-a" onClick={()=>handleContactsLink()}>Contact</div>
       </div>
       
     </Wrapper>
