@@ -245,7 +245,7 @@ const Projects = ({enterDirection}) => {
                   />
                </div>
             </div>
-         <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>About/Contact</p></div>
+         <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>
       </Wrapper>
    )
 }
