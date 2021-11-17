@@ -209,7 +209,7 @@ const ContactForm = () => {
                 </form>
 
 
-                <h3>...or give me a call. <span>@ </span>+44 7392540684</h3>
+                <h3>...or give me a call. <span>@ </span>+44 7468966914</h3>
                 <h3>...or email me. <span>@ </span>owenhedwards@gmail.com</h3>
             </Fade>
         </Wrapper>     

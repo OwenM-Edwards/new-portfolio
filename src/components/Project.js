@@ -269,7 +269,7 @@ const Project = ({displayProject}) => {
             <section>
                <div className="infoContainer">
                   <p>
-                  Student psychiatry was initially designed to help students securely organise online events during Covid lockdown. 
+                     Student psychiatry was initially designed to help students securely organise online events during Covid lockdown. 
                      <br/>
                      
                      Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.
