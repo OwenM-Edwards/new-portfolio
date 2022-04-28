@@ -61,7 +61,7 @@ const Wrapper = styled(motion.div)`
 
          & h1 {
             color:white;
-            font-size:3.9rem;
+            font-size:3.0rem;
             padding:40px;
             margin:0 auto;
             text-align:center;  
@@ -185,7 +185,7 @@ const Contact = ({setEnterDirection}) => {
          <div className="contentContainer">
             <div className="headerContainer">
                <LinksContainer/>
-               <Fade top><h1>Contact me</h1></Fade>
+               <h1>Contact me</h1>
             </div>
             <ContactForm/>
          </div>

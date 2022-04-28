@@ -68,7 +68,7 @@ const Wrapper = styled(motion.div)`
          }
          & h1 {
             color:white;
-            font-size:3.9rem;
+            font-size:3.0rem;
             padding:40px;
             margin:0 auto;
             text-align:center;
@@ -230,19 +230,19 @@ const Projects = ({enterDirection}) => {
             <div className="contentContainer">
                <div className="headerContainer">
                   <LinksContainer/>
-                  <Fade top><h1>Some of my projects</h1></Fade>
+                  <h1>Some of my projects</h1>
                </div>
 
                <div className="projectsContainer">
-                  <Project 
+                  {/* <Project 
                      displayProject={displayProject} 
                      projectsDirection={projectsDirection}
-                  />
-                  <ProjectsNav 
+                  /> */}
+                  {/* <ProjectsNav 
                      handleProjectsSwitch={handleProjectsSwitch}
                      displayProject={displayProject} 
                      setDisplayProject={setDisplayProject}
-                  />
+                  /> */}
                </div>
             </div>
          <div onClick={()=>handleExitStyle('right')} className="link link-b" ><p>Contact</p></div>

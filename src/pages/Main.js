@@ -18,6 +18,7 @@ import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import LazyLoad from 'react-lazyload';
+import profilePic from '../img/profile.png'
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -47,7 +48,7 @@ const Wrapper = styled(motion.div)`
     flex-grow:1;
     display:flex;
     flex-direction:column;
-    background-color:#950d0f;
+    background-color:#F9A825;
     padding-bottom:50px;
     justify-content:center;
     align-items:center;
@@ -72,13 +73,15 @@ const Wrapper = styled(motion.div)`
 
     & h1 {
       color:white;
-      font-size:3.9rem;
+      font-size:3.0rem;
       padding:30px;
       width:auto;
       border-radius:0px 20px 20px 0;
       margin:0 auto;
       text-align:center;
       z-index:2;
+      position: relative;
+      top:2%;
       @media (max-width: 700px) {
         font-size:2rem;
         padding:10px;
@@ -98,13 +101,15 @@ const Wrapper = styled(motion.div)`
       text-align:center;
       margin-top:auto;
       padding:10px;
-      font-size:2.5rem;
+      font-size:2.3rem;
       border-radius:0 20px 0px 0px;
       z-index:2;
       @media (max-width: 700px) {
         font-size:1.6rem;
       }
     }
+
+
 
 
     & .arrowContainer {
@@ -116,7 +121,7 @@ const Wrapper = styled(motion.div)`
       align-items:flex-end;
       margin-left:auto;
       position: relative;
-      top:0%;
+      top:5%;
       @media (max-width: 700px) {
         top:0%;
       }
@@ -141,10 +146,10 @@ const Wrapper = styled(motion.div)`
 
 
     & .techContainer {
-      width:90%;
+      width:60%;
       display:flex;
       flex-wrap:wrap;
-      height:25%;
+      height:15%;
       z-index:2;
       border-radius:0 0 20px 0px;
       padding:20px;
@@ -216,6 +221,19 @@ const Wrapper = styled(motion.div)`
   }
 `
 
+const ProfileImgContainer = styled.div`
+  width:300px;
+  height:300px;
+  z-index:9000;
+  position:relative;
+  top:10%;
+  & img {
+    width:100%;
+    height:100%;
+  }
+
+`
+
 const Main = ({setEnterDirection}) => {
   const history = useHistory();
 
@@ -251,14 +269,19 @@ const Main = ({setEnterDirection}) => {
       <LinksContainer/>
       
       <div className="contentContainer">
-      <HeadShake delay={1200}>
+        <Fade top><h1>Hello, my name is <span>Test</span>. I'm a web developer.</h1></Fade> 
+
+        <HeadShake delay={2000} >
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
             <img alt="arrow" className="arrow" src={arrow}/>
           </div>
         </HeadShake> 
 
-        <Fade top><h1>Hello, my name is <span>Owen Edwards</span>. I'm a web developer.</h1></Fade> 
+        <ProfileImgContainer>
+          <img alt="test" src={profilePic}/>
+        </ProfileImgContainer>
+    
         
         <Fade bottom>
           <h2>Some of the technologies I use...</h2>

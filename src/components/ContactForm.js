@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 
     & h2 {
         color:white;
-        font-size:2rem;
+        font-size:2.3rem;
         @media (max-width: 700px) {
             font-size:1rem;
         }
