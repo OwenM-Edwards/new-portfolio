@@ -9,9 +9,9 @@ import Fade from 'react-reveal/Fade';
 init("user_nHGPz9w6KzGj4lW3nq4MZ");
 
 const Wrapper = styled.div`
-    width:98%;
+    width:100%;
     flex-grow:1;
-    background-color:#1d1d1d;
+    background-color:${props => props.theme.offBlack};
     z-index:2;
     border-radius:0 0 10px 10px;
     display:flex;
@@ -20,9 +20,9 @@ const Wrapper = styled.div`
     align-items:center;
     padding-bottom:20px;
     text-align:center;
-    max-width:1400px;
+    /* max-width:1400px; */
     
-    @media (max-width: 700px) {
+    @media (max-width: 700px), (max-height:700px) {
         padding:5px;
         text-align:center;
     }
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
     & h2 {
         color:white;
         font-size:2.3rem;
-        @media (max-width: 700px) {
+        @media (max-width: 700px), (max-height:700px) {
             font-size:1rem;
         }
     }
@@ -40,7 +40,7 @@ const Wrapper = styled.div`
         & span {
             color:#ff4338;
         }
-        @media (max-width: 700px) {
+        @media (max-width: 700px), (max-height:700px) {
             font-size:1rem;
         }
     }
@@ -54,7 +54,8 @@ const Wrapper = styled.div`
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         padding:20px;
         text-align:start;
-        @media (max-width: 700px) {
+        background-color:${props => props.theme.secondaryColorHover};
+        @media (max-width: 700px), (max-height:700px) {
             width:98%;
             padding:0px;
         }
@@ -63,7 +64,7 @@ const Wrapper = styled.div`
             font-size:1.2rem;
             margin-bottom:2px;
             padding:5px;
-            @media (max-width: 700px) {
+            @media (max-width: 700px), (max-height:700px) {
                 display:none;
             }
             @media (max-height: 850px) {
@@ -74,7 +75,7 @@ const Wrapper = styled.div`
             color:white;
             margin-bottom:50px;
             padding:5px;
-            @media (max-width: 700px) {
+            @media (max-width: 700px), (max-height:700px) {
                 margin-bottom:10px;
             }
         }
@@ -84,7 +85,7 @@ const Wrapper = styled.div`
             margin-bottom:5px;
             font-size:1.2rem;
             border:0;
-            @media (max-width: 700px) {
+            @media (max-width: 700px), (max-height:700px) {
                 padding:10px;
                 font-size:0.8rem;
             }
@@ -95,7 +96,7 @@ const Wrapper = styled.div`
             margin-bottom:5px; 
             font-size:1.2rem;
             border:0;
-            @media (max-width: 700px) {
+            @media (max-width: 700px), (max-height:700px) {
                 padding:10px;
                 font-size:0.8rem;
             }
@@ -114,7 +115,7 @@ const Wrapper = styled.div`
             justify-content:center;
             align-items:center;
             font-size:1.3rem;
-            @media (max-width: 700px) {
+            @media (max-width: 700px), (max-height:700px) {
                 width:100%;
             }
             

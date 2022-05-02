@@ -11,11 +11,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useWindowDimensions} from './hooks/index';
 import ReactTooltip from 'react-tooltip';
+import { theme } from './styled/styles';
 
 
 const Wrapper = styled.div`
   max-width:100vw;
-  height:${props => props.theme.height};
+  height:${props => props.height};
   margin:0 auto;
   overflow:hidden;
   position: relative;
@@ -30,29 +31,28 @@ const App = () => {
   const location = useLocation();
   const [enterDirection, setEnterDirection] = useState(false);
   const { height } = useWindowDimensions();
+  const heightpx = `${height}px`;
 
-  const theme = {
-    height: `${height}px`
-  }
+  const globalSlideAnimationDuration = 0.9;
   
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} >
       <ReactTooltip />
-      <Wrapper>
+      <Wrapper height={heightpx}>
           <div className="backgroundImage"></div>
           <ToastContainer />
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/main">
-                  <Main setEnterDirection={setEnterDirection}/>
+                  <Main globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">
-                  <Projects enterDirection={enterDirection}/>
+                  <Projects globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection}/>
               </Route>
 
               <Route path="/contact">
-                  <Contact setEnterDirection={setEnterDirection}/>
+                  <Contact globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route exact path="/">

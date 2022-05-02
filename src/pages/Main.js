@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, {useState} from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import {useHistory} from 'react-router-dom';
@@ -10,7 +10,6 @@ import reactIcon from '../img/react.svg';
 import sassIcon from '../img/sass.svg';
 import wixIcon from '../img/wix.svg';
 import postgresIcon from '../img/postgres.svg';
-import noiseBG from '../img/noise.png';
 import arrow from '../img/arrow.png';
 import Fade from 'react-reveal/Fade';
 import HeadShake from 'react-reveal/HeadShake';
@@ -19,60 +18,27 @@ import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import LazyLoad from 'react-lazyload';
 import profilePic from '../img/profile.png'
+import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
 
-const grain = keyframes`
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 35%) }
-  90% { transform:translate(-10%, 10%) }
-`
 
-const Wrapper = styled(motion.div)`
-  width:100%;
-  margin:0 auto;
-  height:100%;
-  display:flex;
-  flex-direction:row;
-  justify-content:center;
-  position: absolute;
 
+
+
+
+
+const Wrapper = styled(WrapperSrc)`
+  overflow:hidden;
+  
   & .contentContainer {
-    height:100%;
-    width:100%;
-    flex-grow:1;
-    display:flex;
-    flex-direction:column;
-    background-color:#F9A825;
-    padding-bottom:50px;
-    justify-content:center;
-    align-items:center;
+
 
     @media (max-width: 700px) {
       padding-bottom:50px;
     }
-    
-    &:after {
-      content: "";
-      background-image:url(${noiseBG});
-      height: 300%;
-      width: 300%;
-
-      position: fixed;
-      top: -100%;
-      left: -50%;
-      animation: 8s ${grain} steps(10) infinite;
-      z-index:1;
-      opacity:0.5;
-    }
+  
 
     & h1 {
-      color:white;
+      color:${props => props.theme.primaryFontCol};
       font-size:3.0rem;
       padding:30px;
       width:auto;
@@ -81,7 +47,7 @@ const Wrapper = styled(motion.div)`
       text-align:center;
       z-index:2;
       position: relative;
-      top:2%;
+      top:8%;
       @media (max-width: 700px) {
         font-size:2rem;
         padding:10px;
@@ -96,20 +62,19 @@ const Wrapper = styled(motion.div)`
       text-shadow: 1px 1px #ff4338;
     }
     & h2 {
-      color:white;
+      color:${props => props.theme.primaryFontCol};
       width:100%;
       text-align:center;
       margin-top:auto;
-      padding:10px;
       font-size:2.3rem;
       border-radius:0 20px 0px 0px;
       z-index:2;
+      position:relative;
+      bottom:6%;
       @media (max-width: 700px) {
         font-size:1.6rem;
       }
     }
-
-
 
 
     & .arrowContainer {
@@ -146,14 +111,16 @@ const Wrapper = styled(motion.div)`
 
 
     & .techContainer {
-      width:60%;
+      width:80%;
       display:flex;
       flex-wrap:wrap;
-      height:15%;
+      height:20%;
       z-index:2;
       border-radius:0 0 20px 0px;
-      padding:20px;
-      max-width:900px;
+      padding:0 20px 20px 20px;
+      max-width:1000px;
+      position:relative;
+      bottom:3%;
       @media (max-width: 700px) {
         width:100%;
         padding:10px;
@@ -170,53 +137,9 @@ const Wrapper = styled(motion.div)`
     }
   }
 
-
   & .linkContainer {
-    display:flex;
-    width:10%;
-    height:100%;
-    justify-content:flex-end;
-    max-width:120px;
-    z-index:3;
-    @media (max-width: 700px) {
-      width:20%;
-    }
-    & .link {
-      width:50%;
-      height:100%;
-      background-color:#ff4338;
+    & .link-b {
       writing-mode: vertical-rl;
-      text-orientation: mixed;
-      color:white;
-      text-align:center;
-      letter-spacing:25px;
-      text-decoration:none;
-      cursor: pointer;
-      -webkit-touch-callout: none; 
-      -webkit-user-select: none; 
-      -khtml-user-select: none; 
-      -moz-user-select: none;
-      -ms-user-select: none; 
-      user-select: none;
-      opacity:1;
-      font-size:1.2rem;
-      padding:5px;
-      padding-right:10px;
-      transition:background-color 0.2s ease-in-out;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:0px 0px 0 5px;
-      &:hover {
-        background-color:#fc5a51;
-      }
-      @media (max-width: 700px) {
-        font-size:0.8rem;
-      }
-    }
-    & .link-a {
-      border-left:3px solid #950d0f;
     }
   }
 `
@@ -231,12 +154,10 @@ const ProfileImgContainer = styled.div`
     width:100%;
     height:100%;
   }
-
 `
 
-const Main = ({setEnterDirection}) => {
+const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
   const history = useHistory();
-
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       history.push('/projects')
@@ -253,6 +174,10 @@ const Main = ({setEnterDirection}) => {
     history.push('/contact')
   }
 
+
+
+
+
   return(
     
     <Wrapper
@@ -261,10 +186,11 @@ const Main = ({setEnterDirection}) => {
       animate={{x: 0}}
       exit={{x: `-100vw` }}
       transition={{
-        x: { type: "easeInOut", stiffness: 300, damping: 30 },
+        x: { type: "easeInOut", stiffness: 300, damping: 30, duration:globalSlideAnimationDuration },
         opacity: { duration: 1 }
       }}
     >
+      <BgNoiseSrc></BgNoiseSrc>
       <ReactTooltip />
       <LinksContainer/>
       
@@ -279,7 +205,7 @@ const Main = ({setEnterDirection}) => {
         </HeadShake> 
 
         <ProfileImgContainer>
-          <img alt="test" src={profilePic}/>
+          <img class="testing" alt="test" src={profilePic}/>
         </ProfileImgContainer>
     
         
@@ -299,8 +225,8 @@ const Main = ({setEnterDirection}) => {
       </div>
       
       <div className="linkContainer">
-        <div className="link" onClick={()=>handleProjectsLink()}>Projects</div>
-        <div className="link link-a" onClick={()=>handleContactsLink()}>Contact</div>
+        <div className="projectLink link link-b-main" onClick={()=>handleProjectsLink()}>Projects</div>
+        <div className="projectLink link link-a-main" onClick={()=>handleContactsLink()}>Contact</div>
       </div>
       
     </Wrapper>
