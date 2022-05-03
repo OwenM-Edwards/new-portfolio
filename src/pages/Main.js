@@ -186,7 +186,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
       animate={{x: 0}}
       exit={{x: `-100vw` }}
       transition={{
-        x: { type: "easeInOut", stiffness: 300, damping: 30, duration:globalSlideAnimationDuration },
+        x: { type: "easeInOut", duration:globalSlideAnimationDuration },
         opacity: { duration: 1 }
       }}
     >

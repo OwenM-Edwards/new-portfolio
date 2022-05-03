@@ -1,9 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, Suspense, lazy} from 'react';
 import { AnimatePresence } from "framer-motion"
 import {
   Route,
   Switch,
   useLocation,
+  Redirect,
 } from "react-router-dom";
 import styled, {ThemeProvider} from "styled-components";
 import { Main, Projects, Contact } from './pages/index';
@@ -35,6 +36,7 @@ const App = () => {
 
   const globalSlideAnimationDuration = 0.9;
   
+  
   return (
     <ThemeProvider theme={theme} >
       <ReactTooltip />
@@ -56,7 +58,7 @@ const App = () => {
               </Route>
 
               <Route exact path="/">
-                <Main setEnterDirection={setEnterDirection}/>
+                {<Redirect to="/main" />}
               </Route>
             </Switch>
           </AnimatePresence>

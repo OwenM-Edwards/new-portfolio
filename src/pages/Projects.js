@@ -1,13 +1,15 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect, Suspense, lazy }  from 'react';
 import styled, {keyframes} from "styled-components";
 import { motion } from "framer-motion"
 import {useHistory} from 'react-router-dom';
-import { Project, ProjectsNav } from '../components/index';
+import { ProjectsNav } from '../components/index';
 import Fade from 'react-reveal/Fade';
 import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
+
+const Project = React.lazy(() => import('../components/Project'));
 
 
 const Wrapper = styled(WrapperSrc)`
@@ -103,7 +105,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration}) => {
          animate={{x: 0}}
          exit={direction ? { x: `+100vw` } : { x: `-100vw`  }}
          transition={{
-            x: { type: "easeInOut", stiffness: 300, damping: 30, duration:globalSlideAnimationDuration }
+            x: { type: "easeInOut", duration:globalSlideAnimationDuration }
          }}
       >
          <BgNoiseSrc></BgNoiseSrc>
@@ -116,11 +118,13 @@ const Projects = ({enterDirection, globalSlideAnimationDuration}) => {
                </div>
 
                <div className="projectsContainer">
-                  <Project 
-                     displayProject={displayProject} 
-                     projectsDirection={projectsDirection}
-                  />
-                   <ProjectsNav 
+                  <Suspense fallback={<div>Loading...</div>}>
+                     <Project 
+                        displayProject={displayProject} 
+                        projectsDirection={projectsDirection}
+                     />
+                  </Suspense>
+                  <ProjectsNav 
                      handleProjectsSwitch={handleProjectsSwitch}
                      displayProject={displayProject} 
                      setDisplayProject={setDisplayProject}

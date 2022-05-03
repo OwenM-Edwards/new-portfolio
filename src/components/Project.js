@@ -1,9 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-import websiteA_BG from  "../img/website-a.jpg";
-import websiteA_BG_2 from  "../img/website-a-2.png";
-import websiteA_BG_3 from  "../img/website-a-3.png";
+
 import websiteB_BG from  "../img/website-b.jpg";
 import websiteB_BG_2 from  "../img/website-b-2.png";
 import websiteB_BG_3 from  "../img/website-b-3.png";
@@ -18,6 +16,7 @@ import LazyLoad from 'react-lazyload';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import projectInfo from '../portfolio projects/projects';
 
 const Wrapper = styled(motion.div)`
    width:90%;
@@ -228,7 +227,7 @@ const Wrapper = styled(motion.div)`
 
 
 const Project = ({displayProject}) => {
-
+   const [projectHtml, setProjectHtml] = useState(false);
    var settings = {
       dots: true,
       infinite: true,
@@ -237,34 +236,71 @@ const Project = ({displayProject}) => {
       slidesToScroll: 1,
    };
 
+   console.log('TEEEEEEEEEEEEEST');
+
+
+
+   const buildProjects = () => {
+
+      projectInfo.forEach(project => {
+         console.log(project)
+         setProjectHtml(
+            <div className="project">
+               <Fade delay={300}> 
+                  <h2>{project.title}</h2>
+   
+                  <div className="imageWrapper">
+                     <div className="imageContainer">
+                        <Slider {...settings}>
+                           {
+                              project.images.forEach(image => {
+                                 <div className="slide">
+                                    <LazyLoad>
+                                       <img alt="Student Psychiatry" src={image}/>
+                                    </LazyLoad>
+                                 </div>
+                              })
+                           }
+                        </Slider>
+                     </div>
+                  </div>
+   
+   
+                  <section>
+                     <div className="infoContainer">
+                        <p>
+                           {project.info}
+                        </p>
+   
+                        <ul>
+                           <li>React.js</li>
+                           <li>Redux</li>
+                           <li>Node.js</li>
+                           <li>Express</li>
+                           <li>PostgreSQL</li>
+                        </ul>
+                     </div>
+   
+                     <div className="buttonContainer">
+                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        <a className="button" target="blank" href={project.demoLink}>View site</a>
+                     </div>
+                  </section>
+               </Fade>
+            </div>
+         )
+      });
+   }
+   if(!projectHtml){
+      buildProjects();
+   }
+   
+   
+
 
    const projects = [
       <div className="project">
          <Fade delay={300}> 
-            <h2>Student Psychiatry</h2>
-
-            <div className="imageWrapper">
-               <div className="imageContainer">
-                  <Slider {...settings}>
-                     <div className="slide">
-                        <LazyLoad>
-                           <img alt="Student Psychiatry" src={websiteA_BG}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad>
-                           <img alt="Student Psychiatry" src={websiteA_BG_2}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad>
-                           <img alt="Student Psychiatry" src={websiteA_BG_3}/>
-                        </LazyLoad>
-
-                     </div>
-                  </Slider>
-               </div>
-            </div>
 
             <section>
                <div className="infoContainer">
