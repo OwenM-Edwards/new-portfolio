@@ -1,16 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-
-import websiteB_BG from  "../img/website-b.jpg";
-import websiteB_BG_2 from  "../img/website-b-2.png";
-import websiteB_BG_3 from  "../img/website-b-3.png";
-import websiteC_BG from  "../img/website-c.jpg";
-import websiteC_BG_2 from  "../img/website-c-2.png";
-import websiteC_BG_3 from  "../img/website-c-3.png";
-import websiteD_BG from  "../img/website-d.jpg";
-import websiteD_BG_2 from  "../img/website-d-2.png";
-import websiteD_BG_3 from  "../img/website-d-3.png";
 import Fade from 'react-reveal/Fade';
 import LazyLoad from 'react-lazyload';
 import "slick-carousel/slick/slick.css";
@@ -236,15 +226,11 @@ const Project = ({displayProject}) => {
       slidesToScroll: 1,
    };
 
-   console.log('TEEEEEEEEEEEEEST');
-
-
+   
 
    const buildProjects = () => {
-
       projectInfo.forEach(project => {
-         console.log(project)
-         setProjectHtml(
+         setProjectHtml([...projectHtml,
             <div className="project">
                <Fade delay={300}> 
                   <h2>{project.title}</h2>
@@ -288,204 +274,16 @@ const Project = ({displayProject}) => {
                   </section>
                </Fade>
             </div>
-         )
+         ])
+         
       });
    }
    if(!projectHtml){
       buildProjects();
    }
+   console.log(projectHtml)
    
-   
 
-
-   const projects = [
-      <div className="project">
-         <Fade delay={300}> 
-
-            <section>
-               <div className="infoContainer">
-                  <p>
-                     Student psychiatry was initially designed to help students securely organise online events during Covid lockdown. 
-                     <br/>
-                     
-                     Event organisers must register using an approved email domain to add their own events. Each event has public links, for anyone to view, and private links which can only be viewed by registered users. This helps organiser protect their open event links.
-                     <br/>
- 
-                     The Node.JS server handles user sessions with express session, this was the first time I used this technology and it taught me a lot. Mention sequelize too.
-                  </p>
-
-                  <ul>
-                     <li>React.js</li>
-                     <li>Redux</li>
-                     <li>Node.js</li>
-                     <li>Express</li>
-                     <li>PostgreSQL</li>
-                  </ul>
-               </div>
-
-               <div className="buttonContainer">
-                  <a className="button" target="blank" href="https://github.com/OwenM-Edwards/student-psych-frontend">Github</a>
-                  <a className="button" target="blank" href="https://www.studentpsychiatry.co.uk/calendar/5/2021">View site</a>
-               </div>
-            </section>
-         </Fade>
-      </div>,
-   
-      <div className="project">
-         <Fade delay={300}>
-            <h2>Community NPC Generator</h2>
-
-            <div className="imageWrapper">
-               <div className="imageContainer">
-                  <Slider {...settings}>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="RPG Generator"src={websiteB_BG}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad>
-                           <img alt="RPG Generator" src={websiteB_BG_2}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad>
-                           <img alt="RPG Generator" src={websiteB_BG_3}/>
-                        </LazyLoad>
-                     </div>
-                  </Slider>
-               </div>
-            </div>
-
-            <section>
-               <div className="infoContainer">
-                  <p>
-                     The Community NPC Gen is a random character creator for us in tabletop games.
-                     <br/ >                                                                           
-                     An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use.
-                     <br/>
- 
-                     This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-
-                  </p>
-
-                  <ul>
-                     <li>React.js</li>
-                     <li>Redux</li>
-                     <li>Node.js</li>
-                     <li>Express Session</li>
-                     <li>PostgreSQL</li>
-                     <li>Cloudinary API</li>
-                  </ul>
-               </div>
-
-               <div className="buttonContainer">
-                  <a className="button" target="blank" href="https://github.com/OwenM-Edwards/The-Community-NPC-Generator-Front-End">Github</a>
-                  <a className="button" target="blank" href="https://the-community-npc-generator-front-end.vercel.app/">View site</a>
-               </div>
-            </section>
-         </Fade>
-      </div>,
-   
-      <div className="project">
-         <Fade delay={300}>
-            <h2>Oakfield Photography</h2>
-
-            <div className="imageWrapper">
-               <div className="imageContainer">
-                  <Slider {...settings}>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Oakfield Photography" src={websiteC_BG}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Oakfield Photography" src={websiteC_BG_2}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Oakfield Photography" src={websiteC_BG_3}/>
-                        </LazyLoad>
-                     </div>
-                  </Slider>
-               </div>
-            </div>
-
-            <section>
-               <div className="infoContainer">
-                  <p>
-                     Full disclosure; this is my fathers company!
-                     <br/>
-
-                     They were in serious need of a website redesign, and I was happy to oblige. This was the first live project I made that made use of SCSS. The site features a mobile-first responsive design, a service map powered by Google Maps, and automatically pulls and sorts gallery images using the Cloudinary API.
-                  </p>
-
-                  <ul>
-                     <li>JavaScript</li>
-                     <li>SCSS</li>
-                     <li>Cloudinary API</li>
-                     <li>Google Maps API</li>
-                  </ul>
-               </div>
-               <div className="buttonContainer">
-                  <a className="button" target="blank" href="https://github.com/OwenM-Edwards/Oakfield-Photography">Github</a>
-                  <a className="button" target="blank" href="https://www.oakfield-photography.com/">View site</a>
-               </div>
-            </section>
-         </Fade>
-      </div>,
-   
-      <div className="project">
-         <Fade delay={300}>
-            <h2>Myth-Des</h2>
-
-            <div className="imageWrapper">
-               <div className="imageContainer">
-                  <Slider {...settings}>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des" src={websiteD_BG}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des" src={websiteD_BG_2}/>
-                        </LazyLoad>
-                     </div>
-                     <div className="slide">
-                        <LazyLoad className="lazyLoad">
-                           <img alt="Myth-des" src={websiteD_BG_3}/>
-                        </LazyLoad>
-                     </div>
-                  </Slider>
-               </div>
-            </div>
-
-            <section>
-               <div className="infoContainer">
-                  <p>
-                     Myth-Des is a fictional design company I created to help hone my CSS and SCSS skills. I also used it to experiment with CSS animations, creating a sleek landing page and header animations.
-                     <br/>
- 
-                     It showcases art projects from around Nottingham and some of the fictional brands that they work with.
-                  </p>
-
-                  <ul>
-                     <li>JavaScript</li>
-                     <li>CSS / SCSS</li>
-                     <li>HTML</li>
-                  </ul>
-               </div>
-               <div className="buttonContainer">
-                  <a className="button" target="blank" href="https://github.com/OwenM-Edwards/fic_design_comp">Github</a>
-                  <a className="button" target="blank" href="https://owenm-edwards.github.io/fic_design_comp/">View site</a>
-               </div> 
-            </section>
-         </Fade>
-      </div>,
-   ]
 
    return(
       <AnimatePresence initial={false}>
@@ -493,7 +291,8 @@ const Project = ({displayProject}) => {
             key={displayProject}
 
          >
-            {projects[displayProject]}
+            {projectHtml}
+            {/* {projects[displayProject]} */}
          </Wrapper>    
       </AnimatePresence>
    )
