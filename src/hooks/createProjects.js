@@ -20,17 +20,7 @@ export default function createProjects() {
 
               <div className="imageWrapper">
                  <div className="imageContainer">
-                    <Slider {...settings}>
-                       {
-                          project.images.forEach(image => {
-                             <div className="slide">
-                                <LazyLoad>
-                                   <img alt="Student Psychiatry" src={image}/>
-                                </LazyLoad>
-                             </div>
-                          })
-                       }
-                    </Slider>
+                    
                  </div>
               </div>
 

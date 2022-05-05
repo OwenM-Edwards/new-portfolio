@@ -11,6 +11,7 @@ const Project = React.lazy(() => import('../components/Project'));
 
 const Wrapper = styled(WrapperSrc)`
    z-index:9999;
+   
    & .contentContainer {
       padding:20px;
       margin:0 auto;
@@ -35,6 +36,7 @@ const Wrapper = styled(WrapperSrc)`
          display:flex;
          flex-direction:row;
          justify-content:space-between;
+         
          @media (max-width: 700px) {
             width:100%;
          }
