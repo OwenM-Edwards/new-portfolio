@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled from "styled-components";
 import { motion } from "framer-motion";
 import {useHistory} from 'react-router-dom';
 import htmlIcon from '../img/html5.svg';
@@ -18,24 +18,17 @@ import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import LazyLoad from 'react-lazyload';
 import profilePic from '../img/profile.png'
-import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
-
-
-
-
+import { WrapperSrc } from '../styled/styles';
 
 
 
 const Wrapper = styled(WrapperSrc)`
-  overflow:hidden;
+  z-index:9999;
   
   & .contentContainer {
-
-
     @media (max-width: 700px) {
       padding-bottom:50px;
     }
-  
 
     & h1 {
       color:${props => props.theme.primaryFontCol};
@@ -55,7 +48,6 @@ const Wrapper = styled(WrapperSrc)`
       @media (max-width: 300px) {
         font-size:1.8rem;
       }
-      
     }
     & span {
       color:#ff4338;
@@ -76,9 +68,7 @@ const Wrapper = styled(WrapperSrc)`
       }
     }
 
-
     & .arrowContainer {
-      /* background-color:blue; */
       display:flex;
       flex-direction:column;
       text-align:center;
@@ -86,7 +76,8 @@ const Wrapper = styled(WrapperSrc)`
       align-items:flex-end;
       margin-left:auto;
       position: relative;
-      top:5%;
+      top:15%;
+      right:40px;
       @media (max-width: 700px) {
         top:0%;
       }
@@ -108,7 +99,6 @@ const Wrapper = styled(WrapperSrc)`
         }
       }
     }
-
 
     & .techContainer {
       width:80%;
@@ -190,7 +180,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
         opacity: { duration: 1 }
       }}
     >
-      <BgNoiseSrc></BgNoiseSrc>
+      {/* <BgNoiseSrc></BgNoiseSrc> */}
       <ReactTooltip />
       <LinksContainer/>
       
@@ -205,7 +195,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
         </HeadShake> 
 
         <ProfileImgContainer>
-          <img class="testing" alt="test" src={profilePic}/>
+          <img className="testing" alt="test" src={profilePic}/>
         </ProfileImgContainer>
     
         

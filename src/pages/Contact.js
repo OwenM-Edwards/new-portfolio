@@ -1,17 +1,15 @@
 import React  from 'react';
 import styled, { keyframes } from "styled-components";
-import { motion } from "framer-motion"
 import {useHistory} from 'react-router-dom';
 import {ContactForm} from '../components/index';
 import {LinksContainer} from '../components/index';
-import Fade from 'react-reveal/Fade';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
-import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
+import { WrapperSrc} from '../styled/styles';
 
 
 const Wrapper = styled(WrapperSrc)`    
-overflow:hidden;
+   z-index:9999;
    & .contentContainer {
       padding:20px;
 
@@ -60,7 +58,6 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration}) => {
             x: { type: "easeInOut", duration:globalSlideAnimationDuration, }
          }}
       >
-         <BgNoiseSrc></BgNoiseSrc>
          <ReactTooltip />
          <div className="linkContainer">
             <div className="projectLink link link-a-contact" onClick={()=>handleMainClick()}>Home</div>

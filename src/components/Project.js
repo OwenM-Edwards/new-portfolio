@@ -1,12 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-import Fade from 'react-reveal/Fade';
-import LazyLoad from 'react-lazyload';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import projectInfo from '../portfolio projects/projects';
 
 const Wrapper = styled(motion.div)`
    width:90%;
@@ -216,8 +212,7 @@ const Wrapper = styled(motion.div)`
 
 
 
-const Project = ({displayProject}) => {
-   const [projectHtml, setProjectHtml] = useState(false);
+const Project = ({displayProject, projectHtml}) => {
    var settings = {
       dots: true,
       infinite: true,
@@ -226,73 +221,11 @@ const Project = ({displayProject}) => {
       slidesToScroll: 1,
    };
 
-   
-
-   const buildProjects = () => {
-      projectInfo.forEach(project => {
-         setProjectHtml([...projectHtml,
-            <div className="project">
-               <Fade delay={300}> 
-                  <h2>{project.title}</h2>
-   
-                  <div className="imageWrapper">
-                     <div className="imageContainer">
-                        <Slider {...settings}>
-                           {
-                              project.images.forEach(image => {
-                                 <div className="slide">
-                                    <LazyLoad>
-                                       <img alt="Student Psychiatry" src={image}/>
-                                    </LazyLoad>
-                                 </div>
-                              })
-                           }
-                        </Slider>
-                     </div>
-                  </div>
-   
-   
-                  <section>
-                     <div className="infoContainer">
-                        <p>
-                           {project.info}
-                        </p>
-   
-                        <ul>
-                           <li>React.js</li>
-                           <li>Redux</li>
-                           <li>Node.js</li>
-                           <li>Express</li>
-                           <li>PostgreSQL</li>
-                        </ul>
-                     </div>
-   
-                     <div className="buttonContainer">
-                        <a className="button" target="blank" href={project.githubLink}>Github</a>
-                        <a className="button" target="blank" href={project.demoLink}>View site</a>
-                     </div>
-                  </section>
-               </Fade>
-            </div>
-         ])
-         
-      });
-   }
-   if(!projectHtml){
-      buildProjects();
-   }
-   console.log(projectHtml)
-   
-
 
    return(
       <AnimatePresence initial={false}>
-         <Wrapper
-            key={displayProject}
-
-         >
-            {projectHtml}
-            {/* {projects[displayProject]} */}
+         <Wrapper>
+            {projectHtml[displayProject]}
          </Wrapper>    
       </AnimatePresence>
    )

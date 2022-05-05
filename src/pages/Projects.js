@@ -1,9 +1,7 @@
-import React, { useState, useEffect, Suspense, lazy }  from 'react';
-import styled, {keyframes} from "styled-components";
-import { motion } from "framer-motion"
+import React, { useState, useEffect, Suspense }  from 'react';
+import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
 import { ProjectsNav } from '../components/index';
-import Fade from 'react-reveal/Fade';
 import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
@@ -11,13 +9,11 @@ import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
 
 const Project = React.lazy(() => import('../components/Project'));
 
-
 const Wrapper = styled(WrapperSrc)`
-overflow:hidden;
+   z-index:9999;
    & .contentContainer {
-      padding:20px 90px;
+      padding:20px;
       margin:0 auto;
-
 
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
@@ -48,7 +44,7 @@ overflow:hidden;
 
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration}) => {
+const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
    const [[projectsDirection, displayProject], setDisplayProject] = useState([true,0])
@@ -108,7 +104,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration}) => {
             x: { type: "easeInOut", duration:globalSlideAnimationDuration }
          }}
       >
-         <BgNoiseSrc></BgNoiseSrc>
+         {/* <BgNoiseSrc></BgNoiseSrc> */}
          <ReactTooltip />
          <div onClick={()=>handleExitStyle('left')} className="projectLink projectLink-a" ><p>Home</p></div>
             <div className="contentContainer">
@@ -120,6 +116,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration}) => {
                <div className="projectsContainer">
                   <Suspense fallback={<div>Loading...</div>}>
                      <Project 
+                        projectHtml={projectHtml}
                         displayProject={displayProject} 
                         projectsDirection={projectsDirection}
                      />

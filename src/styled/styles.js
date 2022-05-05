@@ -28,12 +28,12 @@ const grain = keyframes`
 const BgNoiseSrc = styled.div`
    content: "";
    background-image:url(${noiseBG});
-   height: 300%;
-   width: 300%;
+   height: 200%;
+   width: 200%;
    position: fixed;
    top: -100%;
    left: -50%;
-   animation: 20s ${grain} steps(10) infinite;
+   animation: 10s ${grain} steps(10) infinite;
    z-index:1;
 `
 
@@ -53,7 +53,7 @@ const WrapperSrc = styled(motion.div)`
       flex-grow:1;
       display:flex;
       flex-direction:column;
-      background-color:${props => props.theme.primaryColor};
+      
       padding-bottom:50px;
       justify-content:center;
       align-items:center;
