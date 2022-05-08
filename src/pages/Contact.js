@@ -28,7 +28,7 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Contact = ({setEnterDirection, globalSlideAnimationDuration}) => {
+const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial}) => {
    const history = useHistory();
 
    const handlers = useSwipeable({
@@ -45,7 +45,8 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration}) => {
    }
 
    const handleMainClick = () => {
-      history.push('/main')
+      setMainInitial(true);
+      history.push('/main');
    }
 
    return(

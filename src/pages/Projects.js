@@ -73,7 +73,7 @@ const Wrapper = styled(WrapperSrc)`
 
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml}) => {
+const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml, setMainInitial}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
    const [displayProject, setDisplayProject] = useState(-1)
@@ -86,6 +86,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml}) =
         history.push('/contact')
       },
       onSwipedRight: () => {
+         setMainInitial(true);
          handleExitStyle('left')
          history.push('/main')
        },
@@ -134,9 +135,11 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml}) =
 
    const handleExitStyle = (exitDirection) => {
       if(exitDirection === 'left'){
+         
          setPage([true, true])
       }
       else {
+         setMainInitial(true);
          setPage([false, true])
       }
    }
