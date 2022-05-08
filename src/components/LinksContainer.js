@@ -2,7 +2,11 @@ import React  from 'react';
 import styled from "styled-components";
 // import linkedinIcon from  "../img/linkedin.png";
 import githubIcon from  "../img/github.png";
+import githubIconDark from  "../img/githubDark.png";
+import githubIconRed from  "../img/githubRed.png";
 import resumeIcon from  "../img/resume.png";
+import resumeIconDark from  "../img/resumeDark.png";
+import resumeIconRed from  "../img/resumeRed.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
 
 const Wrapper = styled.div`
@@ -42,8 +46,8 @@ const LinksContainer = () => {
 
    return (
       <Wrapper>
-         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon}/></a>
-         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={githubIcon}/></a>
+         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIconRed}/></a>
+         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={githubIconRed}/></a>
          {/* <img alt="Linkedin link"src={linkedinIcon}/> */}
       </Wrapper>
    )

@@ -10,7 +10,8 @@ const theme = {
    secondaryColorBorder: "#F9A825",
    secondaryColorHover: "#2e2d2d",
    primaryFontCol: "#1d1d1d",
-   popColor:"#950d0f",
+   popColor:"#ff4338",
+   // "#950d0f",
 }
 
 

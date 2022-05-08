@@ -61,7 +61,7 @@ const App = () => {
   const { height } = useWindowDimensions();
   const heightpx = `${height}px`;
   const globalSlideAnimationDuration = 0.9;
-
+  const [mainInitial, setMainInitial] = useState(true);
   
   
   return (
@@ -73,15 +73,15 @@ const App = () => {
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/main">
-                  <Main globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <Main mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">
-                  <Projects globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection}/>
+                  <Projects globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route path="/contact">
-                  <Contact globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <Contact globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route exact path="/">
