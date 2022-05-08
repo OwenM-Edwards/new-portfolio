@@ -36,7 +36,7 @@ const Wrapper = styled.div`
     }
     & h3 {
         color:white;
-        font-size:1.7rem;
+        font-size:1.9rem;
         & span {
             color:#ff4338;
         }

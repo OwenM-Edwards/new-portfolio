@@ -7,11 +7,13 @@ import CV from "../img/Owen_Edwards_CV.pdf";
 
 const Wrapper = styled.div`
    width:100%;
-   height:30px;
+   height:50px;
    display:flex;
    position: absolute;
    margin:10px 0 0 10px;
    z-index:5;
+   top:40px;
+   left:40px;
    
    @media (max-width: 700px) {
       display:none;
@@ -40,7 +42,7 @@ const LinksContainer = () => {
 
    return (
       <Wrapper>
-         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV!"  src={resumeIcon}/></a>
+         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon}/></a>
          <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={githubIcon}/></a>
          {/* <img alt="Linkedin link"src={linkedinIcon}/> */}
       </Wrapper>

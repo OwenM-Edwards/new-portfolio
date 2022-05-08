@@ -1,209 +1,191 @@
-import React from 'react';
-import styled from "styled-components";
+import React, { useState, useEffect } from 'react';
+import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import projectInfo from '../portfolio projects/projects';
+import closeIcon from '../img/close.png';
+
+const fadeIn = keyframes`
+   0% {
+     opacity:0;
+   }
+   40% {
+     opacity:0;
+   }
+   100% {
+     opacity:100%;
+   }
+`
+const rotateEnter = keyframes`
+   0% {
+      transform: rotate(0deg);
+   }
+   40% {
+      transform: rotate(105deg);
+   }
+   100% {
+      transform: rotate(90deg);
+   }
+`
+
+const rotateExit = keyframes`
+   0% {
+      transform: rotate(90deg);
+   }
+   40% {
+      transform: rotate(105deg);
+   }
+   100% {
+      transform: rotate(0deg);
+   }
+`
+
 
 const Wrapper = styled(motion.div)`
-   width:90%;
+   width:100%;
    height:100%;
    display:flex;
-   flex-direction:column;
-   position: absolute;
-   margin-left:10%;
-   z-index:2;
-   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);      
-   background-color:#1d1d1d;
+   flex-wrap:wrap;
    border-radius:0 0 10px ;
    padding:0 2px 5px 5px;
-   flex-grow:1;
+   position:absolute;
+   z-index:9999999999;
+   top:0;
+   left:0;
+   animation-name: ${props => props.modalAnimation};
+   animation-duration: 1s;
+   animation-iteration-count: 1;
+   overflow:hidden;
+   /* background: rgb(29 29 29) */
+   justify-content:center;
+
+
+   background-color: rgba(0, 0, 0, 1);
+
 
    @media (max-width: 700px) {
       width:100%;
       padding:0px;
       margin-left:0%;
       min-height:92%;
+   } 
+`
+
+const CloseIcon = styled.div`
+   width:50px;
+   height:50px;
+   position:absolute;
+   top:30px;
+   right:70px;
+   cursor:pointer;
+   z-index:9999999;
+   animation-name: ${rotateExit};
+   animation-duration: 0.5s;
+   animation-iteration-count: 1;
+   display:flex;
+   justify-content:center;
+   align-items:center;
+   align-content:center;
+   img {
+      width:100%;
+   }
+   &:hover {
+      animation-name: ${rotateEnter};
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+      -webkit-animation-fill-mode: forwards;
    }
 
-   & .project {
+
+`
+const ProjectWrapper = styled.div`
+   width:60%;
+   height:100%;
+   color:white;
+   display:flex;
+   flex-direction:column;
+   padding:0px 30px 0px 30px;
+   justify-content:center;
+   align-items:center;
+   position:relative;
+   animation-name: ${fadeIn};
+   animation-duration:2s;
+   animation-iteration-count: 1;
+   background-color:${props => props.theme.offBlack};
+
+
+   @media (max-width: 700px) {
+      padding:20px 0px 5px 0px;
+   }
+   
+   & .section1 {
       width:100%;
-      height:100%;
-      color:white;
+      height:10%;
+      padding:20px 20px 50px 20px;
+      text-align:center;
+      h2 {
+         font-size:2.3rem;
+      }
+   }
+
+   & .section2 {
+      width:100%;
+      height:60%;
       display:flex;
+      justify-content:center;
+      align-content:center;
+      align-items:center;
+      img {
+         max-width: 100%;
+         max-height: 500px;
+         object-fit:contain;
+         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      }
+      
+   }
+
+   & .section3 {
+      width:60%;
+      max-width:750px;
+      height:30%;
+      display:flex;
+      flex-wrap:wrap;
       flex-direction:column;
-      padding:0px 30px 0px 30px;
-      
-      @media (max-width: 700px) {
-         padding:20px 0px 5px 0px;
-      }
-      
-      & h2 {
-         text-align:center;
-         font-size:2rem;
-         height:auto;
-         -webkit-user-select: none; /* Safari */        
-         -moz-user-select: none; /* Firefox */
-         -ms-user-select: none; /* IE10+/Edge */
-         user-select: none; /* Standard */
-         @media (max-width: 700px) {
-            display:none;
-         }
-      }
-
-      & .imageWrapper {
+      & .infoContainer {
+         width:100%;
          height:50%;
-         width:100%;
-         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);   
-         padding:35px;
-         border-radius:10px;
-         
-         @media (max-width: 700px) {
-            height:auto;
-            margin-bottom:-0px;
-            padding:20px 25px 0 25px;
-            width:100%;
-         }
-      }
-      & .test {
-         display:none;
-      }
-      & .imageContainer {
-         height:100%;
-         width:100%;
-
-         & div {
-            height:100%;
-            width:auto;
-
-            & img {
-               height:100%;
-               width:100%;
-               object-fit:contain;
-               border-radius:10px;
-               margin:0 auto;   
-            }
-         }
       }
       
-      & section {
+      & .buttonContainer {
          width:100%;
-         height:42%;
+         height:50%;
          display:flex;
-         flex-direction:column;
-         border-radius:10px;
-         padding:20px 0 20px 0;
-
-         @media (max-width: 700px) {
-            flex-grow:1;
-            margin-bottom:-0px;
-            justify-content:space-between;
-            padding:0px 0 10px 0;
-         }
-
-         & .infoContainer {
+         padding-top:20px;
+         a {
+            border:0;
+            height:60px;
+            width:300px;
+            background-color:#ff4338;
+            border-radius:5px;
+            transition:all 0.5s;
+            cursor: pointer;
+            color:white;
             display:flex;
-            flex-direction:row;
-            min-height:95%;
-            width:100%;
             justify-content:center;
-            padding-right:20px;
-            @media (max-width: 700px) {
-               min-height:30%;
-               flex-direction:column;
+            align-items:center;
+            font-size:1.3rem;
+            text-decoration:none;
+            margin-right:20px;
+            @media (max-width: 700px), (max-height:700px) {
+                width:100%;
             }
-            & p {
-               font-size:1.1rem;
-               height:100%;
-               width:80%;
-               max-width:590px;
-               padding:5px;
-               overflow-y:scroll;
-               border-left:1px solid #950d0f;
-               border-right:1px solid #950d0f;
-               
-               @media (max-width: 700px) {
-                  font-size:1.1rem;
-                  padding:15px 15px 25px 15px;
-                  border:10px;
-                  margin:0 auto;
-                  width:100%;
-                  height:70%;
-               }
-               & br {
-                  margin-bottom:10px;
-               }
-            }
-            & ul {
-               width:auto;
-               position: relative;
-               top:15px;
-               left:20px;
-
-               @media (max-width: 700px) {
-                  display:flex;
-                  flex-direction:row;
-                  flex-wrap:wrap;
-                  left:25px;
-                  height:auto;
-                  width:100%;
-               }
-
-               & li {
-                  margin-right:5px;
-                  padding:0 8px 2px 7px;
-                  border-right:1px solid #950d0f;
-                  @media (max-width: 700px) {
-                     font-size:0.8rem;
-                     margin-right:10px;
-                  }
-               }
+            
+            &:hover {
+               background-color:#fc5a51;
             }
          }
 
-         & .buttonContainer {
-            display:flex;
-            flex-direction:row;
-            justify-content:center;
-            width:100%;
-            min-height:10%;
-            margin:10px auto 0 auto;
-            gap:30px;
-            padding:5px;
-            @media (max-width: 700px) {
-               height:20%;
-               padding:0px;
-               width:90%;
-               margin:0 auto 0 auto;
-               align-items:flex-end;
-            }
-
-            & .button {
-               border:0;
-               height:100%;
-               width:50%;
-               background-color:#ff4338;
-               border-radius:5px;
-               transition:all 0.5s;
-               cursor: pointer;
-               color:white;
-               display:flex;
-               justify-content:center;
-               align-items:center;
-               font-size:1.1rem;
-               text-decoration:none;
-               max-width:300px;
-               min-height:30px;
-
-               &:hover {
-                  background-color:#fc5a51;
-               }
-               @media (max-width: 700px) {
-                  font-size:0.9rem;
-                  padding:10px;
-                  max-height:30px;
-               }
-            }
-         }
       }
    }
 `
@@ -211,25 +193,65 @@ const Wrapper = styled(motion.div)`
 
 
 
+const Project = ({displayProject, modalAnimation, closeProjectModal}) => {
+   let projectHtml = false;
+   
 
-const Project = ({displayProject, projectHtml}) => {
-   var settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-   };
+   // Create full project modal
+   const createProjects = () => {
+      let key = 0;
+      let tempHtml = [];
+      projectInfo.forEach(project => {
+         tempHtml =  [...tempHtml,(
+            <ProjectWrapper   key={key}>
+                  <CloseIcon onClick={()=>closeProjectModal()}><img src={closeIcon}/></CloseIcon>
+                  <section className="section1">
+                     <h2>{project.title}</h2>
+                  </section>
+
+                  <section className="section2">
+               
+                        <img src={project.image}/>
+               
+                  </section>
+
+                  <section className="section3">
+                     <div className="infoContainer">
+                        <p>
+                           {project.info}
+                        </p>
+                     </div>
+
+                     <div className="buttonContainer">
+                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        <a className="button" target="blank" href={project.demoLink}>View site</a>
+                     </div>
+                  </section>
+            </ProjectWrapper>
+         )];
+         key++;
+      });
+      return tempHtml;
+   }
+   if(!projectHtml){
+      projectHtml = createProjects();
+   }
+
 
 
    return(
       <AnimatePresence initial={false}>
-         <Wrapper>
-            {projectHtml[displayProject]}
-         </Wrapper>    
+         {displayProject > -1
+            ?  <Wrapper modalAnimation={modalAnimation}>
+                  {projectHtml[displayProject]}
+               </Wrapper> 
+            : <></>
+         } 
       </AnimatePresence>
    )
 }
 
+
+   
 
 export default Project;

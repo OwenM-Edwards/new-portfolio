@@ -17,6 +17,8 @@ import {LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import LazyLoad from 'react-lazyload';
+import profilePicDark from '../img/profileDark.png'
+import profilePicRed from '../img/profileRed.png'
 import profilePic from '../img/profile.png'
 import { WrapperSrc } from '../styled/styles';
 
@@ -40,7 +42,7 @@ const Wrapper = styled(WrapperSrc)`
       text-align:center;
       z-index:2;
       position: relative;
-      top:8%;
+      top:2%;
       @media (max-width: 700px) {
         font-size:2rem;
         padding:10px;
@@ -76,7 +78,7 @@ const Wrapper = styled(WrapperSrc)`
       align-items:flex-end;
       margin-left:auto;
       position: relative;
-      top:15%;
+      top:50%;
       right:40px;
       @media (max-width: 700px) {
         top:0%;
@@ -135,11 +137,11 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 const ProfileImgContainer = styled.div`
-  width:300px;
-  height:300px;
+  width:350px;
+  height:350px;
   z-index:9000;
   position:relative;
-  top:10%;
+  top:-1%;
   & img {
     width:100%;
     height:100%;
@@ -185,7 +187,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
       <LinksContainer/>
       
       <div className="contentContainer">
-        <Fade top><h1>Hello, my name is <span>Test</span>. I'm a web developer.</h1></Fade> 
+        <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
 
         <HeadShake delay={2000} >
           <div className="arrowContainer">
@@ -195,11 +197,11 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
         </HeadShake> 
 
         <ProfileImgContainer>
-          <img className="testing" alt="test" src={profilePic}/>
+          <img className="testing" alt="test" src={profilePicDark}/>
         </ProfileImgContainer>
     
         
-        <Fade bottom>
+        {/* <Fade bottom>
           <h2>Some of the technologies I use...</h2>
           <div className="techContainer">
             <LazyLoad className="lazyload"><img alt="HTML5" data-tip="HTML5" src={htmlIcon}/></LazyLoad>
@@ -211,7 +213,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration}) => {
             <LazyLoad className="lazyload"><img alt="SASS" data-tip="SASS" src={sassIcon}/></LazyLoad>
             <LazyLoad className="lazyload"><img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/></LazyLoad>
           </div>
-        </Fade>
+        </Fade> */}
       </div>
       
       <div className="linkContainer">

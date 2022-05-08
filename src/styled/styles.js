@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
-import noiseBG from '../img/noise.png';
 
 const theme = {
    offBlack : "#1d1d1d",
@@ -11,31 +10,8 @@ const theme = {
    secondaryColorBorder: "#F9A825",
    secondaryColorHover: "#2e2d2d",
    primaryFontCol: "#1d1d1d",
+   popColor:"#950d0f",
 }
-
-const grain = keyframes`
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 35%) }
-  90% { transform:translate(-10%, 10%) }
-`
-const BgNoiseSrc = styled.div`
-   content: "";
-   background-image:url(${noiseBG});
-   height: 200%;
-   width: 200%;
-   position: fixed;
-   top: -100%;
-   left: -50%;
-   animation: 10s ${grain} steps(10) infinite;
-   z-index:1;
-`
 
 
 const WrapperSrc = styled(motion.div)`
@@ -58,18 +34,6 @@ const WrapperSrc = styled(motion.div)`
       justify-content:center;
       align-items:center;
 
-      /* &:after {
-         content: "";
-         background-image:url(${noiseBG});
-         height: 300%;
-         width: 300%;
-         position: fixed;
-         top: -100%;
-         left: -50%;
-         animation: 20s ${grain} steps(10) infinite;
-         z-index:1;
-
-      } */
 
 
       & .headerContainer {
@@ -77,7 +41,8 @@ const WrapperSrc = styled(motion.div)`
          background-color:#1d1d1d;
          border-radius:20px 20px 0px 0;
          z-index:3;
-         border-bottom:2px solid #950d0f;
+         border-bottom:2px solid ${props => props.theme.popColor};
+         position:relative;
 
          @media (max-width: 700px), (max-height:700px) {
             font-size:2rem;
@@ -147,10 +112,12 @@ const WrapperSrc = styled(motion.div)`
       transform:rotate(-180deg); 
       text-align:center;
       padding:0px 0px 0 5px;
+      border-radius:10px 0px 0 10px;
    }
    & .projectLink-b {
       writing-mode: vertical-rl;
       padding:0px 0px 0 5px;
+      border-radius:10px 0px 0 10px;
    }
 
    & .linkContainer {
@@ -181,9 +148,10 @@ const WrapperSrc = styled(motion.div)`
       & .link-a-main {
          width:50%;
          border-left:3px solid ${props => props.theme.secondaryColorBorder};
+         
       }
       & .link-b-main {
-         
+         border-radius:10px 0px 0 10px;
       }
       & .link-a-contact {
          width:50%;
@@ -192,9 +160,10 @@ const WrapperSrc = styled(motion.div)`
       }
       & .link-b-contact {
          transform:rotate(-180deg); 
+         border-radius:10px 0px 0 10px;
          
       }
    }
 `
 
-export { theme, WrapperSrc, BgNoiseSrc };
+export { theme, WrapperSrc };
