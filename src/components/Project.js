@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import projectInfo from '../portfolio projects/projects';
 import closeIcon from '../img/close.png';
+import arrowLeft from '../img/arrowBack.png';
+import arrowRight from '../img/arrowForward.png';
+import Fade from 'react-reveal/Fade';
 
 const fadeIn = keyframes`
    0% {
@@ -70,6 +73,41 @@ const Wrapper = styled(motion.div)`
       margin-left:0%;
       min-height:92%;
    } 
+`
+
+const LeftArrow = styled.div`
+   width:50px;
+   height:50px;
+   top:45%;
+   right:100%;
+   z-index:9999999;
+   position:absolute;
+   cursor:pointer;
+   transition:scale 0.2s ease-in-out;
+
+   &:hover {
+      scale:0.9;
+   }
+   & img {
+      width:100%;
+   }
+`
+const RightArrow = styled.div`
+   width:50px;
+   height:50px;
+   top:45%;
+   left:100%;
+   z-index:9999999;
+   position:absolute;
+   cursor:pointer;
+   transition:scale 0.2s ease-in-out;
+
+   &:hover {
+      scale:0.9;
+   }
+   & img {
+      width:100%;
+   }
 `
 
 const CloseIcon = styled.div`
@@ -193,8 +231,22 @@ const ProjectWrapper = styled.div`
 
 
 
-const Project = ({displayProject, modalAnimation, closeProjectModal}) => {
+const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayProject, totalProjects}) => {
    let projectHtml = false;
+
+   const updateDisplayProject = (e) => {
+      if(e > totalProjects) {
+         e = 0;
+         setDisplayProject(e);
+      }
+      else if(e < 0 ) {
+         e = totalProjects;
+         setDisplayProject(e);
+      }
+      else {
+         setDisplayProject(e);
+      }
+   }
    
 
    // Create full project modal
@@ -204,29 +256,32 @@ const Project = ({displayProject, modalAnimation, closeProjectModal}) => {
       projectInfo.forEach(project => {
          tempHtml =  [...tempHtml,(
             <ProjectWrapper   key={key}>
-                  <CloseIcon onClick={()=>closeProjectModal()}><img src={closeIcon}/></CloseIcon>
-                  <section className="section1">
-                     <h2>{project.title}</h2>
-                  </section>
-
-                  <section className="section2">
+               <CloseIcon onClick={()=>closeProjectModal()}><img src={closeIcon}/></CloseIcon>
+               <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeft}/></Fade></LeftArrow>
+               <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRight}/></Fade></RightArrow>
                
-                        <img src={project.image}/>
-               
-                  </section>
+               <section className="section1">
+                  <h2>{project.title}</h2>
+               </section>
 
-                  <section className="section3">
-                     <div className="infoContainer">
-                        <p>
-                           {project.info}
-                        </p>
-                     </div>
+               <section className="section2">
+            
+                     <img src={project.image}/>
+            
+               </section>
 
-                     <div className="buttonContainer">
-                        <a className="button" target="blank" href={project.githubLink}>Github</a>
-                        <a className="button" target="blank" href={project.demoLink}>View site</a>
-                     </div>
-                  </section>
+               <section className="section3">
+                  <div className="infoContainer">
+                     <p>
+                        {project.info}
+                     </p>
+                  </div>
+
+                  <div className="buttonContainer">
+                     <a className="button" target="blank" href={project.githubLink}>Github</a>
+                     <a className="button" target="blank" href={project.demoLink}>View site</a>
+                  </div>
+               </section>
             </ProjectWrapper>
          )];
          key++;

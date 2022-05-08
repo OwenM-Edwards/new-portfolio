@@ -171,7 +171,9 @@ const ContactForm = () => {
             }
             
             <Fade className="test" delay={300}>
-                <h2>You can send me a message...</h2>
+                <h2>You can email me. <span>@ </span>owenhedwards@gmail.com</h2>
+                <h3>...or give me a call. <span>@ </span>+44 7468966914</h3>
+                <h3>...or send me a message...</h3>
                 <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="subject">Subject</label>
                     <input 
@@ -208,10 +210,6 @@ const ContactForm = () => {
     
                     <input className="submitButton" type='submit' value='send'/>
                 </form>
-
-
-                <h3>...or give me a call. <span>@ </span>+44 7468966914</h3>
-                <h3>...or email me. <span>@ </span>owenhedwards@gmail.com</h3>
             </Fade>
         </Wrapper>     
     ) 

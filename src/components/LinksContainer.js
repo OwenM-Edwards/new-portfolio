@@ -9,6 +9,10 @@ import resumeIconDark from  "../img/resumeDark.png";
 import resumeIconRed from  "../img/resumeRed.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
 
+import { useLocation } from 'react-router-dom'
+
+
+
 const Wrapper = styled.div`
    width:100%;
    height:50px;
@@ -43,11 +47,15 @@ const Wrapper = styled.div`
    }
 `
 const LinksContainer = () => {
+   const location = useLocation();
+      
+      console.log(location.pathname);
+
 
    return (
       <Wrapper>
-         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIconRed}/></a>
-         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={githubIconRed}/></a>
+         <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={location.pathname === "/home" ? resumeIcon : resumeIconRed }/></a>
+         <a target="blank" href="https://github.com/OwenM-Edwards"><img alt="Github link" data-tip="My github profile." src={location.pathname === "/home" ? githubIcon : githubIconRed }/></a>
          {/* <img alt="Linkedin link"src={linkedinIcon}/> */}
       </Wrapper>
    )

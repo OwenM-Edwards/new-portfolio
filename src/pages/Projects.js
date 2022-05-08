@@ -72,11 +72,11 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-
 const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml, setMainInitial}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
-   const [displayProject, setDisplayProject] = useState(-1)
+   const [totalProjects, setTotalProjects] = useState();
+   const [displayProject, setDisplayProject] = useState(-1);
    const [modalAnimation, setModalAnimation] = useState(unfoldIn)
 
 
@@ -126,7 +126,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml, se
 
    if(exiting){
       if(direction){
-         history.push('/main')
+         history.push('/home')
       }
       else {
          history.push('/contact')
@@ -176,8 +176,10 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml, se
                      displayProject={displayProject} 
                      modalAnimation={modalAnimation}
                      closeProjectModal={closeProjectModal}
+                     setDisplayProject={setDisplayProject}
+                     totalProjects={totalProjects}
                   />
-                  <ProjectGrid openProjectModal={openProjectModal}/>
+                  <ProjectGrid openProjectModal={openProjectModal} setTotalProjects={setTotalProjects}/>
                </div>
             </div>
          <div onClick={()=>handleExitStyle('right')} className="projectLink projectLink-b" ><p>Contact</p></div>
