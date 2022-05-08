@@ -109,7 +109,7 @@ const Wrapper = styled(WrapperSrc)`
       align-items:flex-end;
       margin-left:auto;
       position: relative;
-      top:50%;
+      top:45%;
       right:40px;
       z-index:999999999;
       @media (max-width: 700px) {
@@ -176,6 +176,7 @@ const ProfileImgContainer = styled.div`
   z-index:9000;
   top:35%;
   position:absolute;
+  
   & .largeRing {
     position:absolute;
     width:100%;
@@ -188,6 +189,12 @@ const ProfileImgContainer = styled.div`
     animation-duration: 1s;
     animation-iteration-count: 1;
     transition:scale 0.2s easeInOut;
+    @media (min-width: 3000px) {
+      scale:8;
+    }
+    @media (min-width: 4000px) {
+      scale:20;
+    }
   }
 
   & .rotateRing {
@@ -245,7 +252,13 @@ const ProfileImgContainer = styled.div`
     scale:2;
     top:115%;
     left:30%;
-    display:none;
+    z-index:1;
+    cursor:pointer;
+  }
+  .outerRingBottom:hover ~ .skillContainer { 
+    .OtherContainer {
+      display:flex!important;
+    }    
   }
   & .profilePic {
     position:absolute;
@@ -350,20 +363,20 @@ const ProfileImgContainer = styled.div`
     
     .OtherContainer {
       position:absolute;
-      left:20%;
-      bottom:-20px;
+      left:21%;
+      bottom:5px;
       display:none;
+      div {
+        top:-40px;
+        left:50px;
+      }
       img {
-        width:45px;
-        height:45px;
+        width:35px;
+        height:35px;
         margin-right:10px;
-        &:nth-of-type(1){
-          position:relative;
-          bottom:30px;
-        }
-        &:nth-of-type(4){
-          position:relative;
-          bottom:30px;
+        &:nth-of-type(2){x;
+          width:30px;
+          height:30px;
         }
       }
     }
@@ -430,7 +443,6 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) =>
       }}
     >
       <ReactTooltip />
-      <LinksContainer/>
       
       <div className="contentContainer">
         <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
@@ -490,9 +502,8 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) =>
             </div>
 
             <div className="OtherContainer">
-              <Fade bottom>
-                <img src={wordpressIcon}/>
-                <img alt="WIX" data-tip="WIX" src={wixIcon}/>
+              <Fade top>
+                <LinksContainer/>
               </Fade>
             </div>
           </div>

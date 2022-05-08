@@ -46,7 +46,7 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
 
    const handleMainClick = () => {
       setMainInitial(true);
-      history.push('/main');
+      history.push('/home');
    }
 
    return(

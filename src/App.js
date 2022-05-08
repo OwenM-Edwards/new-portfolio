@@ -72,7 +72,7 @@ const App = () => {
           <ToastContainer />
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
-              <Route path="/main">
+              <Route path="/home">
                   <Main mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
@@ -85,7 +85,7 @@ const App = () => {
               </Route>
 
               <Route exact path="/">
-                {<Redirect to="/main" />}
+                {<Redirect to="/home" />}
               </Route>
             </Switch>
           </AnimatePresence>

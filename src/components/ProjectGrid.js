@@ -109,7 +109,7 @@ const ProjectWrapper = styled.div`
 
 
 
-const ProjectGrid = ({openProjectModal}) => {
+const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
    let projectGridHtml = false;
 
    // Create project grid
@@ -133,7 +133,7 @@ const ProjectGrid = ({openProjectModal}) => {
          )];
          key++;
       });
-      
+      setTotalProjects(key - 1)
       return tempHtml;
    }
    if(!projectGridHtml){
