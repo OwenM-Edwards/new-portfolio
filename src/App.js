@@ -58,7 +58,7 @@ const Wrapper = styled.div`
 const App = () => {
   const location = useLocation();
   const [enterDirection, setEnterDirection] = useState(false);
-  const { height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const heightpx = `${height}px`;
   const globalSlideAnimationDuration = 0.9;
   const [mainInitial, setMainInitial] = useState(true);
@@ -73,7 +73,7 @@ const App = () => {
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/home">
-                  <Main mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <Main width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">

@@ -89,7 +89,7 @@ const ProjectWrapper = styled.div`
       left:0;
       background-color:${props => props.theme.offBlack};
       opacity:0.2;
-      transition:opacity 0.2s;
+      transition:opacity 0.5s;
    }
    &:hover {
       .cover {

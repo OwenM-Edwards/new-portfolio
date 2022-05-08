@@ -127,7 +127,7 @@ const WrapperSrc = styled(motion.div)`
       height:100%;
       justify-content:flex-end;
       max-width:120px;
-      z-index:3;
+      z-index:9999999999;
       background-color:${props => props.theme.primaryColor};
       @media (max-width: 700px) {
          min-width:15%;

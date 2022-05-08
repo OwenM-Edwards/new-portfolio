@@ -35,6 +35,10 @@ import profilePicDark from '../img/profileDark.png'
 import profilePicRed from '../img/profileRed.png'
 import profilePic from '../img/profile.png'
 import { WrapperSrc } from '../styled/styles';
+import githubIcon from  "../img/github.png";
+import resumeIcon from  "../img/resume.png";
+import CV from "../img/Owen_Edwards_CV.pdf";
+import { useLocation } from 'react-router-dom'
 
 const expand = keyframes`
   0% {
@@ -176,6 +180,14 @@ const ProfileImgContainer = styled.div`
   z-index:9000;
   top:35%;
   position:absolute;
+  @media (min-width: 3000px) {
+    width:650px;
+    height:650px;
+  }
+  @media (min-width: 5000px) {
+    width:950px;
+    height:950px;
+  }
   
   & .largeRing {
     position:absolute;
@@ -184,16 +196,16 @@ const ProfileImgContainer = styled.div`
     border-radius:50%;
     border:90px solid ${props => props.theme.offBlack};
     scale:5;
-    z-index:-2;
+    z-index:-5;
     animation-name: ${expand};
     animation-duration: 1s;
     animation-iteration-count: 1;
     transition:scale 0.2s easeInOut;
     @media (min-width: 3000px) {
-      scale:8;
+      border:120px solid ${props => props.theme.offBlack};
     }
-    @media (min-width: 4000px) {
-      scale:20;
+    @media (min-width: 4200px) {
+      scale:6;
     }
   }
 
@@ -221,14 +233,12 @@ const ProfileImgContainer = styled.div`
     scale:2;
     top:28%;
     left:-27%;
-    z-index:1;
-    cursor:pointer
+    @media (min-width: 3000px) {
+      width:110px;
+      height:290px;
+    }
   }
-  .outerRingLeft:hover ~ .skillContainer { 
-    .CSSContainer {
-      display:flex!important;
-    }    
-  }
+
   & .outerRingRight {
     position:absolute;
     width:60px;
@@ -236,13 +246,10 @@ const ProfileImgContainer = styled.div`
     scale:2;
     top:28%;
     left:110%;
-    z-index:1;
-    cursor:pointer;
-  }
-  .outerRingRight:hover ~ .skillContainer { 
-    .jsContainer {
-      display:flex!important;
-    }    
+    @media (min-width: 3000px) {
+      width:110px;
+      height:290px;
+    }
   }
     
   & .outerRingBottom {
@@ -250,15 +257,12 @@ const ProfileImgContainer = styled.div`
     width:140px;
     height:50px;
     scale:2;
-    top:115%;
+    top:114%;
     left:30%;
-    z-index:1;
-    cursor:pointer;
-  }
-  .outerRingBottom:hover ~ .skillContainer { 
-    .OtherContainer {
-      display:flex!important;
-    }    
+    @media (min-width: 3000px) {
+      width:270px;
+      height:90px;
+    }
   }
   & .profilePic {
     position:absolute;
@@ -267,10 +271,10 @@ const ProfileImgContainer = styled.div`
   }
   & .ringArrow {
     position:relative;
-    bottom:19px;
+    bottom:17px;
     width:30px;
     height:30px;
-    left:45%;
+    left:46%;
     border-top:10px solid ${props => props.theme.offBlack};
     border-right:10px solid ${props => props.theme.offBlack};
     transform: rotate(-45deg);
@@ -363,9 +367,10 @@ const ProfileImgContainer = styled.div`
     
     .OtherContainer {
       position:absolute;
-      left:21%;
-      bottom:5px;
+      left:38%;
+      bottom:-1px;
       display:none;
+      align-items:center;
       div {
         top:-40px;
         left:50px;
@@ -374,22 +379,23 @@ const ProfileImgContainer = styled.div`
         width:35px;
         height:35px;
         margin-right:10px;
-        &:nth-of-type(2){x;
-          width:30px;
-          height:30px;
-        }
+      }
+      & .github {
+        width:32px;
+        height:32px;
       }
     }
     .show {
-      display:flex; 
+      display:flex!important; 
     }
   }
 `
 
 
-const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) => {
+const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
   console.log(mainInitial)
   const history = useHistory();
+  const location = useLocation();
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
@@ -411,6 +417,30 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) =>
     imgRotateRing.style.transform = `rotate(${angle}deg)`;  
   }
 
+  const addRevealListner = (e) => {
+    if(e.pageY >= (height / 2) + (height / 5)){
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+      document.querySelector('.OtherContainer').classList.add('show');
+    }
+    else if(e.pageX <= width / 2 ){
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.add('show');
+    }
+    else if(e.pageX >= width / 2 ){
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.add('show');
+    }
+    else {
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+    }
+    
+  }
+
   const handleProjectsLink = () => {
     setEnterDirection(true);
     window.removeEventListener("mousemove", addRotation);
@@ -425,8 +455,13 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) =>
   useEffect(() => {    
     window.addEventListener("mousemove", addRotation);
 
+    window.addEventListener("mousemove", addRevealListner);
+    
+
+
     return () => {
       window.removeEventListener("mousemove", addRotation);
+      window.removeEventListener("mousemove", addRevealListner);
     };
   }, []);
 
@@ -502,8 +537,9 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial}) =>
             </div>
 
             <div className="OtherContainer">
-              <Fade top>
-                <LinksContainer/>
+              <Fade bottom>
+              <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon }/></a>
+              <a target="blank" href="https://github.com/OwenM-Edwards"><img className="github" alt="Github link" data-tip="My github profile." src={githubIcon }/></a>
               </Fade>
             </div>
           </div>
