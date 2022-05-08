@@ -4,16 +4,13 @@ import HeadShake from 'react-reveal/HeadShake';
 
 const Wrapper = styled.div`
    height:100%;
-   width:10%;
-   position: absolute;
+   width:20%;
    display:flex;
    flex-direction:column;
-   z-index:2;
    justify-content:space-around;
    padding:7px 2px 7px 5px;
    background-color:#1d1d1d;
    border-radius:0 0 0 10px;
-   gap:5px;
    align-items:center;
 
    @media (max-width: 700px) {
