@@ -18,6 +18,14 @@ const fadeIn = keyframes`
      opacity:100%;
    }
 `
+const fadeOut = keyframes`
+   0% {
+     opacity:100%;
+   }
+   100% {
+     opacity:0;
+   }
+`
 const rotateEnter = keyframes`
    0% {
       transform: rotate(0deg);
@@ -60,8 +68,6 @@ const Wrapper = styled(motion.div)`
    overflow:hidden;
    /* background: rgb(29 29 29) */
    justify-content:center;
-
-
    background-color: rgba(0, 0, 0, 1);
 
 
@@ -139,17 +145,31 @@ const ProjectWrapper = styled.div`
    width:60%;
    height:100%;
    color:white;
-   display:flex;
-   flex-direction:column;
-   padding:0px 30px 0px 30px;
-   justify-content:center;
-   align-items:center;
    position:relative;
-   animation-name: ${fadeIn};
-   animation-duration:2s;
-   animation-iteration-count: 1;
    background-color:${props => props.theme.offBlack};
 
+   & .fadeContainer {
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      padding:0px 30px 0px 30px;
+      
+      
+   }
+   & .fadeIn {
+      animation-name: ${fadeIn};
+      animation-duration:2s;
+      animation-iteration-count: 1;
+   }
+   & .fadeOut {
+      animation-name: ${fadeOut};
+      animation-duration:0.5s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+   }
 
    @media (max-width: 700px) {
       padding:20px 0px 5px 0px;
@@ -224,6 +244,7 @@ const ProjectWrapper = styled.div`
 
       }
    }
+
 `
 
 
@@ -245,6 +266,13 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          setDisplayProject(e);
       }
    }
+
+
+   const handleCloseModal = () => {
+      document.querySelector('.fadeContainer').classList.remove('fadeIn');
+      document.querySelector('.fadeContainer').classList.add('fadeOut');
+      closeProjectModal();
+   }
    
 
    // Create full project modal
@@ -253,33 +281,35 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
       let tempHtml = [];
       projectInfo.forEach(project => {
          tempHtml =  [...tempHtml,(
-            <ProjectWrapper   key={key}>
-               <CloseIcon onClick={()=>closeProjectModal()}><img src={closeIcon}/></CloseIcon>
-               <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeft}/></Fade></LeftArrow>
-               <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRight}/></Fade></RightArrow>
+            <ProjectWrapper key={key}>
+               <div className="fadeContainer fadeIn">
+                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIcon}/></CloseIcon>
+                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeft}/></Fade></LeftArrow>
+                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRight}/></Fade></RightArrow>
+                  
+                  <section className="section1">
+                     <h2>{project.title}</h2>
+                  </section>
+
+                  <section className="section2">
                
-               <section className="section1">
-                  <h2>{project.title}</h2>
-               </section>
+                        <img src={project.image}/>
+               
+                  </section>
 
-               <section className="section2">
-            
-                     <img src={project.image}/>
-            
-               </section>
+                  <section className="section3">
+                     <div className="infoContainer">
+                        <p>
+                           {project.info}
+                        </p>
+                     </div>
 
-               <section className="section3">
-                  <div className="infoContainer">
-                     <p>
-                        {project.info}
-                     </p>
-                  </div>
-
-                  <div className="buttonContainer">
-                     <a className="button" target="blank" href={project.githubLink}>Github</a>
-                     <a className="button" target="blank" href={project.demoLink}>View site</a>
-                  </div>
-               </section>
+                     <div className="buttonContainer">
+                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        <a className="button" target="blank" href={project.demoLink}>View site</a>
+                     </div>
+                  </section>
+               </div>
             </ProjectWrapper>
          )];
          key++;

@@ -31,8 +31,6 @@ const Wrapper = styled.div`
       align-content:space-between;
       /* overflow-y:scroll; */
       padding:0 40px 0px 40px;
-     
-
    }
 `
 

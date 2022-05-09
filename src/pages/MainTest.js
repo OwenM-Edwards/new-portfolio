@@ -5,6 +5,7 @@ import htmlIcon from '../img/html5.svg';
 import cssIcon from '../img/css.svg';
 import jsIcon from '../img/js.svg';
 import rotateRing from '../img/rotateRing.png';
+import shadowRing from '../img/shadowRing.png';
 import outerRingLeft from '../img/outerRingLeft2.png';
 import outerRingRight from '../img/outerRingRight2.png';
 import outerRingBottom from '../img/outerRingBottom2.png';
@@ -25,6 +26,8 @@ import { WrapperSrc } from '../styled/styles';
 import githubIcon from  "../img/github.png";
 import resumeIcon from  "../img/resume.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
+import { createBrowserHistory } from "history";
+
 
 
 const expand = keyframes`
@@ -32,7 +35,15 @@ const expand = keyframes`
     scale:0;
   }
   100% {
-    scale:5;
+    scale:1;
+  }
+`
+const contract = keyframes`
+  0% {
+    scale:1;
+  }
+  100% {
+    scale:0;
   }
 `
 
@@ -57,17 +68,14 @@ const Wrapper = styled(WrapperSrc)`
       margin-left:auto;
       margin-right:auto;
       transform: translate(-0%,-0%);
-      height:120%;
+      height:160%;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
       width:${props => props.ringWidth};
-      // border:90px solid ${props => props.theme.offBlack};
-      // animation-name: ${expand};
-      // animation-duration: 1s;
-      // animation-iteration-count: 1;
-      // transition:scale 0.2s easeInOut;
+      
+      transition:width 0.2s easeInOut, height 0.2s easeInOut;
       background: radial-gradient(ellipse at     center, 
-        rgba(255,113,12,0) 40%,
-        #1d1d1d 40.1%);
+        rgba(255,113,12,0) 30%,
+        #1d1d1d 30.1%);
 
       @media (max-width: 1200px) {
         height:110%;
@@ -78,8 +86,18 @@ const Wrapper = styled(WrapperSrc)`
       @media (max-width: 800px) {
         height:102%;
       }
+      
     }
-
+    & .expand {
+      animation-name: ${expand};
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+    }
+    & .contract {
+      animation-name: ${contract};
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+    }
     
 
     & h1 {
@@ -200,23 +218,19 @@ const ProfileImgContainer = styled.div`
     align-content:center;
     border-radius:100%;
     position:relative;
-    & .rotateRing {
-      width:100%;
-      height:100%;
-      background-position:center;
-      background-repeat:no-repeat;
-      background-size: contain;
-      border-radius:50%;
-      scale:1.1;
-    }
-    & .shadowRing {
-      width:500px;
-      height:500px;
-      background-color:pink;
-      position:absolute;
-      border-radius:100px;
-      z-index:-1;
-    }
+    z-index:999999999999;  
+  
+      & .rotateRing {
+        width:100%;
+        height:100%;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size: contain;
+        border-radius:50%;
+        scale:1.1;
+        z-index:99999999;  
+      }
+    
   }
   
 
@@ -269,7 +283,7 @@ const ProfileImgContainer = styled.div`
     .jsContainer {
       position:absolute;
       right:0px;
-      top:30%;
+      top:34%;
       display:none;
       flex-direction:column;
       /* display:none; */
@@ -309,7 +323,7 @@ const ProfileImgContainer = styled.div`
         display:flex;
         flex-direction:column;
         position:absolute;
-        right:-130px;
+        right:-135px;
         top:55px;
         img {
           width:45px;
@@ -322,7 +336,7 @@ const ProfileImgContainer = styled.div`
     .CSSContainer {
       position:absolute;
       left:-30px;
-      top:30%;
+      top:34%;
       display:none;
       flex-direction:column;
 
@@ -347,9 +361,9 @@ const ProfileImgContainer = styled.div`
     
     .OtherContainer {
       position:absolute;
-      left:38%;
-      bottom:-1px;
-      display:none;
+      left:39.5%;
+      bottom:20%;
+      display:flex;
       align-items:center;
       div {
         top:-40px;
@@ -361,8 +375,8 @@ const ProfileImgContainer = styled.div`
         margin-right:10px;
       }
       & .github {
-        width:32px;
-        height:32px;
+        width:31px;
+        height:31px;
       }
     }
     .show {
@@ -396,43 +410,48 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
 
 
   const handleProjectsLink = () => {
+    document.querySelector('.largeRing').classList.remove('expand');
+    document.querySelector('.largeRing').classList.add('contract');
+    window.removeEventListener("mousemove", addRotation);
+    window.removeEventListener("mousemove", calcRingWidth);
+    window.removeEventListener("mousemove", addRevealListner);
     setEnterDirection(true);
     window.removeEventListener("mousemove", addRotation);
     history.push('/projects')
   }
 
   const handleContactsLink = () => {
+    document.querySelector('.largeRing').classList.remove('expand');
+    document.querySelector('.largeRing').classList.add('contract');
+    window.removeEventListener("mousemove", addRotation);
+    window.removeEventListener("mousemove", calcRingWidth);
+    window.removeEventListener("mousemove", addRevealListner);
     window.removeEventListener("mousemove", addRotation);
     history.push('/contact')
   }
   const addRevealListner = (e) => {
-    if(e.pageY >= (height / 2) + (height / 5)){
-      document.querySelector('.CSSContainer').classList.remove('show');
-      document.querySelector('.jsContainer').classList.remove('show');
-      document.querySelector('.OtherContainer').classList.add('show');
-    }
-    else if(e.pageX <= width / 2 ){
-      document.querySelector('.OtherContainer').classList.remove('show');
+    if(e.pageX <= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200 ){
       document.querySelector('.jsContainer').classList.remove('show');
       document.querySelector('.CSSContainer').classList.add('show');
     }
-    else if(e.pageX >= width / 2 ){
-      document.querySelector('.OtherContainer').classList.remove('show');
+    else if(e.pageX >= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200  ){
       document.querySelector('.CSSContainer').classList.remove('show');
       document.querySelector('.jsContainer').classList.add('show');
     }
     else {
-      document.querySelector('.OtherContainer').classList.remove('show');
       document.querySelector('.CSSContainer').classList.remove('show');
       document.querySelector('.jsContainer').classList.remove('show');
     }
-    
   }
   const calcRingWidth = () => {
-    let largeRing = document.querySelector('.largeRing')
-    setRingWidth(`${largeRing.offsetHeight}px`)
+    if(history.location.pathname === '/home'){
+      let largeRing = document.querySelector('.largeRing')
+      setRingWidth(`${largeRing.offsetHeight}px`)
+    }
   }
   useEffect(() => {   
+    document.querySelector('.largeRing').classList.remove('contract');
+    document.querySelector('.largeRing').classList.add('expand');
     calcRingWidth(); 
     window.addEventListener("mousemove", addRotation);
     window.addEventListener('resize', calcRingWidth);
@@ -458,7 +477,7 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
       }}
       ringWidth={ringWidth} 
     >
-      <ReactTooltip />
+      
       
       <div className="contentContainer">
 
@@ -488,18 +507,12 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
               <img className="outerRingRight" src={outerRingRight}/>
             </div>
           </Fade>
-
-          {/* <Fade top>
-            <div className="bottomRingContainer">
-              <img className="outerRingBottom" src={outerRingBottom}/>
-            </div>
-          </Fade> */}
-          
+        
           
           <div className="profilePic" style={{backgroundImage: `url(${profilePicDark})`}}>
-            <div className="shadowRing"></div>
-            <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing"></div>
-            
+
+              <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing"></div>
+
           </div>
 
           
@@ -516,12 +529,12 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
               <Fade right delay={200} >
                 <div className="outerItems">
                   <img className="outer" alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
-                  <img className="outer" alt="phpIcon" data-tip="PostgreSQL" src={phpIcon}/>
+                  <img className="outer" alt="phpIcon" data-tip="PHP" src={phpIcon}/>
                 </div>
               </Fade>
               <Fade right delay={400} >
                 <div className="outerOutItems">
-                  <img className="outer" alt="phpIcon" data-tip="PostgreSQL" src={wordpressIcon}/>
+                  <img className="outer" alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
                 </div>
               </Fade>
             </div>
@@ -535,7 +548,7 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
             </div>
 
             <div className="OtherContainer">
-              <Fade bottom>
+              <Fade top>
               <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon }/></a>
               <a target="blank" href="https://github.com/OwenM-Edwards"><img className="github" alt="Github link" data-tip="My github profile." src={githubIcon }/></a>
               </Fade>
@@ -543,6 +556,7 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
           </div>
 
         </ProfileImgContainer>
+        <ReactTooltip />
       </div>
       
       <div className="linkContainer">

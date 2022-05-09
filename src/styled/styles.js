@@ -112,12 +112,12 @@ const WrapperSrc = styled(motion.div)`
       transform:rotate(-180deg); 
       text-align:center;
       padding:0px 0px 0 5px;
-      border-radius:10px 0px 0 10px;
+      /* border-radius:10px 0px 0 10px; */
    }
    & .projectLink-b {
       writing-mode: vertical-rl;
       padding:0px 0px 0 5px;
-      border-radius:10px 0px 0 10px;
+      /* border-radius:10px 0px 0 10px; */
    }
 
    & .linkContainer {
@@ -151,7 +151,7 @@ const WrapperSrc = styled(motion.div)`
          
       }
       & .link-b-main {
-         border-radius:10px 0px 0 10px;
+         /* border-radius:10px 0px 0 10px; */
       }
       & .link-a-contact {
          width:50%;

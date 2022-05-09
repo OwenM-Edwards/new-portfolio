@@ -9,10 +9,10 @@ import { WrapperSrc } from '../styled/styles';
 
 const unfoldIn = keyframes`
    0% {
-      transform:scaleY(.005) scaleX(0);
+      transform:scaleY(.015) scaleX(0);
    }
    50% {
-      transform:scaleY(.005) scaleX(1);
+      transform:scaleY(.015) scaleX(1);
    }
    100% {
       transform:scaleY(1) scaleX(1);
@@ -23,10 +23,10 @@ const unfoldOut = keyframes`
      transform:scaleY(1) scaleX(1);
    }
    50% {
-     transform:scaleY(.005) scaleX(1);
+     transform:scaleY(.015) scaleX(1);
    }
    100% {
-     transform:scaleY(.005) scaleX(0);
+     transform:scaleY(.015) scaleX(0);
    }
 `
 
