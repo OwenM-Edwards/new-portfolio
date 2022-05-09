@@ -47,6 +47,7 @@ const Wrapper = styled(WrapperSrc)`
     flex-direction:column;
     justify-content:center;
     align-items:center;
+    padding-top:40px;
 
 
     & .largeRing {
@@ -57,6 +58,7 @@ const Wrapper = styled(WrapperSrc)`
       margin-right:auto;
       transform: translate(-0%,-0%);
       height:120%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
       width:${props => props.ringWidth};
       // border:90px solid ${props => props.theme.offBlack};
       // animation-name: ${expand};
@@ -66,6 +68,16 @@ const Wrapper = styled(WrapperSrc)`
       background: radial-gradient(ellipse at     center, 
         rgba(255,113,12,0) 40%,
         #1d1d1d 40.1%);
+
+      @media (max-width: 1200px) {
+        height:110%;
+      }
+      @media (max-width: 1000px) {
+        height:105%;
+      }
+      @media (max-width: 800px) {
+        height:102%;
+      }
     }
 
     
@@ -75,6 +87,7 @@ const Wrapper = styled(WrapperSrc)`
       font-size:3.0rem;
       padding:30px;
       width:auto;
+      max-width:80%;
       border-radius:0px 20px 20px 0;
       margin:0 auto;
       text-align:center;
@@ -91,12 +104,11 @@ const Wrapper = styled(WrapperSrc)`
         background: black;
         transition: 300ms;
       }
-      @media (max-width: 700px) {
-        font-size:2rem;
-        padding:10px;
+      @media (max-width: 900px) {
+        top:17%;
       }
-      @media (max-width: 300px) {
-        font-size:1.8rem;
+      @media (max-width: 700px) {
+        font-size:2.2rem;
       }
     }
     & span {
@@ -164,17 +176,17 @@ const Wrapper = styled(WrapperSrc)`
 const ProfileImgContainer = styled.div`
   width:60%;
   height:40%;
-  max-width:800px;
+  max-width:600px;
   position:relative;
   display:flex;
   justify-content:center;
-  @media (min-width: 3000px) {
-    width:650px;
-    height:650px;
+  @media (max-width: 1000px) {
+    width:60%;
+    height:40%;
   }
-  @media (min-width: 5000px) {
-    width:950px;
-    height:950px;
+  @media (max-width: 800px) {
+    width:70%;
+    height:50%;
   }
   
   & .profilePic {
@@ -197,7 +209,16 @@ const ProfileImgContainer = styled.div`
       border-radius:50%;
       scale:1.1;
     }
+    & .shadowRing {
+      width:500px;
+      height:500px;
+      background-color:pink;
+      position:absolute;
+      border-radius:100px;
+      z-index:-1;
+    }
   }
+  
 
   & .leftRingContainer {
     position:absolute;  
@@ -241,7 +262,7 @@ const ProfileImgContainer = styled.div`
 
   & .skillContainer {
     position:absolute;
-    width:100%;
+    width:60%;
     height:100%;
     scale:2.4;
 
@@ -384,7 +405,29 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
     window.removeEventListener("mousemove", addRotation);
     history.push('/contact')
   }
-  
+  const addRevealListner = (e) => {
+    if(e.pageY >= (height / 2) + (height / 5)){
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+      document.querySelector('.OtherContainer').classList.add('show');
+    }
+    else if(e.pageX <= width / 2 ){
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.add('show');
+    }
+    else if(e.pageX >= width / 2 ){
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.add('show');
+    }
+    else {
+      document.querySelector('.OtherContainer').classList.remove('show');
+      document.querySelector('.CSSContainer').classList.remove('show');
+      document.querySelector('.jsContainer').classList.remove('show');
+    }
+    
+  }
   const calcRingWidth = () => {
     let largeRing = document.querySelector('.largeRing')
     setRingWidth(`${largeRing.offsetHeight}px`)
@@ -393,15 +436,15 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
     calcRingWidth(); 
     window.addEventListener("mousemove", addRotation);
     window.addEventListener('resize', calcRingWidth);
+    window.addEventListener("mousemove", addRevealListner);
 
     return () => {
       window.removeEventListener("mousemove", addRotation);
       window.removeEventListener("mousemove", calcRingWidth);
+      window.removeEventListener("mousemove", addRevealListner);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(ringWidth)
 
   return(
     <Wrapper
@@ -419,11 +462,10 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
       
       <div className="contentContainer">
 
-            <div className="largeRing">
-            </div>
+        <div className="largeRing"></div>
 
          
-        {/* <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade>  */}
+        <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
 
         {/* <HeadShake delay={2000} >
           <div className="arrowContainer">
@@ -455,13 +497,14 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
           
           
           <div className="profilePic" style={{backgroundImage: `url(${profilePicDark})`}}>
+            <div className="shadowRing"></div>
             <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing"></div>
             
           </div>
 
           
 
-          {/* <div className="skillContainer">
+          <div className="skillContainer">
             <div className="jsContainer">
               <Fade right>
                 <div className="innerItems">
@@ -497,7 +540,7 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
               <a target="blank" href="https://github.com/OwenM-Edwards"><img className="github" alt="Github link" data-tip="My github profile." src={githubIcon }/></a>
               </Fade>
             </div>
-          </div> */}
+          </div>
 
         </ProfileImgContainer>
       </div>
