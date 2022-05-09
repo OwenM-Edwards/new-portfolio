@@ -1,15 +1,7 @@
 import websiteA_BG from  "../img/website-a.jpg";
-import websiteA_BG_2 from  "../img/website-a-2.png";
-import websiteA_BG_3 from  "../img/website-a-3.png";
 import websiteB_BG from  "../img/website-b.jpg";
-import websiteB_BG_2 from  "../img/website-b-2.png";
-import websiteB_BG_3 from  "../img/website-b-3.png";
 import websiteC_BG from  "../img/website-c.jpg";
-import websiteC_BG_2 from  "../img/website-c-2.png";
-import websiteC_BG_3 from  "../img/website-c-3.png";
 import websiteD_BG from  "../img/website-d.jpg";
-import websiteD_BG_2 from  "../img/website-d-2.png";
-import websiteD_BG_3 from  "../img/website-d-3.png";
 
 const projectInfo = [
    {

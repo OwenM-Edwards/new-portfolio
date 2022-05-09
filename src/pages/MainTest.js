@@ -378,7 +378,7 @@ const ProfileImgContainer = styled.div`
 `
 
 
-const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
+const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
   console.log(mainInitial)
   const history = useHistory();
   const handlers = useSwipeable({
@@ -541,4 +541,4 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
 }
 
 
-export default Main;
+export default MainTest;

@@ -7,13 +7,12 @@ import {
   Redirect,
 } from "react-router-dom";
 import styled, {ThemeProvider, keyframes} from "styled-components";
-import { Main, Projects, Contact } from './pages/index';
+import { Main, MainTest, Projects, Contact } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useWindowDimensions, createProjects} from './hooks/index';
+import {useWindowDimensions} from './hooks/index';
 import ReactTooltip from 'react-tooltip';
 import { theme } from './styled/styles';
-import noiseBG from './img/noise.png';
 import noiseBG2 from './img/noise2.png';
 
 const grain = keyframes`

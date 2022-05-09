@@ -1,5 +1,5 @@
-import React  from 'react';
-import styled, { keyframes } from "styled-components";
+import React from 'react';
+import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
 import {ContactForm} from '../components/index';
 import {LinksContainer} from '../components/index';

@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useCallback, Suspense }  from 'react';
+import React, { useState, useEffect, useCallback }  from 'react';
 import styled, { keyframes } from "styled-components";
 import {useHistory} from 'react-router-dom';
-import { ProjectsNav } from '../components/index';
 import {LinksContainer, Project, ProjectGrid} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
-import { WrapperSrc, BgNoiseSrc } from '../styled/styles';
-
-// const Project = React.lazy(() => import('../components/Project'));
+import { WrapperSrc } from '../styled/styles';
 
 
 const unfoldIn = keyframes`
@@ -72,7 +69,7 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration, projectHtml, setMainInitial}) => {
+const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
    const [totalProjects, setTotalProjects] = useState();

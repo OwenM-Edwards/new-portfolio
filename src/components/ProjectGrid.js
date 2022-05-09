@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from "styled-components";
-import { motion, AnimatePresence } from "framer-motion"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { AnimatePresence } from "framer-motion"
 import projectInfo from '../portfolio projects/projects';
 import Fade from 'react-reveal/Fade';
 

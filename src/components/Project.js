@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import projectInfo from '../portfolio projects/projects';
 import closeIcon from '../img/close.png';
 import arrowLeft from '../img/arrowBack.png';
