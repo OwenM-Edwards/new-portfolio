@@ -72,7 +72,7 @@ const App = () => {
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/home">
-                  <Main width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <MainTest width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">
