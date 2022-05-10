@@ -55,6 +55,7 @@ const Wrapper = styled.div`
         padding:20px;
         text-align:start;
         background-color:${props => props.theme.secondaryColorHover};
+        border-radius:20px;
         @media (max-width: 700px), (max-height:700px) {
             width:98%;
             padding:0px;
@@ -123,6 +124,9 @@ const Wrapper = styled.div`
                background-color:#fc5a51;
             }
         }
+        & .errorMessage {
+            color:${props => props.theme.popColor}!important;
+        }
     }
 
     .loadingContainer {
@@ -164,12 +168,7 @@ const ContactForm = () => {
     const remainingMessageChars = 1500 - message.length;
 
     return (
-        <Wrapper>
-            {(loading) 
-                ? <ClipLoader loading={loading} size={150} />
-                : <React.Fragment/>
-            }
-            
+        <Wrapper>            
             <Fade className="test" delay={300}>
                 <h2>You can email me. <span>@ </span>owenhedwards@gmail.com</h2>
                 <h3>...or give me a call. <span>@ </span>+44 7468966914</h3>
@@ -185,7 +184,7 @@ const ContactForm = () => {
                         maxLength='30'
                         aria-invalid={errors.subject ? "true" : "false"}
                     /> 
-                    {errors.subject?.type === 'required' && "Subject is required." }
+                    {errors.subject?.type === 'required' && <p className="errorMessage">"Subject is required."</p> }
                     <label htmlFor="email">Your email</label>
                     <input 
                         id="email"
@@ -195,7 +194,7 @@ const ContactForm = () => {
                         type='email'
                         aria-invalid={errors.email ? "true" : "false"}
                     />
-                    {errors.email?.type === 'required' && "Email is required." }
+                    {errors.email?.type === 'required' && <p className="errorMessage">"Email is required."</p> }
 
                     <label htmlFor="message">Your message</label>
                     <textarea 
@@ -206,11 +205,15 @@ const ContactForm = () => {
                         maxLength='1500'
                     />
                     <p className="remainingMessageChars">{remainingMessageChars} characters remaining.</p>
-                    {errors.message?.type === 'required' && "A message is required." }
+                    {errors.message?.type === 'required' && <p className="errorMessage">"A message is required."</p> }
     
                     <input className="submitButton" type='submit' value='send'/>
                 </form>
             </Fade>
+            {(loading) 
+                ? <ClipLoader color={"#ff4338"} loading={loading} size={150} />
+                : <React.Fragment/>
+            }
         </Wrapper>     
     ) 
 }

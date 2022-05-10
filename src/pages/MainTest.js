@@ -124,7 +124,7 @@ const Wrapper = styled(WrapperSrc)`
         transition: 300ms;
       }
       @media (max-width: 900px) {
-        top:17%;
+        top:7%;
       }
       @media (max-width: 700px) {
         font-size:1.8rem;
@@ -530,7 +530,6 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
 
           </div>
 
-          
 
           <div className="skillContainer">
             <div className="jsContainer">

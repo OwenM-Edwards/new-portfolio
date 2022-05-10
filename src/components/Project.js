@@ -147,6 +147,9 @@ const ProjectWrapper = styled.div`
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
+   @media (max-width: 1000px) {
+      width:90%;
+   } 
 
    & .fadeContainer {
       width:100%;
