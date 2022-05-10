@@ -106,6 +106,11 @@ const WrapperSrc = styled(motion.div)`
          font-size:0.8rem;
          max-width:80px;
       }
+      @media (max-width: 900px) {
+         display:none;
+      }
+
+
       &:hover {
          background-color:${props => props.theme.secondaryColorHover};
       }
@@ -136,6 +141,9 @@ const WrapperSrc = styled(motion.div)`
       background-color:${props => props.theme.primaryColor};
       @media (max-width: 700px) {
          width:20%;
+      }
+      @media (max-width: 900px) {
+         display:none;
       }
       & .link {
          width:50%;
