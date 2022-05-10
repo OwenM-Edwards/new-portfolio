@@ -38,6 +38,11 @@ const Wrapper = styled.div`
          width:95%;
          overflow-y:scroll; 
       } 
+      @media (max-width: 900px) {
+         width:100%;
+         overflow-y:scroll; 
+         padding:0;
+      } 
    }
 `
 
@@ -60,6 +65,7 @@ const ProjectWrapper = styled.div`
    @media (max-width: 1400px) {
       width:100%;
    } 
+   
 
    
 
