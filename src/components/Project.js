@@ -254,19 +254,22 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
    let projectHtml = false;
 
    const updateDisplayProject = (e) => {
-      if(e > totalProjects) {
-         e = 0;
-         setDisplayProject(e);
-      }
-      else if(e < 0 ) {
-         e = totalProjects;
-         setDisplayProject(e);
-      }
-      else {
-         setDisplayProject(e);
-      }
+      document.querySelector('.fadeContainer').classList.remove('fadeIn');
+      document.querySelector('.fadeContainer').classList.add('fadeOut');
+      setTimeout(f => {
+         if(e > totalProjects) {
+            e = 0;
+            setDisplayProject(e);
+         }
+         else if(e < 0 ) {
+            e = totalProjects;
+            setDisplayProject(e);
+         }
+         else {
+            setDisplayProject(e);
+         }
+      },200)
    }
-
 
    const handleCloseModal = () => {
       document.querySelector('.fadeContainer').classList.remove('fadeIn');
