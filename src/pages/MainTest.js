@@ -124,6 +124,7 @@ const Wrapper = styled(WrapperSrc)`
         transition: 300ms;
       }
       @media (max-width: 900px) {
+        max-width:95%;
         top:7%;
       }
       @media (max-width: 700px) {
