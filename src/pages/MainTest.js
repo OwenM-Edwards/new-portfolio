@@ -6,7 +6,9 @@ import cssIcon from '../img/css.svg';
 import jsIcon from '../img/js.svg';
 import rotateRing from '../img/rotateRing.png';
 import shadowRing from '../img/shadowRing.png';
+import outerRingLeftMobile from '../img/outerRingLeftMobile.png';
 import outerRingLeft from '../img/outerRingLeft2.png';
+import outerRingRightMobile from '../img/outerRingRightMobile.png';
 import outerRingRight from '../img/outerRingRight2.png';
 import outerRingBottom from '../img/outerRingBottom2.png';
 import nodeIcon from '../img/node.svg';
@@ -125,7 +127,7 @@ const Wrapper = styled(WrapperSrc)`
       }
       @media (max-width: 900px) {
         max-width:95%;
-        top:7%;
+        top:3%;
       }
       @media (max-width: 700px) {
         font-size:1.8rem;
@@ -247,6 +249,8 @@ const ProfileImgContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    cursor:pointer;
+    z-index:99999999;
     @media (max-width:1000px) {
       z-index:99999999;
       cursor:pointer!important;
@@ -376,9 +380,11 @@ const ProfileImgContainer = styled.div`
     
     .OtherContainer {
       position:absolute;
-      left:39.5%;
-      bottom:20%;
+      left:0;
+      width:100%;
+      bottom:15%;
       display:flex;
+      justify-content:center;
       align-items:center;
       div {
         top:-40px;
@@ -393,6 +399,24 @@ const ProfileImgContainer = styled.div`
         width:31px;
         height:31px;
       }
+      @media (max-width:900px) {
+        bottom:7%;
+        left:0;
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        img {
+          width:30px;
+          height:30px;
+          margin-right:10px;
+        }
+        & .github {
+          width:27px;
+          height:27px;
+        }
+      }
+      
     }
     .show {
       display:flex!important; 
@@ -407,6 +431,7 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
   const history = useHistory();
   const handlers = useSwipeable({
     onSwipedLeft: () => {
+      setEnterDirection(true);
       history.push('/projects')
     },
     preventDefaultTouchmoveEvent: true,
@@ -424,6 +449,18 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
     imgRotateRing.style.transform = `rotate(${angle}deg)`;  
   }
 
+  const handleProjectsLinkMobile = () => {
+    if( width <= 900){
+      document.querySelector('.largeRing').classList.remove('expand');
+      document.querySelector('.largeRing').classList.add('contract');
+      window.removeEventListener("mousemove", addRotation);
+      window.removeEventListener("mousemove", calcRingWidth);
+      window.removeEventListener("mousemove", addRevealListner);
+      setEnterDirection(true);
+      window.removeEventListener("mousemove", addRotation);
+      history.push('/projects')
+    }
+  }
 
   const handleProjectsLink = () => {
     document.querySelector('.largeRing').classList.remove('expand');
@@ -434,6 +471,19 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
     setEnterDirection(true);
     window.removeEventListener("mousemove", addRotation);
     history.push('/projects')
+  }
+
+  const handleContactsLinkMobile = () => {
+    console.log('test')
+    if( width <= 900){
+      document.querySelector('.largeRing').classList.remove('expand');
+      document.querySelector('.largeRing').classList.add('contract');
+      window.removeEventListener("mousemove", addRotation);
+      window.removeEventListener("mousemove", calcRingWidth);
+      window.removeEventListener("mousemove", addRevealListner);
+      window.removeEventListener("mousemove", addRotation);
+      history.push('/contact')
+    }
   }
 
   const handleContactsLink = () => {
@@ -513,14 +563,14 @@ const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial,
          
           
           <Fade right>
-            <div className="leftRingContainer">
-              <img className="outerRingLeft" src={outerRingLeft}/>
+            <div className="leftRingContainer" onClick={()=>handleContactsLinkMobile()}>
+              <img className="outerRingLeft" src={width <= 900 ? outerRingLeftMobile : outerRingLeft }/>
             </div>
           </Fade>
           
           <Fade left>
-            <div className="rightRingContainer">
-              <img className="outerRingRight" src={outerRingRight}/>
+            <div className="rightRingContainer" onClick={()=>handleProjectsLinkMobile()}>
+              <img className="outerRingRight" src={width <= 900 ? outerRingRightMobile : outerRingRight }/>
             </div>
           </Fade>
         
