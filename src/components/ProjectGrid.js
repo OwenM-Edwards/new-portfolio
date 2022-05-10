@@ -29,8 +29,15 @@ const Wrapper = styled.div`
       justify-content:space-between;
       align-items:center;
       align-content:space-between;
-      /* overflow-y:scroll; */
+       
       padding:0 40px 0px 40px;
+      @media (max-width: 1600px) {
+         width:85%;
+      } 
+      @media (max-width: 1400px) {
+         width:95%;
+         overflow-y:scroll; 
+      } 
    }
 `
 
@@ -50,6 +57,11 @@ const ProjectWrapper = styled.div`
    background-repeat:no-repeat;
    background-size: cover;
    overflow:hidden;
+   @media (max-width: 1400px) {
+      width:100%;
+   } 
+
+   
 
    & .popup {
       position:absolute;
@@ -99,6 +111,9 @@ const ProjectWrapper = styled.div`
    h2 {
       font-size:2.6rem;
       z-index:9999;
+      @media (max-width: 700px) {
+      font-size:1.7rem;
+      }
    }
 `
 

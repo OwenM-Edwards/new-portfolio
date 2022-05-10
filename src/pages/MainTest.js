@@ -49,6 +49,7 @@ const contract = keyframes`
 
 const Wrapper = styled(WrapperSrc)`
   z-index:9999;
+  overflow:hidden!important;
   
   & .contentContainer {
     height:100%;
@@ -126,7 +127,7 @@ const Wrapper = styled(WrapperSrc)`
         top:17%;
       }
       @media (max-width: 700px) {
-        font-size:2.2rem;
+        font-size:1.8rem;
       }
     }
     & span {
@@ -199,12 +200,12 @@ const ProfileImgContainer = styled.div`
   display:flex;
   justify-content:center;
   @media (max-width: 1000px) {
-    width:60%;
-    height:40%;
-  }
-  @media (max-width: 800px) {
     width:70%;
     height:50%;
+  }
+  @media (max-width: 700px) {
+    width:90%;
+    height:40%;
   }
   
   & .profilePic {
@@ -229,6 +230,9 @@ const ProfileImgContainer = styled.div`
         border-radius:50%;
         scale:1.1;
         z-index:99999999;  
+        @media (max-width:1000px) {
+          opacity:0;
+        }
       }
     
   }
@@ -242,10 +246,14 @@ const ProfileImgContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
+    @media (max-width:1000px) {
+      z-index:99999999;
+      cursor:pointer!important;
+    }
     & .outerRingLeft {
       width:100%;
-    
     }
+    
   }
   & .rightRingContainer {
     position:absolute;  
@@ -287,6 +295,9 @@ const ProfileImgContainer = styled.div`
       display:none;
       flex-direction:column;
       /* display:none; */
+      @media (max-width:1000px) {
+        opacity:0;
+      }
       & .innerItems{
         display:flex;
         flex-direction:column;
@@ -339,6 +350,9 @@ const ProfileImgContainer = styled.div`
       top:34%;
       display:none;
       flex-direction:column;
+      @media (max-width:1000px) {
+        opacity:0;
+      }
 
       img {
         width:45px;
@@ -387,6 +401,7 @@ const ProfileImgContainer = styled.div`
 
 
 const MainTest = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
+  console.log(mainInitial)
   const [ ringWidth, setRingWidth ] = useState('100%');
   const history = useHistory();
   const handlers = useSwipeable({

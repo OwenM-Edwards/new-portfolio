@@ -85,7 +85,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
       onSwipedRight: () => {
          setMainInitial(true);
          handleExitStyle('left')
-         history.push('/main')
+         history.push('/home')
        },
       preventDefaultTouchmoveEvent: true,
       trackMouse: true
@@ -123,6 +123,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
 
    if(exiting){
       if(direction){
+         setMainInitial(true);
          history.push('/home')
       }
       else {
@@ -132,11 +133,9 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
 
    const handleExitStyle = (exitDirection) => {
       if(exitDirection === 'left'){
-         
          setPage([true, true])
       }
       else {
-         setMainInitial(true);
          setPage([false, true])
       }
    }

@@ -60,7 +60,7 @@ const App = () => {
   const { height, width } = useWindowDimensions();
   const heightpx = `${height}px`;
   const globalSlideAnimationDuration = 0.9;
-  const [mainInitial, setMainInitial] = useState(true);
+  const [mainInitial, setMainInitial] = useState(false);
   
   
   return (

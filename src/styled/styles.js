@@ -33,6 +33,9 @@ const WrapperSrc = styled(motion.div)`
       padding-bottom:50px;
       justify-content:center;
       align-items:center;
+      @media (max-width: 700px) {
+         width:80%;
+      }
 
 
 
@@ -112,12 +115,14 @@ const WrapperSrc = styled(motion.div)`
       transform:rotate(-180deg); 
       text-align:center;
       padding:0px 0px 0 5px;
-      /* border-radius:10px 0px 0 10px; */
+      border-radius:10px 0px 0 10px;
+      border-left:2px solid ${props => props.theme.secondaryColorBorder};
    }
    & .projectLink-b {
       writing-mode: vertical-rl;
       padding:0px 0px 0 5px;
-      /* border-radius:10px 0px 0 10px; */
+      border-radius:10px 0px 0 10px;
+      border-left:2px solid ${props => props.theme.secondaryColorBorder};
    }
 
    & .linkContainer {
@@ -129,7 +134,7 @@ const WrapperSrc = styled(motion.div)`
       z-index:99999999999;
       background-color:${props => props.theme.primaryColor};
       @media (max-width: 700px) {
-         min-width:15%;
+         width:20%;
       }
       & .link {
          width:50%;
@@ -147,20 +152,22 @@ const WrapperSrc = styled(motion.div)`
       }
       & .link-a-main {
          width:50%;
-         border-left:3px solid ${props => props.theme.secondaryColorBorder};
+         border-left:2px solid ${props => props.theme.secondaryColorBorder};
          
       }
       & .link-b-main {
-         /* border-radius:10px 0px 0 10px; */
+         border-radius:10px 0px 0 10px;
+         border-left:2px solid ${props => props.theme.secondaryColorBorder};
       }
       & .link-a-contact {
          width:50%;
-         border-left:3px solid ${props => props.theme.secondaryColorBorder};
+         border-left:2px solid ${props => props.theme.secondaryColorBorder};
          transform:rotate(-180deg); 
       }
       & .link-b-contact {
          transform:rotate(-180deg); 
          border-radius:10px 0px 0 10px;
+         border-left:2px solid ${props => props.theme.secondaryColorBorder};
          
       }
    }
