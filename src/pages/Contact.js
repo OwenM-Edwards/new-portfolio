@@ -31,8 +31,11 @@ const Wrapper = styled(WrapperSrc)`
 const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial}) => {
    const history = useHistory();
 
+
    const handlers = useSwipeable({
+      
       onSwipedRight: () => {
+         setEnterDirection(false);
         history.push('/projects')
       },
       preventDefaultTouchmoveEvent: true,
