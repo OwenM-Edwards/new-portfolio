@@ -66,8 +66,9 @@ const WrapperSrc = styled(motion.div)`
                font-size:1.3rem;
                padding:10px;
             }
-            @media (max-height: 850px) {
-               font-size:2.3rem;
+            @media (max-height: 900px) {
+               font-size:1.3rem;
+               padding:40px 5px;
             }
          }
       }
