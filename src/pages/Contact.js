@@ -28,26 +28,28 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial}) => {
+const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial, mobileAnimation, setMobileAnimation}) => {
    const history = useHistory();
 
 
    const handlers = useSwipeable({
       
-      onSwipedRight: () => {
+      onSwipedDown: () => {
+         setMobileAnimation(true)
          setEnterDirection(false);
-        history.push('/projects')
+         history.push('/projects')
       },
       preventDefaultTouchmoveEvent: true,
-      trackMouse: true
    });
 
    const handleProjectsLink = () => {
+      setMobileAnimation(false)
       setEnterDirection(false);
       history.push('/projects')
    }
 
    const handleMainClick = () => {
+      setMobileAnimation(false)
       setMainInitial(true);
       history.push('/home');
    }
@@ -55,9 +57,13 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
    return(
       <Wrapper
          {...handlers}
-         initial={{x: `100vw`}}
-         animate={{x: 0}}
-         exit={{x: `+100vw` }}
+         initial={
+            mobileAnimation ? {y: `100vh`} : {x: `100vw`}
+         }
+         animate={ mobileAnimation ? {y: 0} : {x: 0}}
+         exit={
+            mobileAnimation ? {y: `+100vh` } : {x: `100vw`}
+         }
          transition={{
             x: { type: "easeInOut", duration:globalSlideAnimationDuration, }
          }}

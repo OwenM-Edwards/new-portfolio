@@ -3,8 +3,11 @@ import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import projectInfo from '../portfolio projects/projects';
 import closeIcon from '../img/close.png';
+import closeIconRed from '../img/closeRed.png';
 import arrowLeft from '../img/arrowBack.png';
+import arrowLeftRed from '../img/arrowBackRed.png';
 import arrowRight from '../img/arrowForward.png';
+import arrowRightRed from '../img/arrowForwardRed.png';
 import Fade from 'react-reveal/Fade';
 
 const fadeIn = keyframes`
@@ -190,14 +193,14 @@ const ProjectWrapper = styled.div`
 
    & .section2 {
       width:100%;
-      height:60%;
+      height:50%;
       display:flex;
       justify-content:center;
       align-content:center;
       align-items:center;
       img {
          max-width: 100%;
-         max-height: 500px;
+         max-height: 100%;
          object-fit:contain;
          box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
       }
@@ -207,20 +210,27 @@ const ProjectWrapper = styled.div`
    & .section3 {
       width:60%;
       max-width:750px;
-      height:30%;
+      height:40%;
       display:flex;
-      flex-wrap:wrap;
       flex-direction:column;
+      justify-content:flex-end;
+      align-items:flex-end;
+      padding-top:auto;
       & .infoContainer {
+         display:flex;
+         flex-direction:column;
+         justify-content:center;
+         align-items:flex-end;
          width:100%;
-         height:50%;
+         height:80%;
       }
       
       & .buttonContainer {
          width:100%;
-         height:50%;
+         height:20%;
          display:flex;
-         padding-top:20px;
+         align-items:flex-end;
+         padding-bottom:20px;
          a {
             border:0;
             height:60px;
@@ -289,9 +299,9 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
-                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIcon}/></CloseIcon>
-                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeft}/></Fade></LeftArrow>
-                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRight}/></Fade></RightArrow>
+                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed}/></CloseIcon>
+                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed}/></Fade></LeftArrow>
+                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed}/></Fade></RightArrow>
                   
                   <section className="section1">
                      <h2>{project.title}</h2>

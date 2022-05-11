@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled, { keyframes } from "styled-components";
 import {useHistory} from 'react-router-dom';
-import htmlIcon from '../img/html5.svg';
 import cssIcon from '../img/css.svg';
 import jsIcon from '../img/js.svg';
+import rotateRing from '../img/rotateRing.png';
+import outerRingLeftMobile from '../img/outerRingLeftMobile.png';
 import outerRingLeft from '../img/outerRingLeft2.png';
+import outerRingRightMobile from '../img/outerRingRightMobile.png';
 import outerRingRight from '../img/outerRingRight2.png';
 import outerRingBottom from '../img/outerRingBottom2.png';
 import nodeIcon from '../img/node.svg';
@@ -26,28 +28,83 @@ import resumeIcon from  "../img/resume.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
 
 
+
 const expand = keyframes`
   0% {
-    scale:0;
+    transform: scale(0); 
   }
   100% {
-    scale:5;
+    transform: scale(1); 
+  }
+`
+const contract = keyframes`
+  0% {
+    transform: scale(1); 
+  }
+  100% {
+    transform: scale(0); 
   }
 `
 
 const Wrapper = styled(WrapperSrc)`
   z-index:9999;
+  overflow:hidden!important;
   
   & .contentContainer {
-    @media (max-width: 700px) {
-      padding-bottom:50px;
+    height:100%;
+    width:100%;
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding-top:40px;
+
+
+    & .largeRing {
+      position:absolute;
+      border-radius: 50%;
+      background: green;
+      margin-left:auto;
+      margin-right:auto;
+      transform: translate(-0%,-0%);
+      height:160%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      width:${props => props.ringWidth};
+      transition:width 0.2s easeInOut, height 0.2s easeInOut;
+      background: radial-gradient(ellipse at     center, 
+        rgba(255,113,12,0) 30%,
+        #1d1d1d 30.1%);
+
+      @media (max-width: 1200px) {
+        height:110%;
+      }
+      @media (max-width: 1000px) {
+        height:105%;
+      }
+      @media (max-width: 800px) {
+        height:102%;
+      }
+      
     }
+    & .expand {
+      animation-name: ${expand};
+      animation-duration: 1s;
+      animation-iteration-count: 1;
+    }
+    & .contract {
+      animation-name: ${contract};
+      animation-duration: 1.5s;
+      animation-iteration-count: 1;
+    }
+    
 
     & h1 {
       color:white;
       font-size:3.0rem;
       padding:30px;
       width:auto;
+      max-width:80%;
       border-radius:0px 20px 20px 0;
       margin:0 auto;
       text-align:center;
@@ -64,31 +121,17 @@ const Wrapper = styled(WrapperSrc)`
         background: black;
         transition: 300ms;
       }
-      @media (max-width: 700px) {
-        font-size:2rem;
-        padding:10px;
+      @media (max-width: 900px) {
+        max-width:95%;
+        top:3%;
       }
-      @media (max-width: 300px) {
+      @media (max-width: 700px) {
         font-size:1.8rem;
       }
     }
     & span {
       color:${props => props.theme.popColor};
       text-shadow: 1px 1px ${props => props.theme.popColor};
-    }
-    & h2 {
-      color:${props => props.theme.primaryFontCol};
-      width:100%;
-      text-align:center;
-      margin-top:auto;
-      font-size:2.3rem;
-      border-radius:0 20px 0px 0px;
-      z-index:2;
-      position:relative;
-      bottom:6%;
-      @media (max-width: 700px) {
-        font-size:1.6rem;
-      }
     }
 
     & .arrowContainer {
@@ -125,160 +168,112 @@ const Wrapper = styled(WrapperSrc)`
         }
       }
     }
-
-    & .techContainer {
-      width:80%;
-      display:flex;
-      flex-wrap:wrap;
-      height:20%;
-      z-index:2;
-      border-radius:0 0 20px 0px;
-      padding:0 20px 20px 20px;
-      max-width:1000px;
-      position:relative;
-      bottom:3%;
-      @media (max-width: 700px) {
-        width:100%;
-        padding:10px;
-      }
-      & .lazyload {
-        width:25%;
-        height:50%;
-        margin-bottom:40px;
-        & img {
-          width:100%;
-          height:100%;
-        }
-      }
-    }
-  }
-
-  & .linkContainer {
-    & .link-b {
-      writing-mode: vertical-rl;
-    }
   }
 `
 
 const ProfileImgContainer = styled.div`
-  width:350px;
-  height:350px;
-  z-index:9000;
-  top:35%;
-  position:absolute;
-  @media (min-width: 3000px) {
-    width:650px;
-    height:650px;
+  width:60%;
+  height:40%;
+  max-width:600px;
+  position:relative;
+  display:flex;
+  justify-content:center;
+
+  @media (max-width: 1000px) {
+    width:70%;
+    height:50%;
   }
-  @media (min-width: 5000px) {
-    width:950px;
-    height:950px;
+  @media (max-width: 700px) {
+    width:90%;
+    height:40%;
   }
   
-  & .largeRing {
-    position:absolute;
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    border:90px solid ${props => props.theme.offBlack};
-    scale:5;
-    z-index:-5;
-    animation-name: ${expand};
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    transition:scale 0.2s easeInOut;
-    @media (min-width: 3000px) {
-      border:120px solid ${props => props.theme.offBlack};
-    }
-    @media (min-width: 4200px) {
-      scale:6;
-    }
-  }
-
-  & .rotateRing {
-    position:absolute;
-    width:100%;
-    height:100%;
-    scale:1.1;
-    border-radius:50%;
-    border: 20px solid ${props => props.theme.offBlack};
-    border-top: 20px solid ${props => props.theme.popColor};
-  }
-  & .shadowRing {
-    position:absolute;
-    width:100%;
-    height:100%;
-    scale:1.1;
-    border-radius:50%;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  }
-  & .outerRingLeft {
-    position:absolute;
-    width:60px;
-    height:150px;
-    scale:2;
-    top:28%;
-    left:-27%;
-    @media (min-width: 3000px) {
-      width:110px;
-      height:290px;
-    }
-  }
-
-  & .outerRingRight {
-    position:absolute;
-    width:60px;
-    height:150px;
-    scale:2;
-    top:28%;
-    left:110%;
-    @media (min-width: 3000px) {
-      width:110px;
-      height:290px;
-    }
-  }
-    
-  & .outerRingBottom {
-    position:absolute;
-    width:140px;
-    height:50px;
-    scale:2;
-    top:114%;
-    left:30%;
-    @media (min-width: 3000px) {
-      width:270px;
-      height:90px;
-    }
-  }
   & .profilePic {
-    position:absolute;
-    width:100%;
+    width:60%;
     height:100%;
-  }
-  & .ringArrow {
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size: contain;
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    border-radius:100%;
     position:relative;
-    bottom:17px;
-    width:30px;
-    height:30px;
-    left:46%;
-    border-top:10px solid ${props => props.theme.offBlack};
-    border-right:10px solid ${props => props.theme.offBlack};
-    transform: rotate(-45deg);
+    z-index:999999999999;  
+    filter:drop-shadow(2px 4px 8px #1d1d1d);
+  
+      & .rotateRing {
+        min-width:110%;
+        height:110%;
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size: contain;
+        border-radius:50%;
+        /* scale:1.1; */
+        z-index:99999999;  
+        position:relative;
+        bottom:3.5%;
+        will-change: transform;
+        @media (max-width:1000px) {
+          opacity:0;
+        }
+      }
+    
   }
+  
+
+  & .leftRingContainer {
+    position:absolute;  
+    width:20%;
+    height:100%;
+    left: 0; 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    z-index:99999999;
+    filter:drop-shadow(2px 4px 8px #1d1d1d);
+    @media (max-width:1000px) {
+      z-index:99999999;
+      cursor:pointer!important;
+    }
+    & .outerRingLeft {
+      width:100%;
+    }
+    
+  }
+  & .rightRingContainer {
+    position:absolute;  
+    width:20%;
+    height:100%;
+    right: 0; 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    filter:drop-shadow(2px 4px 8px #1d1d1d);
+    & .outerRingRight {
+      width:100%;
+    }
+  }
+
 
   & .skillContainer {
     position:absolute;
-    width:100%;
+    width:60%;
     height:100%;
-    scale:2.4;
+    transform: scale(2.3); 
+
 
     .jsContainer {
       position:absolute;
       right:0px;
-      top:30%;
+      top:32.5%;
       display:none;
       flex-direction:column;
       /* display:none; */
+      @media (max-width:1000px) {
+        opacity:0;
+      }
       & .innerItems{
         display:flex;
         flex-direction:column;
@@ -315,7 +310,7 @@ const ProfileImgContainer = styled.div`
         display:flex;
         flex-direction:column;
         position:absolute;
-        right:-130px;
+        right:-135px;
         top:55px;
         img {
           width:45px;
@@ -328,9 +323,12 @@ const ProfileImgContainer = styled.div`
     .CSSContainer {
       position:absolute;
       left:-30px;
-      top:30%;
+      top:32.5%;
       display:none;
       flex-direction:column;
+      @media (max-width:1000px) {
+        opacity:0;
+      }
 
       img {
         width:45px;
@@ -353,9 +351,11 @@ const ProfileImgContainer = styled.div`
     
     .OtherContainer {
       position:absolute;
-      left:38%;
-      bottom:-1px;
-      display:none;
+      left:0;
+      width:100%;
+      bottom:15%;
+      display:flex;
+      justify-content:center;
       align-items:center;
       div {
         top:-40px;
@@ -367,9 +367,27 @@ const ProfileImgContainer = styled.div`
         margin-right:10px;
       }
       & .github {
-        width:32px;
-        height:32px;
+        width:31px;
+        height:31px;
       }
+      @media (max-width:900px) {
+        bottom:7%;
+        left:0;
+        width:100%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        img {
+          width:30px;
+          height:30px;
+          margin-right:10px;
+        }
+        & .github {
+          width:27px;
+          height:27px;
+        }
+      }
+      
     }
     .show {
       display:flex!important; 
@@ -378,17 +396,17 @@ const ProfileImgContainer = styled.div`
 `
 
 
-const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
-  console.log(mainInitial)
+const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height, mobileAnimation, setMobileAnimation}) => {
+  const [ ringWidth, setRingWidth ] = useState('100%');
   const history = useHistory();
+  const largeRing = document.querySelector('.largeRing');
+
   const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      history.push('/projects')
+    onSwipedUp: () => {
+      handlePageChange('/projects', true)
     },
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true
   });
-
   
   const addRotation = (e) => {
     let imgRotateRing = document.querySelector(".rotateRing");
@@ -401,96 +419,111 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
     imgRotateRing.style.transform = `rotate(${angle}deg)`;  
   }
 
-  const addRevealListner = (e) => {
-    if(e.pageY >= (height / 2) + (height / 5)){
-      document.querySelector('.CSSContainer').classList.remove('show');
-      document.querySelector('.jsContainer').classList.remove('show');
-      document.querySelector('.OtherContainer').classList.add('show');
+  const handlePageChange = (page, isMobile) => {
+    largeRing.classList.remove('expand');
+    largeRing.classList.add('contract');
+    window.removeEventListener("mousemove", addRotation);
+    window.removeEventListener("mousemove", calcRingWidth);
+    window.removeEventListener("mousemove", addRevealListner);
+    window.removeEventListener("mousemove", addRotation);
+    isMobile ? setMobileAnimation(true) : setMobileAnimation(false);
+    if(page === '/projects'){
+      setEnterDirection(true);
     }
-    else if(e.pageX <= width / 2 ){
-      document.querySelector('.OtherContainer').classList.remove('show');
+    history.push(page);
+  }
+
+  const addRevealListner = (e) => {
+    if(e.pageX <= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200 ){
       document.querySelector('.jsContainer').classList.remove('show');
       document.querySelector('.CSSContainer').classList.add('show');
     }
-    else if(e.pageX >= width / 2 ){
-      document.querySelector('.OtherContainer').classList.remove('show');
+    else if(e.pageX >= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200  ){
       document.querySelector('.CSSContainer').classList.remove('show');
       document.querySelector('.jsContainer').classList.add('show');
     }
     else {
-      document.querySelector('.OtherContainer').classList.remove('show');
       document.querySelector('.CSSContainer').classList.remove('show');
       document.querySelector('.jsContainer').classList.remove('show');
     }
-    
   }
-
-  const handleProjectsLink = () => {
-    setEnterDirection(true);
-    window.removeEventListener("mousemove", addRotation);
-    history.push('/projects')
+  const calcRingWidth = () => {
+    if(history.location.pathname === '/home'){
+      let largeRing = document.querySelector('.largeRing');
+      setRingWidth(`${largeRing.offsetHeight}px`)
+    }
   }
-
-  const handleContactsLink = () => {
-    window.removeEventListener("mousemove", addRotation);
-    history.push('/contact')
-  }
-
-  useEffect(() => {    
+  useEffect(() => {   
+    document.querySelector('.largeRing').classList.remove('contract');
+    document.querySelector('.largeRing').classList.add('expand');
     window.addEventListener("mousemove", addRotation);
-
+    window.addEventListener('resize', calcRingWidth);
     window.addEventListener("mousemove", addRevealListner);
-    
-
+    calcRingWidth(); 
 
     return () => {
       window.removeEventListener("mousemove", addRotation);
+      window.removeEventListener("mousemove", calcRingWidth);
       window.removeEventListener("mousemove", addRevealListner);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   return(
     <Wrapper
       {...handlers}
-      initial={ mainInitial ? {x: `-100vw`} : false}
-      animate={{x: 0}}
-      exit={{x: `-100vw` }}
+      initial={ 
+        mainInitial 
+        ? mobileAnimation ? {y: `-100vh`} : {x: `-100vw`} 
+        : false
+      }
+      animate={mobileAnimation ? {y: 0} : {x: 0} }
+      exit={
+        mobileAnimation
+        ? {y: `-100vh` }
+        : {x: `-100vw` }
+      }
       transition={{
         x: { type: "easeInOut", duration:globalSlideAnimationDuration },
         opacity: { duration: 1 }
       }}
+      ringWidth={ringWidth} 
     >
-      <ReactTooltip />
+      
       
       <div className="contentContainer">
+
+        <div className="largeRing"></div>
+
+         
         <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
 
-        <HeadShake delay={2000} >
+        {/* <HeadShake delay={2000} >
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
             <img alt="arrow" className="arrow" src={arrowRed}/>
           </div>
-        </HeadShake> 
+        </HeadShake>  */}
 
         <ProfileImgContainer>
-          <div className="largeRing"></div>
-          <div className="shadowRing"></div>
           <Fade right>
-            <img className="outerRingLeft" src={outerRingLeft}/>
+            <div className="leftRingContainer">
+              <img className="outerRingLeft" src={width <= 900 ? outerRingLeftMobile : outerRingLeft }/>
+            </div>
           </Fade>
           
           <Fade left>
-            <img className="outerRingRight" src={outerRingRight}/>
+            <div className="rightRingContainer">
+              <img className="outerRingRight" src={width <= 900 ? outerRingRightMobile : outerRingRight }/>
+            </div>
           </Fade>
+            
+          <div className="profilePic" style={{backgroundImage: `url(${profilePicDark})`}}>
 
-          <Fade top>
-            <img className="outerRingBottom" src={outerRingBottom}/>
-          </Fade>
-          
-          <div className="rotateRing"><div className="ringArrow"></div></div>
-          <img className="profilePic" src={profilePicDark}/>
+            <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing"></div>
+
+          </div>
+
           <div className="skillContainer">
             <div className="jsContainer">
               <Fade right>
@@ -503,12 +536,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
               <Fade right delay={200} >
                 <div className="outerItems">
                   <img className="outer" alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
-                  <img className="outer" alt="phpIcon" data-tip="PostgreSQL" src={phpIcon}/>
+                  <img className="outer" alt="phpIcon" data-tip="PHP" src={phpIcon}/>
                 </div>
               </Fade>
               <Fade right delay={400} >
                 <div className="outerOutItems">
-                  <img className="outer" alt="phpIcon" data-tip="PostgreSQL" src={wordpressIcon}/>
+                  <img className="outer" alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
                 </div>
               </Fade>
             </div>
@@ -522,7 +555,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
             </div>
 
             <div className="OtherContainer">
-              <Fade bottom>
+              <Fade top>
               <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon }/></a>
               <a target="blank" href="https://github.com/OwenM-Edwards"><img className="github" alt="Github link" data-tip="My github profile." src={githubIcon }/></a>
               </Fade>
@@ -530,11 +563,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
           </div>
 
         </ProfileImgContainer>
+        <ReactTooltip />
       </div>
       
       <div className="linkContainer">
-        <div className="projectLink link link-b-main" onClick={()=>handleProjectsLink()}>Projects</div>
-        <div className="projectLink link link-a-main" onClick={()=>handleContactsLink()}>Contact</div>
+        <div className="projectLink link link-b-main" onClick={()=>handlePageChange('/projects', false)}>Projects</div>
+        <div className="projectLink link link-a-main" onClick={()=>handlePageChange('/contact', false)}>Contact</div>
       </div>
     </Wrapper>
   )

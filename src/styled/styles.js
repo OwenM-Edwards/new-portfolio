@@ -54,7 +54,7 @@ const WrapperSrc = styled(motion.div)`
 
          & h1 {
             color:white;
-            font-size:3.0rem;
+            font-size:2.7rem;
             padding:40px;
             margin:0 auto;
             text-align:center;  
@@ -162,22 +162,26 @@ const WrapperSrc = styled(motion.div)`
       & .link-a-main {
          width:50%;
          border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
          
       }
       & .link-b-main {
          border-radius:10px 0px 0 10px;
          border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+         writing-mode: vertical-rl;
       }
       & .link-a-contact {
          width:50%;
          border-left:2px solid ${props => props.theme.secondaryColorBorder};
          transform:rotate(-180deg); 
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
       & .link-b-contact {
          transform:rotate(-180deg); 
          border-radius:10px 0px 0 10px;
          border-left:2px solid ${props => props.theme.secondaryColorBorder};
-         
+         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
    }
 `

@@ -29,6 +29,7 @@ const Wrapper = styled.div`
       justify-content:space-between;
       align-items:center;
       align-content:space-between;
+      /* overflow-y:scroll;  */
        
       padding:0 40px 0px 40px;
       @media (max-width: 1600px) {
@@ -62,6 +63,7 @@ const ProjectWrapper = styled.div`
    background-repeat:no-repeat;
    background-size: cover;
    overflow:hidden;
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    @media (max-width: 1400px) {
       width:100%;
    } 

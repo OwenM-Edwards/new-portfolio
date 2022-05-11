@@ -7,13 +7,14 @@ import {
   Redirect,
 } from "react-router-dom";
 import styled, {ThemeProvider, keyframes} from "styled-components";
-import { Main, MainTest, Projects, Contact } from './pages/index';
+import { MainOld, Main, Projects, Contact } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useWindowDimensions} from './hooks/index';
 import ReactTooltip from 'react-tooltip';
 import { theme } from './styled/styles';
 import noiseBG2 from './img/noise2.png';
+import DotRing from "./components/DotRing";
 
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -61,10 +62,12 @@ const App = () => {
   const heightpx = `${height}px`;
   const globalSlideAnimationDuration = 0.9;
   const [mainInitial, setMainInitial] = useState(false);
-  
+  const [mobileAnimation, setMobileAnimation] = useState(false);
+
   
   return (
     <ThemeProvider theme={theme} >
+      {/* <DotRing/> */}
       <ReactTooltip />
       <Wrapper height={heightpx}>
           <div className="backgroundImage"></div>
@@ -72,15 +75,15 @@ const App = () => {
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/home">
-                  <MainTest width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <Main mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">
-                  <Projects globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
+                  <Projects mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route path="/contact">
-                  <Contact globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
+                  <Contact mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route exact path="/">

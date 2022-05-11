@@ -37,7 +37,6 @@ const Wrapper = styled(WrapperSrc)`
    & .contentContainer {
       padding:20px;
       margin:0 auto;
-      
 
       @media (max-width: 700px) {
          padding:8px 8px 5px 8px;
@@ -69,7 +68,7 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}) => {
+const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial, mobileAnimation,  setMobileAnimation}) => {
    const [[direction, exiting], setPage] = useState([false, false]);
    const history = useHistory();
    const [totalProjects, setTotalProjects] = useState();
@@ -78,17 +77,18 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
 
 
    const handlers = useSwipeable({
-      onSwipedLeft: () => {
+      onSwipedUp: () => {
+         setMobileAnimation(true);
          handleExitStyle('right');
-        history.push('/contact')
+         history.push('/contact')
       },
-      onSwipedRight: () => {
+      onSwipedDown: () => {
+         setMobileAnimation(true);
          setMainInitial(true);
          handleExitStyle('left')
          history.push('/home')
        },
       preventDefaultTouchmoveEvent: true,
-      trackMouse: true
    });
 
    // Detect esc key press and close project modal
@@ -122,6 +122,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
    }, []);
 
    if(exiting){
+      setMobileAnimation(false)
       if(direction){
          setMainInitial(true);
          history.push('/home')
@@ -145,9 +146,17 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial}
    return(
       <Wrapper
          {...handlers}
-         initial={enterDirection ? { x: `+100vw` } : { x: `-100vw`  }}
-         animate={{x: 0}}
-         exit={direction ? { x: `+100vw` } : { x: `-100vw`  }}
+         initial={
+            enterDirection 
+            ? mobileAnimation ? { y: `+100vh` } : { x: `+100vw` }
+            : mobileAnimation ? { y: `-100vh`  }: { x: `-100vw` }
+         }
+         animate={ mobileAnimation ? {y: 0} : {x: 0} }
+         exit={
+            direction 
+            ? mobileAnimation ? { y: `+100vh` } : { x: `+100vw` }
+            : mobileAnimation ? { y: `-100vh`  }: { x: `-100vw` }
+         }
          transition={{
             x: { type: "easeInOut", duration:globalSlideAnimationDuration }
          }}
