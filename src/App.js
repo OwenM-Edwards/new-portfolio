@@ -79,11 +79,11 @@ const App = () => {
               </Route>
 
               <Route path="/projects">
-                  <Projects mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
+                  <Projects mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route path="/contact">
-                  <Contact mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
+                  <Contact mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route exact path="/">

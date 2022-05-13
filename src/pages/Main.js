@@ -396,14 +396,16 @@ const ProfileImgContainer = styled.div`
 `
 
 
-const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height, mobileAnimation, setMobileAnimation}) => {
+const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
   const [ ringWidth, setRingWidth ] = useState('100%');
   const history = useHistory();
   const largeRing = document.querySelector('.largeRing');
 
   const handlers = useSwipeable({
     onSwipedUp: () => {
-      handlePageChange('/projects', true)
+      if(width <= 900){
+        handlePageChange('/projects')
+      }
     },
     preventDefaultTouchmoveEvent: true,
   });
@@ -419,14 +421,13 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
     imgRotateRing.style.transform = `rotate(${angle}deg)`;  
   }
 
-  const handlePageChange = (page, isMobile) => {
+  const handlePageChange = (page) => {
     largeRing.classList.remove('expand');
     largeRing.classList.add('contract');
     window.removeEventListener("mousemove", addRotation);
     window.removeEventListener("mousemove", calcRingWidth);
     window.removeEventListener("mousemove", addRevealListner);
     window.removeEventListener("mousemove", addRotation);
-    isMobile ? setMobileAnimation(true) : setMobileAnimation(false);
     if(page === '/projects'){
       setEnterDirection(true);
     }
@@ -474,12 +475,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       {...handlers}
       initial={ 
         mainInitial 
-        ? mobileAnimation ? {y: `-100vh`} : {x: `-100vw`} 
+        ? width <= 900 ? {y: `-100vh`} : {x: `-100vw`} 
         : false
       }
-      animate={mobileAnimation ? {y: 0} : {x: 0} }
+      animate={width <= 900 ? {y: 0} : {x: 0} }
       exit={
-        mobileAnimation
+        width <= 900
         ? {y: `-100vh` }
         : {x: `-100vw` }
       }
@@ -508,13 +509,13 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
         <ProfileImgContainer>
           <Fade right>
             <div className="leftRingContainer">
-              <img className="outerRingLeft" src={width <= 900 ? outerRingLeftMobile : outerRingLeft }/>
+              <img className="outerRingLeft" src={outerRingLeft }/>
             </div>
           </Fade>
           
           <Fade left>
             <div className="rightRingContainer">
-              <img className="outerRingRight" src={width <= 900 ? outerRingRightMobile : outerRingRight }/>
+              <img className="outerRingRight" src={outerRingRight }/>
             </div>
           </Fade>
             
@@ -567,8 +568,8 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       </div>
       
       <div className="linkContainer">
-        <div className="projectLink link link-b-main" onClick={()=>handlePageChange('/projects', false)}>Projects</div>
-        <div className="projectLink link link-a-main" onClick={()=>handlePageChange('/contact', false)}>Contact</div>
+        <div className="projectLink link link-b-main" onClick={()=>handlePageChange('/projects')}>Projects</div>
+        <div className="projectLink link link-a-main" onClick={()=>handlePageChange('/contact')}>Contact</div>
       </div>
     </Wrapper>
   )

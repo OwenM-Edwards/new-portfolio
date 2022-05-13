@@ -68,8 +68,8 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial, mobileAnimation,  setMobileAnimation}) => {
-   const [[direction, exiting], setPage] = useState([false, false]);
+const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial, width}) => {
+   const [exitDirection, setExitDirection] = useState(false);
    const history = useHistory();
    const [totalProjects, setTotalProjects] = useState();
    const [displayProject, setDisplayProject] = useState(-1);
@@ -78,18 +78,24 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
 
    const handlers = useSwipeable({
       onSwipedUp: () => {
-         setMobileAnimation(true);
-         handleExitStyle('right');
-         history.push('/contact')
+         handlePageChange('/contact');
       },
       onSwipedDown: () => {
-         setMobileAnimation(true);
-         setMainInitial(true);
-         handleExitStyle('left')
-         history.push('/home')
-       },
+         handlePageChange('/home');
+      },
       preventDefaultTouchmoveEvent: true,
    });
+
+   const handlePageChange = (page) => {
+      if(page === '/home'){
+         setMainInitial(true);
+         setExitDirection(true)
+      }
+      else {
+         setExitDirection(false)
+      }
+      history.push(page);
+   }
 
    // Detect esc key press and close project modal
    const escFunction = useCallback((event) => {
@@ -121,41 +127,21 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
       };
    }, []);
 
-   if(exiting){
-      setMobileAnimation(false)
-      if(direction){
-         setMainInitial(true);
-         history.push('/home')
-      }
-      else {
-         history.push('/contact')
-      }
-   }
-
-   const handleExitStyle = (exitDirection) => {
-      if(exitDirection === 'left'){
-         setPage([true, true])
-      }
-      else {
-         setPage([false, true])
-      }
-   }
-
-
+   
 
    return(
       <Wrapper
          {...handlers}
          initial={
             enterDirection 
-            ? mobileAnimation ? { y: `+100vh` } : { x: `+100vw` }
-            : mobileAnimation ? { y: `-100vh`  }: { x: `-100vw` }
+            ? width <= 900 ? { y: `+100vh` } : { x: `+100vw` }
+            : width <= 900 ? { y: `-100vh`  }: { x: `-100vw` }
          }
-         animate={ mobileAnimation ? {y: 0} : {x: 0} }
+         animate={ width <= 900 ? {y: 0} : {x: 0} }
          exit={
-            direction 
-            ? mobileAnimation ? { y: `+100vh` } : { x: `+100vw` }
-            : mobileAnimation ? { y: `-100vh`  }: { x: `-100vw` }
+            exitDirection 
+            ? width <= 900 ? { y: `+100vh` } : { x: `+100vw` }
+            : width <= 900 ? { y: `-100vh`  }: { x: `-100vw` }
          }
          transition={{
             x: { type: "easeInOut", duration:globalSlideAnimationDuration }
@@ -164,7 +150,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
 
          {/* <BgNoiseSrc></BgNoiseSrc> */}
          <ReactTooltip />
-         <div onClick={()=>handleExitStyle('left')} className="projectLink projectLink-a" ><p>Home</p></div>
+         <div onClick={()=>handlePageChange('/home')} className="projectLink projectLink-a" ><p>Home</p></div>
             <div className="contentContainer">
                <div className="headerContainer" onClick={()=>closeProjectModal()}>
                   <LinksContainer/>
@@ -187,7 +173,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
                   <ProjectGrid openProjectModal={openProjectModal} setTotalProjects={setTotalProjects}/>
                </div>
             </div>
-         <div onClick={()=>handleExitStyle('right')} className="projectLink projectLink-b" ><p>Contact</p></div>
+         <div onClick={()=>handlePageChange('/contact')} className="projectLink projectLink-b" ><p>Contact</p></div>
       </Wrapper>
    )
 }
