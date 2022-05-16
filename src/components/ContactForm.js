@@ -27,6 +27,9 @@ const Wrapper = styled.div`
         text-align:center;
     }
 
+    & span {
+            color:#ff4338;
+        }
     & h2 {
         color:white;
         font-size:2.3rem;
@@ -37,9 +40,7 @@ const Wrapper = styled.div`
     & h3 {
         color:white;
         font-size:1.9rem;
-        & span {
-            color:#ff4338;
-        }
+
         @media (max-width: 700px), (max-height:700px) {
             font-size:1rem;
         }
@@ -170,8 +171,8 @@ const ContactForm = () => {
     return (
         <Wrapper>            
             <Fade className="test" delay={300}>
-                <h2>You can email me. <span>@ </span>owenhedwards@gmail.com</h2>
-                <h3>...or give me a call. <span>@ </span>+44 7468966914</h3>
+                <h2>You can email me <span>@ </span>owenhedwards@gmail.com</h2>
+                <h3>...or give me a call <span>@ </span>+44 7468966914</h3>
                 <h3>...or send me a message...</h3>
                 <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="subject">Subject</label>

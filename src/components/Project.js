@@ -74,6 +74,7 @@ const Wrapper = styled(motion.div)`
    background-color: rgba(0, 0, 0, 1);
 
 
+
    @media (max-width: 700px) {
       width:100%;
       padding:0px;
