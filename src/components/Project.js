@@ -90,10 +90,10 @@ const LeftArrow = styled.div`
    z-index:9999999;
    position:absolute;
    cursor:pointer;
-   transition:scale 0.2s ease-in-out;
+   transition:transform 0.2s ease-in-out;
 
    &:hover {
-      scale:0.9;
+      transform: scale(0.9); 
    }
    & img {
       width:100%;
@@ -107,10 +107,10 @@ const RightArrow = styled.div`
    z-index:9999999;
    position:absolute;
    cursor:pointer;
-   transition:scale 0.2s ease-in-out;
+   transition:transform 0.2s ease-in-out;
 
    &:hover {
-      scale:0.9;
+      transform: scale(0.9); 
    }
    & img {
       width:100%;
@@ -122,7 +122,7 @@ const CloseIcon = styled.div`
    height:40px;
    position:absolute;
    top:30px;
-   right:70px;
+   left:calc(100% + 2px);
    cursor:pointer;
    z-index:9999999;
    animation-name: ${rotateExit};
@@ -208,8 +208,8 @@ const ProjectWrapper = styled.div`
    }
 
    & .section3 {
-      width:60%;
-      max-width:750px;
+      width:94%;
+      max-width:950px;
       height:40%;
       display:flex;
       flex-direction:column;
@@ -222,7 +222,7 @@ const ProjectWrapper = styled.div`
          justify-content:center;
          align-items:flex-end;
          width:100%;
-         height:80%;
+         height:100%;
       }
       
       & .buttonContainer {
@@ -259,8 +259,6 @@ const ProjectWrapper = styled.div`
    }
 
 `
-
-
 
 
 const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayProject, totalProjects}) => {

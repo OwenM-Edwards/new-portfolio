@@ -32,7 +32,7 @@ const Wrapper = styled.div`
       /* overflow-y:scroll;  */
        
       padding:0 40px 0px 40px;
-      @media (max-width: 1600px) {
+      @media (max-width: 1900px) {
          width:85%;
       } 
       @media (max-width: 1400px) {

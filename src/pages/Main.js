@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import styled, { keyframes } from "styled-components";
 import {useHistory} from 'react-router-dom';
 import cssIcon from '../img/css.svg';
@@ -68,23 +68,37 @@ const Wrapper = styled(WrapperSrc)`
       margin-left:auto;
       margin-right:auto;
       transform: translate(-0%,-0%);
-      height:160%;
+      height:${props => props.ringHeight};
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-      width:${props => props.ringWidth};
+      width:90%;
       transition:width 0.2s easeInOut, height 0.2s easeInOut;
+      max-width:2300px;
       background: radial-gradient(ellipse at     center, 
         rgba(255,113,12,0) 30%,
         #1d1d1d 30.1%);
 
+      // @media (min-width: 2000px) {
+      //   width:100%;
+      // }
+      // @media (max-width: 1600px) {
+      //   width:120%;
+      // }
+      // @media (max-width: 1400px) {
+      //   width:130%;
+      // }
       @media (max-width: 1200px) {
-        height:110%;
+        width:110%;
       }
       @media (max-width: 1000px) {
-        height:105%;
+        width:160%;
       }
-      @media (max-width: 800px) {
-        height:102%;
+      @media (max-width: 950px) {
+        width:150%;
       }
+      @media (max-width: 700px) {
+        width:180%; 
+      }
+
       
     }
     & .expand {
@@ -112,6 +126,7 @@ const Wrapper = styled(WrapperSrc)`
       position: absolute;
       top:20%;
       transition:textDecoration 6s;
+      display:none; 
       
       .un::after {
         content: '';
@@ -121,6 +136,10 @@ const Wrapper = styled(WrapperSrc)`
         background: black;
         transition: 300ms;
       }
+      @media (max-width: 1700px) {
+        top:14%;
+      }
+
       @media (max-width: 900px) {
         max-width:95%;
         top:3%;
@@ -209,7 +228,6 @@ const ProfileImgContainer = styled.div`
         background-repeat:no-repeat;
         background-size: contain;
         border-radius:50%;
-        /* scale:1.1; */
         z-index:99999999;  
         position:relative;
         bottom:3.5%;
@@ -240,7 +258,12 @@ const ProfileImgContainer = styled.div`
     & .outerRingLeft {
       width:100%;
     }
-    
+    @media (min-width: 1100px) and (max-width: 1700px) {
+      filter:drop-shadow(-1.5px 1px 1px #F9A825);
+    }
+    @media (max-width: 900px) {
+      filter:drop-shadow(-1.5px 1px 1px #F9A825);
+    }
   }
   & .rightRingContainer {
     position:absolute;  
@@ -251,144 +274,119 @@ const ProfileImgContainer = styled.div`
     justify-content:center;
     align-items:center;
     filter:drop-shadow(2px 4px 8px #1d1d1d);
+    z-index:99999999; 
     & .outerRingRight {
       width:100%;
     }
+    @media (min-width: 1100px) and (max-width: 1700px) {
+      filter:drop-shadow(2px 1px 1px #F9A825);
+    }
+    @media (max-width: 900px) {
+      filter:drop-shadow(2px 1px 1px #F9A825);
+    }
   }
-
 
   & .skillContainer {
     position:absolute;
-    width:60%;
+    width:100%;
     height:100%;
-    transform: scale(2.3); 
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    transform: scale(2.5); 
 
-
-    .jsContainer {
-      position:absolute;
-      right:0px;
-      top:32.5%;
-      display:none;
-      flex-direction:column;
-      /* display:none; */
-      @media (max-width:1000px) {
-        opacity:0;
-      }
-      & .innerItems{
-        display:flex;
-        flex-direction:column;
-        position:absolute;
-        right:-30px;
-        top:30%;
-        img {
-          width:45px;
-          height:45px;
-          margin-bottom:10px;
-          &:nth-of-type(1){
-            position:relative;
-            right:30px;
-          }
-          &:nth-of-type(3){
-            position:relative;
-            right:30px;
-          }
-        }
-      }
-      & .outerItems{
-        display:flex;
-        flex-direction:column;
-        position:absolute;
-        right:-80px;
-        top:30px;
-        img {
-          width:45px;
-          height:45px;
-          margin-bottom:10px;
-        }
-      }
-      & .outerOutItems {
-        display:flex;
-        flex-direction:column;
-        position:absolute;
-        right:-135px;
-        top:55px;
-        img {
-          width:45px;
-          height:45px;
-          margin-bottom:10px;
-        }
-      }
-    }
-    
-    .CSSContainer {
-      position:absolute;
-      left:-30px;
-      top:32.5%;
-      display:none;
-      flex-direction:column;
-      @media (max-width:1000px) {
-        opacity:0;
-      }
-
-      img {
-        width:45px;
-        height:45px;
-        margin-bottom:10px;
-        &:nth-of-type(1){
-          position:relative;
-          left:30px;
-        }
-        &:nth-of-type(2){
-            width:35px;
-          height:35px;
-        }
-        &:nth-of-type(3){
-          position:relative;
-          left:30px;
-        }
-      }
-    }
-    
-    .OtherContainer {
-      position:absolute;
-      left:0;
-      width:100%;
-      bottom:15%;
+    .skillInnerWrapper {
+      width:30%;
+      height:100%;
       display:flex;
       justify-content:center;
-      align-items:center;
-      div {
-        top:-40px;
-        left:50px;
-      }
-      img {
-        width:35px;
-        height:35px;
-        margin-right:10px;
-      }
-      & .github {
-        width:31px;
-        height:31px;
-      }
-      @media (max-width:900px) {
-        bottom:7%;
-        left:0;
+      .jsContainer {
+        display:none;
+        flex-direction:row;
+        height:auto;
         width:100%;
-        display:flex;
+        z-index:999999999999999999999999;
+        flex-wrap:no-wrap;
         justify-content:center;
         align-items:center;
         img {
-          width:30px;
-          height:30px;
-          margin-right:10px;
+          width:65%;
+          margin:auto 0 auto 0;
         }
-        & .github {
-          width:27px;
-          height:27px;
+        & .innerItems{
+          display:flex;
+          flex-direction:column;
+          flex-wrap:no-wrap;
+          width:33%;
+          height:30%;
+          justify-content:center;
+          align-items:center;
+          box-sizing: border-box;
+        }
+
+        & .centerItems{
+          display:flex;
+          flex-direction:column;
+          flex-wrap:no-wrap;
+          width:33%;
+          height:30%;
+          justify-content:center;
+          align-items:center;
+          img {
+            width:70%;
+          }
+        }
+        & .outerItems {
+          display:flex;
+          flex-direction:column;
+          flex-wrap:no-wrap;
+          width:33%;
+          height:30%;
+          justify-content:center;
+          align-items:center;
+          img {
+            width:75%;
+          }
         }
       }
       
+      .CSSContainer {
+        display:none;
+        flex-direction:row;
+        height:100%;
+        width:100%;
+  
+        img {
+          width:100%;
+        }
+        & .innerItems{
+          display:flex;
+          flex-direction:column;
+          width:33%;
+          height:100%;
+          justify-content:center;
+        }
+        & .centerItems{
+          display:flex;
+          flex-direction:column;
+          width:33%;
+          height:100%;
+          justify-content:center;
+        }
+        & .outerItems {
+          display:flex;
+          flex-direction:column;
+          width:33%;
+          height:100%;
+          justify-content:center;
+        }
+      }
     }
+
+    .OtherContainer {
+      display:none;
+    }
+
     .show {
       display:flex!important; 
     }
@@ -397,9 +395,13 @@ const ProfileImgContainer = styled.div`
 
 
 const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
-  const [ ringWidth, setRingWidth ] = useState('100%');
+  const [ ringHeight, setRingHeight ] = useState('100%');
+  const [ exiting, setExiting ] = useState(false)
   const history = useHistory();
-  const largeRing = document.querySelector('.largeRing');
+  const LargeRingRef = useRef(null);
+  const CSSContainerRef = useRef(null);
+  const JSContainerRef = useRef(null);
+  const RotateRingRef = useRef(null);
 
   const handlers = useSwipeable({
     onSwipedUp: () => {
@@ -410,57 +412,68 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
     preventDefaultTouchmoveEvent: true,
   });
   
-  const addRotation = (e) => {
-    let imgRotateRing = document.querySelector(".rotateRing");
-    let imgRotateRingRect = imgRotateRing.getBoundingClientRect();
-    let imgRotateRingCenter= {
-      x: imgRotateRingRect.left + imgRotateRingRect.width/2, 
-      y: imgRotateRingRect.top + imgRotateRingRect.height/2
-    };
-    let angle = Math.atan2(e.pageX - imgRotateRingCenter.x, - (e.pageY - imgRotateRingCenter.y) )*(180 / Math.PI);      
-    imgRotateRing.style.transform = `rotate(${angle}deg)`;  
-  }
+
 
   const handlePageChange = (page) => {
-    largeRing.classList.remove('expand');
-    largeRing.classList.add('contract');
-    window.removeEventListener("mousemove", addRotation);
-    window.removeEventListener("mousemove", calcRingWidth);
-    window.removeEventListener("mousemove", addRevealListner);
-    window.removeEventListener("mousemove", addRotation);
+    setExiting(true);
+    // LargeRingRef.classList.remove('expand');
+    // LargeRingRef.classList.add('contract');
+
+    // window.removeEventListener("mousemove", addRotation);
+    // window.removeEventListener("mousemove", calcRingWidth);
+    // window.removeEventListener("mousemove", addRevealListner);
+    // window.removeEventListener("mousemove", addRotation);
     if(page === '/projects'){
       setEnterDirection(true);
     }
     history.push(page);
   }
 
-  const addRevealListner = (e) => {
-    if(e.pageX <= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200 ){
-      document.querySelector('.jsContainer').classList.remove('show');
-      document.querySelector('.CSSContainer').classList.add('show');
-    }
-    else if(e.pageX >= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200  ){
-      document.querySelector('.CSSContainer').classList.remove('show');
-      document.querySelector('.jsContainer').classList.add('show');
-    }
-    else {
-      document.querySelector('.CSSContainer').classList.remove('show');
-      document.querySelector('.jsContainer').classList.remove('show');
-    }
-  }
-  const calcRingWidth = () => {
-    if(history.location.pathname === '/home'){
-      let largeRing = document.querySelector('.largeRing');
-      setRingWidth(`${largeRing.offsetHeight}px`)
-    }
-  }
+
   useEffect(() => {   
-    document.querySelector('.largeRing').classList.remove('contract');
-    document.querySelector('.largeRing').classList.add('expand');
-    window.addEventListener("mousemove", addRotation);
-    window.addEventListener('resize', calcRingWidth);
-    window.addEventListener("mousemove", addRevealListner);
-    calcRingWidth(); 
+    const LargeRing = LargeRingRef.current;
+    const RotateRing = RotateRingRef.current;
+    const CSSContainer = CSSContainerRef.current;
+    const JSContainer = JSContainerRef.current;
+    LargeRing.classList.remove('contract');
+    LargeRing.classList.add('expand');
+    const addRevealListner = (e) => {
+      if(e.pageX <= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200 ){
+        JSContainer.classList.remove('show');
+        CSSContainer.classList.add('show');
+      }
+      else if(e.pageX >= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200  ){
+        CSSContainer.classList.remove('show');
+        JSContainer.classList.add('show');
+      }
+      else {
+        CSSContainer.classList.remove('show');
+        JSContainer.classList.remove('show');
+      }
+    }
+
+    const addRotation = (e) => {
+      // let imgRotateRing = document.querySelector(".rotateRing");
+      let imgRotateRingRect = RotateRing.getBoundingClientRect();
+      let imgRotateRingCenter= {
+        x: imgRotateRingRect.left + imgRotateRingRect.width/2, 
+        y: imgRotateRingRect.top + imgRotateRingRect.height/2
+      };
+      let angle = Math.atan2(e.pageX - imgRotateRingCenter.x, - (e.pageY - imgRotateRingCenter.y) )*(180 / Math.PI);      
+      RotateRing.style.transform = `rotate(${angle}deg)`;  
+    }
+
+
+    const calcRingWidth = () => {
+      setRingHeight(`${LargeRing.offsetWidth}px`)
+    }
+    
+    if(history.location.pathname === '/home'){
+      window.addEventListener("mousemove", addRotation);
+      window.addEventListener('resize', calcRingWidth);
+      window.addEventListener("mousemove", addRevealListner);
+      calcRingWidth(); 
+    }
 
     return () => {
       window.removeEventListener("mousemove", addRotation);
@@ -468,7 +481,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       window.removeEventListener("mousemove", addRevealListner);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [exiting]);
 
   return(
     <Wrapper
@@ -488,14 +501,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
         x: { type: "easeInOut", duration:globalSlideAnimationDuration },
         opacity: { duration: 1 }
       }}
-      ringWidth={ringWidth} 
+      ringHeight={ringHeight} 
     >
       
       
       <div className="contentContainer">
-
-        <div className="largeRing"></div>
-
+        <div className="largeRing" ref={LargeRingRef}></div>
          
         <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
 
@@ -521,42 +532,57 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
             
           <div className="profilePic" style={{backgroundImage: `url(${profilePicDark})`}}>
 
-            <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing"></div>
+            <div style={{backgroundImage: `url(${rotateRing})`}} className="rotateRing" ref={RotateRingRef}></div>
 
           </div>
 
           <div className="skillContainer">
-            <div className="jsContainer">
-              <Fade right>
-                <div className="innerItems">
-                  <img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/>
-                  <img alt="React.js" data-tip="React.js" src={reactIcon}/>
-                  <img alt="Node.js" data-tip="Node.js" src={nodeIcon}/>
-                </div>
-              </Fade>
-              <Fade right delay={200} >
-                <div className="outerItems">
-                  <img className="outer" alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
-                  <img className="outer" alt="phpIcon" data-tip="PHP" src={phpIcon}/>
-                </div>
-              </Fade>
-              <Fade right delay={400} >
-                <div className="outerOutItems">
-                  <img className="outer" alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
-                </div>
-              </Fade>
+            <div className="skillInnerWrapper">
+              <div className="CSSContainer" ref={CSSContainerRef}>
+                <Fade left delay={400} >
+                  <div className="outerItems">
+                  </div>
+                </Fade>
+                <Fade left delay={200}>
+                  <div className="centerItems">
+                  </div>
+                </Fade>
+                <Fade left>
+                  <div className="innerItems">
+                    <img alt="CSS3" data-tip="CSS3" src={cssIcon}/>
+                    <img alt="BOOTSTRAP" data-tip="Bootstrap" src={bootstrapIcon}/>
+                    <img alt="SASS" data-tip="SASS" src={sassIcon}/>
+                  </div>                
+                </Fade>
+              </div>
             </div>
-
-            <div className="CSSContainer">
-              <Fade left>
-                <img alt="CSS3" data-tip="CSS3" src={cssIcon}/>
-                <img alt="BOOTSTRAP" data-tip="Bootstrap" src={bootstrapIcon}/>
-                <img alt="SASS" data-tip="SASS" src={sassIcon}/>
-              </Fade>
+            
+            <div className="skillInnerWrapper">
+              <div className="jsContainer"  ref={JSContainerRef}>
+                <Fade right>
+                  <div className="innerItems">
+                    <img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/>
+                    <img alt="React.js" data-tip="React.js" src={reactIcon}/>
+                    <img alt="Node.js" data-tip="Node.js" src={nodeIcon}/>
+                  </div>
+                </Fade>
+                <Fade right delay={200} >
+                  <div className="centerItems">
+                    <img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
+                    <img alt="phpIcon" data-tip="PHP" src={phpIcon}/>
+                  </div>
+                </Fade>
+                <Fade right delay={400} >
+                  <div className="outerItems">
+                    <img alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
+                  </div>
+                </Fade>
+              </div>
             </div>
 
             <div className="OtherContainer">
               <Fade top>
+                
               <a target="blank" href={CV}><img alt="Resume link" data-tip="Take a look at my CV"  src={resumeIcon }/></a>
               <a target="blank" href="https://github.com/OwenM-Edwards"><img className="github" alt="Github link" data-tip="My github profile." src={githubIcon }/></a>
               </Fade>

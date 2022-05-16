@@ -72,7 +72,7 @@ const App = () => {
       <Wrapper height={heightpx}>
           <div className="backgroundImage"></div>
           <ToastContainer />
-          <AnimatePresence  initial={false}>
+          {/* <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/home">
                   <Main mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
@@ -90,7 +90,7 @@ const App = () => {
                 {<Redirect to="/home" />}
               </Route>
             </Switch>
-          </AnimatePresence>
+          </AnimatePresence> */}
         
       </Wrapper>
     </ThemeProvider>
