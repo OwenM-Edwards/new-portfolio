@@ -16,7 +16,7 @@ import { theme } from './styled/styles';
 import noiseBG2 from './img/noise2.png';
 import DotRing from "./components/DotRing";
 
-const grain = keyframes`
+const grainOld = keyframes`
   0%, 100% { transform:translate(0, 0) }
   10% { transform:translate(-5%, -10%) }
   20% { transform:translate(-15%, 5%) }
@@ -27,6 +27,18 @@ const grain = keyframes`
   70% { transform:translate(0%, 15%) }
   80% { transform:translate(3%, 12%) }
   90% { transform:translate(-10%, 10%) }
+`
+const grain = keyframes`
+  0%, 100% { transform:translate(0, 0) }
+  10% { transform:translate(-10%, -10%) }
+  20% { transform:translate(10%, 10%) }
+  30% { transform:translate(-10%, -10%) }
+  40% { transform:translate(10%, 10%) }
+  50% { transform:translate(-10%, -10%) }
+  60% { transform:translate(10%, 10%) }
+  70% { transform:translate(-10%, -10%) }
+  80% { transform:translate(10%, 10%) }
+  90% { transform:translate(-10%, -10%) }
 `
 
 const Wrapper = styled.div`
