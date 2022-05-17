@@ -12,7 +12,7 @@ const unfoldIn = keyframes`
       transform:scaleY(.015) scaleX(0);
       background-color: #ff4338;
    }
-   30% {
+   23% {
       background-color: #ff4338;
    }
    50% {
@@ -30,7 +30,7 @@ const unfoldOut = keyframes`
      transform:scaleY(.015) scaleX(1);
      
    }
-   95% {
+   99% {
       background-color: #ff4338;
    }
    100% {
