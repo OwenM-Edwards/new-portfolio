@@ -374,7 +374,7 @@ const ProfileImgContainer = styled.div`
           align-items:center;
           box-sizing: border-box;
           img:first-of-type{
-            width:58%;
+            width:58  %;
           }
         }
 
