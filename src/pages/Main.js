@@ -77,15 +77,6 @@ const Wrapper = styled(WrapperSrc)`
         rgba(255,113,12,0) 30%,
         #1d1d1d 30.1%);
 
-      // @media (min-width: 2000px) {
-      //   width:100%;
-      // }
-      // @media (max-width: 1600px) {
-      //   width:120%;
-      // }
-      // @media (max-width: 1400px) {
-      //   width:130%;
-      // }
       @media (max-width: 1200px) {
         width:110%;
       }
@@ -97,9 +88,7 @@ const Wrapper = styled(WrapperSrc)`
       }
       @media (max-width: 700px) {
         width:180%; 
-      }
-
-      
+      } 
     }
     & .expand {
       animation-name: ${expand};
@@ -124,7 +113,7 @@ const Wrapper = styled(WrapperSrc)`
       text-align:center;
       z-index:999999;
       position: absolute;
-      top:20%;
+      top:15%;
       transition:textDecoration 6s;
 
       .un::after {
@@ -136,15 +125,21 @@ const Wrapper = styled(WrapperSrc)`
         transition: 300ms;
       }
       @media (max-width: 1700px) {
-        top:14%;
+        top:5%;
       }
 
       @media (max-width: 900px) {
         max-width:95%;
         top:3%;
       }
+
+      @media (max-width: 800px) {
+        max-width:95%;
+        top:3%;
+      }
       @media (max-width: 700px) {
         font-size:1.8rem;
+        top:10%;
       }
     }
     & span {
@@ -188,6 +183,14 @@ const Wrapper = styled(WrapperSrc)`
     }
   }
 `
+const animate = keyframes`
+  0%{
+     transform: rotateY(0deg);
+  }
+  100%{
+      transform: rotateY(360deg);
+  }
+`
 
 const ProfileImgContainer = styled.div`
   width:60%;
@@ -196,6 +199,9 @@ const ProfileImgContainer = styled.div`
   position:relative;
   display:flex;
   justify-content:center;
+
+ 
+
 
   @media (max-width: 1000px) {
     width:70%;
@@ -219,6 +225,8 @@ const ProfileImgContainer = styled.div`
     position:relative;
     z-index:999999999999;  
     filter:drop-shadow(2px 4px 8px #1d1d1d);
+    /* animation: ${animate} 1s linear infinite;
+  perspective: 800px; */
   
       & .rotateRing {
         min-width:110%;
@@ -318,10 +326,13 @@ const ProfileImgContainer = styled.div`
           flex-direction:column;
           flex-wrap:no-wrap;
           width:33%;
-          height:30%;
           justify-content:center;
           align-items:center;
           box-sizing: border-box;
+          height:40%;
+          img{
+            width:50%;
+          }
         }
 
         & .centerItems{
@@ -329,11 +340,11 @@ const ProfileImgContainer = styled.div`
           flex-direction:column;
           flex-wrap:no-wrap;
           width:33%;
-          height:30%;
           justify-content:center;
           align-items:center;
-          img {
-            width:70%;
+          height:40%;
+          img{
+            width:50%;
           }
         }
         & .outerItems {
@@ -359,9 +370,10 @@ const ProfileImgContainer = styled.div`
         flex-wrap:no-wrap;
         justify-content:center;
         align-items:center;
+        /* background-color:blue; */
   
         img {
-          width:65%;
+          width:45%;
           margin:auto 0 auto 0;
         }
         & .innerItems{
@@ -369,12 +381,17 @@ const ProfileImgContainer = styled.div`
           flex-direction:column;
           flex-wrap:no-wrap;
           width:33%;
-          height:30%;
+          /* height:30%; */
           justify-content:center;
           align-items:center;
           box-sizing: border-box;
+          /* background-color:orange; */
+          height:40%;
           img:first-of-type{
-            width:58  %;
+            width:45%;
+          }
+          img{
+            width:50%;
           }
         }
 
@@ -435,16 +452,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
   });
   
 
-
   const handlePageChange = (page) => {
     setExiting(true);
-    // LargeRingRef.classList.remove('expand');
-    // LargeRingRef.classList.add('contract');
+    let LargeRing2 = LargeRingRef.current;
+    LargeRing2.classList.remove('expand');
+    LargeRing2.classList.add('contract');
 
-    // window.removeEventListener("mousemove", addRotation);
-    // window.removeEventListener("mousemove", calcRingWidth);
-    // window.removeEventListener("mousemove", addRevealListner);
-    // window.removeEventListener("mousemove", addRotation);
     if(page === '/projects'){
       setEnterDirection(true);
     }
@@ -454,11 +467,30 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
 
   useEffect(() => {   
     const LargeRing = LargeRingRef.current;
+
     const RotateRing = RotateRingRef.current;
+    let imgRotateRingRect = RotateRing.getBoundingClientRect();
+    let imgRotateRingCenter = {
+      x: imgRotateRingRect.left + imgRotateRingRect.width/2, 
+      y: imgRotateRingRect.top + imgRotateRingRect.height/2
+    };
+
     const CSSContainer = CSSContainerRef.current;
     const JSContainer = JSContainerRef.current;
+
     LargeRing.classList.remove('contract');
     LargeRing.classList.add('expand');
+
+    const updateRotateRing = () => {
+      imgRotateRingRect = RotateRing.getBoundingClientRect();
+      imgRotateRingCenter = {
+        x: imgRotateRingRect.left + imgRotateRingRect.width/2, 
+        y: imgRotateRingRect.top + imgRotateRingRect.height/2
+      };
+    }
+    setTimeout(updateRotateRing, 700)
+    
+
     const addRevealListner = (e) => {
       if(e.pageX <= width / 2 && e.pageY <= height / 2 + 200 && e.pageY >= height / 2 - 200 ){
         JSContainer.classList.remove('show');
@@ -475,35 +507,29 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
     }
 
     const addRotation = (e) => {
-      // let imgRotateRing = document.querySelector(".rotateRing");
-      let imgRotateRingRect = RotateRing.getBoundingClientRect();
-      let imgRotateRingCenter= {
-        x: imgRotateRingRect.left + imgRotateRingRect.width/2, 
-        y: imgRotateRingRect.top + imgRotateRingRect.height/2
-      };
       let angle = Math.atan2(e.pageX - imgRotateRingCenter.x, - (e.pageY - imgRotateRingCenter.y) )*(180 / Math.PI);      
       RotateRing.style.transform = `rotate(${angle}deg)`;  
     }
 
-
     const calcRingWidth = () => {
       setRingHeight(`${LargeRing.offsetWidth}px`)
     }
-    
-    if(history.location.pathname === '/home'){
-      window.addEventListener("mousemove", addRotation);
-      window.addEventListener('resize', calcRingWidth);
-      window.addEventListener("mousemove", addRevealListner);
-      calcRingWidth(); 
-    }
+   
+    window.addEventListener("mousemove", addRotation);
+    window.addEventListener('resize', calcRingWidth);
+    window.addEventListener('resize', updateRotateRing);
+    window.addEventListener("mousemove", addRevealListner);
+    calcRingWidth(); 
 
     return () => {
       window.removeEventListener("mousemove", addRotation);
-      window.removeEventListener("mousemove", calcRingWidth);
+      window.removeEventListener("resize", calcRingWidth);
+      window.removeEventListener('resize', updateRotateRing);
       window.removeEventListener("mousemove", addRevealListner);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exiting]);
+  }, [exiting, mainInitial]);
+
 
   return(
     <Wrapper
@@ -525,7 +551,6 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       }}
       ringHeight={ringHeight} 
     >
-      
       
       <div className="contentContainer">
         <div className="largeRing" ref={LargeRingRef}></div>
