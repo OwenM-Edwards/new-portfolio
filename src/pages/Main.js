@@ -126,8 +126,7 @@ const Wrapper = styled(WrapperSrc)`
       position: absolute;
       top:20%;
       transition:textDecoration 6s;
-      display:none; 
-      
+
       .un::after {
         content: '';
         width: 100%;
@@ -300,6 +299,7 @@ const ProfileImgContainer = styled.div`
       height:100%;
       display:flex;
       justify-content:center;
+
       .jsContainer {
         display:none;
         flex-direction:row;
@@ -353,32 +353,54 @@ const ProfileImgContainer = styled.div`
       .CSSContainer {
         display:none;
         flex-direction:row;
-        height:100%;
+        height:auto;
         width:100%;
+        z-index:999999999999999999999999;
+        flex-wrap:no-wrap;
+        justify-content:center;
+        align-items:center;
   
         img {
-          width:100%;
+          width:65%;
+          margin:auto 0 auto 0;
         }
         & .innerItems{
           display:flex;
           flex-direction:column;
+          flex-wrap:no-wrap;
           width:33%;
-          height:100%;
+          height:30%;
           justify-content:center;
+          align-items:center;
+          box-sizing: border-box;
+          img:first-of-type{
+            width:58%;
+          }
         }
+
         & .centerItems{
           display:flex;
           flex-direction:column;
+          flex-wrap:no-wrap;
           width:33%;
-          height:100%;
+          height:30%;
           justify-content:center;
+          align-items:center;
+          img {
+            width:70%;
+          }
         }
         & .outerItems {
           display:flex;
           flex-direction:column;
+          flex-wrap:no-wrap;
           width:33%;
-          height:100%;
+          height:30%;
           justify-content:center;
+          align-items:center;
+          img {
+            width:75%;
+          }
         }
       }
     }
@@ -570,11 +592,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
                   <div className="centerItems">
                     <img alt="PostgreSQL" data-tip="PostgreSQL" src={postgresIcon}/>
                     <img alt="phpIcon" data-tip="PHP" src={phpIcon}/>
+                    <img alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
                   </div>
                 </Fade>
                 <Fade right delay={400} >
                   <div className="outerItems">
-                    <img alt="Wordpress" data-tip="Wordpress" src={wordpressIcon}/>
+
                   </div>
                 </Fade>
               </div>
