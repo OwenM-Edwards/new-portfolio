@@ -113,7 +113,7 @@ const Wrapper = styled(WrapperSrc)`
       text-align:center;
       z-index:999999;
       position: absolute;
-      top:15%;
+      top:18%;
       transition:textDecoration 6s;
 
       .un::after {
@@ -125,21 +125,24 @@ const Wrapper = styled(WrapperSrc)`
         transition: 300ms;
       }
       @media (max-width: 1700px) {
-        top:5%;
+        top:16%;
       }
 
       @media (max-width: 900px) {
         max-width:95%;
         top:3%;
+        
       }
 
       @media (max-width: 800px) {
         max-width:95%;
-        top:3%;
+        top:8%;
+        
       }
       @media (max-width: 700px) {
         font-size:1.8rem;
-        top:10%;
+        top:15%;
+
       }
     }
     & span {
@@ -154,9 +157,9 @@ const Wrapper = styled(WrapperSrc)`
       justify-content:flex-end;
       align-items:flex-end;
       margin-left:auto;
-      position: relative;
-      top:45%;
-      right:40px;
+      position: absolute;
+      bottom:5%;
+      right:10%;
       z-index:999999999;
       @media (max-width: 700px) {
         top:0%;
@@ -183,6 +186,7 @@ const Wrapper = styled(WrapperSrc)`
     }
   }
 `
+
 const animate = keyframes`
   0%{
      transform: rotateY(0deg);
@@ -199,10 +203,6 @@ const ProfileImgContainer = styled.div`
   position:relative;
   display:flex;
   justify-content:center;
-
- 
-
-
   @media (max-width: 1000px) {
     width:70%;
     height:50%;
@@ -228,24 +228,22 @@ const ProfileImgContainer = styled.div`
     /* animation: ${animate} 1s linear infinite;
   perspective: 800px; */
   
-      & .rotateRing {
-        min-width:110%;
-        height:110%;
-        background-position:center;
-        background-repeat:no-repeat;
-        background-size: contain;
-        border-radius:50%;
-        z-index:99999999;  
-        position:relative;
-        bottom:3.5%;
-        will-change: transform;
-        @media (max-width:1000px) {
-          opacity:0;
-        }
+    & .rotateRing {
+      min-width:110%;
+      height:110%;
+      background-position:center;
+      background-repeat:no-repeat;
+      background-size: contain;
+      border-radius:50%;
+      z-index:99999999;  
+      position:relative;
+      bottom:3.5%;
+      will-change: transform;
+      @media (max-width:1000px) {
+        opacity:0;
       }
-    
+    }
   }
-  
 
   & .leftRingContainer {
     position:absolute;  
@@ -528,7 +526,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       window.removeEventListener("mousemove", addRevealListner);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exiting, mainInitial]);
+  }, []);
 
 
   return(
@@ -557,12 +555,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
          
         <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
 
-        {/* <HeadShake delay={2000} >
+        <HeadShake delay={2000} >
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
             <img alt="arrow" className="arrow" src={arrowRed}/>
           </div>
-        </HeadShake>  */}
+        </HeadShake> 
 
         <ProfileImgContainer>
           <Fade right>
