@@ -18,12 +18,14 @@ const Wrapper = styled.div`
     flex-direction:column;
     justify-content:space-around;
     align-items:center;
-    padding-bottom:20px;
+    padding-top:50px;
+    padding-bottom:130px;
     text-align:center;
     /* max-width:1400px; */
+    word-break:break-word;
     
     @media (max-width: 700px), (max-height:700px) {
-        padding:5px;
+        padding:180px 5px;
         text-align:center;
     }
 
@@ -34,7 +36,7 @@ const Wrapper = styled.div`
         color:white;
         font-size:2.3rem;
         @media (max-width: 700px), (max-height:700px) {
-            font-size:1rem;
+            font-size:1.8rem;
         }
     }
     & h3 {
@@ -42,8 +44,12 @@ const Wrapper = styled.div`
         font-size:1.9rem;
 
         @media (max-width: 700px), (max-height:700px) {
-            font-size:1rem;
+            font-size:1.8rem;
         }
+    }
+    & a {
+        color:white;
+        text-decoration:underline 5px solid ${props => props.theme.popColor};
     }
 
     & form {
@@ -58,7 +64,7 @@ const Wrapper = styled.div`
         background-color:${props => props.theme.secondaryColorHover};
         border-radius:20px;
         @media (max-width: 700px), (max-height:700px) {
-            width:98%;
+            width:90%;
             padding:0px;
         }
         & label {
@@ -89,7 +95,7 @@ const Wrapper = styled.div`
             border:0;
             @media (max-width: 700px), (max-height:700px) {
                 padding:10px;
-                font-size:0.8rem;
+                font-size:1rem;
             }
         }
         & textarea {
@@ -99,8 +105,8 @@ const Wrapper = styled.div`
             font-size:1.2rem;
             border:0;
             @media (max-width: 700px), (max-height:700px) {
-                padding:10px;
-                font-size:0.8rem;
+                padding:30px;
+                font-size:1rem;
             }
         }
         & .submitButton {
@@ -171,8 +177,8 @@ const ContactForm = () => {
     return (
         <Wrapper>            
             <Fade className="test" delay={300}>
-                <h2>You can email me <span>@ </span>owenhedwards@gmail.com</h2>
-                <h3>...or give me a call <span>@ </span>+44 7468966914</h3>
+                <h2>You can email me <span>@ </span><a href="mailto:owenhedwards@gmail.com">owenhedwards@gmail.com</a></h2>
+                <h3>...or give me a call <span>@ </span><a href="tel:07468966914">+44 7468966914</a></h3>
                 <h3>...or send me a message...</h3>
                 <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="subject">Subject</label>
