@@ -151,6 +151,9 @@ const ProjectWrapper = styled.div`
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
+   @media (max-width: 1600px) {
+      width:80%;
+   } 
    @media (max-width: 1000px) {
       width:90%;
    } 
@@ -306,10 +309,8 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                      <h2>{project.title}</h2>
                   </section>
 
-                  <section className="section2">
-               
-                        <img src={project.image}/>
-               
+                  <section className="section2">   
+                     <img src={project.image}/>
                   </section>
 
                   <section className="section3">
@@ -336,7 +337,6 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
    }
 
 
-
    return(
       <AnimatePresence initial={false}>
          {displayProject > -1
@@ -348,8 +348,6 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
       </AnimatePresence>
    )
 }
-
-
    
 
 export default Project;
