@@ -26,6 +26,7 @@ import { WrapperSrc } from '../styled/styles';
 import githubIcon from  "../img/github.png";
 import resumeIcon from  "../img/resume.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
+import SkillModal from '../components/SkillModal';
 
 
 
@@ -181,6 +182,11 @@ const Wrapper = styled(WrapperSrc)`
         @media (max-width: 700px) {
           width:60px;
           height:20px;
+        }
+        @media (max-width:900px) {
+          /* width:90%;
+          height:40%; */
+          transform:rotate(90deg)
         }
       }
     }
@@ -433,7 +439,8 @@ const ProfileImgContainer = styled.div`
 
 const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
   const [ ringHeight, setRingHeight ] = useState('100%');
-  const [ exiting, setExiting ] = useState(false)
+  const [ exiting, setExiting ] = useState(false);
+  const [showSkillModal, setShowSkillModal] = useState(true);
   const history = useHistory();
   const LargeRingRef = useRef(null);
   const CSSContainerRef = useRef(null);
@@ -638,6 +645,12 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
         </ProfileImgContainer>
         <ReactTooltip />
       </div>
+
+      { showSkillModal 
+        ? <SkillModal/>
+        : <></>
+      }
+     
       
       <div className="linkContainer">
         <div className="projectLink link link-b-main" onClick={()=>handlePageChange('/projects')}>Projects</div>

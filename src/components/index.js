@@ -4,6 +4,7 @@ import ContactForm from './ContactForm';
 import LinksContainer from './LinksContainer';
 import ProjectGrid from './ProjectGrid';
 import DotRing from './DotRing';
+import SkillModal from './SkillModal';
 
 export {
    ProjectsNav,
@@ -12,4 +13,5 @@ export {
    LinksContainer,
    ProjectGrid,
    DotRing,
+   SkillModal,
 }

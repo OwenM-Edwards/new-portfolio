@@ -151,6 +151,8 @@ const ProjectWrapper = styled.div`
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
+
+   max-width:900px;
    @media (max-width: 1600px) {
       width:80%;
    } 
@@ -235,6 +237,7 @@ const ProjectWrapper = styled.div`
          display:flex;
          align-items:flex-end;
          padding-bottom:20px;
+         justify-content:center;
          a {
             border:0;
             height:60px;
