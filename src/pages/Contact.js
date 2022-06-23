@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
-import {ContactForm} from '../components/index';
-import {LinksContainer} from '../components/index';
+import {ContactForm, MobileBurger, LinksContainer} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc} from '../styled/styles';
@@ -28,7 +27,7 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial, width}) => {
+const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial, width, setOpenMobileMenu, openMobileMenu }) => {
    const history = useHistory();
 
 
@@ -77,6 +76,7 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
             <div className="headerContainer">
                <LinksContainer/>
                <h1>Contact me</h1>
+               <MobileBurger setOpenMobileMenu={setOpenMobileMenu} />
             </div>
             <ContactForm/>
          </div>

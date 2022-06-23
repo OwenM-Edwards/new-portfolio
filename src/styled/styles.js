@@ -43,7 +43,7 @@ const WrapperSrc = styled(motion.div)`
          width:100%;
          background-color:#1d1d1d;
          border-radius:20px 20px 0px 0;
-         z-index:3;
+
          border-bottom:2px solid ${props => props.theme.popColor};
          position:relative;
 

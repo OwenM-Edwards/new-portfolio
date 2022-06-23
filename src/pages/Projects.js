@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback }  from 'react';
 import styled, { keyframes } from "styled-components";
 import {useHistory} from 'react-router-dom';
-import {LinksContainer, Project, ProjectGrid} from '../components/index';
+import {LinksContainer, Project, ProjectGrid, MobileBurger} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc } from '../styled/styles';
@@ -77,7 +77,7 @@ const Wrapper = styled(WrapperSrc)`
 `
 
 
-const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial, width}) => {
+const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial, width, setOpenMobileMenu}) => {
    const [exitDirection, setExitDirection] = useState(false);
    const history = useHistory();
    const [totalProjects, setTotalProjects] = useState();
@@ -164,6 +164,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
                <div className="headerContainer" onClick={()=>closeProjectModal()}>
                   <LinksContainer/>
                   <h1>Some of my projects</h1>
+                  <MobileBurger setOpenMobileMenu={setOpenMobileMenu} />
                </div>
 
                <div className="projectsContainer">

@@ -5,6 +5,8 @@ import LinksContainer from './LinksContainer';
 import ProjectGrid from './ProjectGrid';
 import DotRing from './DotRing';
 import SkillModal from './SkillModal';
+import MobileMenu from './MobileMenu';
+import MobileBurger from './MobileBurger'
 
 export {
    ProjectsNav,
@@ -14,4 +16,6 @@ export {
    ProjectGrid,
    DotRing,
    SkillModal,
+   MobileMenu,
+   MobileBurger,
 }

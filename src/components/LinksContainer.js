@@ -14,7 +14,6 @@ const Wrapper = styled.div`
    z-index:5;
    top:40px;
    left:40px;
-   
    @media (max-width: 700px) {
       display:none;
    }

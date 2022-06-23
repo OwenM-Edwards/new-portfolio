@@ -15,6 +15,10 @@ import ReactTooltip from 'react-tooltip';
 import { theme } from './styled/styles';
 import noiseBG2 from './img/noise2.png';
 import DotRing from "./components/DotRing";
+import { MobileBurger, MobileMenu } from './components';
+
+
+import { push as Menu } from 'react-burger-menu'
 
 const grainOld = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -67,6 +71,8 @@ const Wrapper = styled.div`
 `
 
 
+
+
 const App = () => {
   const location = useLocation();
   const [enterDirection, setEnterDirection] = useState(false);
@@ -75,12 +81,18 @@ const App = () => {
   const globalSlideAnimationDuration = 0.9;
   const [mainInitial, setMainInitial] = useState(false);
   const [mobileAnimation, setMobileAnimation] = useState(false);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
+  const showSettings = (event) => {
+    event.preventDefault();
+  }
   
   return (
     <ThemeProvider theme={theme} >
+
       {/* <DotRing/> */}
       <ReactTooltip />
+      
       <Wrapper height={heightpx}>
           <div className="backgroundImage"></div>
           <ToastContainer />
@@ -91,11 +103,11 @@ const App = () => {
               </Route>
 
               <Route path="/projects">
-                  <Projects mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
+                  <Projects openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration} enterDirection={enterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route path="/contact">
-                  <Contact mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
+                  <Contact openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection} setMainInitial={setMainInitial}/>
               </Route>
 
               <Route exact path="/">
@@ -103,8 +115,10 @@ const App = () => {
               </Route>
             </Switch>
           </AnimatePresence>
-        
+          <MobileMenu openMobileMenu={openMobileMenu} />
       </Wrapper>
+
+
     </ThemeProvider>
   );
 }

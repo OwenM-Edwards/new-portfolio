@@ -26,7 +26,7 @@ const Wrapper = styled.div`
    justify-content:center;
    align-items:center;
    flex-direction:column;
-
+   display:none;
    .close {
       position:absolute;
       top:40px;
