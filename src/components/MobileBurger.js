@@ -26,9 +26,9 @@ export const StyledBurger = styled.button`
   div {
     width: 100%;
     height: 0.25rem;
-    background: ${({ openMobileMenu }) => openMobileMenu ? 'red' : 'red'};
+    background: ${props => props.theme.popColor};
     border-radius: 10px;
-    transition: all 0.3s linear;
+    transition: all 0.4s linear;
     position: relative;
     transform-origin: 1px;
 

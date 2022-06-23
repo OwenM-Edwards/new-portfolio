@@ -14,11 +14,6 @@ import {useWindowDimensions} from './hooks/index';
 import ReactTooltip from 'react-tooltip';
 import { theme } from './styled/styles';
 import noiseBG2 from './img/noise2.png';
-import DotRing from "./components/DotRing";
-import { MobileBurger, MobileMenu } from './components';
-
-
-import { push as Menu } from 'react-burger-menu'
 
 const grainOld = keyframes`
   0%, 100% { transform:translate(0, 0) }
@@ -115,7 +110,7 @@ const App = () => {
               </Route>
             </Switch>
           </AnimatePresence>
-          <MobileMenu openMobileMenu={openMobileMenu} />
+
       </Wrapper>
 
 

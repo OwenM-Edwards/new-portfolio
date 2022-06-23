@@ -5,7 +5,7 @@ export const MobileMenuStyled = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: white;
+  background: ${props => props.theme.offBlack};
   height: 100vh;
   text-align: left;
   padding: 2rem;
@@ -15,18 +15,14 @@ export const MobileMenuStyled = styled.nav`
   transition: transform 0.3s ease-in-out;
   z-index:9999;
   transform: ${({ openMobileMenu  }) => openMobileMenu  ? 'translateX(0%)' : 'translateX(-100%)'};
-  
-  @media (max-width: ${({ theme }) => theme.mobile}) {
-    width: 100%;
-  }
 
-  a {
+  span {
     font-size: 2rem;
     text-transform: uppercase;
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: ${({ theme }) => theme.primaryDark};
+    color: white;
     text-decoration: none;
     transition: color 0.3s linear;
     
@@ -42,21 +38,30 @@ export const MobileMenuStyled = styled.nav`
 `;
 
 
-const MobileMenu = ({ openMobileMenu }) => {
+const MobileMenu = ({ openMobileMenu, handleProjectsLink, handleMainLink }) => {
+    const handlePageChange = () => {
+      if(window.location.pathname === "/contact"){
+        console.log('testing')
+      }
+      else {
+        console.log('wrng')
+      }
+    }
+
     return (
       <MobileMenuStyled openMobileMenu={openMobileMenu}>
-        <a href="/home">
+        <span onClick={() => handlePageChange('home')}>
           <span role="img" aria-label="Home">&#x1f481;&#x1f3fb;&#x200d;&#x2642;&#xfe0f;</span>
           Home
-        </a>
-        <a href="/projects">
+        </span>
+        <span onClick={() => handlePageChange('projects')}>
           <span role="img" aria-label="Projects">&#x1f4b8;</span>
           Projects
-          </a>
-        <a href="/contact">
+          </span>
+        <span onClick={() => handlePageChange('contact')}>
           <span role="img" aria-label="Contact">&#x1f4e9;</span>
           Contact
-          </a>
+          </span>
       </MobileMenuStyled>
     )
 }
