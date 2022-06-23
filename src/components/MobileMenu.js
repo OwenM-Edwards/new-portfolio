@@ -39,7 +39,22 @@ export const MobileMenuStyled = styled.nav`
 
 
 const MobileMenu = ({ openMobileMenu, handleProjectsLink, handleMainLink }) => {
-    const handlePageChange = () => {
+    const handlePageChange = (destination) => {
+      switch(destination) {
+        case 'home':
+          
+          break;
+        case 'projects':
+          break;
+
+        case 'contact':
+          switch (window.location.pathname) {
+            case '/project' :
+              
+            break
+          }
+          break;
+      }
       if(window.location.pathname === "/contact"){
         console.log('testing')
       }
