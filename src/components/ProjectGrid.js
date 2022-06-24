@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion"
 import projectInfo from '../portfolio projects/projects';
+import professionalProjectInfo from '../portfolio projects/professionalProjects';
 import Fade from 'react-reveal/Fade';
 
 const Wrapper = styled.div`
@@ -13,6 +14,16 @@ const Wrapper = styled.div`
    background-color:#1d1d1d;
    border-radius:0 0 10px 10px ;
    padding:60px 10px 0px 10px;
+
+   .categoryTitle {
+      width:100%;
+      color:white;
+      font-size:2.5rem;
+      text-align:center;
+      margin-bottom:30px;
+      text-decoration:underline;
+      text-decoration-color:${props => props.theme.popColor};
+   }
 
    @media (max-width: 700px) {
       width:100%;
@@ -29,7 +40,7 @@ const Wrapper = styled.div`
       justify-content:space-between;
       align-items:center;
       align-content:space-between;
-      /* overflow-y:scroll;  */
+      overflow-y:scroll; 
        
       padding:0 40px 0px 40px;
       @media (max-width: 1900px) {
@@ -64,12 +75,12 @@ const ProjectWrapper = styled.div`
    background-size: cover;
    overflow:hidden;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+   margin-bottom:50px;
    @media (max-width: 1400px) {
       width:100%;
    } 
    
 
-   
 
    & .popup {
       position:absolute;
@@ -134,24 +145,29 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
    // Create project grid
    const createProjectGrid = () => {
       let tempHtml = [];
-      let key = 0;
-
-      projectInfo.forEach(project => {
-         let projectID = key;
-         tempHtml =  [...tempHtml,(
-            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
-               <div className="cover"></div>
-               <h2>{project.title}</h2>
-               <Fade 
-                  bottom
-                  duration={400}
-               >
-                  <div className="popup">Take a look!</div>
-               </Fade>
-            </ProjectWrapper>
-         )];
-         key++;
-      });
+      let key = 1;
+      let projectCategories = [professionalProjectInfo, projectInfo];
+      
+      projectCategories.forEach(category => {
+         tempHtml =  [...tempHtml,(<h2 className="categoryTitle">{category[0].categoryName}</h2>)];
+         category[0].projects.forEach(project => {
+            let projectID = key;
+            tempHtml =  [...tempHtml,(
+               <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
+                  <div className="cover"></div>
+                  <h2>{project.title}</h2>
+                  <Fade 
+                     bottom
+                     duration={400}
+                  >
+                     <div className="popup">Take a look!</div>
+                  </Fade>
+               </ProjectWrapper>
+            )];
+            key++;
+         });
+      })
+      
       setTotalProjects(key - 1)
       return tempHtml;
    }
@@ -160,12 +176,12 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
    }
 
 
-
    return(
       <AnimatePresence initial={false}>
          <Wrapper>
             <div className="projectsWrapper">
                {projectGridHtml}
+
             </div>
          </Wrapper>    
       </AnimatePresence>

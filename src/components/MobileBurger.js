@@ -16,7 +16,7 @@ export const StyledBurger = styled.button`
 
     position: absolute;
     margin:10px 0 0 10px;
-   top:45px;
+   top:30px;
    right:40px;
 
   &:focus {
