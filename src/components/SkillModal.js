@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import HeadShake from 'react-reveal/HeadShake';
 import cssIcon from '../img/css.svg';
 import jsIcon from '../img/js.svg';
@@ -12,6 +12,30 @@ import postgresIcon from '../img/postgres.svg';
 import sassIcon from '../img/sass.svg';
 import closeIcon from '../img/close.png';
 import closeIconRed from '../img/closeRed.png';
+
+const rotateEnter = keyframes`
+   0% {
+      transform: rotate(0deg);
+   }
+   40% {
+      transform: rotate(105deg);
+   }
+   100% {
+      transform: rotate(90deg);
+   }
+`
+
+const rotateExit = keyframes`
+   0% {
+      transform: rotate(90deg);
+   }
+   40% {
+      transform: rotate(105deg);
+   }
+   100% {
+      transform: rotate(0deg);
+   }
+`
 
 
 const Wrapper = styled.div`
@@ -26,16 +50,8 @@ const Wrapper = styled.div`
    justify-content:center;
    align-items:center;
    flex-direction:column;
-   display:none;
-   .close {
-      position:absolute;
-      top:40px;
-      right:40px;
-      width:50px;
-      height:50px;
-      z-index:99999999999999;
-   }
-
+   color:white;
+   /* display:none; */
 
    div {
       display:flex;
@@ -61,20 +77,47 @@ const Wrapper = styled.div`
    }
 
    .codeContainer {
-      background-color:orange;
+
    }
 
    .styleContainer {
-      background-color:red;
+  
    }
+
+      .close{
+         width:50px;
+         height:50px;
+         animation-name: ${rotateExit};
+         animation-duration: 0.5s;
+         animation-iteration-count: 1;
+         display:flex;
+         position:absolute;
+         top:30px;
+         right:30px;
+         z-index:99999999999999;
+         cursor: pointer;
+
+         &:hover {
+            animation-name: ${rotateEnter};
+            animation-duration: 0.4s;
+            animation-iteration-count: 1;
+            -webkit-animation-fill-mode: forwards;
+         }
+      }
+   
+
 `
 
 
-const SkillModal = () => {
+
+const SkillModal = ({setShowSkillModal}) => {
 
    return (
       <Wrapper>
-         <img src={closeIconRed} className="close"/>
+  
+         <img onClick={()=>setShowSkillModal(false)} src={closeIconRed} className="close"/>
+       
+         
          <div className="codeContainer">
             <h2>Code</h2>
             <img src={jsIcon}/>
@@ -83,7 +126,6 @@ const SkillModal = () => {
             <img src={reactIcon}/>
             <img src={postgresIcon}/>
             <img src={wordpressIcon}/>
-
          </div>
 
          <div className="styleContainer">

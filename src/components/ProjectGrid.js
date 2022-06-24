@@ -140,39 +140,63 @@ const ProjectWrapper = styled.div`
 
 
 const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
+   let profProjectGridHtml = false;
    let projectGridHtml = false;
 
-   // Create project grid
+
+   // Create project grids
    const createProjectGrid = () => {
       let tempHtml = [];
-      let key = 1;
-      let projectCategories = [professionalProjectInfo, projectInfo];
+      let key = 0;
+   
+      projectInfo.forEach(project => {
+         let projectID = key;
+         tempHtml =  [...tempHtml,(
+            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
+               <div className="cover"></div>
+               <h2>{project.title}</h2>
+               <Fade 
+                  bottom
+                  duration={400}
+               >
+                  <div className="popup">Take a look!</div>
+               </Fade>
+            </ProjectWrapper>
+         )];
+         key++;
+      });
       
-      projectCategories.forEach(category => {
-         tempHtml =  [...tempHtml,(<h2 className="categoryTitle">{category[0].categoryName}</h2>)];
-         category[0].projects.forEach(project => {
-            let projectID = key;
-            tempHtml =  [...tempHtml,(
-               <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
-                  <div className="cover"></div>
-                  <h2>{project.title}</h2>
-                  <Fade 
-                     bottom
-                     duration={400}
-                  >
-                     <div className="popup">Take a look!</div>
-                  </Fade>
-               </ProjectWrapper>
-            )];
-            key++;
-         });
-      })
-      
+      setTotalProjects(key - 1)
+      return tempHtml;
+   }
+   const createProfProjectGrid = () => {
+      let tempHtml = [];
+      let key = 0;
+   
+      professionalProjectInfo.forEach(project => {
+         let projectID = key;
+         tempHtml =  [...tempHtml,(
+            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
+               <div className="cover"></div>
+               <h2>{project.title}</h2>
+               <Fade 
+                  bottom
+                  duration={400}
+               >
+                  <div className="popup">Take a look!</div>
+               </Fade>
+            </ProjectWrapper>
+         )];
+         key++;
+      });
       setTotalProjects(key - 1)
       return tempHtml;
    }
    if(!projectGridHtml){
       projectGridHtml = createProjectGrid();
+   }
+   if(!profProjectGridHtml){
+      profProjectGridHtml = createProfProjectGrid();
    }
 
 
@@ -180,8 +204,10 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
       <AnimatePresence initial={false}>
          <Wrapper>
             <div className="projectsWrapper">
+               <h2 className="categoryTitle">Professional Projects</h2>
+               {profProjectGridHtml}
+               <h2 className="categoryTitle">Personal Projects</h2>
                {projectGridHtml}
-
             </div>
          </Wrapper>    
       </AnimatePresence>

@@ -115,37 +115,7 @@ const Wrapper = styled(WrapperSrc)`
       text-align:center;
       z-index:999999;
       position: absolute;
-      top:18%;
-      transition:textDecoration 6s;
-
-      .un::after {
-        content: '';
-        width: 100%;
-        height: 1px;
-        display: block;
-        background: black;
-        transition: 300ms;
-      }
-      @media (max-width: 1700px) {
-        top:16%;
-      }
-
-      @media (max-width: 900px) {
-        max-width:95%;
-        top:3%;
-        
-      }
-
-      @media (max-width: 800px) {
-        max-width:95%;
-        top:8%;
-        
-      }
-      @media (max-width: 700px) {
-        font-size:1.8rem;
-        top:15%;
-
-      }
+      top:200px;
     }
     & span {
       color:${props => props.theme.popColor};
@@ -242,12 +212,13 @@ const ProfileImgContainer = styled.div`
       background-repeat:no-repeat;
       background-size: contain;
       border-radius:50%;
-      z-index:99999999;  
+      z-index:9999;  
       position:relative;
       bottom:3.5%;
       will-change: transform;
+      pointer-events: none;
       @media (max-width:1000px) {
-        opacity:0;
+        display:none;
       }
     }
   }
@@ -260,9 +231,11 @@ const ProfileImgContainer = styled.div`
     display:flex;
     justify-content:center;
     align-items:center;
-    cursor:pointer;
     z-index:99999999;
     filter:drop-shadow(2px 4px 8px #1d1d1d);
+    & img {
+      cursor: pointer;
+    } 
     @media (max-width:1000px) {
       z-index:99999999;
       cursor:pointer!important;
@@ -286,7 +259,10 @@ const ProfileImgContainer = styled.div`
     justify-content:center;
     align-items:center;
     filter:drop-shadow(2px 4px 8px #1d1d1d);
-    z-index:99999999; 
+    z-index:99999999;
+    & img {
+      cursor: pointer;
+    } 
     & .outerRingRight {
       width:100%;
     }
@@ -306,6 +282,9 @@ const ProfileImgContainer = styled.div`
     align-items:center;
     justify-content:space-between;
     transform: scale(2.5); 
+    @media (max-width:1000px) {
+        display:none;
+      }
 
     .skillInnerWrapper {
       width:30%;
@@ -441,7 +420,7 @@ const ProfileImgContainer = styled.div`
 const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height, openMobileMenu, setOpenMobileMenu}) => {
   const [ ringHeight, setRingHeight ] = useState('100%');
   const [ exiting, setExiting ] = useState(false);
-  const [showSkillModal, setShowSkillModal] = useState(true);
+  const [showSkillModal, setShowSkillModal] = useState(false);
   const history = useHistory();
   const LargeRingRef = useRef(null);
   const CSSContainerRef = useRef(null);
@@ -573,13 +552,13 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
         <ProfileImgContainer>
           <Fade right>
             <div className="leftRingContainer">
-              <img className="outerRingLeft" src={outerRingLeft }/>
+              <img className="outerRingLeft" src={outerRingLeft }  onClick={()=>setShowSkillModal(true)}/>
             </div>
           </Fade>
           
           <Fade left>
             <div className="rightRingContainer">
-              <img className="outerRingRight" src={outerRingRight }/>
+              <img className="outerRingRight" src={outerRingRight } onClick={()=>setShowSkillModal(true)}/>
             </div>
           </Fade>
             
@@ -611,7 +590,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
             </div>
             
             <div className="skillInnerWrapper">
-              <div className="jsContainer"  ref={JSContainerRef}>
+              <div className="jsContainer"  ref={JSContainerRef} onClick={()=>setShowSkillModal(true)}>
                 <Fade right>
                   <div className="innerItems">
                     <img alt="JavaScript" data-tip="JavaScript" src={jsIcon}/>
@@ -648,7 +627,7 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
       </div>
 
       { showSkillModal 
-        ? <SkillModal/>
+        ? <SkillModal setShowSkillModal={setShowSkillModal} />
         : <></>
       }
      

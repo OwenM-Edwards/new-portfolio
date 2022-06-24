@@ -12,12 +12,14 @@ export const StyledBurger = styled.button`
   cursor: pointer;
   padding: 0;
   z-index: 99999999;
+  position: absolute;
+  margin:10px 0 0 10px;
+  top:30px;
+  right:40px;
 
-
-    position: absolute;
-    margin:10px 0 0 10px;
-   top:30px;
-   right:40px;
+  @media (min-width: 900px) {
+    display:none;
+  }
 
   &:focus {
     outline: none;

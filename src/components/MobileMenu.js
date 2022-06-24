@@ -1,5 +1,7 @@
 // Menu.styled.js
 import styled from 'styled-components';
+import {LinksContainer} from '../components/index';
+
 
 export const MobileMenuStyled = styled.nav`
   display: flex;
@@ -16,6 +18,10 @@ export const MobileMenuStyled = styled.nav`
   z-index:9999999999999;
   transform: ${({ openMobileMenu  }) => openMobileMenu  ? 'translateX(0%)' : 'translateX(-100%)'};
 
+  @media (min-width: 900px) {
+    display:none;
+  }
+
   span {
     font-size: 2rem;
     text-transform: uppercase;
@@ -25,6 +31,7 @@ export const MobileMenuStyled = styled.nav`
     color: white;
     text-decoration: none;
     transition: color 0.3s linear;
+    cursor: pointer;
     
     @media (max-width: ${({ theme }) => theme.mobile}) {
       font-size: 1.5rem;
@@ -33,6 +40,12 @@ export const MobileMenuStyled = styled.nav`
 
     &:hover {
       color: ${({ theme }) => theme.primaryHover};
+    }
+  }
+  .socialContainer {
+    position:relative;
+    div {
+      display: block!important;
     }
   }
 `;
@@ -72,6 +85,7 @@ const MobileMenu = ({ setOpenMobileMenu, handlePageChangeMain, handlePageChange,
       }
     }
 
+    
     return (
       <MobileMenuStyled openMobileMenu={openMobileMenu}>
         <span onClick={() => handlePageChangeMobile('home')}>
@@ -81,13 +95,18 @@ const MobileMenu = ({ setOpenMobileMenu, handlePageChangeMain, handlePageChange,
         <span onClick={() => handlePageChangeMobile('projects')}>
           <span role="img" aria-label="Projects">&#x1f4b8;</span>
           Projects
-          </span>
+        </span>
         <span onClick={() => handlePageChangeMobile('contact')}>
           <span role="img" aria-label="Contact">&#x1f4e9;</span>
           Contact
-          </span>
+        </span>
+
+        <div className="socialContainer" >
+          <LinksContainer className="linksContainer"/>
+        </div>
       </MobileMenuStyled>
     )
 }
+
 
 export default MobileMenu;

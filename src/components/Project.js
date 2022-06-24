@@ -142,8 +142,6 @@ const CloseIcon = styled.div`
       animation-iteration-count: 1;
       -webkit-animation-fill-mode: forwards;
    }
-
-
 `
 const ProjectWrapper = styled.div`
    width:60%;
