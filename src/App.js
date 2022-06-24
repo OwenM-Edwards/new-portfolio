@@ -94,7 +94,7 @@ const App = () => {
           <AnimatePresence  initial={false}>
             <Switch location={location} key={location.pathname}>
               <Route path="/home">
-                  <Main mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
+                  <Main openMobileMenu={openMobileMenu} setOpenMobileMenu={setOpenMobileMenu} mobileAnimation={mobileAnimation} setMobileAnimation={setMobileAnimation} width={width} height={height} mainInitial={mainInitial}  globalSlideAnimationDuration={globalSlideAnimationDuration}  setEnterDirection={setEnterDirection}/>
               </Route>
 
               <Route path="/projects">

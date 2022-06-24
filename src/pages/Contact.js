@@ -47,7 +47,7 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
       history.push('/projects')
    }
 
-   const handleMainClick = () => {
+   const handleMainLink = () => {
       setMainInitial(true);
       history.push('/home');
    }
@@ -68,7 +68,7 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
       >
          <ReactTooltip />
          <div className="linkContainer">
-            <div className="projectLink link link-a-contact" onClick={()=>handleMainClick()}>Home</div>
+            <div className="projectLink link link-a-contact" onClick={()=>handleMainLink()}>Home</div>
             <div className="projectLink link link-b-contact" onClick={()=>handleProjectsLink()}>Projects</div>
          </div>
 
@@ -80,7 +80,7 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
             </div>
             <ContactForm/>
          </div>
-         <MobileMenu handleProjectsLink={handleProjectsLink} handleMainClick={handleMainClick} openMobileMenu={openMobileMenu} />
+         <MobileMenu setOpenMobileMenu={setOpenMobileMenu} handleProjectsLink={handleProjectsLink} handleMainLink={handleMainLink} openMobileMenu={openMobileMenu} />
       </Wrapper>
    )
 }

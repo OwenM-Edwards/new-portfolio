@@ -184,7 +184,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
                </div>
             </div>
          <div onClick={()=>handlePageChange('/contact')} className="projectLink projectLink-b" ><p>Contact</p></div>
-         <MobileMenu openMobileMenu={openMobileMenu} />
+         <MobileMenu setOpenMobileMenu={setOpenMobileMenu} handlePageChange={handlePageChange} openMobileMenu={openMobileMenu} />
       </Wrapper>
    )
 }

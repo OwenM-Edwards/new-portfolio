@@ -178,8 +178,8 @@ const ContactForm = () => {
         <Wrapper>            
             <Fade className="test" delay={300}>
                 <h2>You can email me <span>@ </span><a href="mailto:owenhedwards@gmail.com">owenhedwards@gmail.com</a></h2>
-                <h3>...or give me a call <span>@ </span><a href="tel:07468966914">+44 7468966914</a></h3>
-                <h3>...or send me a message...</h3>
+                <h3>or give me a call <span>@ </span><a href="tel:07468966914">+44 7468966914</a></h3>
+                <h3>or send me a message</h3>
                 <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="subject">Subject</label>
                     <input 

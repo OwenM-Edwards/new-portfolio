@@ -27,6 +27,7 @@ import githubIcon from  "../img/github.png";
 import resumeIcon from  "../img/resume.png";
 import CV from "../img/Owen_Edwards_CV.pdf";
 import SkillModal from '../components/SkillModal';
+import {MobileBurger, MobileMenu} from '../components/index';
 
 
 
@@ -437,7 +438,7 @@ const ProfileImgContainer = styled.div`
 `
 
 
-const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height}) => {
+const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, width, height, openMobileMenu, setOpenMobileMenu}) => {
   const [ ringHeight, setRingHeight ] = useState('100%');
   const [ exiting, setExiting ] = useState(false);
   const [showSkillModal, setShowSkillModal] = useState(true);
@@ -450,14 +451,14 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
   const handlers = useSwipeable({
     onSwipedUp: () => {
       if(width <= 900){
-        handlePageChange('/projects')
+        handlePageChangeMain('/projects')
       }
     },
     preventDefaultTouchmoveEvent: true,
   });
   
 
-  const handlePageChange = (page) => {
+  const handlePageChangeMain = (page) => {
     setExiting(true);
     let LargeRing2 = LargeRingRef.current;
     LargeRing2.classList.remove('expand');
@@ -653,9 +654,11 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
      
       
       <div className="linkContainer">
-        <div className="projectLink link link-b-main" onClick={()=>handlePageChange('/projects')}>Projects</div>
-        <div className="projectLink link link-a-main" onClick={()=>handlePageChange('/contact')}>Contact</div>
+        <div className="projectLink link link-b-main" onClick={()=>handlePageChangeMain('/projects')}>Projects</div>
+        <div className="projectLink link link-a-main" onClick={()=>handlePageChangeMain('/contact')}>Contact</div>
       </div>
+      <MobileBurger setOpenMobileMenu={setOpenMobileMenu} openMobileMenu={openMobileMenu}/>
+      <MobileMenu setOpenMobileMenu={setOpenMobileMenu} handlePageChangeMain={handlePageChangeMain} openMobileMenu={openMobileMenu} />
     </Wrapper>
   )
 }
