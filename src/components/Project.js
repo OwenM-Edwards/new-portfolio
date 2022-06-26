@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import projectInfo from '../portfolio projects/projects';
+import professionalProjectInfo from '../portfolio projects/professionalProjects';
 import closeIcon from '../img/close.png';
 import closeIconRed from '../img/closeRed.png';
 import arrowLeft from '../img/arrowBack.png';
@@ -299,6 +300,39 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
       let key = 0;
       let tempHtml = [];
       projectInfo.forEach(project => {
+         tempHtml =  [...tempHtml,(
+            <ProjectWrapper key={key}>
+               <div className="fadeContainer fadeIn">
+                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed}/></CloseIcon>
+                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed}/></Fade></LeftArrow>
+                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed}/></Fade></RightArrow>
+                  
+                  <section className="section1">
+                     <h2>{project.title}</h2>
+                  </section>
+
+                  <section className="section2">   
+                     <img src={project.image}/>
+                  </section>
+
+                  <section className="section3">
+                     <div className="infoContainer">
+                        <p>
+                           {project.info}
+                        </p>
+                     </div>
+
+                     <div className="buttonContainer">
+                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        <a className="button" target="blank" href={project.demoLink}>View site</a>
+                     </div>
+                  </section>
+               </div>
+            </ProjectWrapper>
+         )];
+         key++;
+      });
+      professionalProjectInfo.forEach(project => {
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
