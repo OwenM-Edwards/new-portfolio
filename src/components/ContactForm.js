@@ -23,9 +23,15 @@ const Wrapper = styled.div`
     text-align:center;
     /* max-width:1400px; */
     word-break:break-word;
+    max-height:100vh;
+    overflow:hidden;
     
     @media (max-width: 700px), (max-height:700px) {
         padding:180px 5px;
+        text-align:center;
+    }
+    @media (max-width: 1000px)  {
+        padding:50px 10px;
         text-align:center;
     }
 
@@ -38,6 +44,9 @@ const Wrapper = styled.div`
         @media (max-width: 700px), (max-height:700px) {
             font-size:1.8rem;
         }
+        @media (max-width: 1000px) {
+            font-size:1.8rem;
+        }
     }
     & h3 {
         color:white;
@@ -45,6 +54,9 @@ const Wrapper = styled.div`
 
         @media (max-width: 700px), (max-height:700px) {
             font-size:1.8rem;
+        }
+        @media (max-width: 1000px) {
+            font-size:1.6rem;
         }
     }
     & a {
