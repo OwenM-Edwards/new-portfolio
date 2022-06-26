@@ -13,7 +13,7 @@ const Wrapper = styled.div`
    justify-content:center;
    background-color:#1d1d1d;
    border-radius:0 0 10px 10px ;
-   padding:60px 10px 0px 10px;
+   padding:30px 10px 0px 10px;
 
    .categoryTitle {
       width:100%;
@@ -142,12 +142,11 @@ const ProjectWrapper = styled.div`
 const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
    let profProjectGridHtml = false;
    let projectGridHtml = false;
-
+   let key = 0;
 
    // Create project grids
    const createProjectGrid = () => {
       let tempHtml = [];
-      let key = 0;
    
       projectInfo.forEach(project => {
          let projectID = key;
@@ -165,13 +164,12 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          )];
          key++;
       });
-      
+      console.log(key)
       setTotalProjects(key - 1)
       return tempHtml;
    }
    const createProfProjectGrid = () => {
       let tempHtml = [];
-      let key = 0;
    
       professionalProjectInfo.forEach(project => {
          let projectID = key;
@@ -189,6 +187,7 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          )];
          key++;
       });
+      console.log(key)
       setTotalProjects(key - 1)
       return tempHtml;
    }
