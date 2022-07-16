@@ -12,17 +12,21 @@ const Wrapper = styled.div`
    flex-wrap:wrap;
    justify-content:center;
    background-color:#1d1d1d;
-   border-radius:0 0 10px 10px ;
-   padding:30px 10px 0px 10px;
+   /* border-radius:0 0 10px 10px ; */
+   /* padding:40px 40px 40px 20px; */
 
    .categoryTitle {
       width:100%;
       color:white;
-      font-size:2.5rem;
-      text-align:center;
+      font-size:2.0rem;
+      text-align:start;
       margin-bottom:30px;
-      text-decoration:underline;
-      text-decoration-color:${props => props.theme.popColor};
+      margin-top:60px;
+      /* text-decoration:underline;
+      text-decoration-color:${props => props.theme.popColor}; */
+      &:nth-of-type(2){
+         margin-top:20px;
+      }
    }
 
    @media (max-width: 700px) {
@@ -33,17 +37,16 @@ const Wrapper = styled.div`
    } 
 
    & .projectsWrapper {
-      width:65%;
-      height:96%;
+      width:100%;
+      height:100%;
       display:flex;
       flex-wrap:wrap;
-      justify-content:space-between;
+      justify-content:flex-start;
       align-items:center;
-      align-content:space-between;
+      /* align-content:space-between; */
       overflow-y:scroll; 
-       
-      padding:0 40px 0px 40px;
-      @media (max-width: 1900px) {
+      padding:0 40px 0px 60px;
+      /* @media (max-width: 1900px) {
          width:85%;
       } 
       @media (max-width: 1400px) {
@@ -54,12 +57,12 @@ const Wrapper = styled.div`
          width:100%;
          overflow-y:scroll; 
          padding:0;
-      } 
+      }  */
    }
 `
 
 const ProjectWrapper = styled.div`
-   width:48%;
+   width:32%;
    height:47%;
    color:white;
    display:flex;
@@ -76,12 +79,12 @@ const ProjectWrapper = styled.div`
    overflow:hidden;
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    margin-bottom:50px;
+   margin-right:auto;
+   /* margin-left:auto; */
    @media (max-width: 1400px) {
       width:100%;
    } 
    
-
-
    & .popup {
       position:absolute;
       height:auto;
@@ -99,7 +102,7 @@ const ProjectWrapper = styled.div`
    }
    
    @media (max-width: 700px) {
-      padding:20px 0px 5px 0px;
+      /* padding:20px 0px 5px 0px; */
    }
    
    img {
@@ -127,12 +130,10 @@ const ProjectWrapper = styled.div`
       }
    }
 
-   h2 {
-      font-size:2.6rem;
+   h3 {
       z-index:9999;
-      @media (max-width: 700px) {
       font-size:1.7rem;
-      }
+      text-shadow: 6px 6px 0px rgba(0,0,0,0.2);
    }
 `
 
@@ -153,7 +154,7 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          tempHtml =  [...tempHtml,(
             <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
                <div className="cover"></div>
-               <h2>{project.title}</h2>
+               <h3>{project.title}</h3>
                <Fade 
                   bottom
                   duration={400}
@@ -176,7 +177,7 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          tempHtml =  [...tempHtml,(
             <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
                <div className="cover"></div>
-               <h2>{project.title}</h2>
+               <h3>{project.title}</h3>
                <Fade 
                   bottom
                   duration={400}

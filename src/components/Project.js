@@ -145,13 +145,12 @@ const CloseIcon = styled.div`
    }
 `
 const ProjectWrapper = styled.div`
-   width:60%;
+   width:70%;
    height:100%;
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
 
-   max-width:900px;
    @media (max-width: 1600px) {
       width:80%;
    } 
@@ -228,6 +227,8 @@ const ProjectWrapper = styled.div`
          align-items:flex-end;
          width:100%;
          height:100%;
+         max-width:800px;
+         margin:0 auto;
       }
       
       & .buttonContainer {
@@ -241,7 +242,7 @@ const ProjectWrapper = styled.div`
             border:0;
             height:60px;
             width:300px;
-            background-color:#ff4338;
+            background-color:${props => props.theme.popColor};
             border-radius:5px;
             transition:all 0.5s;
             cursor: pointer;

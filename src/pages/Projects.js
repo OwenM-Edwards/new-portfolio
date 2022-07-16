@@ -44,7 +44,7 @@ const Wrapper = styled(WrapperSrc)`
    z-index:9999;
    
    & .contentContainer {
-      padding:20px;
+      padding:20px 0 20px 0;
       margin:0 auto;
 
       @media (max-width: 700px) {
@@ -59,6 +59,10 @@ const Wrapper = styled(WrapperSrc)`
          z-index:3;
       }
 
+      & .headerContainer {
+         border-radius:0!important;
+      }
+
 
       & .projectsContainer {
          width:100%;
@@ -68,10 +72,6 @@ const Wrapper = styled(WrapperSrc)`
          display:flex;
          flex-direction:row;
          position:relative;
-
-         @media (max-width: 700px) {
-            width:100%;
-         }
       }
    }
 `

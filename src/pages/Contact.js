@@ -10,11 +10,15 @@ import { WrapperSrc} from '../styled/styles';
 const Wrapper = styled(WrapperSrc)`    
    z-index:9999;
    & .contentContainer {
-      padding:20px;
+      padding:20px 40px 20px 0;
 
       @media (max-width: 700px), (max-height:700px)  {
          padding:8px 8px 5px 8px;
       }  
+
+      & .headerContainer {
+         border-radius:0 10px 0px 0!important;
+      }
    }
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback} from 'react';
 import styled, { keyframes } from "styled-components";
 import HeadShake from 'react-reveal/HeadShake';
 import cssIcon from '../img/css.svg';
@@ -111,6 +111,24 @@ const Wrapper = styled.div`
 
 
 const SkillModal = ({setShowSkillModal}) => {
+
+   // Detect esc key press and close project modal
+   const escFunction = useCallback((event) => {
+      if (event.key === "Escape") {
+         setShowSkillModal(false)
+      }
+   }, []);
+
+   useEffect(() => {
+      document.addEventListener("keydown", escFunction, false);
+  
+      return () => {
+        document.removeEventListener("keydown", escFunction, false);
+      };
+   }, []);
+
+
+
 
    return (
       <Wrapper>

@@ -54,7 +54,7 @@ const WrapperSrc = styled(motion.div)`
 
          & h1 {
             color:white;
-            font-size:2.7rem;
+            font-size:2.5rem;
             padding:40px;
             margin:0 auto;
             text-align:center;  

@@ -19,6 +19,14 @@ const professionalProjectInfo = [
         githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
         demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
     },
+
+    {
+        title:"Enapps",
+        image:[websiteB_BG],
+        info:"The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.",
+        githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
+        demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
+    },
 ];
 
 

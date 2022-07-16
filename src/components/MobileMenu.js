@@ -15,8 +15,11 @@ export const MobileMenuStyled = styled.nav`
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
-  z-index:9999999999999;
+  z-index:999999999;
   transform: ${({ openMobileMenu  }) => openMobileMenu  ? 'translateX(0%)' : 'translateX(-100%)'};
+  border-right:15px solid ${props => props.theme.popColor};
+  width:100%;
+
 
   @media (min-width: 900px) {
     display:none;

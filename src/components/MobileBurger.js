@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledBurger = styled.button`
-  width:50px;
-  height:50px;
+  width:30px;
+  height:30px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -11,11 +11,11 @@ export const StyledBurger = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 99999999;
+  z-index: 99999999999;
   position: absolute;
   margin:10px 0 0 10px;
-  top:30px;
-  right:40px;
+  top:5px;
+  right:20px;
 
   @media (min-width: 900px) {
     display:none;

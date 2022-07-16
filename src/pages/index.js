@@ -1,11 +1,11 @@
-import MainOld from './MainOld';
 import Projects from './Projects';
 import Contact from './Contact';
 import Main from './Main';
+import MainOld2 from './MainOld2';
 
 export {
-   MainOld,
    Projects,
    Contact, 
    Main,
+   MainOld2
 }

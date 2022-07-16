@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import styled, {ThemeProvider, keyframes} from "styled-components";
-import { MainOld, Main, Projects, Contact } from './pages/index';
+import { Main, Projects, Contact, MainOld2 } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useWindowDimensions} from './hooks/index';
@@ -15,18 +15,6 @@ import ReactTooltip from 'react-tooltip';
 import { theme } from './styled/styles';
 import noiseBG2 from './img/noise2.png';
 
-const grainOld = keyframes`
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 12%) }
-  90% { transform:translate(-10%, 10%) }
-`
 const grain = keyframes`
   0%, 100% { transform:translate(0, 0) }
   10% { transform:translate(-10%, -10%) }

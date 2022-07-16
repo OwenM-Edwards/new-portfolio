@@ -13,13 +13,13 @@ const Wrapper = styled.div`
     flex-grow:1;
     background-color:${props => props.theme.offBlack};
     z-index:2;
-    border-radius:0 0 10px 10px;
+    border-radius:0 0 10px 0;
     display:flex;
     flex-direction:column;
     justify-content:space-around;
     align-items:center;
-    padding-top:50px;
-    padding-bottom:130px;
+    padding-top:30px;
+    padding-bottom:30px;
     text-align:center;
     /* max-width:1400px; */
     word-break:break-word;
@@ -47,6 +47,9 @@ const Wrapper = styled.div`
         @media (max-width: 1000px) {
             font-size:1.8rem;
         }
+        @media (max-width: 1200px) {
+            font-size:1.4rem;
+        }
     }
     & h3 {
         color:white;
@@ -57,6 +60,9 @@ const Wrapper = styled.div`
         }
         @media (max-width: 1000px) {
             font-size:1.6rem;
+        }
+        @media (max-width: 1200px) {
+            font-size:1.4rem;
         }
     }
     & a {
@@ -90,6 +96,10 @@ const Wrapper = styled.div`
             @media (max-height: 850px) {
                 display:none;
             }
+            @media (max-width: 1000px) {
+                
+                display:none;
+            }
         }
         & p {
             color:white;
@@ -109,6 +119,7 @@ const Wrapper = styled.div`
                 padding:10px;
                 font-size:1rem;
             }
+
         }
         & textarea {
             padding:20px;
