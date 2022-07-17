@@ -67,8 +67,7 @@ const Wrapper = styled(WrapperSrc)`
       & .projectsContainer {
          width:100%;
          height:100%;
-         max-height:100vh;
-         overflow:hidden;
+         /* max-height:100vh; */
          display:flex;
          flex-direction:row;
          position:relative;

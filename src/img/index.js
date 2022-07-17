@@ -9,6 +9,7 @@ import cssIcon from './css.svg';
 import jsIcon from './js.svg';
 import githubIcon from './githubRed.png';
 import CVIcon from './resumeRed.png';
+import TypescriptIcon from './Typescript.png';
 
 export {
    nodeIcon,
@@ -22,4 +23,5 @@ export {
    jsIcon,
    githubIcon,
    CVIcon,
+   TypescriptIcon,
 }

@@ -15,65 +15,41 @@ const Wrapper = styled.div`
     z-index:2;
     border-radius:0 0 10px 0;
     display:flex;
-    flex-direction:column;
     justify-content:space-around;
     align-items:center;
     padding-top:30px;
     padding-bottom:30px;
     text-align:center;
-    /* max-width:1400px; */
     word-break:break-word;
-    max-height:100vh;
-    overflow:hidden;
+    padding:40px 40px 40px 40px;
     
-    @media (max-width: 700px), (max-height:700px) {
-        padding:180px 5px;
-        text-align:center;
-    }
-    @media (max-width: 1000px)  {
-        padding:50px 10px;
-        text-align:center;
-    }
 
-    & span {
+    .textContainer {
+        width:50%;
+        height:80%;
+        display:flex;
+        flex-direction:column;
+        text-align:start;
+        padding:5px 0;
+        border-right:2px solid ${props => props.theme.popColor};
+        & span {
             color:#ff4338;
         }
-    & h2 {
-        color:white;
-        font-size:2.3rem;
-        @media (max-width: 700px), (max-height:700px) {
-            font-size:1.8rem;
+        & h3 {
+            color:white;
+            font-size:30px!important;
+            margin-bottom:40px;
         }
-        @media (max-width: 1000px) {
-            font-size:1.8rem;
+        & a {
+            color:white;
+            text-decoration:underline 5px solid ${props => props.theme.popColor};
         }
-        @media (max-width: 1200px) {
-            font-size:1.4rem;
-        }
-    }
-    & h3 {
-        color:white;
-        font-size:1.9rem;
 
-        @media (max-width: 700px), (max-height:700px) {
-            font-size:1.8rem;
-        }
-        @media (max-width: 1000px) {
-            font-size:1.6rem;
-        }
-        @media (max-width: 1200px) {
-            font-size:1.4rem;
-        }
-    }
-    & a {
-        color:white;
-        text-decoration:underline 5px solid ${props => props.theme.popColor};
     }
 
     & form {
-        width:80%;
-        max-width:700px;
-        height:auto;
+        width:40%;
+        height:90%;
         display:flex;
         flex-direction:column;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
@@ -81,10 +57,7 @@ const Wrapper = styled.div`
         text-align:start;
         background-color:${props => props.theme.secondaryColorHover};
         border-radius:20px;
-        @media (max-width: 700px), (max-height:700px) {
-            width:90%;
-            padding:0px;
-        }
+
         & label {
             color:white;
             font-size:1.2rem;
@@ -199,10 +172,13 @@ const ContactForm = () => {
 
     return (
         <Wrapper>            
-            <Fade className="test" delay={300}>
-                <h2>You can email me <span>@ </span><a href="mailto:owenhedwards@gmail.com">owenhedwards@gmail.com</a></h2>
-                <h3>or give me a call <span>@ </span><a href="tel:07468966914">+44 7468966914</a></h3>
-                <h3>or send me a message</h3>
+            <Fade delay={300}>
+                <div className="textContainer">
+                    <h3>You can email me <span>@ </span><a href="mailto:owenhedwards@gmail.com">owenhedwards@gmail.com</a></h3>
+                    <h3>or give me a call <span>@ </span><a href="tel:07468966914">+44 7468966914</a></h3>
+                    <h3>or send me a message {'->'}</h3>
+                </div>
+            
                 <form className={loading ? 'hidden' : 'visible'} id='contactForm' onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="subject">Subject</label>
                     <input 

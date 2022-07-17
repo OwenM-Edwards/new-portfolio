@@ -121,6 +121,15 @@ const Wrapper = styled(WrapperSrc)`
         top:2%;
       }
     }
+    p {
+      color: white !important;
+      /* position: absolute;
+      top:10%; */
+      z-index:9999999;
+      max-width:1000px;
+      font-size:25px!important;
+      margin-bottom:40px;
+    }
     & span {
       color:${props => props.theme.popColor};
       text-shadow: 1px 1px ${props => props.theme.popColor};
@@ -504,10 +513,14 @@ const Main = ({setEnterDirection, globalSlideAnimationDuration, mainInitial, wid
         <div className="largeRing" ref={LargeRingRef}></div>
          
         <Fade top><h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1></Fade> 
+        <p>Currently working for a leading south west design agency, im always looking for new opportunitries and experiecnes.</p>
+
+                <p>You can see some of the technologiues I love and use on the right, as well as links to my projects and contact page. Please take a look and feel free to get in touch.</p>
 
         <HeadShake delay={2000} >
           <div className="arrowContainer">
             <h2 className="arrowText">Get in touch, or check out my projects here</h2>
+            
             <img alt="arrow" className="arrow" src={arrowRed}/>
           </div>
         </HeadShake> 

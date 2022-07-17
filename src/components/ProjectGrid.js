@@ -14,6 +14,7 @@ const Wrapper = styled.div`
    background-color:#1d1d1d;
    /* border-radius:0 0 10px 10px ; */
    /* padding:40px 40px 40px 20px; */
+   padding:10px 20px;
 
    .categoryTitle {
       width:100%;
@@ -45,7 +46,7 @@ const Wrapper = styled.div`
       align-items:center;
       /* align-content:space-between; */
       overflow-y:scroll; 
-      padding:0 40px 0px 60px;
+      padding:0 40px 0px 50px;
       /* @media (max-width: 1900px) {
          width:85%;
       } 

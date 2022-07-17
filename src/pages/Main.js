@@ -5,7 +5,8 @@ import {ContactForm, MobileBurger, LinksContainer, MobileMenu} from '../componen
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc} from '../styled/styles';
-import {nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
+import {TypescriptIcon, nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
+import Fade from 'react-reveal/Fade';
 
 const Wrapper = styled(WrapperSrc)`    
   z-index:9999;
@@ -44,13 +45,13 @@ const Wrapper = styled(WrapperSrc)`
       flex-direction:column;
       h1 {
         color: white !important;
-        margin-bottom:90px;
-        font-size:60px!important;
+        margin-bottom:50px;
+        font-size:55px!important;
       }
       p {
         color: white;
         max-width:900px;
-        font-size:30px!important;
+        font-size:25px!important;
         line-height:50px;
       }
       p:nth-of-type(2){
@@ -87,7 +88,7 @@ const Wrapper = styled(WrapperSrc)`
       justify-content:space-around;
       border-left:2px solid ${props => props.theme.popColor};
       .skillContainer {
-        height:8%;
+        height:9%;
         width:100%;
         display:flex;
         align-items:center;
@@ -172,53 +173,55 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
             <div className="bodyContainer">
               <div class="infoContainer">
                 <h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1>
-                <p>Currently working for a leading south west design agency, im always looking for new opportunitries and experiecnes.</p>
+                <p>Currently working for a leading South West design agency, i'm always looking for new opportunities and experiences.</p>
 
-                <p>You can see some of the technologiues I love and use on the right, as well as links to my projects and contact page. Please take a look and feel free to get in touch.</p>
+                <p>You can see some of the technologies I love and use on the right, as well as links to my projects and contact page. Please take a look and feel free to get in touch.</p>
                 <div className="personalLinkContainer">
                   <img src={githubIcon}/>
                   <img src={CVIcon}/>
                 </div>
               </div>
               
-              <div className="skillsContainer">
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={jsIcon}/>
+              <Fade cascade duration={2000} delay={500}>
+                <div className="skillsContainer">
+                  <div className="skillContainer">
+                    <p>JavaScript</p>
+                    <img src={jsIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                  <p>React.js</p>
+                    <img src={reactIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>Typescript</p>
+                    <img src={TypescriptIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>Node.js</p>
+                    <img src={nodeIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>PHP</p>
+                    <img src={phpIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>CSS</p>
+                    <img src={cssIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>SASS</p>
+                    <img src={sassIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>PostgreSQL</p>
+                    <img src={postgresIcon}/>
+                  </div>
+                  <div className="skillContainer">
+                    <p>Boostrap</p>
+                    <img src={bootstrapIcon}/>
+                  </div>
                 </div>
-                <div className="skillContainer">
-                 <p>Javascript</p>
-                  <img src={reactIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={nodeIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={phpIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={cssIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={sassIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={jsIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={jsIcon}/>
-                </div>
-                <div className="skillContainer">
-                  <p>Javascript</p>
-                  <img src={jsIcon}/>
-                </div>
-              </div>
+              </Fade>
             </div>
          </div>
 

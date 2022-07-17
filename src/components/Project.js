@@ -10,6 +10,7 @@ import arrowLeftRed from '../img/arrowBackRed.png';
 import arrowRight from '../img/arrowForward.png';
 import arrowRightRed from '../img/arrowForwardRed.png';
 import Fade from 'react-reveal/Fade';
+import {TypescriptIcon, nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
 
 const fadeIn = keyframes`
    0% {
@@ -55,13 +56,14 @@ const rotateExit = keyframes`
 `
 
 
+
+
+
 const Wrapper = styled(motion.div)`
    width:100%;
    height:100%;
    display:flex;
-   flex-wrap:wrap;
-   border-radius:0 0 10px ;
-   padding:0 2px 5px 5px;
+   /* padding:0 2px 5px 5px; */
    position:absolute;
    z-index:9999999999;
    top:0;
@@ -69,19 +71,9 @@ const Wrapper = styled(motion.div)`
    animation-name: ${props => props.modalAnimation};
    animation-duration: 1s;
    animation-iteration-count: 1;
-   overflow:hidden;
-   /* background: rgb(29 29 29) */
+   background-color: red;
    justify-content:center;
    background-color: rgba(0, 0, 0, 1);
-
-
-
-   @media (max-width: 700px) {
-      width:100%;
-      padding:0px;
-      margin-left:0%;
-      min-height:92%;
-   } 
 `
 
 const LeftArrow = styled.div`
@@ -151,120 +143,118 @@ const ProjectWrapper = styled.div`
    position:relative;
    background-color:${props => props.theme.offBlack};
 
-   @media (max-width: 1600px) {
-      width:80%;
-   } 
-   @media (max-width: 1000px) {
-      width:90%;
-   } 
-
-   & .fadeContainer {
+   .fadeContainer {
       width:100%;
       height:100%;
       display:flex;
       flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      padding:0px 30px 0px 30px;
+      overflow-y:scroll;
+      overflow-x:hidden;
+      padding:40px;
       
-      
+         
+      .section1 {
+         width:100%;
+         height:100px;
+         /* padding:20px 20px 50px 20px; */
+         text-align:center;
+         margin-bottom:30px;
+         h2 {
+            font-size:2.3rem;
+         }
+      }
+
+      .section2 {
+         width:100%;
+         height:300px;
+         display:flex;
+         justify-content:space-between;
+         margin-bottom:40px;
+         img {
+            width:48%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+         }
+         
+      }
+
+      .section3 {
+         width:100%;
+         display:flex;
+         /* justify-content:flex-end;
+         align-items:flex-end; */
+         flex-wrap:wrap;
+
+         .infoContainer {
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:flex-end;
+            width:90%;
+            margin-bottom:30px;
+            max-width:900px;
+
+            p {
+               margin-bottom:20px;
+            }
+         }
+
+         .skillContainer {
+            width:10%;
+            display:flex;
+            flex-direction:column;
+            align-items:flex-end;
+            margin-left:auto;
+            img {
+               width:50px;
+               margin-bottom:10px;
+            }
+         }
+         
+         .buttonContainer {
+            width:100%;
+            display:flex;
+            align-items:flex-end;
+            padding-bottom:20px;
+            justify-content:center;
+            a {
+               border:0;
+               height:60px;
+               width:300px;
+               background-color:${props => props.theme.popColor};
+               border-radius:5px;
+               transition:all 0.5s;
+               cursor: pointer;
+               color:white;
+               display:flex;
+               justify-content:center;
+               align-items:center;
+               font-size:1.3rem;
+               text-decoration:none;
+               margin-right:20px;
+               @media (max-width: 700px), (max-height:700px) {
+                  width:100%;
+               }
+               
+               &:hover {
+                  background-color:#fc5a51;
+               }
+            }
+
+         }
+      }
    }
-   & .fadeIn {
+
+   .fadeIn {
       animation-name: ${fadeIn};
       animation-duration:2s;
       animation-iteration-count: 1;
    }
-   & .fadeOut {
+   .fadeOut {
       animation-name: ${fadeOut};
       animation-duration:0.5s;
       animation-iteration-count: 1;
       animation-fill-mode: forwards;
    }
-
-   @media (max-width: 700px) {
-      padding:20px 0px 5px 0px;
-   }
-   
-   & .section1 {
-      width:100%;
-      height:10%;
-      padding:20px 20px 50px 20px;
-      text-align:center;
-      h2 {
-         font-size:2.3rem;
-      }
-   }
-
-   & .section2 {
-      width:100%;
-      height:50%;
-      display:flex;
-      justify-content:center;
-      align-content:center;
-      align-items:center;
-      img {
-         max-width: 100%;
-         max-height: 100%;
-         object-fit:contain;
-         box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-      }
-      
-   }
-
-   & .section3 {
-      width:94%;
-      max-width:950px;
-      height:40%;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end;
-      align-items:flex-end;
-      padding-top:auto;
-      & .infoContainer {
-         display:flex;
-         flex-direction:column;
-         justify-content:center;
-         align-items:flex-end;
-         width:100%;
-         height:100%;
-         max-width:800px;
-         margin:0 auto;
-      }
-      
-      & .buttonContainer {
-         width:100%;
-         height:20%;
-         display:flex;
-         align-items:flex-end;
-         padding-bottom:20px;
-         justify-content:center;
-         a {
-            border:0;
-            height:60px;
-            width:300px;
-            background-color:${props => props.theme.popColor};
-            border-radius:5px;
-            transition:all 0.5s;
-            cursor: pointer;
-            color:white;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            font-size:1.3rem;
-            text-decoration:none;
-            margin-right:20px;
-            @media (max-width: 700px), (max-height:700px) {
-                width:100%;
-            }
-            
-            &:hover {
-               background-color:#fc5a51;
-            }
-         }
-
-      }
-   }
-
 `
 
 
@@ -347,6 +337,7 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
 
                   <section className="section2">   
                      <img src={project.image}/>
+                     <img src={project.image}/>
                   </section>
 
                   <section className="section3">
@@ -354,6 +345,20 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                         <p>
                            {project.info}
                         </p>
+
+                        <p>
+                           {project.info}
+                        </p>
+
+                        <p>
+                           {project.info}
+                        </p>
+                     </div>
+
+                     <div className="skillContainer">
+                        <img src={jsIcon}/>
+                        <img src={jsIcon}/>
+                        <img src={jsIcon}/>
                      </div>
 
                      <div className="buttonContainer">
@@ -378,6 +383,42 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          {displayProject > -1
             ?  <Wrapper modalAnimation={modalAnimation}>
                   {projectHtml[displayProject]}
+
+                  {/* <ProjectWrapper>
+                     <div className="fadeContainer fadeIn">
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+
+                        <p>
+                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
+                        </p>
+                     </div>
+                  </ProjectWrapper> */}
                </Wrapper> 
             : <></>
          } 
