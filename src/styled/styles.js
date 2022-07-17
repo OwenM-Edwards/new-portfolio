@@ -97,8 +97,6 @@ const WrapperSrc = styled(motion.div)`
       z-index:3;
       opacity:1;
       font-size:1.2rem;
-      padding:5px;
-      padding-right:10px;
       transition:background-color 0.2s ease-in-out;
       box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       display:flex;

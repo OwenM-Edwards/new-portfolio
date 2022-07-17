@@ -63,7 +63,6 @@ const Wrapper = styled(motion.div)`
    width:100%;
    height:100%;
    display:flex;
-   /* padding:0 2px 5px 5px; */
    position:absolute;
    z-index:9999999999;
    top:0;

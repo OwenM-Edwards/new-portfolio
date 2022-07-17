@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 
 
    @media (max-width: 900px)  {
-      padding:0px;
+      padding:5px;
    } 
 
    .categoryTitle {

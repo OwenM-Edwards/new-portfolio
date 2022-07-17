@@ -12,15 +12,17 @@ const Wrapper = styled(WrapperSrc)`
    & .contentContainer {
       padding:20px 40px 20px 0;
 
-      @media (max-width: 700px), (max-height:700px)  {
-         padding:8px 8px 5px 8px;
-      }  
       @media (max-width: 900px)  {
-         padding:20px 20px 20px 20px;
+         padding:0;
       } 
 
       & .headerContainer {
          border-radius:0 10px 0px 0!important;
+
+            
+         @media (max-width: 900px)  {
+            border-radius:0!important;
+         } 
       }
    }
 

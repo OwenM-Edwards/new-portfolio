@@ -13,19 +13,9 @@ const Wrapper = styled(WrapperSrc)`
   & .contentContainer {
     padding:20px 0 20px 40px;
 
-    @media (max-width: 700px), (max-height:700px)  {
-        padding:8px 8px 5px 8px;
-    }  
-    @media (max-width: 730px)  {
-      padding:20px 20px 20px 20px;
-    } 
     @media (max-width: 900px)  {
-      padding:20px 20px 20px 20px;
+      padding:0;
     }  
-    
-    @media (max-height: 730px)  {
-      padding:10px 10px 10px 10px;
-    } 
     & .headerContainer {
       border-bottom:none!important;
       position:relative;
@@ -52,13 +42,16 @@ const Wrapper = styled(WrapperSrc)`
     background-color:${props => props.theme.offBlack};
     width:100%;
     border-radius: 10px 0 0px 10px;
+    @media (max-width: 900px) {
+      border-radius: 0;   
+    } 
     display:flex;
     
     .infoContainer {
       display:flex;
       height:100%;
       width:80%;
-      padding:100px 30px 80px 80px;
+      padding:100px 30px 80px 60px;
       font-weight:500;
       flex-direction:column;
       @media (max-width: 1400px) {
@@ -68,6 +61,9 @@ const Wrapper = styled(WrapperSrc)`
       @media (max-width: 450px) {
         width:95%;
         padding:40px 10px 10px 20px;      
+      } 
+      @media (max-width: 750px) {
+        padding:70px 30px 40px 20px;    
       } 
           
       @media (max-height: 730px)  {
@@ -117,8 +113,8 @@ const Wrapper = styled(WrapperSrc)`
       .personalLinkContainer {
         display:flex;
         justify-content:space-between;
-        height:70px;
-        width:180px;
+        height:60px;
+        width:140px;
         margin-top:auto;
 
         img {
@@ -135,6 +131,7 @@ const Wrapper = styled(WrapperSrc)`
         }
       }
     }
+
     .skillsContainer {
       display:flex;
       height:100%;

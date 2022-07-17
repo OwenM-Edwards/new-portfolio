@@ -24,7 +24,8 @@ const Wrapper = styled.div`
     flex-wrap:wrap;
     padding:40px 40px 40px 40px;
     @media (max-width: 900px) {
-        padding:10px 10px 10px 10px;
+        padding:20px 20px 20px 20px;
+        border-radius:0!important;
     } 
 
     .textContainer {
@@ -35,6 +36,11 @@ const Wrapper = styled.div`
         text-align:start;
         padding:5px 0;
         border-right:2px solid ${props => props.theme.popColor};
+        @media (max-width: 900px) {
+            border-right:none;
+            justify-content:space-around;
+            padding:5px 0 5px 10px;
+        } 
         & span {
             color:#ff4338;
         }
