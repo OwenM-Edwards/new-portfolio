@@ -74,6 +74,7 @@ const Wrapper = styled(motion.div)`
    background-color: red;
    justify-content:center;
    background-color: rgba(0, 0, 0, 1);
+
 `
 
 const LeftArrow = styled.div`
@@ -148,6 +149,7 @@ const ProjectWrapper = styled.div`
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
+   max-width:1200px;
    @media (max-width: 900px){
       width:100%;
    }

@@ -205,7 +205,7 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
     preventDefaultTouchmoveEvent: true,
   });
 
-  
+
   return(
     <Wrapper
       {...handlers}
@@ -235,19 +235,25 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
 
           <div className="bodyContainer">
             <div class="infoContainer">
-              <h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1>
+              <Fade>
+                <h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1>
+              </Fade>
+              <Fade delay={200}>
               <p>Currently working for a leading South West design agency, i'm always looking for new opportunities and experiences.</p>
-
+              </Fade>
+              <Fade delay={500}>
               {
                 (width <= 800) 
                 ? <></>
                 : <p>You can see some of the technologies I love and use on the right, as well as links to my projects and contact page. Please take a look and feel free to get in touch.</p>
               }
-              
+              </Fade>
+              <Fade delay={900}>
               <div className="personalLinkContainer">
                 <img src={githubIcon}/>
                 <img src={CVIcon}/>
               </div>
+              </Fade>
             </div>
             
             <Fade cascade duration={2000} delay={500}>
