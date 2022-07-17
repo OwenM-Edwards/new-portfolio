@@ -12,9 +12,12 @@ const Wrapper = styled.div`
    flex-wrap:wrap;
    justify-content:center;
    background-color:#1d1d1d;
-   /* border-radius:0 0 10px 10px ; */
-   /* padding:40px 40px 40px 20px; */
    padding:10px 20px;
+
+
+   @media (max-width: 900px)  {
+      padding:0px;
+   } 
 
    .categoryTitle {
       width:100%;
@@ -23,19 +26,18 @@ const Wrapper = styled.div`
       text-align:start;
       margin-bottom:30px;
       margin-top:60px;
-      /* text-decoration:underline;
-      text-decoration-color:${props => props.theme.popColor}; */
+      
       &:nth-of-type(2){
          margin-top:20px;
       }
+      @media (max-width: 900px)  {
+         margin-top:30px;
+      } 
+      @media (max-width: 780px)  {
+         font-size:1.7rem;
+         
+      } 
    }
-
-   @media (max-width: 700px) {
-      width:100%;
-      padding:0px;
-      margin-left:0%;
-      min-height:92%;
-   } 
 
    & .projectsWrapper {
       width:100%;
@@ -44,21 +46,12 @@ const Wrapper = styled.div`
       flex-wrap:wrap;
       justify-content:flex-start;
       align-items:center;
-      /* align-content:space-between; */
       overflow-y:scroll; 
       padding:0 40px 0px 50px;
-      /* @media (max-width: 1900px) {
-         width:85%;
+      @media (max-width: 780px)  {
+         padding:10px;
+         
       } 
-      @media (max-width: 1400px) {
-         width:95%;
-         overflow-y:scroll; 
-      } 
-      @media (max-width: 900px) {
-         width:100%;
-         overflow-y:scroll; 
-         padding:0;
-      }  */
    }
 `
 
@@ -72,7 +65,6 @@ const ProjectWrapper = styled.div`
    align-items:center;
    justify-content:center;
    text-align:center;
-   margin-bottom:40px;
    position:relative;
    background-position:center;
    background-repeat:no-repeat;
@@ -81,11 +73,17 @@ const ProjectWrapper = styled.div`
    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
    margin-bottom:50px;
    margin-right:auto;
-   /* margin-left:auto; */
-   @media (max-width: 1400px) {
-      width:100%;
+   @media (max-width: 780px)  {
+      width:47%;
+      
    } 
-   
+
+   @media (max-width: 570px)  {
+      width:100%;
+      
+   } 
+
+
    & .popup {
       position:absolute;
       height:auto;
@@ -100,10 +98,6 @@ const ProjectWrapper = styled.div`
       font-size:1.6rem;
       padding:10px;
       border-radius:0 5px 0 0 ;
-   }
-   
-   @media (max-width: 700px) {
-      /* padding:20px 0px 5px 0px; */
    }
    
    img {

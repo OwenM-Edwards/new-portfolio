@@ -85,7 +85,9 @@ const LeftArrow = styled.div`
    position:absolute;
    cursor:pointer;
    transition:transform 0.2s ease-in-out;
-
+   @media (max-width: 900px){
+      display:none;
+   }
    &:hover {
       transform: scale(0.9); 
    }
@@ -102,7 +104,9 @@ const RightArrow = styled.div`
    position:absolute;
    cursor:pointer;
    transition:transform 0.2s ease-in-out;
-
+   @media (max-width: 900px){
+      display:none;
+   }
    &:hover {
       transform: scale(0.9); 
    }
@@ -129,6 +133,8 @@ const CloseIcon = styled.div`
    img {
       width:100%;
    }
+
+   
    &:hover {
       animation-name: ${rotateEnter};
       animation-duration: 0.4s;
@@ -142,7 +148,9 @@ const ProjectWrapper = styled.div`
    color:white;
    position:relative;
    background-color:${props => props.theme.offBlack};
-
+   @media (max-width: 900px){
+      width:100%;
+   }
    .fadeContainer {
       width:100%;
       height:100%;
@@ -151,7 +159,9 @@ const ProjectWrapper = styled.div`
       overflow-y:scroll;
       overflow-x:hidden;
       padding:40px;
-      
+      @media (max-width: 900px){
+         padding:70px;
+      }
          
       .section1 {
          width:100%;
@@ -170,18 +180,23 @@ const ProjectWrapper = styled.div`
          display:flex;
          justify-content:space-between;
          margin-bottom:40px;
-         img {
-            width:48%;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+         @media (max-width: 1320px){
+            justify-content:center;
          }
+         img {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
          
+         }
+         img:nth-of-type(2){
+            @media (max-width: 1320px){
+               display:none;
+            }
+         }
       }
 
       .section3 {
          width:100%;
          display:flex;
-         /* justify-content:flex-end;
-         align-items:flex-end; */
          flex-wrap:wrap;
 
          .infoContainer {
@@ -192,7 +207,9 @@ const ProjectWrapper = styled.div`
             width:90%;
             margin-bottom:30px;
             max-width:900px;
-
+            @media (max-width: 900px){
+               width:100%;
+            }
             p {
                margin-bottom:20px;
             }
@@ -204,6 +221,9 @@ const ProjectWrapper = styled.div`
             flex-direction:column;
             align-items:flex-end;
             margin-left:auto;
+            @media (max-width: 900px){
+               display:none;
+            }
             img {
                width:50px;
                margin-bottom:10px;

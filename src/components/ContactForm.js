@@ -21,8 +21,11 @@ const Wrapper = styled.div`
     padding-bottom:30px;
     text-align:center;
     word-break:break-word;
+    flex-wrap:wrap;
     padding:40px 40px 40px 40px;
-    
+    @media (max-width: 900px) {
+        padding:10px 10px 10px 10px;
+    } 
 
     .textContainer {
         width:50%;
@@ -39,12 +42,19 @@ const Wrapper = styled.div`
             color:white;
             font-size:30px!important;
             margin-bottom:40px;
+            @media (max-width: 900px) {
+                font-size:20px!important; 
+                margin-bottom:10px;
+            } 
         }
         & a {
             color:white;
             text-decoration:underline 5px solid ${props => props.theme.popColor};
         }
-
+        @media (max-width: 900px) {
+            height:30%;
+            width:100%;
+        } 
     }
 
     & form {
@@ -57,7 +67,10 @@ const Wrapper = styled.div`
         text-align:start;
         background-color:${props => props.theme.secondaryColorHover};
         border-radius:20px;
-
+        @media (max-width: 900px) {
+            height:70%;
+            width:100%;
+        } 
         & label {
             color:white;
             font-size:1.2rem;

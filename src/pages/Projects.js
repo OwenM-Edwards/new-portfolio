@@ -47,9 +47,9 @@ const Wrapper = styled(WrapperSrc)`
       padding:20px 0 20px 0;
       margin:0 auto;
 
-      @media (max-width: 700px) {
-         padding:8px 8px 5px 8px;
-      }
+      @media (max-width: 900px)  {
+         padding:20px 20px 20px 20px;
+      } 
 
       & .resumeIcon {
          position:absolute;
@@ -71,6 +71,7 @@ const Wrapper = styled(WrapperSrc)`
          display:flex;
          flex-direction:row;
          position:relative;
+         overflow:hidden;
       }
    }
 `
@@ -83,16 +84,6 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
    const [displayProject, setDisplayProject] = useState(-1);
    const [modalAnimation, setModalAnimation] = useState(unfoldIn)
 
-
-   const handlers = useSwipeable({
-      onSwipedUp: () => {
-         handlePageChange('/contact');
-      },
-      onSwipedDown: () => {
-         handlePageChange('/home');
-      },
-      preventDefaultTouchmoveEvent: true,
-   });
 
    const handlePageChange = (page) => {
       if(page === '/home'){
@@ -139,7 +130,6 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
 
    return(
       <Wrapper
-         {...handlers}
          initial={
             enterDirection 
             ? width <= 900 ? { y: `+100vh` } : { x: `+100vw` }

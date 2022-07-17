@@ -15,6 +15,9 @@ const Wrapper = styled(WrapperSrc)`
       @media (max-width: 700px), (max-height:700px)  {
          padding:8px 8px 5px 8px;
       }  
+      @media (max-width: 900px)  {
+         padding:20px 20px 20px 20px;
+      } 
 
       & .headerContainer {
          border-radius:0 10px 0px 0!important;
@@ -39,18 +42,6 @@ const Wrapper = styled(WrapperSrc)`
 const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitial, width, setOpenMobileMenu, openMobileMenu }) => {
    const history = useHistory();
 
-
-   const handlers = useSwipeable({
-      
-      onSwipedDown: () => {
-         if(width <= 900){
-            setEnterDirection(false);
-            history.push('/projects')
-         }
-      },
-      preventDefaultTouchmoveEvent: true,
-   });
-
    const handleProjectsLink = () => {
       setEnterDirection(false);
       history.push('/projects')
@@ -63,7 +54,6 @@ const Contact = ({setEnterDirection, globalSlideAnimationDuration, setMainInitia
 
    return(
       <Wrapper
-         {...handlers}
          initial={
             width <= 900 ? {y: `100vh`} : {x: `100vw`}
          }
