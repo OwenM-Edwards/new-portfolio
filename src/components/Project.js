@@ -184,7 +184,7 @@ const ProjectWrapper = styled.div`
          width:100%;
          height:350px;
          display:flex;
-         justify-content:space-between;
+         justify-content:space-around;
          margin-bottom:40px;
          @media (max-width: 1320px){
             justify-content:center;
@@ -201,44 +201,53 @@ const ProjectWrapper = styled.div`
          }
       }
 
+      
+      .skillContainer {
+         display:flex;
+         /* flex-direction:column; */
+         align-items:center;
+         height:fit-content;
+         justify-content:center;
+         border-bottom:2px solid ${props => props.theme.popColor};
+         align-self:center;
+
+         width:80%;
+         max-width:800px;
+         @media (max-width: 900px){
+            display:none;
+         }
+         img {
+            width:50px;
+            margin-right:40px;
+            margin-bottom:20px;
+         }
+      }
+
       .section3 {
          width:100%;
          display:flex;
          flex-wrap:wrap;
          flex-grow:1;
          margin-top:50px;
+         justify-self:center;
+         align-self:center;
 
          .infoContainer {
             display:flex;
             flex-direction:column;
             /* justify-content:center; */
             align-items:flex-end;
-            width:90%;
+            width:80%;
             margin-bottom:30px;
-            max-width:900px;
+            max-width:800px;
+            justify-self:center;
+            align-self:center;
+            margin:0 auto 30px auto;
             @media (max-width: 900px){
                width:100%;
             }
             p {
                margin-bottom:20px;
-               
-            }
-         }
-
-         .skillContainer {
-            width:10%;
-            display:flex;
-            flex-direction:column;
-            align-items:flex-end;
-            margin-left:auto;
-            height:fit-content;
-            border-left:2px solid ${props => props.theme.popColor};
-            @media (max-width: 900px){
-               display:none;
-            }
-            img {
-               width:50px;
-               margin-bottom:10px;
             }
          }
          
@@ -347,6 +356,13 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                      <img src={project.image} alt="project"/>
                   </section>
 
+                  <div className="skillContainer">
+                     {(skillIconHTML)
+                        ?   skillIconHTML
+                        :   <></>
+                     }  
+                  </div>
+
                   <section className="section3">
                      <div className="infoContainer">
                         <p>
@@ -364,12 +380,7 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                         }  
                      </div>
 
-                        <div className="skillContainer">
-                           {(skillIconHTML)
-                              ?   skillIconHTML
-                              :   <></>
-                           }  
-                        </div>
+  
                     
                         <ReactTooltip />
                      <div className="buttonContainer">
@@ -410,6 +421,13 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                      <img src={project.image} alt="project 2"/>
                   </section>
 
+                  <div className="skillContainer">
+                     {(skillIconHTML)
+                        ?   skillIconHTML
+                        :   <></>
+                     }  
+                  </div>
+
                   <section className="section3">
                      <div className="infoContainer">
                         <p>
@@ -427,12 +445,7 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                         }  
                      </div>
 
-                     <div className="skillContainer">
-                        {(skillIconHTML)
-                           ?   skillIconHTML
-                           :   <></>
-                        }  
-                     </div>
+        
 
                      <div className="buttonContainer">
                         {(project.githubLink)
