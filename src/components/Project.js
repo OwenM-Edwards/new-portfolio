@@ -163,6 +163,9 @@ const ProjectWrapper = styled.div`
       @media (max-width: 900px){
          padding:70px;
       }
+      @media (max-width: 600px){
+         padding:30px;
+      }
          
       .section1 {
          width:100%;
