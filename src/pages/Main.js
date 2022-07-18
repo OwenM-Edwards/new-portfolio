@@ -72,37 +72,34 @@ const Wrapper = styled(WrapperSrc)`
       h1 {
         color: white !important;
         margin-bottom:50px;
-        font-size:55px!important;
+        font-size:5rem!important;
         @media (max-width: 1200px) {
-          font-size:45px!important;   
+          font-size:4rem!important;   
         } 
         @media (max-width: 800px) {
-          font-size:35px!important; 
+          font-size:3rem!important; 
         } 
       }
       p {
         color: white;
         max-width:900px;
-        font-size:25px!important;
+        font-size:2rem!important;
         line-height:50px;
         @media (max-width: 1200px) {
-          font-size:20px!important;   
+          font-size:1.5rem!important;   
         } 
         @media (max-width: 800px) {
-          font-size:16px!important; 
+          font-size:1.2rem!important; 
           line-height:30px;  
         } 
       }
       p:nth-of-type(2){
         margin-top:60px;
-        font-size:23px!important;
         @media (max-width: 1200px) {
           margin-top:40px;
-          font-size:20px!important;   
         } 
         @media (max-width: 800px) {
           margin-top:20px;
-          font-size:16px!important; 
           line-height:30px;  
         } 
       }
@@ -231,7 +228,7 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
 
 
           <div className="bodyContainer">
-            <div class="infoContainer">
+            <div className="infoContainer">
               <Fade>
                 <h1>Hello, my name is <span data-tip="Thats me!">Owen</span>. I'm a web developer.</h1>
               </Fade>

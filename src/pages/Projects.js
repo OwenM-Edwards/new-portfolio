@@ -4,7 +4,7 @@ import {useHistory} from 'react-router-dom';
 import {LinksContainer, Project, ProjectGrid, MobileBurger, MobileMenu} from '../components/index';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc } from '../styled/styles';
-import projectInfo from '../portfolio projects/projects';
+import personalProjectInfo from '../portfolio projects/personalProjects';
 import professionalProjectInfo from '../portfolio projects/professionalProjects';
 
 const unfoldIn = keyframes`
@@ -121,7 +121,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
 
    const calcTotalProjects = () => {
       let counter = 0;
-      projectInfo.forEach(project => {
+      personalProjectInfo.forEach(project => {
          counter++;
       });
       professionalProjectInfo.forEach(project => {

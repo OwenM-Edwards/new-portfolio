@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import { AnimatePresence } from "framer-motion"
-import projectInfo from '../portfolio projects/projects';
+import personalProjectInfo from '../portfolio projects/personalProjects';
 import professionalProjectInfo from '../portfolio projects/professionalProjects';
 import Fade from 'react-reveal/Fade';
 
@@ -144,7 +144,7 @@ const ProjectGrid = ({openProjectModal}) => {
    const createProjectGrid = () => {
       let tempHtml = [];
    
-      projectInfo.forEach(project => {
+      personalProjectInfo.forEach(project => {
          let projectID = key;
          tempHtml =  [...tempHtml,(
             <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>

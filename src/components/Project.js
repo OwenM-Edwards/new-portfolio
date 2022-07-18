@@ -1,13 +1,14 @@
 import React from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
-import projectInfo from '../portfolio projects/projects';
+import personalProjectInfo from '../portfolio projects/personalProjects';
 import professionalProjectInfo from '../portfolio projects/professionalProjects';
 import closeIconRed from '../img/closeRed.png';
 import arrowLeftRed from '../img/arrowBackRed.png';
 import arrowRightRed from '../img/arrowForwardRed.png';
 import Fade from 'react-reveal/Fade';
 import {TypescriptIcon, nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
+import ReactTooltip from 'react-tooltip';
 
 const fadeIn = keyframes`
    0% {
@@ -316,8 +317,17 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
    // Create full project modal
    const createProjects = () => {
       let key = 0;
+      let key2 = -1;
       let tempHtml = [];
-      projectInfo.forEach(project => {
+      personalProjectInfo.forEach(project => {
+         let skillIconHTML = [];
+         project.skillIcons.forEach(icon => {
+            skillIconHTML =  [...skillIconHTML,(
+               <span key={key2}>{icon}</span>
+            )]
+            key2--;
+         });
+
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
@@ -350,13 +360,14 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                         }  
                      </div>
 
-
-                     <div className="skillContainer">
-                        <img src={jsIcon} alt="js"/>
-                        <img src={jsIcon} alt="js"/>
-                        <img src={jsIcon} alt="js"/>
-                     </div>
-
+                        <div className="skillContainer">
+                           {(skillIconHTML)
+                              ?   skillIconHTML
+                              :   <></>
+                           }  
+                        </div>
+                    
+                        <ReactTooltip />
                      <div className="buttonContainer">
                         {(project.githubLink)
                            ? <a className="button" target="blank" href={project.githubLink}>Github</a>
@@ -371,6 +382,14 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          key++;
       });
       professionalProjectInfo.forEach(project => {
+         let skillIconHTML = [];
+         project.skillIcons.forEach(icon => {
+            skillIconHTML =  [...skillIconHTML,(
+               <span key={key2}>{icon}</span>
+            )]
+            key2--;
+         });
+         
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
@@ -405,9 +424,10 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                      </div>
 
                      <div className="skillContainer">
-                        <img src={jsIcon} alt="js"/>
-                        <img src={jsIcon} alt="js"/>
-                        <img src={jsIcon} alt="js"/>
+                        {(skillIconHTML)
+                           ?   skillIconHTML
+                           :   <></>
+                        }  
                      </div>
 
                      <div className="buttonContainer">
@@ -432,12 +452,14 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
 
    return(
       <AnimatePresence initial={false}>
+        
          {displayProject > -1
             ?  <Wrapper modalAnimation={modalAnimation}>
                   {projectHtml[displayProject]}
                </Wrapper> 
             : <></>
          } 
+      
       </AnimatePresence>
    )
 }

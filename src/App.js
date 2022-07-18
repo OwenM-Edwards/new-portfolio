@@ -95,7 +95,6 @@ const App = () => {
               </Route>
             </Switch>
           </AnimatePresence>
-
       </Wrapper>
 
 
