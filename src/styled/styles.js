@@ -85,7 +85,7 @@ const WrapperSrc = styled(motion.div)`
       letter-spacing:25px;
       text-decoration:none;
       width:5%;
-      max-width:60px;
+      max-width:80px;
       height:100%;
       background-color:${props => props.theme.secondaryColor};
       -webkit-touch-callout: none; 
@@ -124,13 +124,13 @@ const WrapperSrc = styled(motion.div)`
       text-align:center;
       padding:0px 0px 0 5px;
       border-radius:10px 0px 0 10px;
-      border-left:2px solid ${props => props.theme.secondaryColorBorder};
+      border-left:4px solid ${props => props.theme.secondaryColorBorder};
    }
    & .projectLink-b {
       writing-mode: vertical-rl;
       padding:0px 0px 0 5px;
       border-radius:10px 0px 0 10px;
-      border-left:2px solid ${props => props.theme.secondaryColorBorder};
+      border-left:4px solid ${props => props.theme.secondaryColorBorder};
    }
 
    & .linkContainer {
@@ -138,7 +138,7 @@ const WrapperSrc = styled(motion.div)`
       width:10%;
       height:100%;
       justify-content:flex-end;
-      max-width:120px;
+      max-width:140px;
       z-index:99999999999;
       background-color:${props => props.theme.primaryColor};
       @media (max-width: 700px) {
@@ -163,26 +163,26 @@ const WrapperSrc = styled(motion.div)`
       }
       & .link-a-main {
          width:50%;
-         border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         border-left:4px solid ${props => props.theme.secondaryColorBorder};
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
          
       }
       & .link-b-main {
          border-radius:10px 0px 0 10px;
-         border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         border-left:4px solid ${props => props.theme.secondaryColorBorder};
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
          writing-mode: vertical-rl;
       }
       & .link-a-contact {
          width:50%;
-         border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         border-left:4px solid ${props => props.theme.secondaryColorBorder};
          transform:rotate(-180deg); 
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
       & .link-b-contact {
          transform:rotate(-180deg); 
          border-radius:10px 0px 0 10px;
-         border-left:2px solid ${props => props.theme.secondaryColorBorder};
+         border-left:4px solid ${props => props.theme.secondaryColorBorder};
          box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
       }
    }
