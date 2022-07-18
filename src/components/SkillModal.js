@@ -76,36 +76,26 @@ const Wrapper = styled.div`
       }
    }
 
-   .codeContainer {
+   .close{
+      width:50px;
+      height:50px;
+      animation-name: ${rotateExit};
+      animation-duration: 0.5s;
+      animation-iteration-count: 1;
+      display:flex;
+      position:absolute;
+      top:30px;
+      right:30px;
+      z-index:99999999999999;
+      cursor: pointer;
 
-   }
-
-   .styleContainer {
-  
-   }
-
-      .close{
-         width:50px;
-         height:50px;
-         animation-name: ${rotateExit};
-         animation-duration: 0.5s;
+      &:hover {
+         animation-name: ${rotateEnter};
+         animation-duration: 0.4s;
          animation-iteration-count: 1;
-         display:flex;
-         position:absolute;
-         top:30px;
-         right:30px;
-         z-index:99999999999999;
-         cursor: pointer;
-
-         &:hover {
-            animation-name: ${rotateEnter};
-            animation-duration: 0.4s;
-            animation-iteration-count: 1;
-            -webkit-animation-fill-mode: forwards;
-         }
+         -webkit-animation-fill-mode: forwards;
       }
-   
-
+   }
 `
 
 
