@@ -144,7 +144,7 @@ const CloseIcon = styled.div`
    }
 `
 const ProjectWrapper = styled.div`
-   width:70%;
+   width:80%;
    height:100%;
    color:white;
    position:relative;
@@ -158,7 +158,7 @@ const ProjectWrapper = styled.div`
       height:100%;
       display:flex;
       flex-direction:column;
-      overflow-y:scroll;
+      overflow-y:auto;
       overflow-x:hidden;
       padding:40px;
       /* background-color:red; */
@@ -182,7 +182,7 @@ const ProjectWrapper = styled.div`
 
       .section2 {
          width:100%;
-         height:300px;
+         height:350px;
          display:flex;
          justify-content:space-between;
          margin-bottom:40px;
@@ -191,7 +191,8 @@ const ProjectWrapper = styled.div`
          }
          img {
             box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-         
+            
+            height:100%;
          }
          img:nth-of-type(2){
             @media (max-width: 1320px){
@@ -220,6 +221,7 @@ const ProjectWrapper = styled.div`
             }
             p {
                margin-bottom:20px;
+               
             }
          }
 
@@ -229,6 +231,8 @@ const ProjectWrapper = styled.div`
             flex-direction:column;
             align-items:flex-end;
             margin-left:auto;
+            height:fit-content;
+            border-left:2px solid ${props => props.theme.popColor};
             @media (max-width: 900px){
                display:none;
             }
@@ -389,7 +393,7 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
             )]
             key2--;
          });
-         
+
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">

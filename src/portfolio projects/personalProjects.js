@@ -12,12 +12,12 @@ const personalProjectInfo = [
         githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
         demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
         skillIcons:[
-            <img src={jsIcon}  data-tip="Take a look at my CV" alt="Javascript"/>, 
-            <img src={reactIcon} alt="React"/>, 
-            <img src={nodeIcon} alt="Node"/>, 
-            <img src={cssIcon} alt="CSS"/>,
-            <img src={sassIcon} alt="SASS"/>,
-            <img src={postgresIcon} alt="Postgres"/>,
+            <img src={jsIcon} data-tip="JavaScript" alt="Javascript"/>, 
+            <img src={reactIcon} data-tip="React.js" alt="React"/>, 
+            <img src={nodeIcon} data-tip="Node.js" alt="Node"/>, 
+            <img src={cssIcon} data-tip="CSS" alt="CSS"/>,
+            <img src={sassIcon} data-tip="SASS" alt="SASS"/>,
+            <img src={postgresIcon} data-tip="PostgreSQL" alt="Postgres"/>,
         ]
     },
 
@@ -30,12 +30,12 @@ const personalProjectInfo = [
         githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
         demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
         skillIcons:[
-            <img src={jsIcon} alt="Javascript"/>, 
-            <img src={reactIcon} alt="React"/>, 
-            <img src={nodeIcon} alt="Node"/>, 
-            <img src={cssIcon} alt="CSS"/>,
-            <img src={sassIcon} alt="SASS"/>,
-            <img src={postgresIcon} alt="Postgres"/>,
+            <img src={jsIcon} data-tip="JavaScript" alt="Javascript"/>, 
+            <img src={reactIcon} data-tip="React.js" alt="React"/>, 
+            <img src={nodeIcon} data-tip="Node.js" alt="Node"/>, 
+            <img src={cssIcon} data-tip="CSS" alt="CSS"/>,
+            <img src={sassIcon} data-tip="SASS" alt="SASS"/>,
+            <img src={postgresIcon} data-tip="PostgreSQL" alt="Postgres"/>,
         ]
     },
 
@@ -46,9 +46,9 @@ const personalProjectInfo = [
         githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
         demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
         skillIcons:[
-            <img src={jsIcon} alt="Javascript"/>, 
-            <img src={cssIcon} alt="CSS"/>,
-            <img src={sassIcon} alt="SASS"/>,
+            <img src={jsIcon} data-tip="JavaScript" alt="Javascript"/>, 
+            <img src={cssIcon} data-tip="CSS" alt="CSS"/>,
+            <img src={sassIcon} data-tip="SASS" alt="SASS"/>,
         ]
     },
 
@@ -59,8 +59,8 @@ const personalProjectInfo = [
         githubLink:"https://github.com/OwenM-Edwards/student-psych-frontend",
         demoLink:"https://www.studentpsychiatry.co.uk/calendar/5/2021",
         skillIcons:[
-            <img src={jsIcon} alt="Javascript"/>, 
-            <img src={cssIcon} alt="CSS"/>,
+            <img src={jsIcon} data-tip="JavaScript" alt="Javascript"/>, 
+            <img src={cssIcon} data-tip="CSS" alt="CSS"/>,
         ]
     },
 ];

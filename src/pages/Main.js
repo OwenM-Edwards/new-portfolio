@@ -143,6 +143,7 @@ const Wrapper = styled(WrapperSrc)`
       border-left:2px solid ${props => props.theme.popColor};
       @media (max-width: 1400px) {
         width:10%;
+        /* padding:80px 40px 80px 30px; */
       } 
       @media (max-width: 450px) {
         width:15%;
@@ -165,8 +166,10 @@ const Wrapper = styled(WrapperSrc)`
           width:30%;
           margin-left:auto;
           @media (max-width: 1400px) {
-            width:auto;
-            height:80%;
+            /* width:auto;
+            height:80%; */
+            width:40px;
+            height:auto;
           }  
           @media (max-width: 450px) {
             margin-left:none;
