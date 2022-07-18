@@ -76,8 +76,11 @@ const Wrapper = styled(WrapperSrc)`
         @media (max-width: 1200px) {
           font-size:4rem!important;   
         } 
+        @media (max-width: 900px) {
+          font-size:2rem!important; 
+        } 
         @media (max-width: 800px) {
-          font-size:3rem!important; 
+          font-size:1/4rem!important; 
         } 
       }
       p {
@@ -189,20 +192,9 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
     history.push(page);
   }
 
-  const handlers = useSwipeable({
-    onSwipedDown: () => {
-        if(width <= 900){
-          setEnterDirection(false);
-          history.push('/projects')
-        }
-    },
-    preventDefaultTouchmoveEvent: true,
-  });
-
 
   return(
     <Wrapper
-      {...handlers}
       initial={ 
         mainInitial 
         ? width <= 900 ? {y: `-100vh`} : {x: `-100vw`} 
