@@ -72,7 +72,7 @@ const Wrapper = styled(WrapperSrc)`
       h1 {
         color: white !important;
         margin-bottom:50px;
-        font-size:5rem!important;
+        font-size:4.5rem!important;
         @media (max-width: 1200px) {
           font-size:4rem!important;   
         } 
@@ -86,7 +86,7 @@ const Wrapper = styled(WrapperSrc)`
       p {
         color: white;
         max-width:900px;
-        font-size:2rem!important;
+        font-size:1.8rem!important;
         line-height:50px;
         @media (max-width: 1200px) {
           font-size:1.5rem!important;   
