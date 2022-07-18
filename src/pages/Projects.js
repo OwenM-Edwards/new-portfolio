@@ -2,10 +2,10 @@ import React, { useState, useEffect, useCallback }  from 'react';
 import styled, { keyframes } from "styled-components";
 import {useHistory} from 'react-router-dom';
 import {LinksContainer, Project, ProjectGrid, MobileBurger, MobileMenu} from '../components/index';
-import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc } from '../styled/styles';
-
+import projectInfo from '../portfolio projects/projects';
+import professionalProjectInfo from '../portfolio projects/professionalProjects';
 
 const unfoldIn = keyframes`
    0% {
@@ -118,14 +118,26 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
          setDisplayProject(-1)
       }, 1000);
    }
-  
+
+   const calcTotalProjects = () => {
+      let counter = 0;
+      projectInfo.forEach(project => {
+         counter++;
+      });
+      professionalProjectInfo.forEach(project => {
+         counter++;
+      });
+      setTotalProjects(counter - 1);
+      
+   }
    useEffect(() => {
       document.addEventListener("keydown", escFunction, false);
+      calcTotalProjects();
   
       return () => {
         document.removeEventListener("keydown", escFunction, false);
       };
-   }, []);
+   }, [escFunction]);
 
    
 
@@ -147,7 +159,6 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
          }}
       >
 
-         {/* <BgNoiseSrc></BgNoiseSrc> */}
          <ReactTooltip />
          <div onClick={()=>handlePageChange('/home')} className="projectLink projectLink-a" ><p>Home</p></div>
             <div className="contentContainer">
@@ -158,11 +169,6 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
                </div>
 
                <div className="projectsContainer">
-                  {/* <ProjectsNav 
-                     handleProjectsSwitch={handleProjectsSwitch}
-                     displayProject={displayProject} 
-                     setDisplayProject={setDisplayProject}
-                  /> */}
                   <Project 
                      displayProject={displayProject} 
                      modalAnimation={modalAnimation}
@@ -170,7 +176,7 @@ const Projects = ({enterDirection, globalSlideAnimationDuration, setMainInitial,
                      setDisplayProject={setDisplayProject}
                      totalProjects={totalProjects}
                   />
-                  <ProjectGrid  openProjectModal={openProjectModal} setTotalProjects={setTotalProjects}/>
+                  <ProjectGrid  openProjectModal={openProjectModal}/>
                </div>
             </div>
          <div onClick={()=>handlePageChange('/contact')} className="projectLink projectLink-b" ><p>Contact</p></div>

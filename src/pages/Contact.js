@@ -2,7 +2,6 @@ import React from 'react';
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
 import {ContactForm, MobileBurger, LinksContainer, MobileMenu} from '../components/index';
-import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc} from '../styled/styles';
 

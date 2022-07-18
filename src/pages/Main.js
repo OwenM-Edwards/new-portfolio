@@ -1,7 +1,7 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import {useHistory} from 'react-router-dom';
-import {ContactForm, MobileBurger, LinksContainer, MobileMenu} from '../components/index';
+import {MobileBurger, MobileMenu} from '../components/index';
 import { useSwipeable } from 'react-swipeable';
 import ReactTooltip from 'react-tooltip';
 import { WrapperSrc} from '../styled/styles';
@@ -247,8 +247,8 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
               </Fade>
               <Fade delay={900}>
               <div className="personalLinkContainer">
-                <img src={githubIcon}/>
-                <img src={CVIcon}/>
+                <img src={githubIcon} alt="github"/>
+                <img src={CVIcon} alt="CV"/>
               </div>
               </Fade>
             </div>
@@ -257,39 +257,39 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
               <div className="skillsContainer">
                 <div className="skillContainer">
                   <p>JavaScript</p>
-                  <img src={jsIcon}/>
+                  <img src={jsIcon} alt="Javascript"/>
                 </div>
                 <div className="skillContainer">
                 <p>React.js</p>
-                  <img src={reactIcon}/>
+                  <img src={reactIcon} alt="React"/>
                 </div>
                 <div className="skillContainer">
                   <p>Typescript</p>
-                  <img src={TypescriptIcon}/>
+                  <img src={TypescriptIcon} alt="TypeScript"/>
                 </div>
                 <div className="skillContainer">
                   <p>Node.js</p>
-                  <img src={nodeIcon}/>
+                  <img src={nodeIcon} alt="Node"/>
                 </div>
                 <div className="skillContainer">
                   <p>PHP</p>
-                  <img src={phpIcon}/>
+                  <img src={phpIcon} alt="PHP"/>
                 </div>
                 <div className="skillContainer">
                   <p>CSS</p>
-                  <img src={cssIcon}/>
+                  <img src={cssIcon} alt="CSS"/>
                 </div>
                 <div className="skillContainer">
                   <p>SASS</p>
-                  <img src={sassIcon}/>
+                  <img src={sassIcon} alt="SASS"/>
                 </div>
                 <div className="skillContainer">
                   <p>PostgreSQL</p>
-                  <img src={postgresIcon}/>
+                  <img src={postgresIcon} alt="PostgreSQL"/>
                 </div>
                 <div className="skillContainer">
                   <p>Boostrap</p>
-                  <img src={bootstrapIcon}/>
+                  <img src={bootstrapIcon} alt="Bootstrap"/>
                 </div>
               </div>
             </Fade>

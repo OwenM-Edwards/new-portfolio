@@ -3,11 +3,8 @@ import styled, { keyframes } from "styled-components";
 import { motion, AnimatePresence } from "framer-motion"
 import projectInfo from '../portfolio projects/projects';
 import professionalProjectInfo from '../portfolio projects/professionalProjects';
-import closeIcon from '../img/close.png';
 import closeIconRed from '../img/closeRed.png';
-import arrowLeft from '../img/arrowBack.png';
 import arrowLeftRed from '../img/arrowBackRed.png';
-import arrowRight from '../img/arrowForward.png';
 import arrowRightRed from '../img/arrowForwardRed.png';
 import Fade from 'react-reveal/Fade';
 import {TypescriptIcon, nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
@@ -122,7 +119,7 @@ const CloseIcon = styled.div`
    top:30px;
    left:calc(100% + 2px);
    cursor:pointer;
-   z-index:9999999;
+   z-index:9999999999999999;
    animation-name: ${rotateExit};
    animation-duration: 0.5s;
    animation-iteration-count: 1;
@@ -130,11 +127,14 @@ const CloseIcon = styled.div`
    justify-content:center;
    align-items:center;
    align-content:center;
+   @media (max-width: 900px){
+      top:80px;
+      right:40px;
+   }
    img {
       width:100%;
+      z-index:99999999999999999;
    }
-
-   
    &:hover {
       animation-name: ${rotateEnter};
       animation-duration: 0.4s;
@@ -160,6 +160,7 @@ const ProjectWrapper = styled.div`
       overflow-y:scroll;
       overflow-x:hidden;
       padding:40px;
+      /* background-color:red; */
       @media (max-width: 900px){
          padding:70px;
       }
@@ -202,11 +203,13 @@ const ProjectWrapper = styled.div`
          width:100%;
          display:flex;
          flex-wrap:wrap;
+         flex-grow:1;
+         margin-top:50px;
 
          .infoContainer {
             display:flex;
             flex-direction:column;
-            justify-content:center;
+            /* justify-content:center; */
             align-items:flex-end;
             width:90%;
             margin-bottom:30px;
@@ -318,27 +321,47 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
-                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed}/></CloseIcon>
-                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed}/></Fade></LeftArrow>
-                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed}/></Fade></RightArrow>
+                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed} alt="close"/></CloseIcon>
+                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed} alt="right"/></Fade></LeftArrow>
+                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed} alt="left"/></Fade></RightArrow>
                   
                   <section className="section1">
                      <h2>{project.title}</h2>
                   </section>
 
                   <section className="section2">   
-                     <img src={project.image}/>
+                     <img src={project.image} alt="project"/>
                   </section>
 
                   <section className="section3">
                      <div className="infoContainer">
                         <p>
-                           {project.info}
+                           {project.info_a}
                         </p>
+
+                        {(project.info_b)
+                           ?   <p> {project.info_b} </p>
+                           :   <></>
+                        }
+
+                        {(project.info_c)
+                           ?   <p> {project.info_c} </p>
+                           :   <></>
+                        }  
+                     </div>
+
+
+                     <div className="skillContainer">
+                        <img src={jsIcon} alt="js"/>
+                        <img src={jsIcon} alt="js"/>
+                        <img src={jsIcon} alt="js"/>
                      </div>
 
                      <div className="buttonContainer">
-                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        {(project.githubLink)
+                           ? <a className="button" target="blank" href={project.githubLink}>Github</a>
+                           : <></>
+                        }
                         <a className="button" target="blank" href={project.demoLink}>View site</a>
                      </div>
                   </section>
@@ -351,42 +374,47 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          tempHtml =  [...tempHtml,(
             <ProjectWrapper key={key}>
                <div className="fadeContainer fadeIn">
-                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed}/></CloseIcon>
-                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed}/></Fade></LeftArrow>
-                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed}/></Fade></RightArrow>
+                  <CloseIcon onClick={()=>handleCloseModal()}><img src={closeIconRed} alt="close"/></CloseIcon>
+                  <LeftArrow onClick={()=>updateDisplayProject(displayProject - 1)} ><Fade delay={1000} duration={400} right><img src={arrowLeftRed} alt="arrow left"/></Fade></LeftArrow>
+                  <RightArrow onClick={()=>updateDisplayProject(displayProject + 1)}><Fade delay={1000} duration={400} left><img src={arrowRightRed} alt="arrow right"/></Fade></RightArrow>
                   
                   <section className="section1">
                      <h2>{project.title}</h2>
                   </section>
 
                   <section className="section2">   
-                     <img src={project.image}/>
-                     <img src={project.image}/>
+                     <img src={project.image} alt="project 1"/>
+                     <img src={project.image} alt="project 2"/>
                   </section>
 
                   <section className="section3">
                      <div className="infoContainer">
                         <p>
-                           {project.info}
+                           {project.info_a}
                         </p>
 
-                        <p>
-                           {project.info}
-                        </p>
+                        {(project.info_b)
+                           ?   <p> {project.info_b} </p>
+                           :   <></>
+                        }
 
-                        <p>
-                           {project.info}
-                        </p>
+                        {(project.info_c)
+                           ?   <p> {project.info_c} </p>
+                           :   <></>
+                        }  
                      </div>
 
                      <div className="skillContainer">
-                        <img src={jsIcon}/>
-                        <img src={jsIcon}/>
-                        <img src={jsIcon}/>
+                        <img src={jsIcon} alt="js"/>
+                        <img src={jsIcon} alt="js"/>
+                        <img src={jsIcon} alt="js"/>
                      </div>
 
                      <div className="buttonContainer">
-                        <a className="button" target="blank" href={project.githubLink}>Github</a>
+                        {(project.githubLink)
+                           ? <a className="button" target="blank" href={project.githubLink}>Github</a>
+                           : <></>
+                        }
                         <a className="button" target="blank" href={project.demoLink}>View site</a>
                      </div>
                   </section>
@@ -407,42 +435,6 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
          {displayProject > -1
             ?  <Wrapper modalAnimation={modalAnimation}>
                   {projectHtml[displayProject]}
-
-                  {/* <ProjectWrapper>
-                     <div className="fadeContainer fadeIn">
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-
-                        <p>
-                        The Community NPC Gen is a random character creator for us in tabletop games. An easy and quick to use NPC generator for tabletop games, this was one of my older projects that I re-wrote to take advantage and learn React hooks. The App also allows users to submit their own character data to the generator for others to use. This was one of the first full-stack web apps I ever made, and years later I decided to return to it and rewrite it to take advantage of Redux and React hooks. Doing this turned out to be incredibly beneficial as it strengthened my understanding of both these technologies.
-                        </p>
-                     </div>
-                  </ProjectWrapper> */}
                </Wrapper> 
             : <></>
          } 

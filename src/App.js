@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import styled, {ThemeProvider, keyframes} from "styled-components";
-import { Main, Projects, Contact, MainOld2 } from './pages/index';
+import { Main, Projects, Contact } from './pages/index';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useWindowDimensions} from './hooks/index';
@@ -66,9 +66,6 @@ const App = () => {
   const [mobileAnimation, setMobileAnimation] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
-  const showSettings = (event) => {
-    event.preventDefault();
-  }
   
   return (
     <ThemeProvider theme={theme} >

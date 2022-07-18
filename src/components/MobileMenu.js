@@ -70,7 +70,6 @@ const MobileMenu = ({ setOpenMobileMenu, handlePageChangeMain, handlePageChange,
           else if(window.location.pathname === '/contact') {
             handleMainLink()
           }
-          console.log('home')
         break;
 
         case 'projects':
@@ -89,6 +88,11 @@ const MobileMenu = ({ setOpenMobileMenu, handlePageChangeMain, handlePageChange,
           else if (window.location.pathname === '/home'){
             handlePageChangeMain('/contact')
           }
+        break;
+
+
+        default:
+
         break;
       }
     }

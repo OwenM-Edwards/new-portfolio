@@ -135,7 +135,7 @@ const ProjectWrapper = styled.div`
 
 
 
-const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
+const ProjectGrid = ({openProjectModal}) => {
    let profProjectGridHtml = false;
    let projectGridHtml = false;
    let key = 0;
@@ -160,13 +160,12 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          )];
          key++;
       });
-      console.log(key)
-      setTotalProjects(key - 1)
       return tempHtml;
    }
+
    const createProfProjectGrid = () => {
       let tempHtml = [];
-   
+
       professionalProjectInfo.forEach(project => {
          let projectID = key;
          tempHtml =  [...tempHtml,(
@@ -183,10 +182,9 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
          )];
          key++;
       });
-      console.log(key)
-      setTotalProjects(key - 1)
       return tempHtml;
    }
+
    if(!projectGridHtml){
       projectGridHtml = createProjectGrid();
    }
@@ -195,14 +193,21 @@ const ProjectGrid = ({openProjectModal, setTotalProjects}) => {
    }
 
 
+
    return(
       <AnimatePresence initial={false}>
          <Wrapper>
             <div className="projectsWrapper">
                <h2 className="categoryTitle">Professional Projects</h2>
-               {profProjectGridHtml}
+               {(profProjectGridHtml)
+                  ? profProjectGridHtml
+                  : <></>
+               }
                <h2 className="categoryTitle">Personal Projects</h2>
-               {projectGridHtml}
+               {(projectGridHtml)
+                  ? projectGridHtml
+                  : projectGridHtml
+               }
             </div>
          </Wrapper>    
       </AnimatePresence>
