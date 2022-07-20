@@ -147,7 +147,7 @@ const ProjectGrid = ({openProjectModal}) => {
       personalProjectInfo.forEach(project => {
          let projectID = key;
          tempHtml =  [...tempHtml,(
-            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
+            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image_a})`}}>
                <div className="cover"></div>
                <h3>{project.title}</h3>
                <Fade 
@@ -169,7 +169,7 @@ const ProjectGrid = ({openProjectModal}) => {
       professionalProjectInfo.forEach(project => {
          let projectID = key;
          tempHtml =  [...tempHtml,(
-            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image})`}}>
+            <ProjectWrapper  key={key} onClick={()=>openProjectModal(projectID)} style={{backgroundImage: `url(${project.image_a})`}}>
                <div className="cover"></div>
                <h3>{project.title}</h3>
                <Fade 

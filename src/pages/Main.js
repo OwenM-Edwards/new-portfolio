@@ -7,6 +7,7 @@ import ReactTooltip from 'react-tooltip';
 import { WrapperSrc} from '../styled/styles';
 import {TypescriptIcon, nodeIcon, bootstrapIcon,wordpressIcon,phpIcon, reactIcon,sassIcon, postgresIcon, cssIcon, jsIcon, githubIcon,CVIcon,}  from '../img/index.js';
 import Fade from 'react-reveal/Fade';
+import CV from "../img/Owen_Edwards_CV.pdf";
 
 const Wrapper = styled(WrapperSrc)`    
   z-index:9999;
@@ -119,6 +120,7 @@ const Wrapper = styled(WrapperSrc)`
 
         img {
           height:100%;
+          cursor:pointer;
         }
         img:nth-of-type(2){
           height:115%;
@@ -165,6 +167,7 @@ const Wrapper = styled(WrapperSrc)`
         img {
           width:30%;
           margin-left:auto;
+
           @media (max-width: 1400px) {
             /* width:auto;
             height:80%; */
@@ -239,49 +242,51 @@ const Main = ({mainInitial, setEnterDirection, globalSlideAnimationDuration, set
               </Fade>
               <Fade delay={900}>
               <div className="personalLinkContainer">
-                <img src={githubIcon} alt="github"/>
-                <img src={CVIcon} alt="CV"/>
+                <img src={githubIcon} alt="github"  data-tip="My Github profile"/>
+                <a target="blank" href={CV}><img src={CVIcon} alt="CV"  data-tip="Take a look at my CV"/></a>
+                
               </div>
               </Fade>
             </div>
             
             <Fade cascade duration={2000} delay={500}>
               <div className="skillsContainer">
+              <ReactTooltip />
                 <div className="skillContainer">
                   <p>JavaScript</p>
-                  <img src={jsIcon} alt="Javascript"/>
+                  <img src={jsIcon} alt="Javascript"  data-tip="JavaScript"/>
                 </div>
                 <div className="skillContainer">
                 <p>React.js</p>
-                  <img src={reactIcon} alt="React"/>
+                  <img src={reactIcon} alt="React"  data-tip="JavaScript"/>
                 </div>
                 <div className="skillContainer">
                   <p>Typescript</p>
-                  <img src={TypescriptIcon} alt="TypeScript"/>
+                  <img src={TypescriptIcon} alt="TypeScript"  data-tip="React.js"/>
                 </div>
                 <div className="skillContainer">
                   <p>Node.js</p>
-                  <img src={nodeIcon} alt="Node"/>
+                  <img src={nodeIcon} alt="Node"  data-tip="Node.js"/>
                 </div>
                 <div className="skillContainer">
                   <p>PHP</p>
-                  <img src={phpIcon} alt="PHP"/>
+                  <img src={phpIcon} alt="PHP"  data-tip="PHP"/>
                 </div>
                 <div className="skillContainer">
                   <p>CSS</p>
-                  <img src={cssIcon} alt="CSS"/>
+                  <img src={cssIcon} alt="CSS"  data-tip="CSS"/>
                 </div>
                 <div className="skillContainer">
                   <p>SASS</p>
-                  <img src={sassIcon} alt="SASS"/>
+                  <img src={sassIcon} alt="SASS"  data-tip="SASS"/>
                 </div>
                 <div className="skillContainer">
                   <p>PostgreSQL</p>
-                  <img src={postgresIcon} alt="PostgreSQL"/>
+                  <img src={postgresIcon} alt="PostgreSQL"  data-tip="PostgreSQL"/>
                 </div>
                 <div className="skillContainer">
                   <p>Boostrap</p>
-                  <img src={bootstrapIcon} alt="Bootstrap"/>
+                  <img src={bootstrapIcon} alt="Bootstrap"  data-tip="Bootstrap"/>
                 </div>
               </div>
             </Fade>

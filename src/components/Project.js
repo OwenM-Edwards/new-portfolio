@@ -353,7 +353,8 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                   </section>
 
                   <section className="section2">   
-                     <img src={project.image} alt="project"/>
+                     <img src={project.image_a} alt="project 1"/>
+                     <img src={project.image_b} alt="project 2"/>
                   </section>
 
                   <div className="skillContainer">
@@ -417,8 +418,8 @@ const Project = ({displayProject, modalAnimation, closeProjectModal, setDisplayP
                   </section>
 
                   <section className="section2">   
-                     <img src={project.image} alt="project 1"/>
-                     <img src={project.image} alt="project 2"/>
+                     <img src={project.image_a} alt="project 1"/>
+                     <img src={project.image_b} alt="project 2"/>
                   </section>
 
                   <div className="skillContainer">
