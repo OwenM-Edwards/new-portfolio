@@ -1,4 +1,3 @@
-import websiteB_BG from  "../img/website-b.jpg";
 import sevadisImage from "../img/sevadis.png";
 import santeImage from "../img/sante.png";
 import Enapps1 from "../img/enapps1.png";
@@ -15,11 +14,9 @@ const professionalProjectInfo = [
         demoLink:"https://sante-group.com/",
         skillIcons:[
             <img src={jsIcon} alt="Javascript"/>, 
-            <img src={reactIcon} alt="React"/>, 
-            <img src={nodeIcon} alt="Node"/>, 
             <img src={cssIcon} alt="CSS"/>,
             <img src={sassIcon} alt="SASS"/>,
-            <img src={postgresIcon} alt="Postgres"/>,
+            <img src={wordpressIcon} alt="Wordpress"/>,
         ]
     },
 
@@ -31,11 +28,9 @@ const professionalProjectInfo = [
         demoLink:"https://enapps.com/",
         skillIcons:[
             <img src={jsIcon} alt="Javascript"/>, 
-            <img src={reactIcon} alt="React"/>, 
-            <img src={nodeIcon} alt="Node"/>, 
             <img src={cssIcon} alt="CSS"/>,
             <img src={sassIcon} alt="SASS"/>,
-            <img src={postgresIcon} alt="Postgres"/>,
+            <img src={wordpressIcon} alt="Wordpress"/>,
         ]
     },
 
@@ -48,11 +43,9 @@ const professionalProjectInfo = [
         demoLink:"https://sevadis.com/",
         skillIcons:[
             <img src={jsIcon} alt="Javascript"/>, 
-            <img src={reactIcon} alt="React"/>, 
-            <img src={nodeIcon} alt="Node"/>, 
             <img src={cssIcon} alt="CSS"/>,
             <img src={sassIcon} alt="SASS"/>,
-            <img src={postgresIcon} alt="Postgres"/>,
+            <img src={wordpressIcon} alt="Wordpress"/>,
         ]
     },
 ];
